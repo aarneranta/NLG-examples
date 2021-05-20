@@ -15,8 +15,11 @@ cat
 fun
   CapitalFact : CountryExp -> Capital -> Fact ;
   PopulationFact : CountryExp -> Int -> Fact ;
+  AreaFact : CountryExp -> Int -> Fact ;
   ContinentFact : CountryExp -> Continent -> Fact ;
   CurrencyFact : CountryExp -> CurrencyName -> CurrencyCode -> Fact ;
+
+  InhabitantFact : Country -> Int -> Fact ;
 
   CountryCountryExp : Country -> CountryExp ;
   ItCountryExp : CountryExp ;

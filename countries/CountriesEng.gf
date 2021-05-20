@@ -38,17 +38,26 @@ oper
   withParenthNP : NP -> NP -> NP
     = \main,par -> mkNP main (P.mkAdv ("(" ++ Predef.BIND ++ (mkUtt par).s ++ Predef.BIND ++ ")")) ;
 
+----  intCN : Predef.Int -> CN -> NP
+----    = \n,cn -> mkNP (symb <n : Symb>) (P.mkAdv (mkUtt (mkNP aPl_Det cn).s)) ; ---
+
   capital_CN = mkCN (mkN "capital") ;
   country_CN = mkCN (mkN "country") ;
   population_CN = mkCN (mkN "population") ;
   currency_CN = mkCN (mkN "currency") ;
+  inhabitant_CN = mkCN (mkN "inhabitant") ;
+  area_CN = mkCN (mkN "area") ;
+  inhabitant_CN = mkCN (mkN "inhabitant") ;
  
 
 lin
   CapitalFact country capital = attributeFact capital_CN country capital ;
   PopulationFact country population = attributeFact population_CN country (symb population) ;
+  AreaFact country area = attributeFact population_CN country (symb area) ;
   ContinentFact country continent = mkS (mkCl country (mkCN country_CN (S.mkAdv in_Prep continent))) ;
   CurrencyFact country currencyName currencyCode = attributeFact currency_CN country (withParenthNP currencyName currencyCode) ;
+  
+----  InhabitantsFact country int = mkS (mkCl (country have_V2 (intCN int inhabitant_CN))) ;
 
   CountryCountryExp country = country ;
   ItCountryExp = it_NP ;
