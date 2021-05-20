@@ -11,14 +11,16 @@ import Data.Ord
 main = do
   countries <- getCountries
   let continents = nub (map continent countries)
-  let continentTrees = [continentArticle countries c | c <- continents]
+  let worldTree = continentArticle countries (const True) "world"
+  let continentTrees = [continentArticle countries (\x -> continent x == c) c | c <- continents]
   let countryTrees = [countryArticle c | c <- countries]
 --  putStrLn $ unlines $ map (showExpr []) continentTrees
 --  putStrLn $ unlines $ map (showExpr []) countryTrees
   pgf <- readPGF "Countries.pgf"
   let langs = languages pgf
   let links = unwords ["<a href=\"" ++ slang ++ ".html\">" ++ slang ++ "</a>" | lang <- langs, let slang = showCId lang]
-  let texts = [(showCId lang, unlines (links : map (mkPara . unlex . linearize pgf lang) (continentTrees ++ countryTrees))) | lang <- langs]
+  let texts = [(showCId lang, unlines (links : map (mkPara . unlex . linearize pgf lang)
+                  (worldTree : continentTrees ++ countryTrees))) | lang <- langs]
   flip mapM_ texts $ \ (lang,text) -> writeFile (lang ++ ".html") text
   return ()
 
@@ -33,8 +35,8 @@ data Country = Country {
   }
   deriving Show
 
-continentArticle :: [Country] -> String -> Tree
-continentArticle countries cont =
+continentArticle :: [Country] -> (Country -> Bool) -> String -> Tree
+continentArticle countries isin cont =
   mkApp (mkCId "ContinentArticle") [
     constant "Continent" cont,
     mkInt (length cocountries),
@@ -48,7 +50,7 @@ continentArticle countries cont =
     constant "Country" (country (minimumBy (comparing area) cocountries))
     ]
  where
-   cocountries = [c | c <- countries, continent c == cont]
+   cocountries = [c | c <- countries, isin c] -- continent c == cont
 
 countryArticle :: Country -> Tree
 countryArticle countr =
