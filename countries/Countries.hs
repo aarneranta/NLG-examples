@@ -18,7 +18,8 @@ main = do
 --  putStrLn $ unlines $ map (showExpr []) countryTrees
   pgf <- readPGF "Countries.pgf"
   let langs = languages pgf
-  let links = unwords ["<a href=\"" ++ slang ++ ".html\">" ++ slang ++ "</a>" | lang <- langs, let slang = showCId lang]
+  let links = unwords ["<a href=\"" ++ slang ++ ".html\">" ++ slang ++ "</a>"
+                 | lang <- langs, let slang = showCId lang]
   let texts = [(showCId lang, unlines (links : map (mkPara . unlex . linearize pgf lang)
                   (worldTree : continentTrees ++ countryTrees))) | lang <- langs]
   flip mapM_ texts $ \ (lang,text) -> writeFile (lang ++ ".html") text
