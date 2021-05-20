@@ -18,7 +18,7 @@ fun
 
 -- continent or world description
   ContinentArticle :
-    Continent ->
+      Continent ->
       (count : Int) ->
       (total_area, total_population : Int) ->
       (average_area, agerage_population : Int) -> 
@@ -29,7 +29,7 @@ fun
 -- country description
   CountryArticle :
     Country -> Continent -> Capital ->
-      (population,area : Int) -> CurrencyName -> CurrencyCode -> Article ;
+      (area,population : Int) -> CurrencyName -> CurrencyCode -> Article ;
 
 -- basic features
   CapitalFact : CountryExp -> Capital -> Fact ;

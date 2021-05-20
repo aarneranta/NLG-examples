@@ -96,7 +96,7 @@ lin
 	) ;
 
 
-  CountryArticle country continent capital population area currencyName currencyCode =
+  CountryArticle country continent capital area population currencyName currencyCode =
     ccText
       (ContinentFact (CountryCountryExp country) continent)
       (CapitalFact ItCountryExp capital)
@@ -120,8 +120,8 @@ lin
          (mkNP a_Det (mkCN area_CN (S.mkAdv possess_Prep (mkNP <symb area : Card> square_kilometre_CN)))))) ;
 
   CountFact int = mkS (mkCl (mkNP <symb int : Card> country_CN)) ;
-  LargestFact attribute country = mkS (mkCl country have_V2 (mkNP largest_Det population_CN)) ;
-  SmallestFact attribute country = mkS (mkCl country have_V2 (mkNP smallest_Det population_CN)) ;
+  LargestFact attribute country = mkS (mkCl country have_V2 (mkNP largest_Det attribute)) ;
+  SmallestFact attribute country = mkS (mkCl country have_V2 (mkNP smallest_Det attribute)) ;
   AverageFact attribute int = mkS (mkCl (mkNP the_Det (mkCN average_A attribute)) (symb int)) ;
   TotalFact attribute int = mkS (mkCl (mkNP the_Det (mkCN total_A attribute)) (symb int)) ;
   
