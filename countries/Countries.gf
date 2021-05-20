@@ -3,8 +3,10 @@ abstract Countries = {
 flags startcat = Fact ;
 
 cat
+  Article ;
   Fact ;
   CountryExp ;
+  Attribute ;
   
   Country ;
   Capital ;
@@ -13,16 +15,54 @@ cat
   CurrencyName ;
 
 fun
+
+-- continent or world description
+  ContinentArticle :
+    Continent ->
+      (count : Int) ->
+      (total_area, total_population : Int) ->
+      (average_area, agerage_population : Int) -> 
+      (largest_population, smallest_population : Country) ->
+      (largest_area, smallest_area : Country) ->
+         Article ;
+
+-- country description
+  CountryArticle :
+    Country -> Continent -> Capital ->
+      (population,area : Int) -> CurrencyName -> CurrencyCode -> Article ;
+
+-- basic features
   CapitalFact : CountryExp -> Capital -> Fact ;
   PopulationFact : CountryExp -> Int -> Fact ;
   AreaFact : CountryExp -> Int -> Fact ;
   ContinentFact : CountryExp -> Continent -> Fact ;
   CurrencyFact : CountryExp -> CurrencyName -> CurrencyCode -> Fact ;
 
-  InhabitantFact : Country -> Int -> Fact ;
+-- alternative expressions
+  InhabitantsFact : CountryExp -> Int -> Fact ;
+  InhabitantsAndAreaFact : CountryExp -> Int -> Int -> Fact ;
 
+-- aggregations
+  CountFact : Int -> Fact ;
+  LargestFact : Attribute -> Country -> Fact ;
+  SmallestFact : Attribute -> Country -> Fact ;
+  AverageFact : Attribute -> Int -> Fact ;
+  TotalFact : Attribute -> Int -> Fact ;
+  ContinentCountFact : Continent -> Int -> Fact ;
+  ContinentLargestFact : Attribute -> Continent -> Country -> Fact ;
+  ContinentSmallestFact : Attribute -> Continent -> Country -> Fact ;
+  ContinentAverageFact : Attribute -> Continent -> Int -> Fact ;
+  ContinentTotalFact : Attribute -> Continent -> Int -> Fact ;
+
+-- expressions referring to countries
   CountryCountryExp : Country -> CountryExp ;
-  ItCountryExp : CountryExp ;
+  ItCountryExp : CountryExp ;  -- it, its currency
+  NoCountryExp : CountryExp ;  -- the currency
+
+  population_Attribute : Attribute ;
+  area_Attribute : Attribute ;
+
+  world_Continent : Continent ; ---
 
 fun 'Bonaire,_Saint_Eustatius_and_Saba_Country' : Country ;
 fun 'Guinea-Bissau_Country' : Country ;
