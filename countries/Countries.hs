@@ -6,6 +6,8 @@ import Data.List
 import Data.Char
 import Data.Ord
 
+-- start with: gf -make CountriesEng.gf CountriesFin.gf CountriesSwe.gf
+
 main = do
   countries <- getCountries
   let continents = nub (map continent countries)
@@ -15,7 +17,8 @@ main = do
 --  putStrLn $ unlines $ map (showExpr []) countryTrees
   pgf <- readPGF "Countries.pgf"
   let langs = languages pgf
-  let texts = [(showCId lang, unlines (map (mkPara . unlex . linearize pgf lang) (continentTrees ++ countryTrees))) | lang <- langs]
+  let links = unwords ["<a href=\"" ++ slang ++ ".html\">" ++ slang ++ "</a>" | lang <- langs, let slang = showCId lang]
+  let texts = [(showCId lang, unlines (links : map (mkPara . unlex . linearize pgf lang) (continentTrees ++ countryTrees))) | lang <- langs]
   flip mapM_ texts $ \ (lang,text) -> writeFile (lang ++ ".html") text
   return ()
 
