@@ -7,6 +7,8 @@ open
   (P = ParadigmsFin),
   SymbolicFin,
   (G = GrammarFin),
+  (R = ResFin), ----
+  (L = LexiconFin),
   Prelude
 in {
 
@@ -15,18 +17,21 @@ lincat
   CountryExp = NPExp ;
   Attribute = CN ;
 
-  Country = NP ;
+  Country = {np : NP ; incases : Bool} ; -- ssa/lla
   Capital = NP ;
-  Continent = NP ;
+  Continent = {np : NP ; incases : Bool} ;
   CurrencyCode = NP ;
   CurrencyName = NP ;
 
 oper
-  NPExp = {np : NP ; hasPoss : Bool ; poss : Quant} ;
+  NPExp = {np : NP ; hasPoss : Bool ; poss : Quant ; incases : Bool} ;
 
-  mkCountry : Str -> NP = \s -> mkNP (mkPN s) ;
+  mkCountry = overload {
+    mkCountry : Str -> {np : NP ; incases : Bool} = \s -> {np = mkNP (mkPN s) ; incases = True} ;
+    mkCountry : Str -> Bool -> {np : NP ; incases : Bool} = \s,b -> {np = mkNP (mkPN s) ; incases = b} ;
+    mkCountry : NP -> Bool -> {np : NP ; incases : Bool} = \np,b -> {np = np ** {a = R.agrP3 R.Sg}; incases = b} ;
+    } ;
   mkCapital : Str -> NP = \s -> mkNP (mkPN s) ;
-  mkContinent : Str -> NP = \s -> mkNP (mkPN s) ;
   mkCurrencyCode : Str -> NP = \s -> mkNP (mkPN s) ;
   mkCurrencyName : Str -> NP = \s -> mkNP (mkPN s) ;
 
@@ -45,7 +50,15 @@ oper
 ----  intCN : Predef.Int -> CN -> NP
 ----    = \n,cn -> mkNP (symb <n : Symb>) (P.mkAdv (mkUtt (mkNP aPl_Det cn).s)) ; ---
 
-  inContinent : NP -> Adv = \np -> S.mkAdv in_Prep np ;
+  inContinent : {np : NP ; incases : Bool} -> Adv = \co -> case co.incases of {
+    True => S.mkAdv in_Prep co.np ;
+    _ => S.mkAdv on_Prep co.np
+    } ;
+
+  have_country_V2 : NPExp -> V2 = \country -> case country.incases of {
+    True => mkV2 (caseV inessive <have_V2 : V>) ; 
+    _ => have_V2
+    } ;
 
   capital_CN = mkCN (mkN "pääkaupunki") ;
   country_CN = mkCN (mkN "maa") ;
@@ -106,52 +119,52 @@ lin
   CapitalFact country capital = attributeFact capital_CN country capital ;
   PopulationFact country population = attributeFact population_CN country (symb population) ;
   AreaFact country area = attributeFact population_CN country (symb area) ;
-  ContinentFact country continent = mkS (mkCl country.np (mkCN country_CN (S.mkAdv in_Prep continent))) ;
+  ContinentFact country continent = mkS (mkCl country.np (mkCN country_CN (inContinent continent))) ;
   CurrencyFact country currencyName currencyCode = attributeFact currency_CN country (withParenthNP currencyName currencyCode) ;
   
   InhabitantsFact country int =
-    mkS (mkCl country.np have_V2 (mkNP <symb int : Card> inhabitant_CN)) ;
+    mkS (G.ExistNPAdv (mkNP <symb int : Card> inhabitant_CN) (inContinent country)) ;
     
   InhabitantsAndAreaFact country population area =
-    mkS (mkCl country.np have_V2
+    mkS (mkCl country.np (have_country_V2 country)
       (mkNP and_Conj
          (mkNP <symb population : Card> inhabitant_CN)
-         (mkNP a_Det (mkCN area_CN (S.mkAdv possess_Prep (mkNP <symb area : Card> square_kilometre_CN)))))) ;
+         (mkNP a_Det (mkCN area_CN (S.mkAdv (casePrep partitive) (mkNP <symb area : Card> square_kilometre_CN)))))) ;
 
   CountFact int = mkS (mkCl (mkNP <symb int : Card> country_CN)) ;
-  LargestFact attribute country = mkS (mkCl country have_V2 (mkNP largest_Det attribute)) ;
-  SmallestFact attribute country = mkS (mkCl country have_V2 (mkNP smallest_Det attribute)) ;
+  LargestFact attribute country = mkS (mkCl country.np have_V2 (mkNP largest_Det attribute)) ;
+  SmallestFact attribute country = mkS (mkCl country.np have_V2 (mkNP smallest_Det attribute)) ;
   AverageFact attribute int = mkS (mkCl (mkNP the_Det (mkCN average_A attribute)) (symb int)) ;
   TotalFact attribute int = mkS (mkCl (mkNP the_Det (mkCN total_A attribute)) (symb int)) ;
   
   ContinentCountFact continent int = mkS (G.ExistNPAdv (mkNP <symb int : Card> country_CN) (inContinent continent)) ;
-  ContinentLargestFact attribute continent country = mkS (mkCl country have_V2 (mkNP (mkNP largest_Det population_CN) (inContinent continent))) ;
-  ContinentSmallestFact attribute continent country = mkS (mkCl country have_V2 (mkNP (mkNP smallest_Det population_CN) (inContinent continent))) ;
+  ContinentLargestFact attribute continent country = mkS (G.ExistNPAdv (mkNP (mkNP largest_Det population_CN) (inContinent continent)) (inContinent country)) ;
+  ContinentSmallestFact attribute continent country = mkS (G.ExistNPAdv (mkNP (mkNP smallest_Det population_CN) (inContinent continent)) (inContinent country)) ;
   ContinentAverageFact attribute continent int = mkS (mkCl (mkNP (mkNP the_Det (mkCN average_A attribute)) (inContinent continent)) (symb int)) ;
   ContinentTotalFact attribute continent int = mkS (mkCl (mkNP (mkNP the_Det (mkCN total_A attribute)) (inContinent continent)) (symb int)) ;
 
-  CountryCountryExp country = {np = country ; hasPoss = False ; poss = S.mkQuant it_Pron} ;
-  ItCountryExp = {np = it_NP ; hasPoss = True ; poss = S.mkQuant it_Pron} ;
-  NoCountryExp = {np = it_NP ; hasPoss = True ; poss = the_Quant} ;
+  CountryCountryExp country = country ** {hasPoss = False ; poss = S.mkQuant it_Pron} ;
+  ItCountryExp = {np = it_NP ; hasPoss = True ; poss = S.mkQuant it_Pron ; incases = False} ;
+  NoCountryExp = {np = it_NP ; hasPoss = True ; poss = the_Quant ; incases = False} ;
 
   population_Attribute = population_CN ;
   area_Attribute = area_CN ;
 
-  world_Continent = mkNP the_Det (mkN "maailma") ;
+  world_Continent = {np = mkNP the_Det (mkN "maailma") ; incases = True} ;
 
 lin 'Bonaire,_Saint_Eustatius_and_Saba_Country' = mkCountry "Bonaire, Saint Eustatius ja Saba " ;
 lin 'Guinea-Bissau_Country' = mkCountry "Guinea-Bissau" ;
 lin 'U.S._Virgin_Islands_Country' = mkCountry "U.S. Virgin Islands" ;
 lin Afghanistan_Country = mkCountry "Afganistan" ;
-lin Aland_Islands_Country = mkCountry "Ahvenanmaa" ;
+lin Aland_Islands_Country = mkCountry "Ahvenanmaa" False ;
 lin Albania_Country = mkCountry "Albania" ;
 lin Algeria_Country = mkCountry "Algeria" ;
 lin American_Samoa_Country = mkCountry "Amerikan Samoa" ;
 lin Andorra_Country = mkCountry "Andorra" ;
 lin Angola_Country = mkCountry "Angola" ;
 lin Anguilla_Country = mkCountry "Anguilla" ;
-lin Antarctica_Country = mkCountry "Antarktis" ;
-lin Antigua_and_Barbuda_Country = mkCountry "Antigua and Barbuda" ;
+lin Antarctica_Country = mkCountry "Etelämantere" False ;
+lin Antigua_and_Barbuda_Country = mkCountry "Antigua ja Barbuda" ;
 lin Argentina_Country = mkCountry "Argentiina" ;
 lin Armenia_Country = mkCountry "Armenia" ;
 lin Aruba_Country = mkCountry "Aruba" ;
@@ -162,7 +175,7 @@ lin Bahamas_Country = mkCountry "Bahamas" ;
 lin Bahrain_Country = mkCountry "Bahrain" ;
 lin Bangladesh_Country = mkCountry "Bangladesh" ;
 lin Barbados_Country = mkCountry "Barbados" ;
-lin Belarus_Country = mkCountry "Valko-Venäjä" ;
+lin Belarus_Country = mkCountry (mkNP (mkN "Valko-" (mkN "Venäjä"))) False ;
 lin Belgium_Country = mkCountry "Belgia" ;
 lin Belize_Country = mkCountry "Belize" ;
 lin Benin_Country = mkCountry "Benin" ;
@@ -171,10 +184,10 @@ lin Bhutan_Country = mkCountry "Bhutan" ;
 lin Bolivia_Country = mkCountry "Bolivia" ;
 lin Bosnia_and_Herzegovina_Country = mkCountry "Bosnia-Herzegovina" ;
 lin Botswana_Country = mkCountry "Botswana" ;
-lin Bouvet_Island_Country = mkCountry "Bouvet Island" ;
+lin Bouvet_Island_Country = mkCountry (mkNP the_Det (mkN "Bouvet-" (mkN "saari" "saaria"))) False ;
 lin Brazil_Country = mkCountry "Brasilia" ;
 lin British_Indian_Ocean_Territory_Country = mkCountry "British Indian Ocean Territory" ;
-lin British_Virgin_Islands_Country = mkCountry "British Virgin Islands" ;
+lin British_Virgin_Islands_Country = mkCountry (mkNP thePl_Det (mkN "Britannian Neitsyt" (mkN "saari" "saaria"))) False ;
 lin Brunei_Country = mkCountry "Brunei" ;
 lin Bulgaria_Country = mkCountry "Bulgaria" ;
 lin Burkina_Faso_Country = mkCountry "Burkina Faso" ;
@@ -189,7 +202,7 @@ lin Chad_Country = mkCountry "Chad" ;
 lin Chile_Country = mkCountry "Chile" ;
 lin China_Country = mkCountry "Kiina" ;
 lin Christmas_Island_Country = mkCountry "Joulusaaret" ;
-lin Cocos_Islands_Country = mkCountry "Cocos Islands" ;
+lin Cocos_Islands_Country = mkCountry (mkNP thePl_Det (mkN "kookos" (mkN "saari" "saaria"))) False ;
 lin Colombia_Country = mkCountry "Kolumbia" ;
 lin Comoros_Country = mkCountry "Comoros" ;
 lin Cook_Islands_Country = mkCountry "Cook Islands" ;
@@ -212,20 +225,20 @@ lin Equatorial_Guinea_Country = mkCountry "Päiväntasaajan Guinea" ;
 lin Eritrea_Country = mkCountry "Eritrea" ;
 lin Estonia_Country = mkCountry "Viro" ;
 lin Ethiopia_Country = mkCountry "Etiopia" ;
-lin Falkland_Islands_Country = mkCountry "Falkland Islands" ;
+lin Falkland_Islands_Country = mkCountry (mkNP thePl_Det (mkN "Falkland-" (mkN "saari" "saaria"))) False ;
 lin Faroe_Islands_Country = mkCountry "Faroe Islands" ;
 lin Fiji_Country = mkCountry "Fiji" ;
 lin Finland_Country = mkCountry "Suomi" ;
 lin France_Country = mkCountry "Ranska" ;
 lin French_Guiana_Country = mkCountry "French Guiana" ;
 lin French_Polynesia_Country = mkCountry "French Polynesia" ;
-lin French_Southern_Territories_Country = mkCountry "French Southern Territories" ;
+lin French_Southern_Territories_Country = mkCountry (mkNP thePl_Det (mkCN (invarA "Ranskan") (mkCN (mkA "eteläinen") (mkN "alue" "alueen" "alueita")))) False ;
 lin Gabon_Country = mkCountry "Gabon" ;
 lin Gambia_Country = mkCountry "Gambia" ;
 lin Georgia_Country = mkCountry "Georgia" ;
 lin Germany_Country = mkCountry "Saksa" ;
 lin Ghana_Country = mkCountry "Ghana" ;
-lin Gibraltar_Country = mkCountry "Gibraltar" ;
+lin Gibraltar_Country = mkCountry (mkNP (mkN "Gibraltar" "Gibraltarin" "Gibraltareja")) False ;
 lin Greece_Country = mkCountry "Kreikka" ;
 lin Greenland_Country = mkCountry "Grönlanti" ;
 lin Grenada_Country = mkCountry "Grenada" ;
@@ -236,7 +249,7 @@ lin Guernsey_Country = mkCountry "Guernsey" ;
 lin Guinea_Country = mkCountry "Guinea" ;
 lin Guyana_Country = mkCountry "Guyana" ;
 lin Haiti_Country = mkCountry "Haiti" ;
-lin Heard_Island_and_McDonald_Islands_Country = mkCountry "Heard Island and McDonald Islands" ;
+lin Heard_Island_and_McDonald_Islands_Country = mkCountry "Heard Island ja McDonald Islands" ;
 lin Honduras_Country = mkCountry "Honduras" ;
 lin Hong_Kong_Country = mkCountry "Hong Kong" ;
 lin Hungary_Country = mkCountry "Unkari" ;
@@ -277,11 +290,11 @@ lin Malaysia_Country = mkCountry "Malesia" ;
 lin Maldives_Country = mkCountry "Maldiivit" ;
 lin Mali_Country = mkCountry "Mali" ;
 lin Malta_Country = mkCountry "Malta" ;
-lin Marshall_Islands_Country = mkCountry "Marshall Islands" ;
+lin Marshall_Islands_Country = mkCountry (mkNP thePl_Det (mkN "Marshall-" (mkN "saari" "saaria"))) False ;
 lin Martinique_Country = mkCountry "Martinique" ;
 lin Mauritania_Country = mkCountry "Mauritania" ;
 lin Mauritius_Country = mkCountry "Mauritius" ;
-lin Mayotte_Country = mkCountry "Mayotte" ;
+lin Mayotte_Country = mkCountry (mkNP (mkN "Mayotte" "Mayotten" "Mayotteja")) False ;
 lin Mexico_Country = mkCountry "Mexico" ;
 lin Micronesia_Country = mkCountry "Micronesia" ;
 lin Moldova_Country = mkCountry "Moldova" ;
@@ -324,25 +337,25 @@ lin Qatar_Country = mkCountry "Qatar" ;
 lin Republic_of_the_Congo_Country = mkCountry "Republic of the Congo" ;
 lin Reunion_Country = mkCountry "Reunion" ;
 lin Romania_Country = mkCountry "Romania" ;
-lin Russia_Country = mkCountry "Russia" ;
-lin Rwanda_Country = mkCountry "Rwanda" ;
+lin Russia_Country = mkCountry "Venäjä" False ;
+lin Rwanda_Country = mkCountry "Ruanda" ;
 lin Saint_Barthelemy_Country = mkCountry "Saint Barthelemy" ;
-lin Saint_Helena_Country = mkCountry "Saint Helena" ;
-lin Saint_Kitts_and_Nevis_Country = mkCountry "Saint Kitts and Nevis" ;
+lin Saint_Helena_Country = mkCountry "Saint Helena" False ;
+lin Saint_Kitts_and_Nevis_Country = mkCountry "Saint Kitts ja Nevis" ;
 lin Saint_Lucia_Country = mkCountry "Saint Lucia" ;
 lin Saint_Martin_Country = mkCountry "Saint Martin" ;
-lin Saint_Pierre_and_Miquelon_Country = mkCountry "Saint Pierre and Miquelon" ;
+lin Saint_Pierre_and_Miquelon_Country = mkCountry "Saint Pierre ja Miquelon" ;
 lin Saint_Vincent_and_the_Grenadines_Country = mkCountry "Saint Vincent and the Grenadines" ;
 lin Samoa_Country = mkCountry "Samoa" ;
 lin San_Marino_Country = mkCountry "San Marino" ;
-lin Sao_Tome_and_Principe_Country = mkCountry "Sao Tome and Principe" ;
-lin Saudi_Arabia_Country = mkCountry "Saudi Arabia" ;
+lin Sao_Tome_and_Principe_Country = mkCountry "Sao Tome ja Principe" ;
+lin Saudi_Arabia_Country = mkCountry "Saudi-Arabia" ;
 lin Senegal_Country = mkCountry "Senegal" ;
 lin Serbia_Country = mkCountry "Serbia" ;
-lin Serbia_and_Montenegro_Country = mkCountry "Serbia and Montenegro" ;
+lin Serbia_and_Montenegro_Country = mkCountry "Serbia ja Montenegro" ;
 lin Seychelles_Country = mkCountry "Seychelles" ;
 lin Sierra_Leone_Country = mkCountry "Sierra Leone" ;
-lin Singapore_Country = mkCountry "Singapore" ;
+lin Singapore_Country = mkCountry (mkNP (mkN "Singapore" "Singaporen" "Singaporeja")) True ;
 lin Sint_Maarten_Country = mkCountry "Sint Maarten" ;
 lin Slovakia_Country = mkCountry "Slovakia" ;
 lin Slovenia_Country = mkCountry "Slovenia" ;
@@ -356,7 +369,7 @@ lin Spain_Country = mkCountry "Spain" ;
 lin Sri_Lanka_Country = mkCountry "Sri Lanka" ;
 lin Sudan_Country = mkCountry "Sudan" ;
 lin Suriname_Country = mkCountry "Suriname" ;
-lin Svalbard_and_Jan_Mayen_Country = mkCountry "Svalbard and Jan Mayen" ;
+lin Svalbard_and_Jan_Mayen_Country = mkCountry "Huippuvuoret ja Jan Mayen" ;
 lin Swaziland_Country = mkCountry "Swaziland" ;
 lin Sweden_Country = mkCountry "Sweden" ;
 lin Switzerland_Country = mkCountry "Switzerland" ;
@@ -368,25 +381,25 @@ lin Thailand_Country = mkCountry "Thailand" ;
 lin Togo_Country = mkCountry "Togo" ;
 lin Tokelau_Country = mkCountry "Tokelau" ;
 lin Tonga_Country = mkCountry "Tonga" ;
-lin Trinidad_and_Tobago_Country = mkCountry "Trinidad and Tobago" ;
+lin Trinidad_and_Tobago_Country = mkCountry "Trinidad ja Tobago" ;
 lin Tunisia_Country = mkCountry "Tunisia" ;
 lin Turkey_Country = mkCountry "Turkey" ;
 lin Turkmenistan_Country = mkCountry "Turkmenistan" ;
-lin Turks_and_Caicos_Islands_Country = mkCountry "Turks and Caicos Islands" ;
+lin Turks_and_Caicos_Islands_Country = mkCountry "Turks ja Caicos Islands" ;
 lin Tuvalu_Country = mkCountry "Tuvalu" ;
 lin Uganda_Country = mkCountry "Uganda" ;
 lin Ukraine_Country = mkCountry "Ukraine" ;
-lin United_Arab_Emirates_Country = mkCountry "United Arab Emirates" ;
-lin United_Kingdom_Country = mkCountry "United Kingdom" ;
+lin United_Arab_Emirates_Country = mkCountry (mkNP thePl_Det (mkCN (mkA "Yhdistynyt") (mkN "arabiemiiri" (mkN "kunta")))) True ;
+lin United_Kingdom_Country = mkCountry (mkNP the_Det (mkCN (mkA "Yhdistynyt") (mkN "kuningaskunta"))) True ;
 lin United_States_Country = mkCountry "United States" ;
-lin United_States_Minor_Outlying_Islands_Country = mkCountry "United States Minor Outlying Islands" ;
+lin United_States_Minor_Outlying_Islands_Country = mkCountry (mkNP thePl_Det (mkCN (invarA "Yhdysvaltain") (mkCN L.small_A (mkN "erillis" (mkN "saari" "saaria"))))) False ;
 lin Uruguay_Country = mkCountry "Uruguay" ;
 lin Uzbekistan_Country = mkCountry "Uzbekistan" ;
 lin Vanuatu_Country = mkCountry "Vanuatu" ;
-lin Vatican_Country = mkCountry "Vatican" ;
+lin Vatican_Country = mkCountry "Vatikaani" ;
 lin Venezuela_Country = mkCountry "Venezuela" ;
 lin Vietnam_Country = mkCountry "Vietnam" ;
-lin Wallis_and_Futuna_Country = mkCountry "Wallis and Futuna" ;
+lin Wallis_and_Futuna_Country = mkCountry "Wallis ja Futuna" ;
 lin Western_Sahara_Country = mkCountry "Western Sahara" ;
 lin Yemen_Country = mkCountry "Yemen" ;
 lin Zambia_Country = mkCountry "Zambia" ;
@@ -525,7 +538,7 @@ lin Managua_Capital = mkCapital "Managua" ;
 lin Manama_Capital = mkCapital "Manama" ;
 lin Manila_Capital = mkCapital "Manila" ;
 lin Maputo_Capital = mkCapital "Maputo" ;
-lin Mariehamn_Capital = mkCapital "Mariehamn" ;
+lin Mariehamn_Capital = mkCapital "Maarianhamina" ;
 lin Marigot_Capital = mkCapital "Marigot" ;
 lin Maseru_Capital = mkCapital "Maseru" ;
 lin Mata_Utu_Capital = mkCapital "Mata Utu" ;
@@ -635,13 +648,13 @@ lin Yaounde_Capital = mkCapital "Yaounde" ;
 lin Yaren_Capital = mkCapital "Yaren" ;
 lin Yerevan_Capital = mkCapital "Yerevan" ;
 lin Zagreb_Capital = mkCapital "Zagreb" ;
-lin AF_Continent = mkContinent "Afrikka" ;
-lin AN_Continent = mkContinent "Antarktis" ;
-lin AS_Continent = mkContinent "Aasia" ;
-lin EU_Continent = mkContinent "Eurooppa" ;
-lin NA_Continent = mkContinent "Pohjois-Amerikka" ;
-lin OC_Continent = mkContinent "Oseania" ;
-lin SA_Continent = mkContinent "Etelä-Amerikka" ;
+lin AF_Continent = mkCountry "Afrikka" ;
+lin AN_Continent = mkCountry "Etelämantere" False ;
+lin AS_Continent = mkCountry "Aasia" ;
+lin EU_Continent = mkCountry "Eurooppa" ;
+lin NA_Continent = mkCountry "Pohjois-Amerikka" ;
+lin OC_Continent = mkCountry "Oseania" ;
+lin SA_Continent = mkCountry "Etelä-Amerikka" ;
 lin AED_CurrencyCode = mkCurrencyCode "AED" ;
 lin AFN_CurrencyCode = mkCurrencyCode "AFN" ;
 lin ALL_CurrencyCode = mkCurrencyCode "ALL" ;
