@@ -4,7 +4,7 @@ Example run:
 ```
 $ gf -make Int2NumeralExampleEng.gf
 $ echo "you have 8760 messages" | runghc Int2NumeralExample.hs
-you have eight thousand seven hundred and sixty messagesç∂
+you have eight thousand seven hundred and sixty messages
 ```
 To use in your own application, follow `Int2NumeralExample.{gf,hs}`:
 - gf: write a grammar that extends `Numeral` and contains a pair of functions `f_int : Int -> A`, `f_numeral : Numeral -> A` returning the same value type `A`
