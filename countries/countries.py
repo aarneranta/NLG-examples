@@ -77,19 +77,19 @@ def main():
 
     gr = pgf.readPGF("Countries.pgf")
     langs = list(gr.languages.values())
-    langnum = 1
+    links = ' '.join(['<a href="py_' + lang.name + '.html">' + lang.name + '</a>' for lang in langs])
 
     for lang in langs:
         text = []
+        text.append(links)
         text.append(lang.linearize(worldtree))
         for tree in continenttrees:
             text.append(lang.linearize(tree))
         for tree in countrytrees:
             text.append(lang.linearize(tree))
-        file = open("countries_" + str(langnum) + ".html", "w")
+        file = open("py_" + lang.name + ".html", "w")
         file.write('\n<p>'.join(text))
         file.close()
-        langnum += 1
 
 
 
