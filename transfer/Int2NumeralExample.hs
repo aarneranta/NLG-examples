@@ -3,6 +3,8 @@ module Int2NumeralExample where
 import Int2Numeral
 import PGF
 
+-- to test: echo "you have 500 messages" | runghc Int2NumeralExample.hs
+
 main = do
   pgf <- readPGF "Int2NumeralExample.pgf"
   let eng:_ = languages pgf 
