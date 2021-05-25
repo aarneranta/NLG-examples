@@ -1,52 +1,22 @@
-concrete CountriesSwe of Countries =
+concrete CountriesSwe of Countries = CountriesFunctor
 
+with 
+  (Syntax=SyntaxSwe),
+  (Symbolic=SymbolicSwe),
+  (Grammar=GrammarSwe),
+  (Lexicon=LexiconSwe)
+
+**
 open
-  SyntaxSwe,
   ParadigmsSwe,
   (S = SyntaxSwe),
   (P = ParadigmsSwe),
-  SymbolicSwe,
-  (G = GrammarSwe),
   (L = LexiconSwe),
   Prelude
 in {
 
-lincat
-  Fact = S ;
-  CountryExp = NPExp ;
-  Attribute = CN ;
-
-  Country = NP ;
-  Capital = NP ;
-  Continent = NP ;
-  CurrencyCode = NP ;
-  CurrencyName = NP ;
-
 oper
-  NPExp = {np : NP ; hasPoss : Bool ; poss : Quant} ;
-
-  mkCountry : Str -> NP = \s -> mkNP (mkPN s) ;
-  mkCapital : Str -> NP = \s -> mkNP (mkPN s) ;
-  mkContinent : Str -> NP = \s -> mkNP (mkPN s) ;
-  mkCurrencyCode : Str -> NP = \s -> mkNP (mkPN s) ;
-  mkCurrencyName : Str -> NP = \s -> mkNP (mkPN s) ;
-
-  attributeFact : CN -> NPExp -> NP -> S
-    = \attr,obj,val -> mkS (mkCl (attributeOf attr obj) val) ;
-
-  attributeOf : CN -> NPExp -> NP
-    = \attr,obj -> case obj.hasPoss of {
-      True => mkNP obj.poss attr ;
-      _ => mkNP the_Det (G.PossNP attr obj.np)
-      } ;
-
-  withParenthNP : NP -> NP -> NP
-    = \main,par -> mkNP main (P.mkAdv ("(" ++ Predef.BIND ++ (mkUtt par).s ++ Predef.BIND ++ ")")) ;
-
-----  intCN : Predef.Int -> CN -> NP
-----    = \n,cn -> mkNP (symb <n : Symb>) (P.mkAdv (mkUtt (mkNP aPl_Det cn).s)) ; ---
-
-  inContinent : NP -> Adv = \np -> S.mkAdv in_Prep np ;
+  singularNP : NP -> NP = \np -> np ; ----
 
   capital_CN = mkCN (mkN "huvudstad" "huvudstäder") ;
   country_CN = mkCN (mkN "land" "landet" "länder" "länderna") ;
@@ -55,90 +25,10 @@ oper
   inhabitant_CN = mkCN (mkN "invånare") ;
   area_CN = mkCN (mkN "yta") ;
   square_kilometre_CN = mkCN (mkN "kvadratkilometer" "kvadratkilometer") ;
-
+  world_CN = mkCN (mkN "värld") ;
+  
   average_A = mkA "genomsnittlig" ;
   total_A = mkA "sammanlagd" "sammanlagt" ;
-  largest_Det = S.mkDet the_Quant (S.mkOrd L.big_A) ;
-  smallest_Det = S.mkDet the_Quant (S.mkOrd L.small_A) ;
-
-  ccText = overload {  
-    ccText : (a,b : S) -> Text
-      = \a,b -> mkText (mkUtt a) (mkText b) ;
-    ccText : (a,b,c : S) -> Text
-      = \a,b,c -> mkText (mkUtt a) (mkText (mkUtt b) (mkText c)) ;
-    ccText : (a,b,c,d : S) -> Text
-      = \a,b,c,d -> mkText (mkUtt a) (mkText (mkUtt b) (mkText (mkUtt c) (mkText d))) ;
-    ccText : (a,b,c,d,e : S) -> Text
-      = \a,b,c,d,e -> mkText (mkUtt a) (mkText (mkUtt b) (mkText (mkUtt c) (mkText (mkUtt d) (mkText e)))) ;
-    } ;
- 
-
-lin
-  ContinentArticle
-      continent  count
-      total_area  total_population
-      average_area  average_population
-      largest_population  smallest_population  
-      largest_area  smallest_area =
-    mkText
-      (ccText
-        (ContinentCountFact continent count)
-	(ContinentTotalFact population_Attribute continent total_population)
-	(AverageFact population_Attribute average_population)
-	(TotalFact area_Attribute total_area)
-	(AverageFact area_Attribute average_area)
-	)
-      (ccText
-        (ContinentLargestFact population_Attribute continent largest_population)
-        (SmallestFact population_Attribute smallest_population)
-        (LargestFact area_Attribute largest_area)
-        (SmallestFact area_Attribute smallest_area)
-	) ;
-
-
-  CountryArticle country continent capital area population currencyName currencyCode =
-    ccText
-      (ContinentFact (CountryCountryExp country) continent)
-      (CapitalFact ItCountryExp capital)
-      (InhabitantsAndAreaFact (CountryCountryExp country) population area)
-      (CurrencyFact NoCountryExp currencyName currencyCode)
-      ;
-
-  CapitalFact country capital = attributeFact capital_CN country capital ;
-  PopulationFact country population = attributeFact population_CN country (symb population) ;
-  AreaFact country area = attributeFact population_CN country (symb area) ;
-  ContinentFact country continent = mkS (mkCl country.np (mkCN country_CN (S.mkAdv in_Prep continent))) ;
-  CurrencyFact country currencyName currencyCode = attributeFact currency_CN country (withParenthNP currencyName currencyCode) ;
-  
-  InhabitantsFact country int =
-    mkS (mkCl country.np have_V2 (mkNP <symb int : Card> inhabitant_CN)) ;
-    
-  InhabitantsAndAreaFact country population area =
-    mkS (mkCl country.np have_V2
-      (mkNP and_Conj
-         (mkNP <symb population : Card> inhabitant_CN)
-         (mkNP a_Det (mkCN area_CN (S.mkAdv possess_Prep (mkNP <symb area : Card> square_kilometre_CN)))))) ;
-
-  CountFact int = mkS (mkCl (mkNP <symb int : Card> country_CN)) ;
-  LargestFact attribute country = mkS (mkCl country have_V2 (mkNP largest_Det attribute)) ;
-  SmallestFact attribute country = mkS (mkCl country have_V2 (mkNP smallest_Det attribute)) ;
-  AverageFact attribute int = mkS (mkCl (mkNP the_Det (mkCN average_A attribute)) (symb int)) ;
-  TotalFact attribute int = mkS (mkCl (mkNP the_Det (mkCN total_A attribute)) (symb int)) ;
-  
-  ContinentCountFact continent int = mkS (G.ExistNPAdv (mkNP <symb int : Card> country_CN) (inContinent continent)) ;
-  ContinentLargestFact attribute continent country = mkS (mkCl country have_V2 (mkNP (mkNP largest_Det population_CN) (inContinent continent))) ;
-  ContinentSmallestFact attribute continent country = mkS (mkCl country have_V2 (mkNP (mkNP smallest_Det population_CN) (inContinent continent))) ;
-  ContinentAverageFact attribute continent int = mkS (mkCl (mkNP (mkNP the_Det (mkCN average_A attribute)) (inContinent continent)) (symb int)) ;
-  ContinentTotalFact attribute continent int = mkS (mkCl (mkNP (mkNP the_Det (mkCN total_A attribute)) (inContinent continent)) (symb int)) ;
-
-  CountryCountryExp country = {np = country ; hasPoss = False ; poss = S.mkQuant it_Pron} ;
-  ItCountryExp = {np = it_NP ; hasPoss = True ; poss = S.mkQuant it_Pron} ;
-  NoCountryExp = {np = it_NP ; hasPoss = True ; poss = the_Quant} ;
-
-  population_Attribute = population_CN ;
-  area_Attribute = area_CN ;
-
-  world_Continent = mkNP the_Det (mkN "värld") ;
 
 lin 'Bonaire,_Saint_Eustatius_and_Saba_Country' = mkCountry "Bonaire, Saint Eustatius och Saba " ;
 lin 'Guinea-Bissau_Country' = mkCountry "Guinea-Bissau" ;
@@ -636,13 +526,13 @@ lin Yaounde_Capital = mkCapital "Yaounde" ;
 lin Yaren_Capital = mkCapital "Yaren" ;
 lin Yerevan_Capital = mkCapital "Yerevan" ;
 lin Zagreb_Capital = mkCapital "Zagreb" ;
-lin AF_Continent = mkContinent "Afrika" ;
-lin AN_Continent = mkContinent "Antarktis" ;
-lin AS_Continent = mkContinent "Asien" ;
-lin EU_Continent = mkContinent "Europa" ;
-lin NA_Continent = mkContinent "Nordamerika" ;
-lin OC_Continent = mkContinent "Oceanien" ;
-lin SA_Continent = mkContinent "Sydamerika" ;
+lin AF_Continent = mkCountry "Afrika" ;
+lin AN_Continent = mkCountry "Antarktis" ;
+lin AS_Continent = mkCountry "Asien" ;
+lin EU_Continent = mkCountry "Europa" ;
+lin NA_Continent = mkCountry "Nordamerika" ;
+lin OC_Continent = mkCountry "Oceanien" ;
+lin SA_Continent = mkCountry "Sydamerika" ;
 lin AED_CurrencyCode = mkCurrencyCode "AED" ;
 lin AFN_CurrencyCode = mkCurrencyCode "AFN" ;
 lin ALL_CurrencyCode = mkCurrencyCode "ALL" ;
