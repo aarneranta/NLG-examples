@@ -22,7 +22,7 @@ oper
   country_CN = mkCN (mkN "land" "landet" "länder" "länderna") ;
   population_CN = mkCN (mkN "befolkning") ;
   currency_CN = mkCN (mkN "valuta") ;
-  inhabitant_CN = mkCN (mkN "invånare") ;
+  inhabitant_CN = mkCN (mkN "invånare" "invånare") ;
   area_CN = mkCN (mkN "yta") ;
   square_kilometre_CN = mkCN (mkN "kvadratkilometer" "kvadratkilometer") ;
   world_CN = mkCN (mkN "värld") ;
