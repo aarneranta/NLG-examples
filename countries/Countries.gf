@@ -64,6 +64,23 @@ fun
 
   world_Continent : Continent ; ---
 
+--------------------------------------------------
+-- additional experiment: institution in a place
+--------------------------------------------------
+
+cat
+  Institution ;
+  InstitutionType ;
+  Description ;
+  Location ;
+fun
+  InstitutionInFact : Institution -> Description -> Fact ;
+  InstitutionDescription : InstitutionType -> Location -> Description ;
+  CountryLocation : Country -> Location ;
+  CountryCityLocation : Country -> Capital -> Location ;
+  InstitutionTypeOf : InstitutionType -> Capital -> Institution ;
+  university_InstitutionType : InstitutionType ;
+
 fun 'Bonaire,_Saint_Eustatius_and_Saba_Country' : Country ;
 fun 'Guinea-Bissau_Country' : Country ;
 fun 'U.S._Virgin_Islands_Country' : Country ;

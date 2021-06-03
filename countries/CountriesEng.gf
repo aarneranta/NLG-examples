@@ -38,6 +38,9 @@ oper
   average_A = mkA "average" ;
   total_A = mkA "total" ;
 
+---------------
+-- the experiment
+----------------
 
 lin 'Bonaire,_Saint_Eustatius_and_Saba_Country' = mkCountry "Bonaire, Saint Eustatius and Saba " ;
 lin 'Guinea-Bissau_Country' = mkCountry "Guinea-Bissau" ;

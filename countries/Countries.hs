@@ -22,6 +22,14 @@ main = do
                  | lang <- langs, let slang = showCId lang]
   let texts = [(showCId lang, unlines (links : map (mkPara . unlex . linearize pgf lang)
                   (worldTree : continentTrees ++ countryTrees))) | lang <- langs]
+                  
+  --- varying the use case: countries or (faked) universities
+  let utrees = [universityTree c | c <- countries] 
+  let ctrees = worldTree : continentTrees ++ countryTrees
+  let trees = ctrees
+  
+  let texts = [(showCId lang, unlines (links : map (mkPara . unlex . linearize pgf lang)
+                  (trees))) | lang <- langs]
   flip mapM_ texts $ \ (lang,text) -> writeFile (lang ++ ".html") text
   return ()
 
@@ -35,6 +43,22 @@ data Country = Country {
   currencyName :: String
   }
   deriving Show
+
+universityTree :: Country -> Tree
+universityTree countr =
+  mkApp (mkCId "InstitutionInFact") [
+    mkApp (mkCId "InstitutionTypeOf") [
+      mkApp (mkCId "university_InstitutionType") [],
+      constant "Capital" (capital countr)
+      ],
+    mkApp (mkCId "InstitutionDescription") [
+      mkApp (mkCId "university_InstitutionType") [],
+      mkApp (mkCId "CountryCityLocation") [
+        constant "Country" (country countr),
+        constant "Capital" (capital countr)
+        ]
+      ]
+    ]
 
 continentArticle :: [Country] -> (Country -> Bool) -> String -> Tree
 continentArticle countries isin cont =

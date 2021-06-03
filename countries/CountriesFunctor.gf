@@ -133,4 +133,24 @@ lin
 
   world_Continent = {np = mkNP the_Det world_CN ; incases = True} ;
 
+-------------
+-- institution experiment
+-------------
+
+lincat
+  Institution = NP ;
+  InstitutionType = CN ;
+  Description = CN ;
+  Location = Adv ;
+
+lin
+  InstitutionInFact institution description = mkS (mkCl institution description) ;
+  InstitutionDescription itype location = mkCN itype location ;
+  CountryLocation country = inContinent country ;
+  CountryCityLocation country city = lin Adv {s = (S.mkAdv in_Prep city).s ++ "," ++ (mkUtt country.np).s} ;
+  InstitutionTypeOf itype city = mkNP the_Det (Grammar.PossNP itype city) ;
+
+  university_InstitutionType = mkCN Lexicon.university_N ;
+
+
 }

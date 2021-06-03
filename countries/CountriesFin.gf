@@ -1,7 +1,8 @@
 concrete CountriesFin of Countries = CountriesFunctor - [
  have_country_V2,
  InhabitantsAndAreaFact,
- ContinentLargestFact, ContinentSmallestFact
+ ContinentLargestFact, ContinentSmallestFact,
+ CountryCityLocation -- diff: inflect both parts
   ]
 
 with 
@@ -31,6 +32,7 @@ lin
   ContinentLargestFact attribute continent country = mkS (Grammar.ExistNPAdv (mkNP (mkNP largest_Det population_CN) (inContinent continent)) (inContinent country)) ;
   ContinentSmallestFact attribute continent country = mkS (Grammar.ExistNPAdv (mkNP (mkNP smallest_Det population_CN) (inContinent continent)) (inContinent country)) ;
 
+  CountryCityLocation country city = lin Adv {s = (S.mkAdv in_Prep city).s ++ "," ++ (inContinent country).s} ;
 
 oper
   have_country_V2 : NPExp -> V2 = \country -> case country.incases of {

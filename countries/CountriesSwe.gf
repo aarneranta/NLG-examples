@@ -1,4 +1,6 @@
-concrete CountriesSwe of Countries = CountriesFunctor
+concrete CountriesSwe of Countries = CountriesFunctor - [
+  InstitutionTypeOf
+  ]
 
 with 
   (Syntax=SyntaxSwe),
@@ -12,8 +14,18 @@ open
   (S = SyntaxSwe),
   (P = ParadigmsSwe),
   (L = LexiconSwe),
+  (E = ExtendSwe),
   Prelude
 in {
+
+----------------
+-- exceptions
+----------------
+
+lin
+  InstitutionTypeOf itype city = E.GenModNP singularNum city itype ;
+
+-----------------
 
 oper
   singularNP : NP -> NP = \np -> np ; ----
