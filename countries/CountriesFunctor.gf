@@ -15,7 +15,7 @@ lincat
   Attribute = CN ;
 
   Country = {np : NP ; incases : Bool} ; -- ssa/lla
-  Capital = NP ;
+  City = NP ;
   Continent = {np : NP ; incases : Bool} ;
   CurrencyCode = NP ;
   CurrencyName = NP ;
@@ -24,13 +24,13 @@ oper
   NPExp = {np : NP ; hasPoss : Bool ; poss : Quant ; incases : Bool} ;
 
   mkCountry = overload {
-    mkCountry : Str -> {np : NP ; incases : Bool} = \s -> {np = mkNP (mkPN s) ; incases = True} ;
-    mkCountry : Str -> Bool -> {np : NP ; incases : Bool} = \s,b -> {np = mkNP (mkPN s) ; incases = b} ;
+    mkCountry : Str -> {np : NP ; incases : Bool} = \s -> {np = nameNP s ; incases = True} ;
+    mkCountry : Str -> Bool -> {np : NP ; incases : Bool} = \s,b -> {np = nameNP s ; incases = b} ;
     mkCountry : NP -> Bool -> {np : NP ; incases : Bool} = \np,b -> {np = singularNP np ; incases = b} ;
     } ;
-  mkCapital : Str -> NP = \s -> mkNP (mkPN s) ;
-  mkCurrencyCode : Str -> NP = \s -> mkNP (mkPN s) ;
-  mkCurrencyName : Str -> NP = \s -> mkNP (mkPN s) ;
+  mkCity : Str -> NP = \s -> nameNP s ;
+  mkCurrencyCode : Str -> NP = \s -> nameNP s ;
+  mkCurrencyName : Str -> NP = \s -> nameNP s ;
 
   attributeFact : CN -> NPExp -> NP -> S
     = \attr,obj,val -> mkS (mkCl (attributeOf attr obj) val) ;

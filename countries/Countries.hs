@@ -49,13 +49,13 @@ universityTree countr =
   mkApp (mkCId "InstitutionInFact") [
     mkApp (mkCId "InstitutionTypeOf") [
       mkApp (mkCId "university_InstitutionType") [],
-      constant "Capital" (capital countr)
+      constant "City" (capital countr)
       ],
     mkApp (mkCId "InstitutionDescription") [
       mkApp (mkCId "university_InstitutionType") [],
       mkApp (mkCId "CountryCityLocation") [
         constant "Country" (country countr),
-        constant "Capital" (capital countr)
+        constant "City" (capital countr)
         ]
       ]
     ]
@@ -82,7 +82,7 @@ countryArticle countr =
   mkApp (mkCId "CountryArticle") [
     constant "Country" (country countr),
     constant "Continent" (continent countr),
-    constant "Capital" (capital countr),
+    constant "City" (capital countr),
     mkInt (area countr),
     mkInt (population countr),
     constant "CurrencyName" (currencyName countr),
@@ -102,12 +102,12 @@ getCountries = do
 gfCountries = do
   cs <- getCountries
   writeFile "abs.tmp" $ unlines $ sort $ nub $ map (mkFunRule "Country" . country) cs
-  appendFile "abs.tmp" $ unlines $ sort $ nub $ map (mkFunRule "Capital" . capital) cs
+  appendFile "abs.tmp" $ unlines $ sort $ nub $ map (mkFunRule "City" . capital) cs
   appendFile "abs.tmp" $ unlines $ sort $ nub $ map (mkFunRule "Continent" . continent) cs
   appendFile "abs.tmp" $ unlines $ sort $ nub $ map (mkFunRule "CurrencyCode" . currencyCode) cs
   appendFile "abs.tmp" $ unlines $ sort $ nub $ map (mkFunRule "CurrencyName" . currencyName) cs
   writeFile "cnc.tmp" $ unlines $ sort $ nub $ map (mkLinRule "Country" . country) cs
-  appendFile "cnc.tmp" $ unlines $ sort $ nub $ map (mkLinRule "Capital" . capital) cs
+  appendFile "cnc.tmp" $ unlines $ sort $ nub $ map (mkLinRule "City" . capital) cs
   appendFile "cnc.tmp" $ unlines $ sort $ nub $ map (mkLinRule "Continent" . continent) cs
   appendFile "cnc.tmp" $ unlines $ sort $ nub $ map (mkLinRule "CurrencyCode" . currencyCode) cs
   appendFile "cnc.tmp" $ unlines $ sort $ nub $ map (mkLinRule "CurrencyName" . currencyName) cs
