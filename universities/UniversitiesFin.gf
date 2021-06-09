@@ -1,4 +1,6 @@
-concrete UniversitiesFin of Universities =
+--# -path=.:../countries
+
+concrete UniversitiesFin of Universities = CountriesFin **
   open
     SyntaxFin,
     ParadigmsFin,
@@ -13,6 +15,8 @@ oper mkUniversity = overload {
 ----  mkUniversity : (o,c : Str) -> NP
 ----    = \o,c -> mkNP (mkCN L.university_N (S.mkAdv possess_Prep (mkPN c))) ;
   } ;
+
+lin UniversityInstitution u = u ;
 
 lin Quinnipiac_University_University = mkUniversity "Quinnipiacin yliopisto" ;
 lin Utah_State_University_University = mkUniversity "Utahin osavaltionyliopisto" ;

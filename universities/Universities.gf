@@ -1,6 +1,10 @@
-abstract Universities = {
+abstract Universities = Countries ** {
 
 cat University ;
+
+flags startcat = Fact ;
+
+fun UniversityInstitution : University -> Institution ;
 
 fun Quinnipiac_University_University : University ;
 fun Utah_State_University_University : University ;
