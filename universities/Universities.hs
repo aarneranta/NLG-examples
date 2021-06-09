@@ -53,9 +53,12 @@ getUniversities pgf = do
     (u, mci, co) |
       _:eu:eci:eco:_ <- ts,
       u  <- parse pgf eng university eu,
-      ci <- parse pgf eng city eci,
+      let cis = parse pgf eng city eci,
       co <- parse pgf eng countr eco,
-      let mci = if isInfixOf eci eu then Nothing else Just ci
+      let mci = case cis of
+            _ | isInfixOf eci eu -> Nothing
+            ci:_ -> Just ci
+            _ -> Nothing
     ]
  where
    eng:_ = languages pgf

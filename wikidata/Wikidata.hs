@@ -39,6 +39,12 @@ readInt s = if not (null s) && all isDigit s then (read s) else 0 ----
 
 -----------------------
 
+gfAbsRules :: (Int,String) -> [[String]] -> [String]
+gfAbsRules (i,c) ts = sort $ nub [mkFunRule c (t!!i) | t <- ts]
+
+gfCncRules :: ((Int,String),Int) -> [[String]] -> [String]
+gfCncRules ((i,c),j) ts = sort $ nub [mkLinRuleNative c (t!!i) (t!!j) | t <- ts]
+
 mkFunRule cat s = unwords ["fun", showCId (mkFunId cat s), ":", cat, ";"]
 mkLinRule cat s = unwords ["lin", showCId (mkFunId cat s), "=", "mk" ++ cat, quoted s, ";"]
 mkLinRuleNative cat s n = unwords ["lin", showCId (mkFunId cat s), "=", "mk" ++ cat, quoted n, ";"]

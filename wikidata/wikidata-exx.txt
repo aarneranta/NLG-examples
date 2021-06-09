@@ -1,0 +1,22 @@
+https://query.wikidata.org/
+
+https://w.wiki/3Rcj
+select ?university ?universityLabel {
+  ?university wdt:P31/wdt:P279* wd:Q3918 .
+  ?university wdt:P17 wd:Q34 .
+  ?university rdfs:label ?universityLabel .
+  filter(lang(?universityLabel) = 'fi')
+}
+
+https://en.wikipedia.org/wiki/Denny_Vrande%C4%8Di%C4%87
+
+https://w.wiki/3Rcs
+select ?university ?universityLabel ?description {
+  ?university wdt:P31/wdt:P279* wd:Q3918 .
+  ?university wdt:P17 wd:Q34 .
+  ?university rdfs:label ?universityLabel .
+  ?university schema:description ?description .
+  filter(lang(?universityLabel) = 'fi')
+  filter(lang(?description) = 'fi')
+}
+
