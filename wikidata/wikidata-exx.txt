@@ -20,3 +20,31 @@ select ?university ?universityLabel ?description {
   filter(lang(?description) = 'fi')
 }
 
+select * {
+  ?country wdt:P31 wd:Q6256 .
+  ?country rdfs:label ?en_label .
+  filter(lang(?en_label) = 'en') .
+  ?country rdfs:label ?sv_label .
+  filter(lang(?sv_label) = 'sv' ) .
+  ?country rdfs:label ?fi_label .
+  filter(lang(?fi_label) = 'fi' )
+}
+
+select * {
+  ?country wdt:P31 wd:Q6256 .
+  ?country rdfs:label ?en_label .
+  filter(lang(?en_label) = 'en') .
+  ?country rdfs:label ?sv_label .
+  filter(lang(?sv_label) = 'sv' ) .
+  ?country rdfs:label ?fi_label .
+  filter(lang(?fi_label) = 'fi' ) .
+  ?country rdfs:label ?de_label .
+  filter(lang(?de_label) = 'de' ) .
+  ?country rdfs:label ?fr_label .
+  filter(lang(?fr_label) = 'fr' ) .
+  ?country rdfs:label ?it_label .
+  filter(lang(?it_label) = 'it' ) .
+}
+
+
+

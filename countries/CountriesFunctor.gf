@@ -21,14 +21,20 @@ lincat
   CurrencyName = NP ;
 
 oper
-  NPExp = {np : NP ; hasPoss : Bool ; poss : Quant ; incases : Bool} ;
+  NPExp = PlaceExp ** {hasPoss : Bool ; poss : Quant} ;
+  PlaceExp = {np : NP ; incases : Bool} ;
 
   mkCountry = overload {
     mkCountry : Str -> {np : NP ; incases : Bool} = \s -> {np = nameNP s ; incases = True} ;
+    mkCountry : N -> {np : NP ; incases : Bool} = \n -> {np = mkNP n ; incases = True} ;
     mkCountry : Str -> Bool -> {np : NP ; incases : Bool} = \s,b -> {np = nameNP s ; incases = b} ;
     mkCountry : NP -> Bool -> {np : NP ; incases : Bool} = \np,b -> {np = singularNP np ; incases = b} ;
     } ;
-  mkCity : Str -> NP = \s -> nameNP s ;
+  mkCity = overload {
+    mkCity : Str -> NP = \s -> nameNP s ;
+    mkCity : N -> NP = \n -> mkNP n ;
+    } ;
+    
   mkCurrencyCode : Str -> NP = \s -> nameNP s ;
   mkCurrencyName : Str -> NP = \s -> nameNP s ;
 
