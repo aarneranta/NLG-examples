@@ -1,0 +1,85 @@
+Natural Language Generation with the Grammatical Framework
+Aarne Ranta
+
+
++Introduction+
+
+++The NLG task++
+
+Natural Language Generation (NLG) is a programming task where data is converted to natural language.
+An example is a table that lists countries and their populations:
+
+|| country  | population
+| Argentina | 41343201 
+| United States | 310232863
+
+From this data, a very simple NLG system can produce the sentences
+
+//The population of Argentina is 41343201.//
+
+//The population of the United States is 310232863.//
+
+These sentences essentially list the individual facts in the data, row by row from the table.
+The system can still be useful, for instance as a device to feed the data to speech synthesis.
+A step beyond this is not just to list the data point by point, but also express interesting observations or summaries based on the data.
+Thus a slightly more advanced NLG system could also produce
+
+//United States has over seven times more inhabitants than Argentina.//
+
+which combines two facts in a hopefully interesting way.
+Methods for selecting what to say about a data are traditionally a central interest of NLG research.
+
+After selecting //what// to say, an NLG system has to define //how// to say it.
+The simplest method is to use **templates**, which are sentences or texts with "holes" to which the data is inserted.
+Thus a template for populations of countries might be
+```
+  The population of _ is _.
+```
+and for comparisons of two countries,
+```
+  _ has _ times more inhabitants than _.
+```
+Sooner or later, the template method may turn out insufficient, because the words belonging to the template may be different for different data values.
+A typical example is the number of the noun, which should be as in
+
+//You have 2 new messages.//
+
+//You have 1 new message.//
+
+Witnessing a wide-spread use of templates, it is still very common to see examples such as
+
+//You have 1 new messages.//
+
+//You have 1 new message(s).//
+
+The problem is often harder for other languages than English.
+Even the first example, populations of countries, which works fine in English, creates a problem in languages where country names have to be inflected.
+Thus for instance in Swedish, we need the genitive form of the country.
+A simple-minded template would add a genitive //s// to the name: 
+```
+  _s befolkning är _.
+```
+This would work for most countries, but not for those whose name already ends with an //s//, such as //Mauritius//: no //s// would then be added.
+This problem becomes worse in languages like Finnish, where country names are inflected in intricate ways.
+
+To avoid the template problem, an NLG system must be aware of **grammar** so that it can select proper forms of words.
+Even the order of words may have to vary as a function of what data is described.
+Building in correct grammar into NLG is a nontrivial task, but it can be helped by software tools and libraries.
+In this document, we will introduce the solution provided by Grammatical Framework (GF), which has been used in NLG for over 40 languages.
+
+
+++What NLG is good for++
+
+
+++Who this document is for++
+
+This document is meant for anyone who wants to use Grammatical Framework (GF) as a tool for Natural Language Generation (NLG).
+NLG was indeed the first intended application of GF, and still the area where GF excels the most compared with other approaches.
+This applies in particular to **multilingual NLG**, where GF is perhaps the only systematic and scalable approach supported by mature software and language resources.
+
+Previous knowledge of GF from an introduction course (such as a summer school), the GF book (Ranta 2011), or an on-line tutorial, is useful for an in-depth understanding of the scope and limitations of GF.
+However, this document is meant to be self-contained: it can be followed by anyone with a basic knowledge of programming.
+What makes this possible is the GF Resource Grammar Library (RGL), which hides the linguistic details needed in multilingual NLG.
+The user of the RGL only needs to master a subset of the GF programming language, since many of the more specialized features are only needed when implementing the linguistic details of a new language in the RGL.
+
+
