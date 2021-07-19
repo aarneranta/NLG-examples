@@ -9,9 +9,7 @@ def get_countries(filename):
     Country = namedtuple('Country',
                 'country capital area population continent ccode cname')
     file = open(filename)
-    lines = file.readlines()
-    file.close()
-    for line in lines[1:]:
+    for line in file:
         fields = Country(*line.split('\t'))
         countries.append(fields)
     return countries
@@ -51,9 +49,4 @@ def main():
     
 if __name__ == "__main__":
     main()
-
-
-
-
-
 
