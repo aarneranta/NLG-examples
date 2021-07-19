@@ -4,7 +4,7 @@ Aarne Ranta
 
 +Introduction+
 
-++The NLG task++
+++What is NLG?++
 
 Natural Language Generation (NLG) is a programming task where data is converted to natural language.
 An example is a table that lists countries and their populations:
@@ -68,18 +68,105 @@ Building in correct grammar into NLG is a nontrivial task, but it can be helped 
 In this document, we will introduce the solution provided by Grammatical Framework (GF), which has been used in NLG for over 40 languages.
 
 
-++What NLG is good for++
+++What is NLG good for?++
 
 
-++Who this document is for++
+++Who is this document for?++
 
-This document is meant for anyone who wants to use Grammatical Framework (GF) as a tool for Natural Language Generation (NLG).
-NLG was indeed the first intended application of GF, and still the area where GF excels the most compared with other approaches.
+This document is meant for everyone who wants to use Grammatical Framework (GF) as a tool for Natural Language Generation (NLG).
+NLG was the first intended application of GF, and it is still the area where GF excels the most compared with other approaches.
 This applies in particular to **multilingual NLG**, where GF is perhaps the only systematic and scalable approach supported by mature software and language resources.
 
 Previous knowledge of GF from an introduction course (such as a summer school), the GF book (Ranta 2011), or an on-line tutorial, is useful for an in-depth understanding of the scope and limitations of GF.
 However, this document is meant to be self-contained: it can be followed by anyone with a basic knowledge of programming.
 What makes this possible is the GF Resource Grammar Library (RGL), which hides the linguistic details needed in multilingual NLG.
 The user of the RGL only needs to master a subset of the GF programming language, since many of the more specialized features are only needed when implementing the linguistic details of a new language in the RGL.
+
+
++A gradual introduction to NLG in GF+
+
+Let us start the work with a data set that is simple and well-known, yet rich enough to illustrate the main issues of NLG.
+The set is a table with information about countries from GeoNames.
+As the table is a few years old, its information is not always up to date --- but this is just an illustration of one of the main virtues of NLG, namely that it can adapt texts to changes in data!
+
+
+|| Country | Capital | Area | Population | Continent | Curr.Code | Curr.Name
+| Andorra | Andorra la Vella | 468 | 84000 | EU | EUR | Euro
+| United Arab Emirates | Abu Dhabi | 82880 | 4975593 | AS | AED | Dirham
+| Afghanistan | Kabul | 647500 | 29121286 | AS | AFN | Afghani
+| Albania | Tirana | 28748 | 2986952 | EU | ALL | Lek
+| Armenia | Yerevan | 29800 | 2968000 | AS | AMD | Dram
+| Angola | Luanda | 1246700 | 13068161 | AF | AOA | Kwanza
+| Argentina | Buenos Aires | 2766890 | 41343201 | SA | ARS | Peso
+| Austria | Vienna | 83858 | 8205000 | EU | EUR | Euro
+| Australia | Canberra | 7686850 | 21515754 | OC | AUD | Dollar
+| Azerbaijan | Baku | 86600 | 8303512 | AS | AZN | Manat
+| Bosnia and Herzegovina | Sarajevo | 51129 | 4590000 | EU | BAM | Marka
+| Thailand | Bangkok | 514000 | 67089500 | AS | THB | Baht
+
+
+++Atomic facts++
+
+The first kind of things we want to express is **atomic facts** assigning **properties** to **objects**.
+In our table, the objects of primary interest are the countries in the first column.
+Each of the later columns assigns a different property to this object:
+- The capital of Argentina is Buenos Aires.
+- The area of Argentina is 2766890 square kilometres.
+- The population of Argentina is 41343201.
+- The continent of Argentina is South America.
+- The currency of Argentina is Peso (ARS).
+
+
+In the continent fact, the acronym "SA" is converted to "South America".
+In the currency fact, the currency name and code are given in combination.
+With these conversions, all properties have the same syntactic structure:
+- The **Property** of **Object** is **Value**.
+
+
+where **Property** is a noun, **Object** is a proper name, and **Value** is a number or a proper name, possibly with a code in parentheses.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+''\end{document}''
+
+Facts like this have a simple **context-free grammar**:
+```
+  Fact     ::= "the" Property "of" Object "is" Value
+  Property ::= "capital" | "area"
+             | "population" | "continent" | "currency"
+  Object   ::= Name
+  Value    ::= NUMBER | Name | Name "(" Code ")"
+  Name     ::= "Andorra" | "United Arab Emirates" | ...
+  Code     ::= "EUR" | "AED" | ... 
+```
+Assuming a basic familiarity with context-free grammars, we just note that in our notation, we write **categories** (a.k.a. non-terminals) without quotes, and **tokens** (a.k.a. terminals) with quotes.
+The category NUMBER is special, as we do not give any explicit rules to it, but just assume it to be defined as sequences of digits.
+In contrast to this, the category Name is defined by explicitly listing the relevant names.
+In this way, we will later be able to assign specific properties to each name, including translations to different languages.
+
+The context-free grammar supports a simple NLG algorithm which can be used for generating a text for each row in the table.
+Assuming that we can access the columns by the titles on the first row, we can generate a text consisting of the following sentences:
+- the capital of Country is Capital
+- the area of Country is Area
+- the population of Country is Population
+- the continent of Country is Continent
+- the currency of Country is Curr.Name (Curr.Code)
+
+
+
 
 
