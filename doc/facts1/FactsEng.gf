@@ -1,4 +1,4 @@
-concrete FactsEnglish of Facts = {
+concrete FactsEng of Facts = {
 
 lincat
   Fact = Str ;

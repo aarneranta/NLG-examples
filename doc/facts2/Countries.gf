@@ -1,0 +1,1 @@
+abstract Countries = Facts, CountryNames ;
