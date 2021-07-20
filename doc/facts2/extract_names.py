@@ -17,15 +17,30 @@ def name_rules(name,cat):
       ' '.join(["lin",fun,'=','mk'+cat, '"'+name+'"', ';'])
       )
 
+def escape(s):
+    r = ''
+    for c in s:
+        if c in "\\'":
+            r = r + "\\" + c
+        else:
+            r = r + c
+    return r
+
 def mkFun(name,cat):
     parts = name.split()
     parts.append(cat)
     fun = '_'.join(parts)
 
-    for c in name:
-        if not (c.isalpha() or c.isdigit() or c in "' _"):
-            fun = "'" + fun + "'"
-            break
+    esc = False
+    if not name or not (name[0].isalpha()):
+        esc = True
+    else:
+        for c in name:
+            if not (c.isalpha() or c.isdigit() or c in "' _"):
+                esc = True
+                break
+    if esc:
+        fun = "'" + escape(fun) + "'"
     return fun
 
 

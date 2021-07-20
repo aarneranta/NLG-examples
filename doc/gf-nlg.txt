@@ -89,7 +89,7 @@ Let us start the work with a data set that is simple and well-known, yet rich en
 The set is a table with information about countries from GeoNames.
 As the table is a few years old, its information is not always up to date --- but this is just an illustration of one of the main virtues of NLG, namely that it can adapt texts to changes in data!
 
-
+''\small''
 || Country | Capital | Area | Population | Continent | Curr.Code | Curr.Name
 | Andorra | Andorra la Vella | 468 | 84000 | EU | EUR | Euro
 | United Arab Emirates | Abu Dhabi | 82880 | 4975593 | AS | AED | Dirham
@@ -103,7 +103,7 @@ As the table is a few years old, its information is not always up to date --- bu
 | Azerbaijan | Baku | 86600 | 8303512 | AS | AZN | Manat
 | Bosnia and Herzegovina | Sarajevo | 51129 | 4590000 | EU | BAM | Marka
 | Thailand | Bangkok | 514000 | 67089500 | AS | THB | Baht
-
+''\normalsize''
 
 ++Atomic facts++
 
@@ -114,16 +114,181 @@ Each of the later columns assigns a different property to this object:
 - The area of Argentina is 2766890 square kilometres.
 - The population of Argentina is 41343201.
 - The continent of Argentina is South America.
-- The currency of Argentina is Peso (ARS).
+- The currency of Argentina is Peso.
 
 
 In the continent fact, the acronym "SA" is converted to "South America".
-In the currency fact, the currency name and code are given in combination.
-With these conversions, all properties have the same syntactic structure:
+In the currency fact, only the name of the currency is given, not the code.
+All properties have the same syntactic structure:
 - The **Property** of **Object** is **Value**.
 
 
-where **Property** is a noun, **Object** is a proper name, and **Value** is a number or a proper name, possibly with a code in parentheses.
+where **Property** is a noun, **Object** is a proper name, and **Value** is a number or a proper name.
+
+Repeating the same syntactic structure in all sentences is not a way to build a natural-looking text.
+But it is already natural language and thereby serves some of the purposes of NLG.
+It constitutes a baseline from which the text can be improved with various NLG techniques.
+It is a **canonical representation** of the data contained in the cells of a table, where the sentences stand in one-to-one correspondance with the data itself.
+
+
+++NLG code for atomic facts++
+
+We will now start writing code for an NLG system and use atomic facts as the first step.
+We will show parts of the full code, which can be found in the directory ``facts1/``.
+The code consists of three kinds of files:
+- GF files defining a grammar of facts
+- Python files defining how data is converted to grammatical structures
+- TSV (tab-separated values) files containing the data itself
+
+
+The focus will be on the GF files, which would not require any changes if the Python files were replaced by equivalent C, Haskell, or Java files or the TSV files with other formats such as XML or Json.
+But we want to start with a full definition of a concrete, runnable system to help the readers to build their own systems.
+
+The minimum number of GF files is two: one for an **abstract syntax** and one for a **concrete syntax**.
+The abstract syntax defines a set of fact **trees** (**abstract syntax trees**), which are language-neutral representations of linguistic structures.
+The concrete syntax shows how trees are **linearized**, i.e. converted to **strings** in a natural language.
+The strength of GF comes from the possibility to have several concrete syntaxes, each corresponding to a different language.
+Thus a multilingual NLG system can be built and extended by just adding GF modules, while leaving the Python files and data files intact.
+''Figure~\ref{mnlg}'' shows the structure of an NLG system based on this idea.
+'''
+\begin{center}
+\includegraphics[width=0.9\textwidth]{mnlg.png}
+\end{center}
+'''
+
++++Abstract syntax+++
+
+The GF file ``Facts.gf``  defines an abstract syntax for atomic facts:
+```
+abstract Facts = {
+
+cat
+  Fact ;
+  Object ;
+  Property ;
+  Value ;
+  Name ;
+
+fun
+  AtomicFact : Property -> Object -> Value -> Fact ;
+
+  capital_Property : Property ;
+  area_Property : Property ;
+  population_Property : Property ;
+  continent_Property : Property ;
+  currency_Property : Property ;
+
+  NameObject : Name -> Object ;
+  NameValue : Name -> Value ;
+  IntValue : Int -> Value ;
+  StringName : String -> Name ;
+}
+```
+The parts of this file are
+- a **module header** indicating that this is an abstract syntax module named ``Facts``,
+- a **module body**, in curly braces, consisting of two kinds of **judgements** ("rules"):
+  - ``cat``, **categories** of linguistic objects,
+  - ``fun``, **functions** for building such objects from 0 or more given objects.
+
+
+The arrow notation in ``fun`` judgements is used for **function types** to separate the **argument types** from the **value type**.
+Thus the first ``fun`` judgement
+```
+  AtomicFact : Property -> Object -> Value -> Fact
+```
+says that
+- ``AtomicFact`` is a function that takes a ``Property``, an ``Object`` and a ``Value`` as its arguments an produces a ``Fact``  as its value.
+The limiting case are **constant functions**, which have no argument types --- here the five ones from ``capital_Property`` to ``currency_Property``.
+
+The functions
+```
+  IntValue : Int -> Value ;
+  StringName : String -> Name ;
+```
+have as their argument types the **built-in categories** ``Int`` and ``String``.
+These categories are not declared in the ``cat`` judgments and have no user-defined functions to build trees in them: their objects are given as **integer literals** (such as ``41343201``) and **string literals** (``"Argentina"``), respectively.
+
+For other categories than the built-in ones, trees are built by combining smaller trees with functions.
+Thus the representation of the sentence
+
+//the population of Argentina is 41343201//
+
+is a tree of type ``Fact`` built by the function ``AtomicFact`` as follows:
+```
+  AtomicFact
+    population_Property
+    (NameObject (StringName "Argentina"))
+    (IntValue 41343201)
+```
+This tree can also be shown in a graphical representation,
+'''
+\begin{center}
+\includegraphics[width=0.6\textwidth]{argentina.png}
+\end{center}
+'''
+
+
++++Concrete syntax+++
+
+A concrete syntax specifies how abstract syntax trees are linearized to strings in some language.
+Our first example is the file ``FactsEng.gf``,
+```
+concrete FactsEng of Facts = {
+
+lincat
+  Fact = Str ;
+  Object = Str ;
+  Property = Str ;
+  Value = Str ;
+  Name = Str ;
+
+lin
+  AtomicFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val ;
+
+  capital_Property = "capital" ;
+  area_Property = "area" ;
+  population_Property = "population" ;
+  continent_Property = "continent" ;
+  currency_Property = "currency" ;
+
+  NameObject name = name ;
+  NameValue name = name ;
+  IntValue int = int.s ;
+  StringName str = str.s ;
+}
+```
+This concrete syntax file consists of
+- a module header saying that it is a concrete syntax named ``FactsEng`` of the abstract syntax ``Facts``,
+- a module body containing two kinds of judgement:
+  - ``lincat`` specifying the **linearization type** of each category,
+  - ``lin`` specifying the **linearization function** of each function.
+
+
+The simplest linearization type is ``Str``, **string**.
+This type is sufficient for expressing **context-free grammars** in GF.
+It is too limited for full-scale NLG, but provides an easy to grasp introduction; we will extend it to richer types later.
+
+The linearization functions are defined with expressions that combine **variables** with **string literals**.
+Thus the first rule
+```
+  AtomicFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val
+```
+uses the variables ``prop``, ``obj``, and ``val``, which stand for the arguments of the function, and the literals ``"the"``, ``"of"``, and ``"is"``.
+The method of combination is **concatenation**, denoted by ``++``.
+
+The built-in types ``Int`` and ``String`` have more complex linearization types than ``Str``.
+Hence their objects cannot be used directly when a ``Str``  is expected, but extracted as a **projection** ``.s`` --- a notation that will be fully explained later.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
