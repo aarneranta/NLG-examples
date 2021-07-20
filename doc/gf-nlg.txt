@@ -13,19 +13,21 @@ An example is a table that lists countries and their populations:
 | Argentina | 41343201 
 | United States | 310232863
 
+''\noindent''
 From this data, a very simple NLG system can produce the sentences
+- //The population of Argentina is 41343201.//
+- //The population of the United States is 310232863.//
 
-//The population of Argentina is 41343201.//
 
-//The population of the United States is 310232863.//
-
+''\noindent''
 These sentences essentially list the individual facts in the data, row by row from the table.
 The system can still be useful, for instance as a device to feed the data to speech synthesis.
 A step beyond this is not just to list the data point by point, but also express interesting observations or summaries based on the data.
 Thus a slightly more advanced NLG system could also produce
+- //United States has over seven times more inhabitants than Argentina.//
 
-//United States has over seven times more inhabitants than Argentina.//
 
+''\noindent''
 which combines two facts in a hopefully interesting way.
 Methods for selecting what to say about a data are traditionally a central interest of NLG research.
 
@@ -35,23 +37,25 @@ Thus a template for populations of countries might be
 ```
   The population of _ is _.
 ```
+''\noindent''
 and for comparisons of two countries,
 ```
   _ has _ times more inhabitants than _.
 ```
+''\noindent''
 Sooner or later, the template method may turn out insufficient, because the words belonging to the template may be different for different data values.
 A typical example is the number of the noun, which should be as in
+- //You have 2 new messages.//
+- //You have 1 new message.//
 
-//You have 2 new messages.//
 
-//You have 1 new message.//
-
+''\noindent''
 Witnessing a wide-spread use of templates, it is still very common to see examples such as
+- //You have 1 new messages.//
+- //You have 1 new message(s).//
 
-//You have 1 new messages.//
 
-//You have 1 new message(s).//
-
+''\noindent''
 The problem is often harder for other languages than English.
 Even the first example, populations of countries, which works fine in English, creates a problem in languages where country names have to be inflected.
 Thus for instance in Swedish, we need the genitive form of the country.
@@ -59,7 +63,8 @@ A simple-minded template would add a genitive //s// to the name:
 ```
   _s befolkning är _.
 ```
-This would work for most countries, but not for those whose name already ends with an //s//, such as //Mauritius//: no //s// would then be added.
+''\noindent''
+This would work for many countries, but not for those whose name already ends with an //s//, such as //Mauritius//: no //s// would then be added.
 This problem becomes worse in languages like Finnish, where country names are inflected in intricate ways.
 
 To avoid the template problem, an NLG system must be aware of **grammar** so that it can select proper forms of words.
@@ -92,7 +97,6 @@ As the table is a few years old, its information is not always up to date --- bu
 ''\small''
 || Country | Capital | Area | Population | Continent | Curr.Code | Curr.Name
 | Andorra | Andorra la Vella | 468 | 84000 | EU | EUR | Euro
-| United Arab Emirates | Abu Dhabi | 82880 | 4975593 | AS | AED | Dirham
 | Afghanistan | Kabul | 647500 | 29121286 | AS | AFN | Afghani
 | Albania | Tirana | 28748 | 2986952 | EU | ALL | Lek
 | Armenia | Yerevan | 29800 | 2968000 | AS | AMD | Dram
@@ -101,7 +105,6 @@ As the table is a few years old, its information is not always up to date --- bu
 | Austria | Vienna | 83858 | 8205000 | EU | EUR | Euro
 | Australia | Canberra | 7686850 | 21515754 | OC | AUD | Dollar
 | Azerbaijan | Baku | 86600 | 8303512 | AS | AZN | Manat
-| Bosnia and Herzegovina | Sarajevo | 51129 | 4590000 | EU | BAM | Marka
 | Thailand | Bangkok | 514000 | 67089500 | AS | THB | Baht
 ''\normalsize''
 
@@ -117,12 +120,14 @@ Each of the later columns assigns a different property to this object:
 - The currency of Argentina is Peso.
 
 
+''\noindent''
 In the continent fact, the acronym "SA" is converted to "South America".
 In the currency fact, only the name of the currency is given, not the code.
 All properties have the same syntactic structure:
 - The **Property** of **Object** is **Value**.
 
 
+''\noindent''
 where **Property** is a noun, **Object** is a proper name, and **Value** is a number or a proper name.
 
 Repeating the same syntactic structure in all sentences is not a way to build a natural-looking text.
@@ -131,7 +136,7 @@ It constitutes a baseline from which the text can be improved with various NLG t
 It is a **canonical representation** of the data contained in the cells of a table, where the sentences stand in one-to-one correspondance with the data itself.
 
 
-++NLG code for atomic facts++
+++Baseline NLG code for atomic facts++
 
 We will now start writing code for an NLG system and use atomic facts as the first step.
 We will show parts of the full code, which can be found in the directory ``facts1/``.
@@ -141,6 +146,7 @@ The code consists of three kinds of files:
 - TSV (tab-separated values) files containing the data itself
 
 
+''\noindent''
 The focus will be on the GF files, which would not require any changes if the Python files were replaced by equivalent C, Haskell, or Java files or the TSV files with other formats such as XML or Json.
 But we want to start with a full definition of a concrete, runnable system to help the readers to build their own systems.
 
@@ -184,6 +190,7 @@ fun
   StringName : String -> Name ;
 }
 ```
+''\noindent''
 The parts of this file are
 - a **module header** indicating that this is an abstract syntax module named ``Facts``,
 - a **module body**, in curly braces, consisting of two kinds of **judgements** ("rules"):
@@ -191,13 +198,18 @@ The parts of this file are
   - ``fun``, **functions** for building such objects from 0 or more given objects.
 
 
+''\noindent''
 The arrow notation in ``fun`` judgements is used for **function types** to separate the **argument types** from the **value type**.
 Thus the first ``fun`` judgement
 ```
   AtomicFact : Property -> Object -> Value -> Fact
 ```
+''\noindent''
 says that
 - ``AtomicFact`` is a function that takes a ``Property``, an ``Object`` and a ``Value`` as its arguments an produces a ``Fact``  as its value.
+
+
+''\noindent''
 The limiting case are **constant functions**, which have no argument types --- here the five ones from ``capital_Property`` to ``currency_Property``.
 
 The functions
@@ -205,14 +217,16 @@ The functions
   IntValue : Int -> Value ;
   StringName : String -> Name ;
 ```
+''\noindent''
 have as their argument types the **built-in categories** ``Int`` and ``String``.
 These categories are not declared in the ``cat`` judgments and have no user-defined functions to build trees in them: their objects are given as **integer literals** (such as ``41343201``) and **string literals** (``"Argentina"``), respectively.
 
 For other categories than the built-in ones, trees are built by combining smaller trees with functions.
 Thus the representation of the sentence
+- //the population of Argentina is 41343201//
 
-//the population of Argentina is 41343201//
 
+''\noindent''
 is a tree of type ``Fact`` built by the function ``AtomicFact`` as follows:
 ```
   AtomicFact
@@ -220,6 +234,7 @@ is a tree of type ``Fact`` built by the function ``AtomicFact`` as follows:
     (NameObject (StringName "Argentina"))
     (IntValue 41343201)
 ```
+''\noindent''
 This tree can also be shown in a graphical representation,
 '''
 \begin{center}
@@ -257,6 +272,7 @@ lin
   StringName str = str.s ;
 }
 ```
+''\noindent''
 This concrete syntax file consists of
 - a module header saying that it is a concrete syntax named ``FactsEng`` of the abstract syntax ``Facts``,
 - a module body containing two kinds of judgement:
@@ -264,6 +280,7 @@ This concrete syntax file consists of
   - ``lin`` specifying the **linearization function** of each function.
 
 
+''\noindent''
 The simplest linearization type is ``Str``, **string**.
 This type is sufficient for expressing **context-free grammars** in GF.
 It is too limited for full-scale NLG, but provides an easy to grasp introduction; we will extend it to richer types later.
@@ -273,21 +290,207 @@ Thus the first rule
 ```
   AtomicFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val
 ```
+''\noindent''
 uses the variables ``prop``, ``obj``, and ``val``, which stand for the arguments of the function, and the literals ``"the"``, ``"of"``, and ``"is"``.
 The method of combination is **concatenation**, denoted by ``++``.
 
 The built-in types ``Int`` and ``String`` have more complex linearization types than ``Str``.
 Hence their objects cannot be used directly when a ``Str``  is expected, but extracted as a **projection** ``.s`` --- a notation that will be fully explained later.
 
+A slight variant of ``FactsEng`` defines a concrete syntax for Finnish:
+```
+concrete FactsFin of Facts = {
+
+-- lincat as in FactsEng
+
+lin
+  AtomicFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
+
+  capital_Property = "pääkaupunki" ;
+  area_Property = "pinta-ala" ;
+  population_Property = "asukasluku" ;
+  continent_Property = "maanosa" ;
+  currency_Property = "valuutta" ;
+
+-- the remaining lin as in FactsEng
+}
+```
+''\noindent''
+The ``AtomicFact`` rule uses a well-known trick to avoid the genitive inflection of country names: it wraps the name with the word //maa// ("country"), which is turned into the genitive to build an equivalent of English //of the country X//.
+The result is grammatically correct but extremely clumsy Finnish, which immediately reveals that text as machine-generated.
+Another indicator of this is, obviously, the country names for which plain English strings are used.
+Both of these problems will be solved shortly when we extend the model by a richer use of GF.
 
 
++++Python code converting data to text+++
+
+(In this section, we assume basic knowledge of Python and will not explain all details of the language.)
+
+The Python file ``facts1/facts.py`` reads a tsv file and a GF grammar, and prints out a linearization of every atomic fact in all of the languages covered by the grammar.
+```
+# import pgf, which makes GF functionalities available in Python
+import pgf
+
+# read country data from a tsv file into a named tuple
+from collections import namedtuple
+def get_countries(filename):
+    countries = []
+    Country = namedtuple('Country',
+                'country capital area population continent ccode cname')
+    file = open(filename)
+    for line in file:
+        fields = Country(*line.split('\t'))
+        countries.append(fields)
+    return countries
+
+# for each tuple, build a list of GF trees, one for each atomic fact
+def country_facts(c):
+  object = mkApp('NameObject', [mkName(c.country)])
+  return [
+    mkApp('AtomicFact',[mkApp(prop,[]),object,val])
+      for (prop,val) in [
+        ('capital_Property',    mkApp('NameValue',[mkName(c.capital)])),
+        ('area_Property',       mkApp('IntValue', [mkInt(c.area)])),
+        ('population_Property', mkApp('IntValue', [mkInt(c.population)])),
+        ('continent_Property',  mkApp('NameValue',[mkName(c.continent)])),
+        ('currency_Property',   mkApp('NameValue',[mkName(c.cname)]))
+        ]
+    ]
+
+# auxiliary functions for building trees
+def mkApp(f,xs):  # applying a function to subtrees
+    return pgf.Expr(f,xs)
+
+def mkInt(s):  # building an integer literal from a string
+    return pgf.readExpr(str(s))
+
+def mkName(s): # building a Name from a string
+    return mkApp('StringName',[pgf.readExpr(str('"' + s + '"'))])
+
+# putting it all together
+def main():
+    gr = pgf.readPGF('facts.pgf')   # read the compiled grammar
+    countries = get_countries('countries.tsv')
+    langs = list(gr.languages.values())
+    for lang in langs:
+        text = []
+        for c in countries:
+            for t in country_facts(c):
+                text.append(lang.linearize(t))
+        print('\n'.join(text))
+
+main()
+```
+''\noindent''
+The grammar is in the binary **Portable Grammar Format**, **PGF**.
+It can be produced from the GF source files with the shell command
+```
+  gf -make FactsEng.gf FactsFin.gf
+```
+''\noindent''
+The result is a single file, ``Facts.pgf``, which can be read by Python via the classes and functions in the ``pgf`` module delivered together with GF.
+
+Running the Python code results in 2520 sentences, stating 5 atomic facts about 252 countries in two languages:
+```
+$ python3 facts.py | more
+the capital of Andorra is Andorra la Vella
+the area of Andorra is 468
+the population of Andorra is 84000
+the continent of Andorra is EU
+the currency of Andorra is Euro
+...
+maan Netherlands Antilles pääkaupunki on Willemstad
+maan Netherlands Antilles pinta-ala on 960
+maan Netherlands Antilles asukasluku on 136197
+maan Netherlands Antilles maanosa on NA
+maan Netherlands Antilles valuutta on Guilder
+```
+''\noindent''
+As an easy exercise for the reader, we could now suggest her to add a module for her own language:
+- copy and modify ``FactsEng.gf``
+- compile the pgf file with this new module included
+- run the ``facts.py`` script
 
 
+''\noindent''
+Don't worry if it looks hopeless to get the grammar right: we will fix this by using more power of GF.
 
 
++++Testing the grammar with the GF shell+++
 
+The GF shell, just like the Python shell, is a line-based tool that enables testing GF code while developing it.
+The following session shows some useful commands in the shell:
+```
+# start gf in the OS shell, see the welcome message
+$ gf
+                              
+         *  *  *              
+      *           *           
+    *               *         
+   *                          
+   *                          
+   *        * * * * * *       
+   *        *         *       
+    *       * * * *  *        
+      *     *      *          
+         *  *  *              
+                              
+This is GF version 3.10.4. 
+Built on darwin/x86_64 with ghc-8.4, flags: interrupt server c-runtime
+License: see help -license.   
 
+# no languages are available yet
+Languages:
 
+# importing (i) a GF file makes a language available
+> i FactsEng.gf
+linking ... OK
+
+Languages: FactsEng
+1 msec
+
+# generate random (gr) abstract syntax tree
+Facts> gr
+AtomicFact area_Property (NameObject (StringName "Foo")) (IntValue 999)
+
+0 msec
+
+# generate random tree and pipe (|) it to linearize (l)
+Facts> gr | l
+the population of Foo is Foo
+
+0 msec
+
+# parse (p) a string into a tree
+Facts> p "the capital of France is Paris"
+AtomicFact capital_Property (NameObject (StringName "France")) (NameValue (StringName "Paris"))
+
+0 msec
+
+# import another concrete syntax for the same abstract
+Facts> i FactsFin.gf
+linking ... OK
+
+Languages: FactsEng FactsFin
+1 msec
+
+# translate by parsing in one language and linearizing into another one
+Facts> p -lang=Eng "the capital of France is Paris" | l -lang=Fin
+maan France pääkaupunki on Paris
+
+0 msec
+
+# quit (q) GF and return to the OS shell
+Facts> q
+See you.
+0 msec
+$ 
+```
+
+++Improved NLG code for atomic facts++
+
+We will now improve the quality of NLG by making full use of GF.
+The code can be found in the directory ``facts2/``.
 
 
 
