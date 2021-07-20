@@ -406,14 +406,6 @@ maan Netherlands Antilles maanosa on NA
 maan Netherlands Antilles valuutta on Guilder
 ```
 ''\noindent''
-As an easy exercise for the reader, we could now suggest her to add a module for her own language:
-- copy and modify ``FactsEng.gf``
-- compile the pgf file with this new module included
-- run the ``facts.py`` script
-
-
-''\noindent''
-Don't worry if it looks hopeless to get the grammar right: we will fix this by using more power of GF.
 
 
 +++Testing the grammar with the GF shell+++
@@ -486,6 +478,37 @@ See you.
 0 msec
 $ 
 ```
++++Exercises+++
+
+===Add a language===
+
+As an easy exercise for the reader, we could now suggest her to add a module for her own language:
+- copy and modify ``FactsEng.gf``
+- compile the pgf file with this new module included
+- run the ``facts.py`` script
+
+
+''\noindent''
+Don't worry if it looks hopeless to get the grammar right: we will fix this by using more power of GF.
+
+
+===Change the data===
+
+The ``Facts`` grammar is completely general for any kind of data that can be presented in the format "the Property of Object is Value", except for the names of the properties and the wrapper word ``maan`` in ``FactsFin.gf``.
+You can hence apply it to some other tabular data, with the following modifications: 
+- in ``facts.py``,
+  - change ``get_countries()`` to reflect the number and meaning of the fields in your data,
+  - change ``country_facts()`` to select the facts you want to display and the proper grammar functions for them;
+
+
+- in ``Facts*.gf``,
+  - change the set of Property functions and their linearizations,
+  - if necessary, change the wrapper words used in different languages.
+
+
+''\noindent''
+
+
 
 ++Improved NLG code for atomic facts++
 

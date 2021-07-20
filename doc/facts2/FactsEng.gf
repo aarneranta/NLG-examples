@@ -18,12 +18,6 @@ oper
 lin
   AtomicFact prop obj val = mkCl (mkNP the_Det (G.PossNP prop obj)) val ;
 
-  capital_Property = mkProperty "capital" ;
-  area_Property = mkProperty "area" ;
-  population_Property = mkProperty "population" ;
-  continent_Property = mkProperty "continent" ;
-  currency_Property = mkProperty "currency" ;
-
   NameObject name = name ;
   NameValue name = name ;
   IntValue int = symb int ;
