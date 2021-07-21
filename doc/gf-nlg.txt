@@ -814,24 +814,137 @@ The remaining judgements in **FactsEng** are simple.
 ''\noindent''
 Notice that we no more need to care about how a string is projected from ``Int``, as we had to do in ``facts1/``.
 As a rule of thumb,
-- the only form of GF expression that is needed in concrete syntax when the RGL is used is function application.
+- The only form of GF expression that is needed in concrete syntax when the RGL is used is function application.
+
 
 
 +++Defining the concrete syntax lexicon+++
 
+The concrete syntax of ``CountryNames`` opens ``SyntaxEng`` and now also ``ParadigmsEng``:
+```
+concrete CountryNamesEng of CountryNames = 
+  open SyntaxEng, ParadigmsEng in {
+
+lincat CName = NP ;
+
+oper mkCName : Str -> NP = \s -> mkNP (mkPN s) ;
+
+-- manual
+lin AF_CName = mkCName "Africa" ;
+lin AS_CName = mkCName "Asia" ;
+lin EU_CName = mkCName "Europe" ;
+lin NA_CName = mkCName "North America" ;
+lin OC_CName = mkCName "Oceania" ;
+lin SA_CName = mkCName "South America" ;
+
+-- generated
+lin 'Basse-Terre_CName' = mkCName "Basse-Terre" ;
+lin 'St._John\'s_CName' = mkCName "St. John's" ;
+lin 'U.S._Virgin_Islands_CName' = mkCName "U.S. Virgin Islands" ;
+lin Abu_Dhabi_CName = mkCName "Abu Dhabi" ;
+lin Abuja_CName = mkCName "Abuja" ;
+```
+''\noindent''
+A new kind of judgement is used:
+```
+  oper mkCName : Str -> NP = \s -> mkNP (mkPN s)
+```
+''\noindent''
+defining neither a function nor its linearization but an **auxiliary operation**, which is used in ``lin`` definitions.
+The operation ``mkCName`` is simple, using
+- ``mkNP : PN -> NP`` from ``SyntaxEng``, using a ``PN`` (**proper name**) as an ``NP``
+- ``mkPN : Str -> PN`` from ``ParadigmsEng``, building a ``PN`` from a string
 
 
+''\noindent''
+One could of course use the combination of those directly in each ``lin`` rule.
+But it is generally a good practice to define a specific ``mk``//C// operation for every category //C//.
+Then it can be easily varied if for instance the linearization type of //C// changes.
+
+The category ``CName``and the operation ``mkCName`` can also be enriched with more information than just a plain proper name string.
+Examples include
+- //United States//, which in some contexts appears with the definite article and also has alternative names such as //USA//
+- //British Virgin Islands//, which is treated as a plural noun phrase
 
 
+''\noindent''
+We will return to this question when discussing the Finnish implementation, which is impossible to get working with just plain strings.
 
 
++++The top module+++
+
+The top module ``CountriesEng`` offers almost nothing new in terms of GF:
+```
+concrete CountriesEng of Countries = FactsEng, CountryNamesEng **
+  open SyntaxEng, ParadigmsEng, SymbolicEng in {
+
+lin
+  cName name = name ;
+
+  capital_Attribute = mkAttribute "capital" ;
+  area_Attribute = mkAttribute "area" ;
+  population_Attribute = mkAttribute "population" ;
+  continent_Attribute = mkAttribute "continent" ;
+  currency_Attribute = mkAttribute "currency" ;
+
+  populationFact obj int = mkCl obj have_V2 (mkNP <symb int : Card> (mkN "inhabitant")) ;
+  continentFact obj name = mkCl obj (SyntaxEng.mkAdv in_Prep name) ;
+
+oper
+  mkAttribute : Str -> CN = \s -> mkCN (mkN s) ;
+}
+```
+The only new constructs are
+- the **type annotation** ``<symb int : Card>``,
+- the **qualified name** ``SyntaxEng.mkAdv``
 
 
+''\noindent''
+The type annotation is needed for **overload resolution**: the RGL operation ``symb`` is **overloaded**, i.e. the same function name is used for several different functions, which only differ as for their type:
+```
+  symb : Int -> NP    -- 23 (is prime)
+  symb : Int -> Card  -- 23 (houses)
+  symb : Str -> NP    -- x
+```
+Overloading is used throughout the RGL to keep the number of function names manageable.
+It is usually resolved correctly by the type checker of GF --- but in this very case, this did not happen, so we added a type annotation to guide the type checker.
+
+The qualified name is needed because both ``SyntaxEng`` and ``ParadigmsEng`` define an operation called ``mkAdv``.
+Conceptually, one would expect the choice to be made by overload resolution, because these operations have different types.
+For complicated technical reasons, this has not (yet) been implemented in GF.
+
+Now that we have walked through the refactored modules using the RGL, we can draw the full picture of the module structure that shows both abstract, concrete, and resource modules:
 '''
 \begin{center}
 \includegraphics[width=1.0\textwidth]{countriesEng.eps}
 \end{center}
 '''
+''\noindent''
+Resource modules are shown as dashed ellipses and opening them as dashed arrows.
+This diagram hides the dozens of modules that underlie the explicitly opened RGL modules.
+The user of the RGL seldom needs to be aware of them.
+
+
++++Python code+++
+
+
++++The Finnish implementation+++
+
+
++++Sharing code via a functor+++
+
+
+++Building a text++
+
++++Referring expressions+++
+
++++Syntactic aggregation+++
+
+
+++Data aggregation and content planning++
+
+
+
 
 
 
