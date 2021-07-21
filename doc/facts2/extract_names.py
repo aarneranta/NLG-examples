@@ -1,12 +1,13 @@
 country_file = 'countries.tsv'
 name_cat = 'CName'
+included_fields = [0,1,5]
 
 def get_names(filename):
     names = set()
     file = open(filename)
     for line in file.readlines()[1:]:
         fields = line.split('\t')
-        for i in [0,1,6]:
+        for i in included_fields:
             names.add(fields[i].strip())
     return names
      
