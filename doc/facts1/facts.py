@@ -19,11 +19,11 @@ def country_facts(c):
   return [
     mkApp('AtomicFact',[mkApp(prop,[]),object,val])
       for (prop,val) in [
-        ('capital_Property',    mkApp('NameValue',[mkName(c.capital)])),
-        ('area_Property',       mkApp('IntValue', [mkInt(c.area)])),
-        ('population_Property', mkApp('IntValue', [mkInt(c.population)])),
-        ('continent_Property',  mkApp('NameValue',[mkName(c.continent)])),
-        ('currency_Property',   mkApp('NameValue',[mkName(c.cname)]))
+        ('capital_Attribute',    mkApp('NameValue',[mkName(c.capital)])),
+        ('area_Attribute',       mkApp('IntValue', [mkInt(c.area)])),
+        ('population_Attribute', mkApp('IntValue', [mkInt(c.population)])),
+        ('continent_Attribute',  mkApp('NameValue',[mkName(c.continent)])),
+        ('currency_Attribute',   mkApp('NameValue',[mkName(c.cname)]))
         ]
     ]
 

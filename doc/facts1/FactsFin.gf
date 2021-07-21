@@ -3,18 +3,18 @@ concrete FactsFin of Facts = {
 lincat
   Fact = Str ;
   Object = Str ;
-  Property = Str ;
+  Attribute = Str ;
   Value = Str ;
   Name = Str ;
 
 lin
   AtomicFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
 
-  capital_Property = "pääkaupunki" ;
-  area_Property = "pinta-ala" ;
-  population_Property = "asukasluku" ;
-  continent_Property = "maanosa" ;
-  currency_Property = "valuutta" ;
+  capital_Attribute = "pääkaupunki" ;
+  area_Attribute = "pinta-ala" ;
+  population_Attribute = "asukasluku" ;
+  continent_Attribute = "maanosa" ;
+  currency_Attribute = "valuutta" ;
 
   NameObject name = name ;
   NameValue name = name ;

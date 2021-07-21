@@ -5,18 +5,18 @@ flags startcat = Fact ;
 cat
   Fact ;
   Object ;
-  Property ;
+  Attribute ;
   Value ;
   Name ;
 
 fun
-  AtomicFact : Property -> Object -> Value -> Fact ;
+  AtomicFact : Attribute -> Object -> Value -> Fact ;
 
-  capital_Property : Property ;
-  area_Property : Property ;
-  population_Property : Property ;
-  continent_Property : Property ;
-  currency_Property : Property ;
+  capital_Attribute : Attribute ;
+  area_Attribute : Attribute ;
+  population_Attribute : Attribute ;
+  continent_Attribute : Attribute ;
+  currency_Attribute : Attribute ;
 
   NameObject : Name -> Object ;
   NameValue : Name -> Value ;

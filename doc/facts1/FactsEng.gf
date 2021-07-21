@@ -3,18 +3,18 @@ concrete FactsEng of Facts = {
 lincat
   Fact = Str ;
   Object = Str ;
-  Property = Str ;
+  Attribute = Str ;
   Value = Str ;
   Name = Str ;
 
 lin
   AtomicFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val ;
 
-  capital_Property = "capital" ;
-  area_Property = "area" ;
-  population_Property = "population" ;
-  continent_Property = "continent" ;
-  currency_Property = "currency" ;
+  capital_Attribute = "capital" ;
+  area_Attribute = "area" ;
+  population_Attribute = "population" ;
+  continent_Attribute = "continent" ;
+  currency_Attribute = "currency" ;
 
   NameObject name = name ;
   NameValue name = name ;

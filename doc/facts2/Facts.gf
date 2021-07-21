@@ -5,12 +5,12 @@ flags startcat = Fact ;
 cat
   Fact ;
   Object ;
-  Property ;
+  Attribute ;
   Value ;
   Name ;
 
 fun
-  AtomicFact : Property -> Object -> Value -> Fact ;
+  AtomicFact : Attribute -> Object -> Value -> Fact ;
 
   NameObject : Name -> Object ;
   NameValue : Name -> Value ;

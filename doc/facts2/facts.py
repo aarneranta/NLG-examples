@@ -18,11 +18,11 @@ def get_countries(filename):
 def country_facts(c):
   object = mkApp('NameObject', [mkName(c.country)])
   return [
-    mkApp('AtomicFact',[mkApp('capital_Property',[]),object,mkApp('NameValue',[mkName(c.capital)])]),
-    mkApp('AtomicFact',[mkApp('area_Property',[]),object,mkApp('IntValue',[mkInt(c.area)])]),
+    mkApp('AtomicFact',[mkApp('capital_Attribute',[]),object,mkApp('NameValue',[mkName(c.capital)])]),
+    mkApp('AtomicFact',[mkApp('area_Attribute',[]),object,mkApp('IntValue',[mkInt(c.area)])]),
     mkApp('populationFact', [object,mkInt(c.population)]),
     mkApp('continentFact', [object,mkName(c.continent)]),
-    mkApp('AtomicFact',[mkApp('currency_Property',[]),object,mkApp('NameValue',[mkName(c.cname)])])
+    mkApp('AtomicFact',[mkApp('currency_Attribute',[]),object,mkApp('NameValue',[mkName(c.cname)])])
     ]
 
 def mkApp(f,xs):

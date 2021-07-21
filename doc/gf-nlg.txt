@@ -110,9 +110,9 @@ As the table is a few years old, its information is not always up to date --- bu
 
 ++Atomic facts++
 
-The first kind of things we want to express is **atomic facts** assigning **properties** to **objects**.
+The first kind of things we want to express is **atomic facts** assigning **values** of **attributes** to **objects**.
 In our table, the objects of primary interest are the countries in the first column.
-Each of the later columns assigns a different property to this object:
+Each of the later columns assigns a different attribute to this object:
 - The capital of Argentina is Buenos Aires.
 - The area of Argentina is 2766890 square kilometres.
 - The population of Argentina is 41343201.
@@ -123,12 +123,12 @@ Each of the later columns assigns a different property to this object:
 ''\noindent''
 In the continent fact, the acronym "SA" is converted to "South America".
 In the currency fact, only the name of the currency is given, not the code.
-All properties have the same syntactic structure:
-- The **Property** of **Object** is **Value**.
+All facts have the same syntactic structure:
+- The **Attribute** of **Object** is **Value**.
 
 
 ''\noindent''
-where **Property** is a noun, **Object** is a proper name, and **Value** is a number or a proper name.
+where **Attribute** is a noun, **Object** is a proper name, and **Value** is a number or a proper name.
 
 Repeating the same syntactic structure in all sentences is not a way to build a natural-looking text.
 But it is already natural language and thereby serves some of the purposes of NLG.
@@ -171,18 +171,18 @@ abstract Facts = {
 cat
   Fact ;
   Object ;
-  Property ;
+  Attribute ;
   Value ;
   Name ;
 
 fun
-  AtomicFact : Property -> Object -> Value -> Fact ;
+  AtomicFact : Attribute -> Object -> Value -> Fact ;
 
-  capital_Property : Property ;
-  area_Property : Property ;
-  population_Property : Property ;
-  continent_Property : Property ;
-  currency_Property : Property ;
+  capital_Attribute : Attribute ;
+  area_Attribute : Attribute ;
+  population_Attribute : Attribute ;
+  continent_Attribute : Attribute ;
+  currency_Attribute : Attribute ;
 
   NameObject : Name -> Object ;
   NameValue : Name -> Value ;
@@ -202,15 +202,15 @@ The parts of this file are
 The arrow notation in ``fun`` judgements is used for **function types** to separate the **argument types** from the **value type**.
 Thus the first ``fun`` judgement
 ```
-  AtomicFact : Property -> Object -> Value -> Fact
+  AtomicFact : Attribute -> Object -> Value -> Fact
 ```
 ''\noindent''
 says that
-- ``AtomicFact`` is a function that takes a ``Property``, an ``Object`` and a ``Value`` as its arguments an produces a ``Fact``  as its value.
+- ``AtomicFact`` is a function that takes a ``Attribute``, an ``Object`` and a ``Value`` as its arguments an produces a ``Fact``  as its value.
 
 
 ''\noindent''
-The limiting case are **constant functions**, which have no argument types --- here the five ones from ``capital_Property`` to ``currency_Property``.
+The limiting case are **constant functions**, which have no argument types --- here the five ones from ``capital_Attribute`` to ``currency_Attribute``.
 
 The functions
 ```
@@ -230,7 +230,7 @@ Thus the representation of the sentence
 is a tree of type ``Fact`` built by the function ``AtomicFact`` as follows:
 ```
   AtomicFact
-    population_Property
+    population_Attribute
     (NameObject (StringName "Argentina"))
     (IntValue 41343201)
 ```
@@ -238,7 +238,7 @@ is a tree of type ``Fact`` built by the function ``AtomicFact`` as follows:
 This tree can also be shown in a graphical representation,
 '''
 \begin{center}
-\includegraphics[width=0.6\textwidth]{argentina.png}
+\includegraphics[width=0.6\textwidth]{argentina.eps}
 \end{center}
 '''
 
@@ -253,18 +253,18 @@ concrete FactsEng of Facts = {
 lincat
   Fact = Str ;
   Object = Str ;
-  Property = Str ;
+  Attribute = Str ;
   Value = Str ;
   Name = Str ;
 
 lin
   AtomicFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val ;
 
-  capital_Property = "capital" ;
-  area_Property = "area" ;
-  population_Property = "population" ;
-  continent_Property = "continent" ;
-  currency_Property = "currency" ;
+  capital_Attribute = "capital" ;
+  area_Attribute = "area" ;
+  population_Attribute = "population" ;
+  continent_Attribute = "continent" ;
+  currency_Attribute = "currency" ;
 
   NameObject name = name ;
   NameValue name = name ;
@@ -306,11 +306,11 @@ concrete FactsFin of Facts = {
 lin
   AtomicFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
 
-  capital_Property = "pääkaupunki" ;
-  area_Property = "pinta-ala" ;
-  population_Property = "asukasluku" ;
-  continent_Property = "maanosa" ;
-  currency_Property = "valuutta" ;
+  capital_Attribute = "pääkaupunki" ;
+  area_Attribute = "pinta-ala" ;
+  population_Attribute = "asukasluku" ;
+  continent_Attribute = "maanosa" ;
+  currency_Attribute = "valuutta" ;
 
 -- the remaining lin as in FactsEng
 }
@@ -349,11 +349,11 @@ def country_facts(c):
   return [
     mkApp('AtomicFact',[mkApp(prop,[]),object,val])
       for (prop,val) in [
-        ('capital_Property',    mkApp('NameValue',[mkName(c.capital)])),
-        ('area_Property',       mkApp('IntValue', [mkInt(c.area)])),
-        ('population_Property', mkApp('IntValue', [mkInt(c.population)])),
-        ('continent_Property',  mkApp('NameValue',[mkName(c.continent)])),
-        ('currency_Property',   mkApp('NameValue',[mkName(c.cname)]))
+        ('capital_Attribute',    mkApp('NameValue',[mkName(c.capital)])),
+        ('area_Attribute',       mkApp('IntValue', [mkInt(c.area)])),
+        ('population_Attribute', mkApp('IntValue', [mkInt(c.population)])),
+        ('continent_Attribute',  mkApp('NameValue',[mkName(c.continent)])),
+        ('currency_Attribute',   mkApp('NameValue',[mkName(c.cname)]))
         ]
     ]
 
@@ -443,7 +443,7 @@ Languages: FactsEng
 
 # generate random (gr) abstract syntax tree
 Facts> gr
-AtomicFact area_Property (NameObject (StringName "Foo")) (IntValue 999)
+AtomicFact area_Attribute (NameObject (StringName "Foo")) (IntValue 999)
 
 0 msec
 
@@ -455,7 +455,7 @@ the population of Foo is Foo
 
 # parse (p) a string into a tree
 Facts> p "the capital of France is Paris"
-AtomicFact capital_Property (NameObject (StringName "France")) (NameValue (StringName "Paris"))
+AtomicFact capital_Attribute (NameObject (StringName "France")) (NameValue (StringName "Paris"))
 
 0 msec
 
@@ -494,7 +494,7 @@ Don't worry if it looks hopeless to get the grammar right: we will fix this by u
 
 ===Change the data===
 
-The ``Facts`` grammar is completely general for any kind of data that can be presented in the format "the Property of Object is Value", except for the names of the properties and the wrapper word ``maan`` in ``FactsFin.gf``.
+The ``Facts`` grammar is completely general for any kind of data that can be presented in the format "the Attribute of Object is Value", except for the names of the attributes and the wrapper word ``maan`` in ``FactsFin.gf``.
 You can hence apply it to some other tabular data, with the following modifications: 
 - in ``facts.py``,
   - change ``get_countries()`` to reflect the number and meaning of the fields in your data,
@@ -502,11 +502,45 @@ You can hence apply it to some other tabular data, with the following modificati
 
 
 - in ``Facts*.gf``,
-  - change the set of Property functions and their linearizations,
+  - change the set of Attribute functions and their linearizations,
   - if necessary, change the wrapper words used in different languages.
 
 
+===Semantic triples===
+
+The data format "the Attribute of Object is Value" is a special case of **semantic triples**, such as those used in RDF (**Resource Description Framework**).
+RDF if a standard format for storing data on the web and is used, for example, in Wikidata, which is a data resource for the Wikipedia.
+Thus in Wikidata, the fact that Cairo is the capital of Egypt is represented as the triple
+```
+  wd:Q85 wdt:P1376 wd:Q79
+```
 ''\noindent''
+where ``wd:Q85`` is an identifier for Cairo, ``wd:Q79`` for Egypt, and ``wdt:Q85`` for the relation "is the capital of".
+
+Wikidata is accessible via its query interface https://query.wikidata.org/.
+In this interface, one can write queries in the SPARQL language (**SPARQL Protogol and RDF Query Language**) and get answers in a tabular form.
+For example, the following SPARQL query generates a table of countries and their capitals:
+```
+select ?city ?country ?cityLabel ?countryLabel {
+  ?country wdt:P31 wd:Q6256 .
+  ?city wdt:P31 wd:Q515 .
+  ?city wdt:P1376 ?country .
+  ?city rdfs:label ?cityLabel .
+  filter(lang(?cityLabel) = 'en') .
+  ?country rdfs:label ?countryLabel .
+  filter(lang(?countryLabel) = 'en')
+}
+```
+''\noindent''
+The result is displayed as a table in the web browser, but it can also be downloaded in the TSV format.
+This gives a direct way to apply the methods seen by now to Wikidata.
+What is more, it also gives a way to obtain translations of names, by varying the language code (e.g. from ``en`` to ``fi``).
+
+We will return to RDF and Wikidata many times later, but you can get a first feeling of it by writing some query, downloading the result as TSV, and using the result in the way explained in the previous exercise.
+
+
+
+
 
 
 
@@ -536,8 +570,8 @@ The code can be found in the directory ``facts2/``.
 
 Facts like this have a simple **context-free grammar**:
 ```
-  Fact     ::= "the" Property "of" Object "is" Value
-  Property ::= "capital" | "area"
+  Fact     ::= "the" Attribute "of" Object "is" Value
+  Attribut ::= "capital" | "area"
              | "population" | "continent" | "currency"
   Object   ::= Name
   Value    ::= NUMBER | Name | Name "(" Code ")"
