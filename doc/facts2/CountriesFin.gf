@@ -5,6 +5,8 @@ open SyntaxFin, ParadigmsFin, SymbolicFin
 in {
 
 lin
+  cName name = name ;
+  
   capital_Attribute = mkAttribute "pääkaupunki" ;
   area_Attribute = mkAttribute "pinta-ala" ;
   population_Attribute = mkAttribute "asukasluku" ;
@@ -14,4 +16,6 @@ lin
   populationFact obj int = mkCl obj (mkV2 (caseV inessive have_V2)) (mkNP <symb int : Card> (mkN "asukas")) ;
   continentFact obj name = mkCl obj (SyntaxFin.mkAdv in_Prep name) ;
 
+oper
+  mkAttribute : Str -> CN = \s -> mkCN (mkN s) ;
 }

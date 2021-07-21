@@ -1,5 +1,5 @@
 country_file = 'countries.tsv'
-name_cat = 'Name'
+name_cat = 'CName'
 
 def get_names(filename):
     names = set()

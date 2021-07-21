@@ -544,10 +544,303 @@ We will return to RDF and Wikidata many times later, but you can get a first fee
 
 
 
-++Improved NLG code for atomic facts++
+++Improving the NLG code for atomic facts++
 
 We will now improve the quality of NLG by making full use of GF.
-The code can be found in the directory ``facts2/``.
+The code for this can be found in the directory ``facts2/``.
+The main improvents are
+- going from static templates to grammatical structures,
+- thereby enabling more fluent language,
+- translating the names to different languages,
+- restructuring the code so that it is easier to extend.
+
+
+''\noindent''
+These improvements are based on two new concepts of GF:
+- the **Resource Grammar Library** (RGL), giving an easy access to grammar rules,
+- the **module system**, enabling a modular structure of the code.
+
+
+
++++Refactoring abstract syntax+++
+
+The GF code in ``facts1/``  is monolithic: there is just one GF file for the abstract syntax and one for each language.
+This file contains both generic concepts about facts and concepts specific for countries.
+If we want to apply it on some other domain, such as novels, we have to make a copy of the code and change some parts of it.
+A better way to do this is to divide the code into a generic and domain-specific part:
+- ``Facts.gf``, defining general categories and syntactic structures,
+- ``Countries.gf``, defining domain-specific concepts, such as the attributes,
+
+
+''\noindent''
+In addition, we will now introduce a third kind of a module,
+- ``CountryNames.gf``, defining the names of countries, cities, and currencies.
+
+
+''\noindent''
+These three modules are organized hierarchically, so that ``Countries`` is the **top module**, which **inherits** from the other two modules.
+The hierarchy can be visualized in GF by using the command ``dg``; see "help dg" in the GF shell for details about its use.
+The resulting graph looks as follows:
+'''
+\begin{center}
+\includegraphics[width=0.4\textwidth]{countriesAbs.eps}
+\end{center}
+'''
+
+The generic ``Facts`` module is now a proper part of the earlier ``Facts`` module:
+```
+abstract Facts = {
+
+cat
+  Fact ;
+  Object ;
+  Attribute ;
+  Value ;
+  Name ;
+
+fun
+  AtomicFact : Attribute -> Object -> Value -> Fact ;
+
+  NameObject : Name -> Object ;
+  NameValue : Name -> Value ;
+  IntValue : Int -> Value ;
+
+}
+```
+''\noindent''
+Notice that, in additions to the country-specific attributes, we have left out the ``StringName`` function that builds names from string literals.
+The reason is that we now want to introduce names as abstract syntax identifiers, so that we can linearize them in language-specific ways.
+This brings us to the module ``CountryNames``:
+```
+abstract CountryNames = {
+
+cat CName ;
+
+-- manually added: continent names
+fun AF_CName : CName ;
+fun AS_CName : CName ;
+fun EU_CName : CName ;
+fun NA_CName : CName ;
+fun OC_CName : CName ;
+fun SA_CName : CName ;
+
+-- generated
+fun 'Basse-Terre_CName' : CName ;
+fun 'St._John\'s_CName' : CName ;
+fun Abu_Dhabi_CName : CName ;
+fun Abuja_CName : CName ;
+--- followed by hundreds more names
+}
+```
+This module contains
+- domain-specific name categories, here just ``CName``, but we could also have different categories for countries, cities, and currencies,
+- manually defined names, here just the continents
+- names extracted from data, here for all countries, cities, and currencies
+
+
+''\noindent''
+The rationale with domain-specific categories will become obvious later.
+One reason is that different categories can have different properties, for instance, from a country name one can form an expression for a citizen of that country, which is not possible for some other types of names.
+
+Extracting names from data can be done in different ways.
+For example, the Wikimedia identifiers (such as ``wd:Q79`` for Egypt) would work well as an abstract function names.
+Here we have, however, used the English names to make it easier to manually inspect the grammar.
+The important thing in both cases is to make sure the function names are valid GF identifiers.
+This means, among other things, surrounding them by single quotes if they contain special characters.
+The function
+```
+  extract_names.mkFun(name,category)
+```
+''\noindent''
+in ``facts2/extract_names.py`` is a way to guarantee this.
+The same module also has the function ``name_rules()``, which forms a pair of GF ``fun`` and ``lin`` rules for a name.
+
+The topmost module ``Countries`` inherits both ``Facts`` and ``CountryNames``, to which it adds some code of its own:
+```
+abstract Countries = Facts, CountryNames ** {
+fun
+-- using CNames
+  cName : CName -> Name ;
+
+-- basic properties
+  capital_Attribute : Attribute ;
+  area_Attribute : Attribute ;
+  population_Attribute : Attribute ;
+  continent_Attribute : Attribute ;
+  currency_Attribute : Attribute ;
+
+-- specialized expressions for properties
+  populationFact : CName -> Int -> Fact ;
+  continentFact : CName -> CName -> Fact ;
+}
+```
+''\noindent''
+The main parts are
+- a header that lists the inherited modules and adds (with operator ``**``) a body of new judgements,
+- functions for using domain-specific names in the general category ``Name``,
+- domain-specific attributes,
+- other domain-specific functions, which enable idiomatic expressions of facts.
+
+
+''\noindent''
+The last part is a main ingredient in making NLG more natural.
+It introduces alternative ways for expressing facts --- in the present case,
+- //Argentina has 41343201 inhabitants// (``populationFact``)
+- //Argentina is in South America// (``continentFact``)
+
+
+
++++Refactoring concrete syntax+++
+
+The concrete syntax is usually, although not necessarily, divided into modules parallel to the abstract syntax.
+The module structure then looks as follows:
+'''
+\begin{center}
+\includegraphics[width=0.6\textwidth]{countriesEngFin.eps}
+\end{center}
+'''
+''\noindent''
+The graph generated by ``dg`` uses
+- rectangles for abstract modules,
+- ellipses for concrete modules,
+- solid arrow heads for inheritance,
+- hollow arrow heads for the concrete-abstract relation.
+
+
+''\noindent''
+Just to refactor ``FactsEng`` in this way would not require more explanation.
+But we will now introduce a new concept: the use of **resource modules** with reusable operations.
+The first one out is ``FactsEng``:
+```
+concrete FactsEng of Facts = open SyntaxEng, SymbolicEng in {
+
+lincat
+  Fact = Cl ;
+  Object = NP ;
+  Attribute = CN ;
+  Value = NP ;
+  Name = NP ;
+
+lin
+  AtomicFact prop obj val = mkCl (mkNP the_Det (mkCN prop (mkAdv possess_Prep obj))) val ;
+  NameObject name = name ;
+  NameValue name = name ;
+  IntValue int = symb int ;
+}
+```
+''\noindent''
+The only new notation in this module is the ``open`` directive on the first line.
+It means that the contents of the two modules, ``SyntaxEng`` and ``SymbolicEng``, become usable in the module body.
+But the contents are not inherited --- in fact, this would not even make sense, because the opened modules are not concrete syntaxes but of yet a different kind, **resource modules**.
+
+We do not need to write any resource modules ourselves at this point, but just use those available in the RGL (GF Resource Grammar Library).
+The three most important modules are, for each language with its language code as suffix,
+- ``Syntax``, which contains syntactic categories and functions,
+- ``Paradigms``, which contains operations for inflecting words,
+- ``Symbolic``, which enables the use of numeric and other literals in syntactic structures.
+
+
+''\noindent''
+The RGL is installed in a standard, although platform-specific, place in the file system, where the GF compiler finds it via the environment variable ``GF_LIB_PATH``.
+If you can import ``FactsEng`` without error messages in GF, the installation works as it should, and you do not need to worry about it.
+Then you can study the contents of the library via its API,
+- https://www.grammaticalframework.org/lib/doc/synopsis/
+
+
+''\noindent''
+Instead of a systematic RGL tutorial, let us focus on the parts relevant to the current task.
+The first objective is to define linearization types in terms of RGL categories.
+The ones used in ``FactsEng`` are
+- ``Cl``, **clause**, sentences expressing simple predications,
+- ``NP``, **noun phrase**, phrases usable as subjects and objects in clauses,
+- ``CN``, **common noun**, phrases usable as parts of noun phrases by adding determiners.
+
+
+''\noindent''
+The difference between ``NP`` and ``CN`` may be tricky for the non-linguist.
+To give an example, //country// is a ``CN``, from which one can form ``NP``s such as //the country//, //these countries//.
+Thus a ``CN`` has both singular and plural forms, whereas an ``NP`` already has a fixed number, either singular or plural.
+
+The authors of the RGL have to define in detail
+- how the forms of ``CN``s are built: //country-countries// vs.\ //continent-continents//;
+- how the forms are used in ``NP``s: //this country// vs.\ //these countries//;
+- how ``NP``s are used in ``Cl``s:  //this country **is** in Europe// vs.\ //these countries **are** in Europe//;
+
+
+''\noindent''
+Since this linguistic ground work has been done once and for all in the RGL, we NLG engineers do not need to repeat it.
+But we do need to develop an idea about what combinations are possible for these categories.
+The linearization of ``AtomicFact`` is quite a mouthful to start with:
+```
+  mkCl (mkNP the_Det (mkCN prop (mkAdv possess_Prep obj))) val
+```
+''\noindent''
+Let us work out an example to see how it fits this pattern:
+- //the capital of Italy is Rome//
+
+
+''\noindent''
+The outermost part of the GF expression is ``mkCl`` applied to two ``NP``s, presented as follows in the API:
+```
+  mkCl : NP -> NP -> Cl  -- she is the woman
+```
+''\noindent''
+The example following the type of the function contains two ``NP``s, //she// and //the woman//, which get connected with the **copula** //is// (or //are// or //am//, depending on the first ``NP``).
+Applying this to our example, we have an expression of the form
+```
+  mkCl <the capital of Italy> <Rome>
+```
+''\noindent''
+Both of the two arguments are ``NP``s, as guaranteed by the ``lincat``s of ``Object`` and ``Value``, respectively.
+The ``Object`` part needs to be analysed further.
+It uses the following API functions, which we now annotate with the current example rather than the API documentation:
+```
+  mkNP    : Det -> CN -> NP    -- the capital of Italy
+  the_Det : Det                -- the
+  mkCN    : CN -> Adv -> CN    -- capital of Italy
+  mkAdv   : Prep -> NP -> Adv  -- of Italy
+  possess_Prep : Prep          -- of
+```
+''\noindent''
+We recommend you to convince yourself that the functions are combined in a proper way, so that the value types of each subexpression match the expected argument types!
+Once we manage to build a **type-correct** expression in this way from RGL function, we can be sure that the result is **grammatically correct**.
+Of course, it may not be the expression you want: to guarantee this, you need to test your grammar (e.g.\ with random generation and linearization) and gradually gain experience that reduces the need of testing.
+
+The remaining judgements in **FactsEng** are simple.
+``IntValue`` uses the RGL operation
+```
+  symb : Int -> NP  -- 23
+```
+''\noindent''
+Notice that we no more need to care about how a string is projected from ``Int``, as we had to do in ``facts1/``.
+As a rule of thumb,
+- the only form of GF expression that is needed in concrete syntax when the RGL is used is function application.
+
+
++++Defining the concrete syntax lexicon+++
+
+
+
+
+
+
+
+
+
+'''
+\begin{center}
+\includegraphics[width=1.0\textwidth]{countriesEng.eps}
+\end{center}
+'''
+
+
+
+
+
+
+
+
+
 
 
 

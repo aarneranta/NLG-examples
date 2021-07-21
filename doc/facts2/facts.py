@@ -16,12 +16,13 @@ def get_countries(filename):
     return countries
      
 def country_facts(c):
+  cname = mkCName(c.country)
   object = mkApp('NameObject', [mkName(c.country)])
   return [
     mkApp('AtomicFact',[mkApp('capital_Attribute',[]),object,mkApp('NameValue',[mkName(c.capital)])]),
     mkApp('AtomicFact',[mkApp('area_Attribute',[]),object,mkApp('IntValue',[mkInt(c.area)])]),
-    mkApp('populationFact', [object,mkInt(c.population)]),
-    mkApp('continentFact', [object,mkName(c.continent)]),
+    mkApp('populationFact', [cname,mkInt(c.population)]),
+    mkApp('continentFact', [cname,mkCName(c.continent)]),
     mkApp('AtomicFact',[mkApp('currency_Attribute',[]),object,mkApp('NameValue',[mkName(c.cname)])])
     ]
 
@@ -31,8 +32,11 @@ def mkApp(f,xs):
 def mkInt(s):
     return pgf.readExpr(str(s))
 
+def mkCName(s):
+    return mkApp(mkFun(s.strip(),'CName'),[])
+
 def mkName(s):
-    return mkApp(mkFun(s.strip(),'Name'),[])
+    return mkApp('cName', [mkCName(s)])
 #    return mkApp('StringName',[pgf.readExpr(str('"' + s + '"'))])
 
 def main():

@@ -1,5 +1,8 @@
 abstract Countries = Facts, CountryNames ** {
 fun
+-- using CNames
+  cName : CName -> Name ;
+
 -- basic properties
   capital_Attribute : Attribute ;
   area_Attribute : Attribute ;
@@ -8,6 +11,6 @@ fun
   currency_Attribute : Attribute ;
 
 -- specialized expressions for properties
-  populationFact : Object -> Int -> Fact ;
-  continentFact : Object -> Name -> Fact ;
+  populationFact : CName -> Int -> Fact ;
+  continentFact : CName -> CName -> Fact ;
 }
