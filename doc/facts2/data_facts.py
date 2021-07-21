@@ -53,7 +53,7 @@ def main():
     pgffile = 'Countries.pgf'
     datafile = 'countries.tsv'
     tuplename = 'Country'
-    fieldnames = 'country capital area population continent ccode currency'
+    fieldnames = 'country capital area population continent currency'
     cat = 'CName'
     coercion = 'cName'
     run(pgffile,datafile,tuplename,fieldnames,cat,coercion)

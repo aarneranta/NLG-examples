@@ -7,13 +7,14 @@ country_file = 'countries.tsv'
 def get_countries(filename):
     countries = []
     Country = namedtuple('Country',
-                'country capital area population continent ccode cname')
+                'country capital area population continent currency')
     file = open(filename)
     for line in file:
         fields = Country(*line.split('\t'))
         countries.append(fields)
     return countries
-     
+
+  
 def country_facts(c):
   object = mkApp('NameObject', [mkName(c.country)])
   return [
@@ -23,7 +24,7 @@ def country_facts(c):
         ('area_Attribute',       mkApp('IntValue', [mkInt(c.area)])),
         ('population_Attribute', mkApp('IntValue', [mkInt(c.population)])),
         ('continent_Attribute',  mkApp('NameValue',[mkName(c.continent)])),
-        ('currency_Attribute',   mkApp('NameValue',[mkName(c.cname)]))
+        ('currency_Attribute',   mkApp('NameValue',[mkName(c.currency)]))
         ]
     ]
 

@@ -3,7 +3,7 @@ from data_facts import *
 pgffile = 'Countries.pgf'
 datafile = 'countries.tsv'
 tuplename = 'Country'
-fieldnames = 'country capital area population continent ccode cname'
+fieldnames = 'country capital area population continent currency'
 cat = 'CName'
 coercion = 'cName'
      
@@ -15,7 +15,7 @@ def country_facts(ct_,co_,fs_,c):
     mkApp('AtomicFact',[mkApp('area_Attribute',[]),object,mkApp('IntValue',[mkInt(c.area)])]),
     mkApp('populationFact', [cname,mkInt(c.population)]),
     mkApp('continentFact', [cname,mkCatName(cat,c.continent)]),
-    mkApp('AtomicFact',[mkApp('currency_Attribute',[]),object,mkApp('NameValue',[mkName(cat,coercion,c.cname)])])
+    mkApp('AtomicFact',[mkApp('currency_Attribute',[]),object,mkApp('NameValue',[mkName(cat,coercion,c.currency)])])
     ]
 
 def main():
