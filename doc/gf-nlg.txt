@@ -16,7 +16,7 @@ An example is a table that lists countries and their populations:
 ''\noindent''
 From this data, a very simple NLG system can produce the sentences
 - //The population of Argentina is 41343201.//
-- //The population of the United States is 310232863.//
+- //The population of United States is 310232863.//
 
 
 ''\noindent''
@@ -87,48 +87,34 @@ However, this document is meant to be self-contained: it can be followed by anyo
 What makes this possible is the GF Resource Grammar Library (RGL), which hides the linguistic details needed in multilingual NLG.
 The user of the RGL only needs to master a subset of the GF programming language, since many of the more specialized features are only needed when implementing the linguistic details of a new language in the RGL.
 
+A special target group is those who want to contribute to the Abstract Wikipedia.
+Much of the data in our examples is collected from Wikidata.
+
+
 
 +A gradual introduction to NLG in GF+
 
 Let us start the work with a data set that is simple and well-known, yet rich enough to illustrate the main issues of NLG.
-The set is a table with information about countries from GeoNames.
-As the table is a few years old, its information is not always up to date --- but this is just an illustration of one of the main virtues of NLG, namely that it can adapt texts to changes in data!
+The set is a table with information about countries from Wikidata.
+The original query can be found in
+- https://w.wiki/3fV$
+
+
+''\noindent''
+The results have been slighly edited, so that for instance each country appears only once in the result.
 
 ''\small''
-|| Country | Capital | Area | Population | Continent | Currency
-| Andorra | Andorra la Vella | 468 | 84000 | EU | Euro
-| Afghanistan | Kabul | 647500 | 29121286 | AS | Afghani
-| Albania | Tirana | 28748 | 2986952 | EU | Lek
-| Armenia | Yerevan | 29800 | 2968000 | AS | Dram
-| Angola | Luanda | 1246700 | 13068161 | AF | Kwanza
-| Argentina | Buenos Aires | 2766890 | 41343201 | SA | Peso
-| Austria | Vienna | 83858 | 8205000 | EU | Euro
-| Australia | Canberra | 7686850 | 21515754 | OC | Dollar
-| Azerbaijan | Baku | 86600 | 8303512 | AS | Manat
-| Thailand | Bangkok | 514000 | 67089500 | AS | Baht
-''\normalsize''
-The table was obtained from
-```
-https://query.wikidata.org
+|| country | capital | area | population | continent | currency
+| Afghanistan | Kabul | 652230 | 36643815 | Asia | Afghan afghani
+| Albania | Tirana | 28748 | 3020209 | Europe | Albanian lek
+| Algeria | Algiers | 2381741 | 41318142 | Africa | Algerian dinar
+| Andorra | Andorra la Vella | 468 | 76177 | Europe | euro
+| Angola | Luanda | 1246700 | 29784193 | Africa | kwanza
+| Antigua and Barbuda | Saint John's | 440 | 102012 | North America | Eastern Caribbean dollar
+| Argentina | Buenos Aires | 2780400 | 44938712 | South America | Argentine peso
 
-select ?countryLabel ?capitalLabel ?area ?population ?continentLabel ?currencyLabel {
-  ?country wdt:P31/wdt:P279* wd:Q3624078 .
-  ?country wdt:P36 ?capital .
-  ?country wdt:P38 ?currency .
-  ?country wdt:P2046 ?area .
-  ?country wdt:P1082 ?population .
-  ?country wdt:P30 ?continent .
-  ?country rdfs:label ?countryLabel .
-  ?capital rdfs:label ?capitalLabel .
-  ?currency rdfs:label ?currencyLabel .
-  ?continent rdfs:label ?continentLabel .
-  filter(lang(?countryLabel)='en')
-  filter(lang(?capitalLabel)='en')
-  filter(lang(?currencyLabel)='en')
-  filter(lang(?continentLabel)='en')
-}
-https://w.wiki/3fV$
-```
+''\normalsize''
+
 
 ++Atomic facts++
 
@@ -136,15 +122,13 @@ The first kind of things we want to express is **atomic facts** assigning **valu
 In our table, the objects of primary interest are the countries in the first column.
 Each of the later columns assigns a different attribute to this object:
 - The capital of Argentina is Buenos Aires.
-- The area of Argentina is 2766890 square kilometres.
-- The population of Argentina is 41343201.
+- The area of Argentina is 2780400 square kilometres.
+- The population of Argentina is 44938712.
 - The continent of Argentina is South America.
-- The currency of Argentina is Peso.
+- The currency of Argentina is Argentine peso.
 
 
 ''\noindent''
-In the continent fact, the acronym "SA" is converted to "South America".
-In the currency fact, only the name of the currency is given, not the code.
 All facts have the same syntactic structure:
 - The **Attribute** of **Object** is **Value**.
 
@@ -241,11 +225,11 @@ The functions
 ```
 ''\noindent''
 have as their argument types the **built-in categories** ``Int`` and ``String``.
-These categories are not declared in the ``cat`` judgments and have no user-defined functions to build trees in them: their objects are given as **integer literals** (such as ``41343201``) and **string literals** (``"Argentina"``), respectively.
+These categories are not declared in the ``cat`` judgments and have no user-defined functions to build trees in them: their objects are given as **integer literals** (such as ``44938712``) and **string literals** (``"Argentina"``), respectively.
 
 For other categories than the built-in ones, trees are built by combining smaller trees with functions.
 Thus the representation of the sentence
-- //the population of Argentina is 41343201//
+- //the population of Argentina is 44938712//
 
 
 ''\noindent''
@@ -254,7 +238,7 @@ is a tree of type ``Fact`` built by the function ``AtomicFact`` as follows:
   AtomicFact
     population_Attribute
     (NameObject (StringName "Argentina"))
-    (IntValue 41343201)
+    (IntValue 44938712)
 ```
 ''\noindent''
 This tree can also be shown in a graphical representation,
@@ -412,20 +396,20 @@ It can be produced from the GF source files with the shell command
 ''\noindent''
 The result is a single file, ``Facts.pgf``, which can be read by Python via the classes and functions in the ``pgf`` module delivered together with GF.
 
-Running the Python code results in 2520 sentences, stating 5 atomic facts about 252 countries in two languages:
+Running the Python code results in 1940 sentences, stating 5 atomic facts about 194 countries in two languages:
 ```
 $ python3 facts.py | more
-the capital of Andorra is Andorra la Vella
-the area of Andorra is 468
-the population of Andorra is 84000
-the continent of Andorra is EU
-the currency of Andorra is Euro
+the capital of Afghanistan is Kabul
+the area of Afghanistan is 652230
+the population of Afghanistan is 36643815
+the continent of Afghanistan is Asia
+the currency of Afghanistan is Afghan afghani
 ...
-maan Netherlands Antilles pääkaupunki on Willemstad
-maan Netherlands Antilles pinta-ala on 960
-maan Netherlands Antilles asukasluku on 136197
-maan Netherlands Antilles maanosa on NA
-maan Netherlands Antilles valuutta on Guilder
+maan Zimbabwe pääkaupunki on Harare
+maan Zimbabwe pinta-ala on 390757
+maan Zimbabwe asukasluku on 16529904
+maan Zimbabwe maanosa on Africa
+maan Zimbabwe valuutta on United States dollar
 ```
 ''\noindent''
 
@@ -558,7 +542,7 @@ The result is displayed as a table in the web browser, but it can also be downlo
 This gives a direct way to apply the methods seen by now to Wikidata.
 What is more, it also gives a way to obtain translations of names, by varying the language code (e.g. from ``en`` to ``fi``).
 
-We will return to RDF and Wikidata many times later, but you can get a first feeling of it by writing some query, downloading the result as TSV, and using the result in the way explained in the previous exercise.
+We will return to Wikidata many times later, but you can get a first feeling of it by writing some query, downloading the result as TSV, and using the result in the way explained in the previous exercise.
 
 
 
@@ -647,17 +631,18 @@ fun OC_CName : CName ;
 fun SA_CName : CName ;
 
 -- generated
-fun 'Basse-Terre_CName' : CName ;
-fun 'St._John\'s_CName' : CName ;
-fun Abu_Dhabi_CName : CName ;
-fun Abuja_CName : CName ;
+fun Africa_CName : CName ;
+fun Asia_CName : CName ;
+fun Central_America_CName : CName ;
+fun Europe_CName : CName ;
+fun North_America_CName : CName ;
+fun South_America_CName : CName ;
 --- followed by hundreds more names
 }
 ```
 This module contains
 - domain-specific name categories, here just ``CName``, but we could also have different categories for countries, cities, and currencies,
-- manually defined names, here just the continents
-- names extracted from data, here for all countries, cities, and currencies
+- names extracted from data, here for all continents, countries, cities, and currencies
 
 
 ''\noindent''
@@ -851,28 +836,21 @@ lincat CName = NP ;
 
 oper mkCName : Str -> NP = \s -> mkNP (mkPN s) ;
 
--- manual
-lin AF_CName = mkCName "Africa" ;
-lin AS_CName = mkCName "Asia" ;
-lin EU_CName = mkCName "Europe" ;
-lin NA_CName = mkCName "North America" ;
-lin OC_CName = mkCName "Oceania" ;
-lin SA_CName = mkCName "South America" ;
-
 -- generated
-lin 'Basse-Terre_CName' = mkCName "Basse-Terre" ;
-lin 'St._John\'s_CName' = mkCName "St. John's" ;
-lin 'U.S._Virgin_Islands_CName' = mkCName "U.S. Virgin Islands" ;
-lin Abu_Dhabi_CName = mkCName "Abu Dhabi" ;
-lin Abuja_CName = mkCName "Abuja" ;
+lin Africa_CName = mkCName "Africa" ;
+lin Asia_CName = mkCName "Asia" ;
+lin Central_America_CName = mkCName "Central America" ;
+lin Europe_CName = mkCName "Europe" ;
+lin North_America_CName = mkCName "North America" ;
+lin South_America_CName = mkCName "South America" ;
 ```
 ''\noindent''
-A new kind of judgement is used:
+A new kind of judgement, with the keyword ``oper``, is used here:
 ```
   oper mkCName : Str -> NP = \s -> mkNP (mkPN s)
 ```
 ''\noindent''
-defining neither a function nor its linearization but an **auxiliary operation**, which is used in ``lin`` definitions.
+An ``oper`` judgement defines neither a function nor its linearization but an **auxiliary operation**, which is used in ``lin`` definitions.
 The operation ``mkCName`` is simple, using
 - ``mkNP : PN -> NP`` from ``SyntaxEng``, using a ``PN`` (**proper name**) as an ``NP``
 - ``mkPN : Str -> PN`` from ``ParadigmsEng``, building a ``PN`` from a string
