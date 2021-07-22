@@ -11,8 +11,8 @@ lin
   continent_Attribute = mkAttribute "continent" ;
   currency_Attribute = mkAttribute "currency" ;
 
-  populationFact obj int = mkCl obj have_V2 (mkNP <symb int : Card> (mkN "inhabitant")) ;
-  continentFact obj name = mkCl obj (SyntaxEng.mkAdv in_Prep name) ;
+  populationFact cname int = mkCl cname have_V2 (mkNP <symb int : Card> (mkN "inhabitant")) ;
+  continentFact cname name = mkCl cname (SyntaxEng.mkAdv in_Prep name) ;
 
 oper
   mkAttribute : Str -> CN = \s -> mkCN (mkN s) ;

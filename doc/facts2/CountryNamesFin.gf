@@ -1,16 +1,26 @@
 concrete CountryNamesFin of CountryNames = 
 
-  open SyntaxFin, ParadigmsFin in {
+  open SyntaxFin, ParadigmsFin, Prelude in {
 
-lincat CName = NP ;
-oper mkCName : Str -> NP = \s -> mkNP (mkPN s) ;
+lincat CName = LocName ;
 
-lin Africa_CName = mkCName "Afrikka" ;
+oper LocName = {np : NP ; isIn : Bool} ;
+
+oper mkCName = overload {
+  mkCName : Str -> LocName = \s -> {np = mkNP (foreignPN s) ; isIn = True} ;
+  mkCName : N -> LocName = \n -> {np = mkNP n ; isIn = True} ;
+  mkCName : NP -> LocName = \np -> {np = np ; isIn = True} ;
+  } ;
+
+ exCName : LocName -> LocName = \name -> name ** {isIn = False} ;
+ sgCName : LocName -> LocName = \name -> name ** {np = forceNumberNP singular name.np} ;
+
+lin Africa_CName = mkCName (mkN "Afrikka") ;
 lin Asia_CName = mkCName "Aasia" ;
-lin Central_America_CName = mkCName "Keski-Amerikka" ;
-lin Europe_CName = mkCName "Eurooppa" ;
-lin North_America_CName = mkCName "Pohjois-Amerikka" ;
-lin South_America_CName = mkCName "Etelä-Amerikka" ;
+lin Central_America_CName = mkCName (mkN "Keski-Amerikka") ;
+lin Europe_CName = mkCName (mkN "Eurooppa") ;
+lin North_America_CName = mkCName (mkN "Pohjois-Amerikka") ;
+lin South_America_CName = mkCName (mkN "Etelä-Amerikka") ;
 lin insular_Oceania_CName = mkCName "Oseania" ;
 
 lin 'Guinea-Bissau_CName' = mkCName "Guinea-Bissau" ;
@@ -166,7 +176,7 @@ lin Ethiopia_CName = mkCName "Etiopia" ;
 lin Federated_States_of_Micronesia_CName = mkCName "Mikronesia" ;
 lin Fiji_CName = mkCName "Fidži" ;
 lin Fijian_dollar_CName = mkCName "Fidžin dollari" ;
-lin Finland_CName = mkCName "Suomi" ;
+lin Finland_CName = mkCName (mkN "Suomi" "Suomia") ;
 lin France_CName = mkCName "Ranska" ;
 lin Freetown_CName = mkCName "Freetown" ;
 lin Funafuti_CName = mkCName "Funafuti" ;
@@ -282,7 +292,7 @@ lin Managua_CName = mkCName "Managua" ;
 lin Manama_CName = mkCName "Manama" ;
 lin Manila_CName = mkCName "Manila" ;
 lin Maputo_CName = mkCName "Maputo" ;
-lin Marshall_Islands_CName = mkCName "Marshallinsaaret" ;
+lin Marshall_Islands_CName = exCName (mkCName (mkNP thePl_Det (mkN "Marshallin" (mkN "saari" "saaria")))) ;
 lin Maseru_CName = mkCName "Maseru" ;
 lin Mauritania_CName = mkCName "Mauritania" ;
 lin Mauritanian_ouguiya_CName = mkCName "Mauritanian ouguiya" ;
@@ -383,7 +393,7 @@ lin Romania_CName = mkCName "Romania" ;
 lin Romanian_leu_CName = mkCName "Romanian leu" ;
 lin Rome_CName = mkCName "Rooma" ;
 lin Roseau_CName = mkCName "Roseau" ;
-lin Russia_CName = mkCName "Venäjä" ;
+lin Russia_CName = exCName (mkCName "Venäjä") ;
 lin Russian_ruble_CName = mkCName "Venäjän rupla" ;
 lin Rwanda_CName = mkCName "Ruanda" ;
 lin Rwandan_franc_CName = mkCName "Ruandan frangi" ;
@@ -416,16 +426,16 @@ lin Skopje_CName = mkCName "Skopje" ;
 lin Slovakia_CName = mkCName "Slovakia" ;
 lin Slovenia_CName = mkCName "Slovenia" ;
 lin Sofia_CName = mkCName "Sofia" ;
-lin Solomon_Islands_CName = mkCName "Salomonsaaret" ;
+lin Solomon_Islands_CName = exCName (mkCName (mkNP thePl_Det (mkN "Salomon" (mkN "saari" "saaria")))) ;
 lin Solomon_Islands_dollar_CName = mkCName "Salomonsaarten dollari" ;
 lin Somali_shilling_CName = mkCName "Somalian šillinki" ;
 lin Somalia_CName = mkCName "Somalia" ;
-lin South_Africa_CName = mkCName "Etelä-Afrikka" ;
+lin South_Africa_CName = mkCName (mkN "Etelä-Afrikka") ;
 lin South_African_rand_CName = mkCName "Etelä-Afrikan randi" ;
-lin South_Korea_CName = mkCName "Korean tasavalta" ;
+lin South_Korea_CName = mkCName "Etelä-Korea" ;
 lin South_Korean_won_CName = mkCName "Etelä-Korean won" ;
 lin South_Sudan_CName = mkCName "Etelä-Sudan" ;
-lin South_Sudanese_pound_CName = mkCName "Etelä-Sudanin punta" ;
+lin South_Sudanese_pound_CName = mkCName (mkN "Etelä-Sudanin punta") ;
 lin South_Tarawa_CName = mkCName "South Tarawa" ;
 lin Sovereign_Bolivar_CName = mkCName "Sovereign Bolivar" ;
 lin Spain_CName = mkCName "Espanja" ;
@@ -472,7 +482,7 @@ lin Tripoli_CName = mkCName "Tripoli" ;
 lin Tunis_CName = mkCName "Tunis" ;
 lin Tunisia_CName = mkCName "Tunisia" ;
 lin Tunisian_dinar_CName = mkCName "Tunisian dinaari" ;
-lin Turkey_CName = mkCName "Turkki" ;
+lin Turkey_CName = mkCName (mkN "Turkki") ;
 lin Turkish_lira_CName = mkCName "Turkin liira" ;
 lin Turkmenistan_CName = mkCName "Turkmenistan" ;
 lin Turkmenistan_manat_CName = mkCName "Turkmenistanin manat" ;
@@ -486,7 +496,7 @@ lin United_Arab_Emirates_CName = mkCName "Yhdistyneet arabiemiirikunnat" ;
 lin United_Arab_Emirates_dirham_CName = mkCName "Yhdistyneiden arabiemiirikuntien dirhami" ;
 lin United_Kingdom_CName = mkCName "Yhdistynyt kuningaskunta" ;
 lin United_States_dollar_CName = mkCName "Yhdysvaltain dollari" ;
-lin United_States_of_America_CName = mkCName "Yhdysvallat" ;
+lin United_States_of_America_CName = sgCName (mkCName (mkNP thePl_Det (mkN "Yhdysvalta"))) ;
 lin Uruguay_CName = mkCName "Uruguay" ;
 lin Uruguayan_peso_CName = mkCName "Uruguayn peso" ;
 lin Uzbekistan_CName = mkCName "Uzbekistan" ;

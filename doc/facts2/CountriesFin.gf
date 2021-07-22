@@ -1,11 +1,11 @@
 concrete CountriesFin of Countries = FactsFin, CountryNamesFin **
 
-open SyntaxFin, ParadigmsFin, SymbolicFin
+open SyntaxFin, ParadigmsFin, SymbolicFin, Prelude
 
 in {
 
 lin
-  cName name = name ;
+  cName name = name.np ;
   
   capital_Attribute = mkAttribute "pääkaupunki" ;
   area_Attribute = mkAttribute "pinta-ala" ;
@@ -13,9 +13,14 @@ lin
   continent_Attribute = mkAttribute "maanosa" ;
   currency_Attribute = mkAttribute "valuutta" ;
 
-  populationFact obj int = mkCl obj (mkV2 (caseV inessive have_V2)) (mkNP <symb int : Card> (mkN "asukas")) ;
-  continentFact obj name = mkCl obj (SyntaxFin.mkAdv in_Prep name) ;
+  populationFact cname int = mkCl cname.np (mkV2 (caseV (locCase cname) have_V2)) (mkNP <symb int : Card> (mkN "asukas")) ;
+  continentFact cname name = mkCl cname.np (SyntaxFin.mkAdv (casePrep (locCase name)) name.np) ;
 
 oper
   mkAttribute : Str -> CN = \s -> mkCN (mkN s) ;
+
+  locCase : LocName -> Case = \name -> case name.isIn of {
+    True => inessive ;
+    False => adessive 
+    } ;
 }
