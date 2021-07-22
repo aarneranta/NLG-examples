@@ -927,8 +927,36 @@ The user of the RGL seldom needs to be aware of them.
 
 +++Python code+++
 
+As in ``facts1``, we use a Python file to
+- read data from a TSV file,
+- map each fact into an abstract syntax tree,
+- call GF's linearization to render the trees into each language in scope.
 
-+++The Finnish implementation+++
+
+''\noindent''
+We have modularized the Python code in a way analogous to the grammar:
+- ``data_facts.py`` works for any grammar built on top of ``Facts.gf``,
+- ``country_facts.py`` adds things specific to ``Countries.gf``.
+
+
+''\noindent''
+The specific part is optional, in the sense that ``data_facts.py`` alone is sufficient to generate basic natural language texts based on the ``Countries`` grammar.
+These texts follow a simple pattern:
+- using, for each data attribute //a//, ``AtomicFact a_Attribute obj val``,
+- thereby assuming that data attribute names are used as such in GF's ``Attribute`` functions,
+- with ``val`` as integer if it is all digits, name otherwise.
+
+
+''\noindent''
+This simple procedure is already better than ``facts1`` as it uses a grammar.
+In the specialized procedure of ``country_facts.py``,
+- we can use special functions such as those for population and continent,
+- we can perform a global analysis and **data aggregation**, as will be discussed later.
+
+
+
+
++++Another concrete syntax: Finnish+++
 
 The Finnish concrete syntax has naturally the same structure as English.
 The ``FactsFin`` module looks as follows:
@@ -983,17 +1011,110 @@ select ?country ?countryLabelEn ?countryLabelFi {
 With some simple programming, the Finnish names can be inserted as linearizations of the constants:
 ```
 lin Bucharest_CName = mkCName "Bukarest" ;
-lin Buenos_Aires_CName = mkCName "Buenos Aires" ;
 lin Finland_CName = mkCName "Suomi" ;
+lin Marshall_Islands_CName = mkCName "Marshallinsaaret" ;
 lin Russia_CName = mkCName "Venäjä" ;
 lin United_States_of_America_CName = mkCName "Yhdysvallat" ;
 ```
+''\noindent''
 However, this is not enough to obtain flawless Finnish.
+There are three kinds of problems --- and these are in fact problems for many other languages as well, for instance French and German.
+So let us try to explain them on the general level:
+- The morphological features (inflection, gender) are not always predictable from the string alone, but require more information.
+Example: //United States//, which is inflected in plural but agrees as singular (//The United States has...//).
+- Some "names" are actually complex noun phrases with many parts that undergo agreement in syntactic combinations. Example: //new shekel//, where both the adjective and the noun need to be changed in the plural.
+- When using a name as location, some countries may use a preposition or case corresponding to //on//, some to //in//.
 
 
+''\noindent''
+The outcome of this is that we need to
+- enrich the linearization type of ``CName``,
+- introduce constructors that can provide information not visible in the string.
 
 
-+++Sharing code via a functor+++
+''\noindent''
+Here is the code from the beginning of ``CountryNamesFin``.
+Very similar code will be needed for instance for French and German.
+```
+concrete CountryNamesFin of CountryNames = 
+  open SyntaxFin, ParadigmsFin, Prelude in {
+
+lincat CName = LocName ;
+
+oper LocName = {np : NP ; isIn : Bool} ;
+
+oper mkCName = overload {
+  mkCName : Str -> LocName = \s -> {np = mkNP (foreignPN s) ; isIn = True} ;
+  mkCName : N -> LocName = \n -> {np = mkNP n ; isIn = True} ;
+  mkCName : NP -> LocName = \np -> {np = np ; isIn = True} ;
+  } ;
+
+ exCName : LocName -> LocName = \name -> name ** {isIn = False} ;
+ sgCName : LocName -> LocName = \name -> name ** {np = forceNumberNP singular name.np} ;
+```
+''\noindent''
+The code still gets a lot for free from the RGL, but does need some GF features of a "lower level" than mere applications of functions:
+- The RGL module ``Prelude`` is opened to provide ``Bool`` of **booleans** and its elements ``True`` and ``False``.
+- The linearization type of ``CName`` is a **record type** with two **fields**: one for a noun phrase with **label** ``np``, another for a boolean with label ``isIn`` (defining whether to use "internal" or "external" locative cases).
+- The operation ``mkCName`` is now **overloaded** and covers three functions with the same name but different types. The simplest function needs just a string (with the "most probable" inflection inferred), the next one a noun (``N``), which can be given by any of the ``mkN`` instance of the RGL, and the most complex one an arbitrary ``NP``.
+- The definitions of ``mkCName`` functions are **records** that match the record type ``LocName``.
+- Two additional operations can be used to change the fields of an already constructed ``CName``.
+The changes are performed by the **record extension** operator ``**``, which overwrites (or adds) the values of desired fields in a record.
+
+
+It is a good practice to use records and record types explicitly in as few places as possible.
+For instance, in ``CountryNamesFin`` they are used only in the few ``oper`` definitions in the beginning of the file.
+In this way, if we need to change the type of ``CName`` - which is common under the development phase of a grammar - we only need to change these ``oper``s and not all over the place in the lexical items.
+
+Here are some examples of how the enriched set of constructors is used:
+```
+lin Bucharest_CName = mkCName "Bukarest" ;
+  -- no changes needed
+lin Finland_CName = mkCName (mkN "Suomi" "Suomia") ;
+  -- select a less common paradigm
+lin Marshall_Islands_CName =
+  exCName (mkCName (mkNP thePl_Det (mkN "Marshallin" (mkN "saari" "saaria")))) ;
+  -- genuinely plural noun phrase, preposition "on"
+lin Russia_CName = exCName (mkCName "Venäjä") ;
+  -- one says "on Russia" in Finnish!
+lin United_States_of_America_CName =
+  sgCName (mkCName (mkNP thePl_Det (mkN "Yhdysvalta"))) ;
+  -- plural inflection, singular agreement
+```
+''\noindent''
+Most of the strings give the right properties "out of the box" and hence need no changes in the geneted file.
+But a manual inspection round is needed to make sure that all names get their right grammatical properties.
+
+The top module ``CountriesFin`` has to treat ``CName``, with its enriched type, in a correct way.
+In the following code, we have omitted the attribute definitions, which pose no particular problems.
+```
+concrete CountriesFin of Countries = FactsFin, CountryNamesFin **
+  open SyntaxFin, ParadigmsFin, SymbolicFin, Prelude in {
+
+lin
+  cName name = name.np ;
+
+  populationFact cname int =
+    mkCl cname.np (mkV2 (caseV (locCase cname) have_V2)) (mkNP <symb int : Card> (mkN "asukas")) ;
+  continentFact cname name =
+    mkCl cname.np (SyntaxFin.mkAdv (casePrep (locCase name)) name.np) ;
+
+oper
+  locCase : LocName -> Case = \name -> case name.isIn of {
+    True => inessive ;
+    False => adessive 
+    } ;
+}
+```
+''\noindent''
+The following explanations refer to Finnish, but are relevant for other languages as well:
+- ``cName`` must now pick the ``np`` field of its argument to be type-correct.
+- The locative case is extracted from the ``CName`` by the ``locCase`` operation.
+It would be possible to have the case directly as a field of ``LocCase``.
+However, a boolean parametre is preferrable, because in Finnish it affects many other things besides the inessive/adessive choice.
+- The definition of ``locCase`` uses a **case expression**, which selects different values depending on an argument --- here depending on a boolean.
+
+
 
 +++Exercises+++
 
@@ -1008,8 +1129,31 @@ However, this is not enough to obtain flawless Finnish.
 
 +++Syntactic aggregation+++
 
++++Unlexing and markup+++
+
+
 
 ++Data aggregation and content planning++
+
++++Automatic planning+++
+
++++Manual planning and document authoring+++
+
+
+
+++Sharing code via a functor++
+
+
+++Where is the standard NLG pipeline?++
+
+
+
++Generation from formal languages+
+
+
++A high-level API for NLG structures+
+
+
 
 
 
