@@ -107,6 +107,28 @@ As the table is a few years old, its information is not always up to date --- bu
 | Azerbaijan | Baku | 86600 | 8303512 | AS | Manat
 | Thailand | Bangkok | 514000 | 67089500 | AS | Baht
 ''\normalsize''
+The table was obtained from
+```
+https://query.wikidata.org
+
+select ?countryLabel ?capitalLabel ?area ?population ?continentLabel ?currencyLabel {
+  ?country wdt:P31/wdt:P279* wd:Q3624078 .
+  ?country wdt:P36 ?capital .
+  ?country wdt:P38 ?currency .
+  ?country wdt:P2046 ?area .
+  ?country wdt:P1082 ?population .
+  ?country wdt:P30 ?continent .
+  ?country rdfs:label ?countryLabel .
+  ?capital rdfs:label ?capitalLabel .
+  ?currency rdfs:label ?currencyLabel .
+  ?continent rdfs:label ?continentLabel .
+  filter(lang(?countryLabel)='en')
+  filter(lang(?capitalLabel)='en')
+  filter(lang(?currencyLabel)='en')
+  filter(lang(?continentLabel)='en')
+}
+https://w.wiki/3fV$
+```
 
 ++Atomic facts++
 
@@ -930,6 +952,15 @@ The user of the RGL seldom needs to be aware of them.
 
 +++The Finnish implementation+++
 
+```
+select ?country ?countryLabelEn ?countryLabelFi {
+  ?country wdt:P31/wdt:P279* wd:Q3624078 .
+  ?country rdfs:label ?countryLabelEn .
+  ?country rdfs:label ?countryLabelFi .
+  filter(lang(?countryLabelEn)='en')
+  filter(lang(?countryLabelFi)='fi')
+}
+```
 
 +++Sharing code via a functor+++
 
