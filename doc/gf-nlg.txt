@@ -930,6 +930,47 @@ The user of the RGL seldom needs to be aware of them.
 
 +++The Finnish implementation+++
 
+The Finnish concrete syntax has naturally the same structure as English.
+The ``FactsFin`` module looks as follows:
+```
+concrete FactsFin of Facts = 
+  open SyntaxFin, SymbolicFin, (E=ExtendFin) in {
+
+lincat
+  Fact = Cl ;
+  Object = NP ;
+  Attribute = CN ;
+  Value = NP ;
+  Name = NP ;
+
+lin
+  AtomicFact prop obj val = mkCl (mkNP (E.GenNP obj) prop) val ;
+  NameObject name = name ;
+  NameValue name = name ;
+  IntValue int = symb int ;
+}
+```
+''\noindent''
+Two new GF features are used:
+- in the ``open`` list, the module ``ExtendFin`` is imported in a **qualified mode**, where all its uses need to be marked with ``E.``;
+- in ``AtomicFact``, a qualified function ``E.GenNP`` is used; this is similar to ``SyntaxEng.mkAdv`` above, except that ``E`` is not the name of a module, but an alias name defined in the ``open`` list.
+
+
+''\noindent''
+Using ``ExtendFin`` in a qualified mode would not be necessary, but it is a good practice to qualify modules outside the standard RGL API (which includes ``Syntax``, ``Paradigms``, and ``Symbolic``).
+This makes it easier to see what parts of the code are likely to be different for different languages.
+
+The function ``GenNP`` forms the genitive of a noun phrase to be used as a determiner.
+It does not belong to the standard API, because it is not available for all languages.
+For English, ``ExtendEng.GenNP`` does exist, but it is not used in this grammar.
+It would produce //France's capital// instead of //the capital of France//.
+
+Apart from the genitive construction, the code in ``FactsFin`` is similar to ``FactsEng``.
+When the RGL API is used, one can actually bootstrap new languages by just copying the code of an old language and changing the quoted strings.
+This would result in somewhat clumsy Finnish but still work mostly better than the simple templates of ``facts1``.
+
+The ``CountryNamesFin`` module is obviously the one that differs the most from English.
+The first step to create it when Wikidata is available is to fetch the country and other names with a query:
 ```
 select ?country ?countryLabelEn ?countryLabelFi {
   ?country wdt:P31/wdt:P279* wd:Q3624078 .
@@ -939,8 +980,26 @@ select ?country ?countryLabelEn ?countryLabelFi {
   filter(lang(?countryLabelFi)='fi')
 }
 ```
+With some simple programming, the Finnish names can be inserted as linearizations of the constants:
+```
+lin Bucharest_CName = mkCName "Bukarest" ;
+lin Buenos_Aires_CName = mkCName "Buenos Aires" ;
+lin Finland_CName = mkCName "Suomi" ;
+lin Russia_CName = mkCName "Venäjä" ;
+lin United_States_of_America_CName = mkCName "Yhdysvallat" ;
+```
+However, this is not enough to obtain flawless Finnish.
+
+
+
 
 +++Sharing code via a functor+++
+
++++Exercises+++
+
+===Add a language===
+
+
 
 
 ++Building a text++
