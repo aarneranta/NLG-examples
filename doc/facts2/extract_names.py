@@ -1,6 +1,6 @@
 country_file = 'countries.tsv'
 name_cat = 'CName'
-included_fields = [0,1,5]
+included_fields = [4]
 
 def get_names(filename):
     names = set()
