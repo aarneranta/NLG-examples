@@ -103,7 +103,7 @@ The original query can be found in
 ''\noindent''
 The results have been slighly edited, so that for instance each country appears only once in the result.
 
-''\small''
+''\scriptsize''
 || country | capital | area | population | continent | currency
 | Afghanistan | Kabul | 652230 | 36643815 | Asia | Afghan afghani
 | Albania | Tirana | 28748 | 3020209 | Europe | Albanian lek
@@ -461,7 +461,8 @@ the population of Foo is Foo
 
 # parse (p) a string into a tree
 Facts> p "the capital of France is Paris"
-AtomicFact capital_Attribute (NameObject (StringName "France")) (NameValue (StringName "Paris"))
+AtomicFact capital_Attribute (NameObject (StringName "France"))
+  (NameValue (StringName "Paris"))
 
 0 msec
 
@@ -729,7 +730,8 @@ lincat
   Name = NP ;
 
 lin
-  AtomicFact prop obj val = mkCl (mkNP the_Det (mkCN prop (mkAdv possess_Prep obj))) val ;
+  AtomicFact prop obj val =
+    mkCl (mkNP the_Det (mkCN prop (mkAdv possess_Prep obj))) val ;
   NameObject name = name ;
   NameValue name = name ;
   IntValue int = symb int ;
@@ -887,7 +889,8 @@ lin
   continent_Attribute = mkAttribute "continent" ;
   currency_Attribute = mkAttribute "currency" ;
 
-  populationFact obj int = mkCl obj have_V2 (mkNP <symb int : Card> (mkN "inhabitant")) ;
+  populationFact obj int =
+    mkCl obj have_V2 (mkNP <symb int : Card> (mkN "inhabitant")) ;
   continentFact obj name = mkCl obj (SyntaxEng.mkAdv in_Prep name) ;
 
 oper
@@ -1050,7 +1053,8 @@ oper mkCName = overload {
   } ;
 
  exCName : LocName -> LocName = \name -> name ** {isIn = False} ;
- sgCName : LocName -> LocName = \name -> name ** {np = forceNumberNP singular name.np} ;
+ sgCName : LocName -> LocName = \name ->
+   name ** {np = forceNumberNP singular name.np} ;
 ```
 ''\noindent''
 The code still gets a lot for free from the RGL, but does need some GF features of a "lower level" than mere applications of functions:
@@ -1073,7 +1077,8 @@ lin Bucharest_CName = mkCName "Bukarest" ;
 lin Finland_CName = mkCName (mkN "Suomi" "Suomia") ;
   -- select a less common paradigm
 lin Marshall_Islands_CName =
-  exCName (mkCName (mkNP thePl_Det (mkN "Marshallin" (mkN "saari" "saaria")))) ;
+  exCName (mkCName (mkNP thePl_Det
+      (mkN "Marshallin" (mkN "saari" "saaria")))) ;
   -- genuinely plural noun phrase, preposition "on"
 lin Russia_CName = exCName (mkCName "Venäjä") ;
   -- one says "on Russia" in Finnish!
@@ -1095,7 +1100,8 @@ lin
   cName name = name.np ;
 
   populationFact cname int =
-    mkCl cname.np (mkV2 (caseV (locCase cname) have_V2)) (mkNP <symb int : Card> (mkN "asukas")) ;
+    mkCl cname.np (mkV2 (caseV (locCase cname) have_V2))
+      (mkNP <symb int : Card> (mkN "asukas")) ;
   continentFact cname name =
     mkCl cname.np (SyntaxFin.mkAdv (casePrep (locCase name)) name.np) ;
 
@@ -1125,15 +1131,65 @@ However, a boolean parametre is preferrable, because in Finnish it affects many 
 
 ++Building a text++
 
+We have by now generated sentences for each atomic fact separately.
+Each country is thereby describe by five sentences.
+The repetitive text this gives has been slightly improved by specialized expressions for continent and population facts.
+But a lively text requires more radical measures:
+- replacement of names by **referring expressions**, such as pronouns (//it//) and definite descriptions (//the country//, //this European country//);
+- **aggregation** of several facts to single sentences: //France is a European country with 66628000 inhabitants//;
+- **text layout** with proper punctuation and capitalization, possibly with **markup** such as HTML tags;
+- **variation** so that country descriptions can look different for different countries, or for the same country at different occasions.
+
+
+''\noindent''
+In this section, we will go through these techniques one by one.
+The resulting code is found in ``facts3/``.
+This directory also contains the grammar rules used in the next section.
+We will no longer show entire modules in the text, but just the individual rules under discussion.
+
+
+
+
 +++Referring expressions+++
+
 
 +++Syntactic aggregation+++
 
 +++Unlexing and markup+++
 
+hover for referent
+
++++Creating alternative renderings+++
+
 
 
 ++Data aggregation and content planning++
+
+Until now, we have built sentences and texts that accurately represent all information in a dataset.
+This is something that NLG in any case has to be able to do, at least on demand.
+The result is texts from which the GF parser could actually reconstruct the original data.
+
+But in many NLG tasks, the relation to the dataset is less direct.
+We want things such as
+- **data selection**: show only data considered interesting, not all data;
+- **data trimming**: **rounding** of population //30327877//, to //30 million//, and **conversion** of //147181 square kilometres// to //56827 square miles//;
+- **data aggregation**: build sentences that are //valid consequences// from the data but not explicity shown there, for instance, //there are 45 countries in Asia//.
+
+
+''\noindent''
+Most of the work in these categories is done on the Python side: what is needed in GF is just some new categories and functions which enable expressing these derived facts.
+Following the overall structure of GF-NLG, Python functions analyse data to find interesting derived facts and convert them to abstract syntax trees, whereupon GF takes over and linearizes the trees to different languages.
+A slight difference from the earlier is that the choice of trees can be language dependent - for instance that the English text uses miles but the Finnish text kilometres.
+
+A common term for the task of choosing what data to show is **content planning**.
+Much of NLG research has focused on how to automate this task.
+For instance, in creating stock market reports from numeric data, one has to find interesting trends fast to be able to report them before it is too late.
+
+However, the Abstract Wikipedia project cannot fully rely on automation, since human judgement is needed to decide what is interesting and relevant to show.
+And not only this: human judgement is needed in **text planning** as well, to select truly readable ways to express the selected data.
+Hence attention has to be paid to **interaction**, where a human author can easily create multilingual texts with the help of algorithms but in full control over them.
+
+
 
 +++Automatic planning+++
 
@@ -1145,6 +1201,8 @@ However, a boolean parametre is preferrable, because in Finnish it affects many 
 
 
 ++Where is the standard NLG pipeline?++
+
+- our presentation has followed an opposite order: planning last
 
 
 
