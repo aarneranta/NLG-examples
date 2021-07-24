@@ -16,6 +16,7 @@ lin
   country_Kind = mkCN (mkN "country") ;
   city_Kind = mkCN (mkN "city") ;
   currency_Kind = mkCN (mkN "currency") ;
+  inhabitant_Kind = mkCN (mkN "inhabitant") ;
 
   populationFact cname int = mkCl cname have_V2 (mkNP <symb int : Card> (mkN "inhabitant")) ;
   continentFact cname name = mkCl cname (SyntaxEng.mkAdv in_Prep name) ;

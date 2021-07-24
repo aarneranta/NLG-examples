@@ -5,8 +5,9 @@ included_fields = [0,1,4,5]
 def get_names(filename):
     names = set()
     file = open(filename)
-    for line in file.readlines()[1:]:
+    for line in file.readlines():
         fields = line.split('\t')
+#        print("FIELDS",fields)
         for i in included_fields:
             names.add(fields[i].strip())
     return names
@@ -48,6 +49,7 @@ def mkFun(name,cat):
 def main():
   names = get_names(country_file)
   for name in names:
+#      print("NAME",name)
       fun,lin = name_rules(name,name_cat)
       print(fun)
       print(lin)

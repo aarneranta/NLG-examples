@@ -15,6 +15,7 @@ fun
   country_Kind : Kind ;
   city_Kind : Kind ;
   currency_Kind : Kind ;
+  inhabitant_Kind : Kind ;
 
 -- specialized expressions for properties
   populationFact : CName -> Int -> Fact ;

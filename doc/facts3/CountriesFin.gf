@@ -18,6 +18,7 @@ lin
   country_Kind = mkCN (mkN "maa") ;
   city_Kind = mkCN (mkN "kaupunki") ;
   currency_Kind = mkCN (mkN "valuutta") ;
+  inhabitant_Kind = mkCN (mkN "asukas") ;
 
   populationFact cname int = mkCl cname.np (mkV2 (caseV (locCase cname) have_V2)) (mkNP <symb int : Card> (mkN "asukas")) ;
   continentFact cname name = mkCl cname.np (SyntaxFin.mkAdv (casePrep (locCase name)) name.np) ;
