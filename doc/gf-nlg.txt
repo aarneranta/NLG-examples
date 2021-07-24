@@ -330,11 +330,59 @@ Both of these problems will be solved shortly when we extend the model by a rich
 
 +++Python code converting data to text+++
 
-(In this section, we assume basic knowledge of Python and will not explain all details of the language.)
+In this section, we assume basic knowledge of Python and will not explain its standard constructs.
+But what needs some explanation is the ``pgf`` library, which makes GF grammars accessible from Python programs.
+The following classes and methods are used in this first version of Python NLG:
+- ``PGF``, class of objects obtained from ``.pgf`` files (no constructor used here):
+  - ``readPGF(<filename>)``, function that returns a ``PGF`` object;
 
-The Python file ``facts1/facts.py`` reads a tsv file and a GF grammar, and prints out a linearization of every atomic fact in all of the languages covered by the grammar.
+
+- ``Expr``, class of abstract syntax trees ("expressions" in the technical jargon):
+  - ``Expr(fun,[Expr])``, its constructor that reads a function name (a string) and a list of subtrees,
+  - ``readExpr(str)``, function that reads a tree from a string (in the GF notation);
+
+
+- ``Concr``, class of concrete syntaxes obtained from PGF languages:
+  - ``PGF.languages``, class variable with a dictionary mapping module names to ``Concr`` objects,
+  - Concr.linearize(expr), linearization function for trees.
+
+
+''\noindent''
+Some other functions, such as a parsing method, will be introduced later as needed.
+Complete documentation can be found in
+- http://www.grammaticalframework.org/doc/runtime-api.html#python
+
+
+''\noindent''
+**PGF** (**Portable Grammar Format**) is the binary "machine language" of GF.
+It can be produced from the GF source files with the shell command
 ```
-# import pgf, which makes GF functionalities available in Python
+  gf -make FactsEng.gf FactsFin.gf
+```
+''\noindent''
+The result is a single file, ``Facts.pgf``, which can be read by Python via the classes and functions in the ``pgf`` module delivered together with GF.
+
+Here is an example of a python3 session using ``Facts.pgf``:
+```
+>>> import pgf
+>>> gr = pgf.readPGF('Facts.pgf')
+>>> print(list(gr.languages.keys()))
+['FactsEng', 'FactsFin']
+>>> eng = gr.languages['FactsEng']
+>>> attr = pgf.Expr('area_Attribute',[])
+>>> eng.linearize(attr)
+area
+>>> obj = pgf.readExpr('NameObject (StringName "France")')
+>>> val = pgf.readExpr('123')
+>>> fact = pgf.Expr('AttributeFact',[attr,obj,val])
+>>> print(fact)
+AttributeFact area_Attribute (NameObject (StringName "France")) 123
+>>> print(eng.linearize(fact))
+the area of France is 123
+```
+
+The Python program ``facts1/facts.py`` reads a TSV file and a GF grammar, and prints out a linearization of every atomic fact in all of the languages covered by the grammar.
+```
 import pgf
 
 # read country data from a tsv file into a named tuple
@@ -349,7 +397,7 @@ def get_countries(filename):
         countries.append(fields)
     return countries
 
-# for each tuple, build a list of GF trees, one for each atomic fact
+#for each tuple, build a list of GF trees, one for each atomic fact
 def country_facts(c):
   object = mkApp('NameObject', [mkName(c.country)])
   return [
@@ -388,14 +436,6 @@ def main():
 main()
 ```
 ''\noindent''
-The grammar is in the binary **Portable Grammar Format**, **PGF**.
-It can be produced from the GF source files with the shell command
-```
-  gf -make FactsEng.gf FactsFin.gf
-```
-''\noindent''
-The result is a single file, ``Facts.pgf``, which can be read by Python via the classes and functions in the ``pgf`` module delivered together with GF.
-
 Running the Python code results in 1940 sentences, stating 5 atomic facts about 194 countries in two languages:
 ```
 $ python3 facts.py | more
@@ -937,24 +977,93 @@ As in ``facts1``, we use a Python file to
 
 
 ''\noindent''
-We have modularized the Python code in a way analogous to the grammar:
+But this time we have modularized the Python code in a way analogous to the grammar:
 - ``data_facts.py`` works for any grammar built on top of ``Facts.gf``,
 - ``country_facts.py`` adds things specific to ``Countries.gf``.
 
 
 ''\noindent''
 The specific part is optional, in the sense that ``data_facts.py`` alone is sufficient to generate basic natural language texts based on the ``Countries`` grammar.
-These texts follow a simple pattern:
-- using, for each data attribute //a//, ``AttributeFact a_Attribute obj val``,
-- thereby assuming that data attribute names are used as such in GF's ``Attribute`` functions,
-- with ``val`` as integer if it is all digits, name otherwise.
+These texts follow a simple pattern: for each data attribute, they use ``AttributeFact <attr_Attribute> obj val``, where ``<attr_Attribute>`` is the GF function corresponding to the data attribute ``attr``.
 
+The simple procedure is already better than ``facts1`` as it uses a grammar.
+In the specialized procedure of ``country_facts.py``, we moreover use special functions such as those for population and continent.
+The code also scales up to deeper data analysis and **aggregation**, which are powerful NLG techniques to be discussed later.
 
+The central part of the code is the class ``FactSystem``, which contains a grammar and methods for converting data into text by using the grammar.
+```
+class FactSystem:
+    def __init__(self,fnames,dkey,gr,lang1):
+        self.fieldnames = fnames # names of datafields as a string
+        self.datakey = dkey      # the key attribute among fieldnames
+        self.grammar = gr        # a PGF object
+        self.language1 = lang1   # the language used for parsing input
+
+    # read tuple data from tsv file
+    def get_data(self,filename):
+        ...
+        return data
+
+    # parse strings to trees in category cat
+    def str2exp(self,cat,s):
+        eng = self.grammar.languages[self.language1]
+        try:
+            pp = eng.parse(s,cat=pgf.readType(cat))
+            _,e = pp.__next__()
+            return e
+        except:
+            print("WARNING:","no", cat, "from", s)
+            return pgf.Expr(s,[])
+	    
+    # run a fact_generator function that converts data to trees    
+    def run(self,datafile,fact_generator):
+        gr = self.grammar
+        data = sorted(list(self.get_data(datafile)))
+        langs = list(gr.languages.values())
+        for lang in langs:
+            text = []
+            for tree in fact_generator(self,data):
+                text.append(lang.linearize(tree))
+            print('\n'.join(text))
+```
 ''\noindent''
-This simple procedure is already better than ``facts1`` as it uses a grammar.
-In the specialized procedure of ``country_facts.py``,
-- we can use special functions such as those for population and continent,
-- we can perform a global analysis and **data aggregation**, as will be discussed later.
+Notice how the parser from the ``pgf`` library is put into use in the ``string2exp`` method.
+Even though we are mainly interested in generation and not parsing, this is a useful way to map, for instance, data attributes to GF attribute functions.
+Then we need not assume hard-coded conventions such as from data attribute ``area`` to GF function ``area_Attribute``, as we did in ``facts1``.
+
+A baseline ``fact_generator`` is one that expresses each datapoint with ``AttributeFact``.
+```
+def simple_facts(factsys,data):
+    fields = factsys.fieldnames.split()    
+    facts = []
+    for tuple in data:
+        for (attr,val) in [(fields[i],list(tuple)[i]) for i in range(1,len(fields))]:
+            fact = pgf.Expr("AttributeFact", [
+                    factsys.str2exp("Attribute",attr),
+                    factsys.str2exp("Object",factsys.datakey(tuple)),
+                    factsys.str2exp("Value",val)])
+            facts.append(fact)
+    return facts
+```
+''\noindent''
+To run NLG on a datafile, we then
+- read a PGF grammar from a file,
+- create a ``FactSystem`` with relevant arguments,
+- run the ``FactSystem`` with a chosen ``fact_generator``:
+
+
+```
+def example_run():
+    gr = pgf.readPGF('Countries.pgf')
+
+    factsys = FactSystem('country capital area population continent currency',
+                          lambda t: t.country,
+                          gr,
+                          'CountriesEng'
+                        )
+            
+    factsys.run('countries.tsv',simple_facts)
+```
 
 
 
@@ -1125,6 +1234,10 @@ However, a boolean parametre is preferrable, because in Finnish it affects many 
 +++Exercises+++
 
 ===Add a language===
+
+===Add some fact rules===
+
+===Vary the data===
 
 
 

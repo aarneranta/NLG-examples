@@ -1,5 +1,4 @@
 import pgf
-from extract_names import mkFun
 from collections import namedtuple
 
 
