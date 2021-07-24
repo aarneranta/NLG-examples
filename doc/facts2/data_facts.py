@@ -4,74 +4,66 @@ from collections import namedtuple
 
 
 class FactSystem:
-    def __init__(self,tname,fnames,cat,coerc,dkey):
-        self.tuplename = tname
-        self.fieldnames = fnames
-        self.catname = cat
-        self.coercion = coerc
-        self.datakey = dkey
+    def __init__(self,fnames,dkey,gr,lang1):
+        self.fieldnames = fnames 
+        self.datakey = dkey      # the key among fieldnames
+        self.grammar = gr
+        self.language1 = lang1   # the language in which entities are parsed to trees
 
     def get_data(self,filename):
         data = []
-        Data = namedtuple(self.tuplename, self.fieldnames)
+        Data = namedtuple('Data', self.fieldnames)
         file = open(filename)
         for line in file:
             fields = Data(*line.split('\t'))
             data.append(fields)
         return data
-    
-    def mkCatName(self,s):
-        return mkApp(mkFun(s.strip(),self.catname),[])
 
-    def mkName(self,s):
-        return mkApp(self.coercion, [self.mkCatName(s)])
-
-    def run(self,pgffile,datafile,facts):
-        gr = pgf.readPGF(pgffile)
+    def str2exp(self,cat,s):
+        eng = self.grammar.languages[self.language1]
+        try:
+            pp = eng.parse(s,cat=pgf.readType(cat))
+            _,e = pp.__next__()
+            return e
+        except:
+            print("WARNING:","no", cat, "from", s)
+            return pgf.Expr(s,[])
+        
+    def run(self,datafile,fact_generator):
+        gr = self.grammar
         data = sorted(list(self.get_data(datafile)))
         langs = list(gr.languages.values())
         for lang in langs:
             text = []
-            for tree in facts(self,data):
+            for tree in fact_generator(self,data):
                 text.append(lang.linearize(tree))
             print('\n'.join(text))
 
 
 def simple_facts(factsys,data):
-    fields = factsys.fieldnames.split()
-    
-    def value(cfc):
-        if cfc.isdigit():
-            return mkApp('IntValue',[mkInt(cfc)])
-        else:
-            return mkApp('NameValue',[factsys.mkName(cfc)])
-    
+    "for each tuple in data, generate an attribute fact sentence for each field"
+    fields = factsys.fieldnames.split()    
     facts = []
     for tuple in data:
-        for (fc,cfc) in [(fields[i],list(tuple)[i]) for i in range(1,len(fields))]:
-            facts.append(mkApp(
-              'AtomicFact',
-              [mkApp(fc + '_Attribute',[]),
-              mkApp('NameObject', [factsys.mkName(factsys.datakey(tuple))]),
-              value(cfc)]
-              ))
+        for (attr,val) in [(fields[i],list(tuple)[i]) for i in range(1,len(fields))]:
+            fact = pgf.Expr("AttributeFact", [
+                    factsys.str2exp("Attribute",attr),
+                    factsys.str2exp("Object",factsys.datakey(tuple)),
+                    factsys.str2exp("Value",val)])
+            facts.append(fact)
     return facts
-
-def mkApp(f,xs):
-    return pgf.Expr(f,xs)
-
-def mkInt(s):
-    return pgf.readExpr(str(s))
 
 
 def example_run():
-    factsys = FactSystem('Country',
-                             'country capital area population continent currency',
-                             'CName', 'cName',
-                             lambda t: t.country)
-    factsys.run('Countries.pgf','countries.tsv',simple_facts)
+    gr = pgf.readPGF('Countries.pgf')
+
+    factsys = FactSystem('country capital area population continent currency',
+                          lambda t: t.country,
+                          gr,
+                          'CountriesEng'
+                        )
+            
+    factsys.run('countries.tsv',simple_facts)
 
 if __name__ == "__main__":
     example_run()
-
-

@@ -18,7 +18,7 @@ def get_countries(filename):
 def country_facts(c):
   object = mkApp('NameObject', [mkName(c.country)])
   return [
-    mkApp('AtomicFact',[mkApp(prop,[]),object,val])
+    mkApp('AttributeFact',[mkApp(prop,[]),object,val])
       for (prop,val) in [
         ('capital_Attribute',    mkApp('NameValue',[mkName(c.capital)])),
         ('area_Attribute',       mkApp('IntValue', [mkInt(c.area)])),

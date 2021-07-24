@@ -10,7 +10,7 @@ cat
   Name ;
 
 fun
-  AtomicFact : Attribute -> Object -> Value -> Fact ;
+  AttributeFact : Attribute -> Object -> Value -> Fact ;
 
   capital_Attribute : Attribute ;
   area_Attribute : Attribute ;

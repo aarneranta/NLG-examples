@@ -8,7 +8,7 @@ lincat
   Name = Str ;
 
 lin
-  AtomicFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val ;
+  AttributeFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val ;
 
   capital_Attribute = "capital" ;
   area_Attribute = "area" ;

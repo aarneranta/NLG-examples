@@ -182,7 +182,7 @@ cat
   Name ;
 
 fun
-  AtomicFact : Attribute -> Object -> Value -> Fact ;
+  AttributeFact : Attribute -> Object -> Value -> Fact ;
 
   capital_Attribute : Attribute ;
   area_Attribute : Attribute ;
@@ -208,11 +208,11 @@ The parts of this file are
 The arrow notation in ``fun`` judgements is used for **function types** to separate the **argument types** from the **value type**.
 Thus the first ``fun`` judgement
 ```
-  AtomicFact : Attribute -> Object -> Value -> Fact
+  AttributeFact : Attribute -> Object -> Value -> Fact
 ```
 ''\noindent''
 says that
-- ``AtomicFact`` is a function that takes a ``Attribute``, an ``Object`` and a ``Value`` as its arguments an produces a ``Fact``  as its value.
+- ``AttributeFact`` is a function that takes a ``Attribute``, an ``Object`` and a ``Value`` as its arguments an produces a ``Fact``  as its value.
 
 
 ''\noindent''
@@ -233,9 +233,9 @@ Thus the representation of the sentence
 
 
 ''\noindent''
-is a tree of type ``Fact`` built by the function ``AtomicFact`` as follows:
+is a tree of type ``Fact`` built by the function ``AttributeFact`` as follows:
 ```
-  AtomicFact
+  AttributeFact
     population_Attribute
     (NameObject (StringName "Argentina"))
     (IntValue 44938712)
@@ -264,7 +264,7 @@ lincat
   Name = Str ;
 
 lin
-  AtomicFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val ;
+  AttributeFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val ;
 
   capital_Attribute = "capital" ;
   area_Attribute = "area" ;
@@ -294,7 +294,7 @@ It is too limited for full-scale NLG, but provides an easy to grasp introduction
 The linearization functions are defined with expressions that combine **variables** with **string literals**.
 Thus the first rule
 ```
-  AtomicFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val
+  AttributeFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val
 ```
 ''\noindent''
 uses the variables ``prop``, ``obj``, and ``val``, which stand for the arguments of the function, and the literals ``"the"``, ``"of"``, and ``"is"``.
@@ -310,7 +310,7 @@ concrete FactsFin of Facts = {
 -- lincat as in FactsEng
 
 lin
-  AtomicFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
+  AttributeFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
 
   capital_Attribute = "pääkaupunki" ;
   area_Attribute = "pinta-ala" ;
@@ -322,7 +322,7 @@ lin
 }
 ```
 ''\noindent''
-The ``AtomicFact`` rule uses a well-known trick to avoid the genitive inflection of country names: it wraps the name with the word //maa// ("country"), which is turned into the genitive to build an equivalent of English //of the country X//.
+The ``AttributeFact`` rule uses a well-known trick to avoid the genitive inflection of country names: it wraps the name with the word //maa// ("country"), which is turned into the genitive to build an equivalent of English //of the country X//.
 The result is grammatically correct but extremely clumsy Finnish, which immediately reveals that text as machine-generated.
 Another indicator of this is, obviously, the country names for which plain English strings are used.
 Both of these problems will be solved shortly when we extend the model by a richer use of GF.
@@ -353,7 +353,7 @@ def get_countries(filename):
 def country_facts(c):
   object = mkApp('NameObject', [mkName(c.country)])
   return [
-    mkApp('AtomicFact',[mkApp(prop,[]),object,val])
+    mkApp('AttributeFact',[mkApp(prop,[]),object,val])
       for (prop,val) in [
         ('capital_Attribute',    mkApp('NameValue',[mkName(c.capital)])),
         ('area_Attribute',       mkApp('IntValue', [mkInt(c.area)])),
@@ -449,7 +449,7 @@ Languages: FactsEng
 
 # generate random (gr) abstract syntax tree
 Facts> gr
-AtomicFact area_Attribute (NameObject (StringName "Foo")) (IntValue 999)
+AttributeFact area_Attribute (NameObject (StringName "Foo")) (IntValue 999)
 
 0 msec
 
@@ -461,7 +461,7 @@ the population of Foo is Foo
 
 # parse (p) a string into a tree
 Facts> p "the capital of France is Paris"
-AtomicFact capital_Attribute (NameObject (StringName "France"))
+AttributeFact capital_Attribute (NameObject (StringName "France"))
   (NameValue (StringName "Paris"))
 
 0 msec
@@ -606,7 +606,7 @@ cat
   Name ;
 
 fun
-  AtomicFact : Attribute -> Object -> Value -> Fact ;
+  AttributeFact : Attribute -> Object -> Value -> Fact ;
 
   NameObject : Name -> Object ;
   NameValue : Name -> Value ;
@@ -730,7 +730,7 @@ lincat
   Name = NP ;
 
 lin
-  AtomicFact prop obj val =
+  AttributeFact prop obj val =
     mkCl (mkNP the_Det (mkCN prop (mkAdv possess_Prep obj))) val ;
   NameObject name = name ;
   NameValue name = name ;
@@ -779,7 +779,7 @@ The authors of the RGL have to define in detail
 ''\noindent''
 Since this linguistic ground work has been done once and for all in the RGL, we NLG engineers do not need to repeat it.
 But we do need to develop an idea about what combinations are possible for these categories.
-The linearization of ``AtomicFact`` is quite a mouthful to start with:
+The linearization of ``AttributeFact`` is quite a mouthful to start with:
 ```
   mkCl (mkNP the_Det (mkCN prop (mkAdv possess_Prep obj))) val
 ```
@@ -945,7 +945,7 @@ We have modularized the Python code in a way analogous to the grammar:
 ''\noindent''
 The specific part is optional, in the sense that ``data_facts.py`` alone is sufficient to generate basic natural language texts based on the ``Countries`` grammar.
 These texts follow a simple pattern:
-- using, for each data attribute //a//, ``AtomicFact a_Attribute obj val``,
+- using, for each data attribute //a//, ``AttributeFact a_Attribute obj val``,
 - thereby assuming that data attribute names are used as such in GF's ``Attribute`` functions,
 - with ``val`` as integer if it is all digits, name otherwise.
 
@@ -975,7 +975,7 @@ lincat
   Name = NP ;
 
 lin
-  AtomicFact prop obj val = mkCl (mkNP (E.GenNP obj) prop) val ;
+  AttributeFact prop obj val = mkCl (mkNP (E.GenNP obj) prop) val ;
   NameObject name = name ;
   NameValue name = name ;
   IntValue int = symb int ;
@@ -984,7 +984,7 @@ lin
 ''\noindent''
 Two new GF features are used:
 - in the ``open`` list, the module ``ExtendFin`` is imported in a **qualified mode**, where all its uses need to be marked with ``E.``;
-- in ``AtomicFact``, a qualified function ``E.GenNP`` is used; this is similar to ``SyntaxEng.mkAdv`` above, except that ``E`` is not the name of a module, but an alias name defined in the ``open`` list.
+- in ``AttributeFact``, a qualified function ``E.GenNP`` is used; this is similar to ``SyntaxEng.mkAdv`` above, except that ``E`` is not the name of a module, but an alias name defined in the ``open`` list.
 
 
 ''\noindent''

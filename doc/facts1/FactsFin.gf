@@ -8,7 +8,7 @@ lincat
   Name = Str ;
 
 lin
-  AtomicFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
+  AttributeFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
 
   capital_Attribute = "pääkaupunki" ;
   area_Attribute = "pinta-ala" ;

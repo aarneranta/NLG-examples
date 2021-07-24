@@ -10,7 +10,7 @@ cat
   Name ;
 
 fun
-  AtomicFact : Attribute -> Object -> Value -> Fact ;
+  AttributeFact : Attribute -> Object -> Value -> Fact ;
 
   NameObject : Name -> Object ;
   NameValue : Name -> Value ;
