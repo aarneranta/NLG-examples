@@ -12,6 +12,6 @@
 \newcommand{\eop}[1]{\mbox{\textsl{#1}}}
 \newcommand{\ttop}[1]{\mbox{\texttt{#1}}}
 
-\title{Natural Language Generation \\ with the Grammatical Framework}
+\title{Natural Language Generation \\ with the \\ Grammatical Framework}
 
 

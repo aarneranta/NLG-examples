@@ -231,8 +231,8 @@ This applies in particular to **multilingual NLG**, where GF is perhaps the only
 
 Previous knowledge of GF from an introduction course (such as a summer school), the GF book (Ranta 2011), or an on-line tutorial, is useful for an in-depth understanding of the scope and limitations of GF.
 However, this document is meant to be self-contained: it can be followed by anyone with a basic knowledge of programming.
-What makes this possible is the GF Resource Grammar Library (RGL), which hides the linguistic details needed in multilingual NLG.
-The user of the RGL only needs to master a subset of the GF programming language, since many of the more specialized features are only needed when implementing the linguistic details of a new language in the RGL.
+What makes this possible is the **GF Resource Grammar Library** (**RGL**), which hides the linguistic details needed in multilingual NLG.
+When the RGL is used, the GF application programmer needs only to master a subset of the GF programming language, since many features of GF are only needed when implementing the linguistic details of a new language in the RGL.
 
 A special target group is those who want to contribute to the Abstract Wikipedia.
 Much of the data in our examples is collected from Wikidata, and the order of presentation follows the strategy outlined above where we proceed from atomic facts to second-order data.
@@ -242,13 +242,13 @@ Much of the data in our examples is collected from Wikidata, and the order of pr
 +A gradual introduction to NLG in GF+
 
 Let us start the work with a data set that is simple and well-known, yet rich enough to illustrate the main issues of NLG.
-The set is a table with information about countries from Wikidata.
+The set is a table with information about countries from Wikidata (in the category "sovereign states"). 
 The original query can be found in
 - https://w.wiki/3fV$
 
 
 ''\noindent''
-The results have been slighly edited, so that for instance each country appears only once in the result.
+The results have been edited slightly, so that, in particular, every country appears only once in the result.
 
 ''\scriptsize''
 || country | capital | area | population | continent | currency
@@ -261,6 +261,32 @@ The results have been slighly edited, so that for instance each country appears 
 | Argentina | Buenos Aires | 2780400 | 44938712 | South America | Argentine peso
 
 ''\normalsize''
+''\noindent''
+We will proceed bottom-up from the simplest kind of NLG to more involved:
+- Stage 1: atomic facts with templates to which data is inserted, e.g. //the capital of Argentina is Buenos Aires, the population of Argentina is 44938712, the continent of Argentina is South America//.
+- Stage 2: atomic facts with grammar, enabling other languages than English, with translations and proper inflections of names, e.g. Finnish //Suomi, Suomen, // ("Finland", "of Finland"), as well as idiomatic expressions for atomic facts, e.g. //Argentina has 44938712 inhabitants, Argentina is in South America//.
+- Stage 3: combinations of facts into fluent texts, e.g. //Argentina is a South American country with 44000000 inhabitants. Its area is 2780000 square kilometres. The capital of Argentina is Buenos Aires and its currency is Argentine peso.//
+- Stage 4: summaries and aggregation of data, e.g. //Brazil is the larges country in South America, with a population of over 210 million and an area of over 8 million square kilometres.//
+
+
+''\noindent''
+At each stage, we provide both GF and Python code.
+The essential parts of the code are shown and explained in the text, while the entire code can be find in GitHub,
+- https://github.com/aarneranta/NLG-examples
+
+
+''\noindent''
+in the subdirectories
+- ``doc/facts1`` for Stage 1,
+- ``doc/facts2`` for Stage 2,
+- ``doc/facts3`` for Stages 3 and 4
+
+
+''\noindent''
+In the exercises of this gradual introduction, readers are encouraged to apply the methods to their own languages and domains of interest.
+
+
+
 
 
 ++Atomic facts++
@@ -289,7 +315,7 @@ It constitutes a baseline from which the text can be improved with various NLG t
 It is a **canonical representation** of the data contained in the cells of a table, where the sentences stand in one-to-one correspondance with the data itself.
 
 
-++Baseline NLG code for atomic facts++
+++Stage 1: Baseline NLG for atomic facts++
 
 We will now start writing code for an NLG system and use atomic facts as the first step.
 We will show parts of the full code, which can be found in the directory ``facts1/``.
@@ -308,7 +334,7 @@ The abstract syntax defines a set of fact **trees** (**abstract syntax trees**),
 The concrete syntax shows how trees are **linearized**, i.e. converted to **strings** in a natural language.
 The strength of GF comes from the possibility to have several concrete syntaxes, each corresponding to a different language.
 Thus a multilingual NLG system can be built and extended by just adding GF modules, while leaving the Python files and data files intact.
-''Figure~\ref{mnlg}'' shows the structure of an NLG system based on this idea.
+The following diagram shows the structure of an NLG system based on this idea:
 '''
 \begin{center}
 \includegraphics[width=0.9\textwidth]{mnlg.png}
@@ -601,7 +627,7 @@ maan Zimbabwe valuutta on United States dollar
 ''\noindent''
 
 
-+++Testing the grammar with the GF shell+++
++++Testing grammars in the GF shell+++
 
 The GF shell, just like the Python shell, is a line-based tool that enables testing GF code while developing it.
 The following session shows some useful commands in the shell:
@@ -738,7 +764,7 @@ We will return to Wikidata many times later, but you can get a first feeling of 
 
 
 
-++Improving the NLG code for atomic facts++
+++Stage 2: Improving the NLG for atomic facts++
 
 We will now improve the quality of NLG by making full use of GF.
 The code for this can be found in the directory ``facts2/``.
@@ -810,15 +836,7 @@ abstract CountryNames = {
 
 cat CName ;
 
--- manually added: continent names
-fun AF_CName : CName ;
-fun AS_CName : CName ;
-fun EU_CName : CName ;
-fun NA_CName : CName ;
-fun OC_CName : CName ;
-fun SA_CName : CName ;
-
--- generated
+-- generated from Wikidata
 fun Africa_CName : CName ;
 fun Asia_CName : CName ;
 fun Central_America_CName : CName ;
@@ -927,7 +945,7 @@ lin
 ''\noindent''
 The only new notation in this module is the ``open`` directive on the first line.
 It means that the contents of the two modules, ``SyntaxEng`` and ``SymbolicEng``, become usable in the module body.
-But the contents are not inherited --- in fact, this would not even make sense, because the opened modules are not concrete syntaxes but of yet a different kind, **resource modules**.
+But the contents are not inherited --- in fact, this would not even make sense, because the opened modules are not concrete syntaxes but of yet another kind, **resource modules**.
 
 We do not need to write any resource modules ourselves at this point, but just use those available in the RGL (GF Resource Grammar Library).
 The three most important modules are, for each language with its language code as suffix,
@@ -1389,10 +1407,10 @@ However, a boolean parametre is preferrable, because in Finnish it affects many 
 
 
 
-++Building a text++
+++Stage 3: Building a fluent text++
 
 We have by now generated sentences for each atomic fact separately.
-Each country is thereby describe by five sentences.
+Each country is thereby described by five sentences.
 The repetitive text this gives has been slightly improved by specialized expressions for continent and population facts.
 But a lively text requires more radical measures:
 - replacement of names by **referring expressions**, such as pronouns (//it//) and definite descriptions (//the country//, //this European country//);
@@ -1423,7 +1441,7 @@ hover for referent
 
 
 
-++Data aggregation and content planning++
+++Stage 4: Data aggregation and content planning++
 
 Until now, we have built sentences and texts that accurately represent all information in a dataset.
 This is something that NLG in any case has to be able to do, at least on demand.
@@ -1457,7 +1475,85 @@ Hence attention has to be paid to **interaction**, where a human author can easi
 
 
 
-++Sharing code via a functor++
+++Sharing code between languages via a functor++
+
+The concrete syntax of ``Facts`` in ``facts3`` is built by using a **functor**, a.k.a. a **parameterized module** or an **incomplete module**.
+What makes it incomplete is that it imports one or more **interfaces**, which just declare the types of some functions but do not give their definitions.
+The definitions are given in **instances** of interfaces.
+The RGL is built in such a way that the modules ``Syntax`` and ``Symbolic`` are interfaces, which have different instances in different languages.
+We have already used this fact implicitly, when we have copied much of the code from English to Finnish, which is possible because the RGL modules for both have the same interface.
+But at this stage, we make a more systematic use of this, which makes it easier to extend the grammar with new functions and new languages.
+
+A functor module looks as follows:
+```
+incomplete concrete FactsFunctor of Facts =
+  open Syntax, Symbolic in {
+
+lincat
+  Doc = Text ;
+  Sentence = S ;
+  Fact = Cl ;
+  ...
+lin
+  OneSentenceDoc sent = mkText sent ;
+  AddSentenceDoc doc sent = mkText doc (mkText sent) ;
+  ConjSentence a b = mkS and_Conj a b ;
+  FactSentence fact = mkS presentTense positivePol fact ;
+  ...
+```
+''\noindent''
+Except for the header, it looks //exactly// like a normal concrete syntax.
+The differences in the header are
+- the keyword ``incomplete``,
+- opening interfaces rather than complete resource modules.
+
+
+The **instantiation** of a functor looks as follows:
+```
+concrete FactsEng of Facts = FactsFunctor with
+  (Syntax = SyntaxEng),
+  (Symbolic = SymbolicEng)
+  ;
+```
+''\noindent''
+That is, it only needs to indicate what instances is interface has.
+
+Functors help extending a grammar in both the abstract and concrete dimensions:
+- to add an abstract function, its concrete syntax only needs to be defined in the functor,
+- to add a language, its concrete syntax needs only a few lines of trivial GF code.
+
+
+''\noindent''
+For example, a German concrete syntax can be written
+```
+concrete FactsGer of Facts = FactsFunctor with
+  (Syntax = SyntaxGer),
+  (Symbolic = SymbolicGer)
+  ;
+```
+
+But what to do if the functor definitions are not good enough for a language.
+They are guaranteed to be grammatically correct (modulo the correctness of the RGL), but can be clumsy.
+For these situations, one can use **restricted inheritance** from the functor, simply excluding some of its definitions and replacing them by the desired ones:
+```
+concrete FactsFin of Facts =
+  FactsFunctor - [AttributeFact]
+  with
+    (Syntax = SyntaxFin),
+    (Symbolic = SymbolicFin) **
+  open ParadigmsFin,(E=ExtendFin) in {
+
+lin
+  AttributeFact attr obj val = mkCl (mkNP (E.GenNP obj.np) attr) val ;
+}
+```
+''\noindent''
+This forces the deviant rule for attribute facts in Finnish, which was discussed above.
+
+In our experience, restricted inheritance is used only for a small minority of functions in different languages.
+Hence the use of functors is a productive way to build multilingual grammars.
+If moreover the translations of names can be extracted from data, adding a new language is almost an automatic task - provided that it is included in the RGL.
+
 
 
 ++Where is the standard NLG pipeline?++
@@ -1468,7 +1564,7 @@ Hence attention has to be paid to **interaction**, where a human author can easi
 
 +Generation from formal languages+
 
-- a more systematic view of second-order data
+- a more systematic view of second-order data is logical formulas that can be treated as data
 - in earlier project, content-planning has been taken for granted, as the formal structures have been given
 
 

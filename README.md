@@ -1,5 +1,14 @@
 # NLG-examples with GF in Haskell and Python
 
+## Tutorial on NLG in GF: `doc/`
+
+This tutorial is meant for programmers unfamiliar with GF but with
+experience in Python.
+It has a particular focus on NLG from Wikidata.
+It gives a gradual reconstruction of the code in `countries/`, also
+trying to do it in a more scalable and modifieable way.
+
+
 ## Facts about countries: `countries/`
 
 This is an example of GF-based natural language generation.
