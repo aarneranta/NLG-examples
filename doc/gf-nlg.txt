@@ -75,6 +75,110 @@ In this document, we will introduce the solution provided by Grammatical Framewo
 
 ++What is NLG good for?++
 
+Traditionally, NLG is often used because of its **speed** and **low price**.
+Once an NLG system for sport events or financial data or weather report is in place, it can produce new documents automatically and in seconds, as opposed to human reporters working for hours against payment.
+Such a system can also guarantee **correctness**, as it is free from accidental errors in converting data to text.
+A related aspect is **uniformity**: it can create documents in a specific format without any deviations, which means that if the documents are used for instance for decision making, their readers can easily find the information they want.
+
+With uniformity comes also the risk of **monotony**, which means that the texts might not be entertaining to read.
+This affects the cost/benefit balance of NLG, because readers might not be willing to pay as much for NLG-produced texts as for natural ones.
+The initial **cost** of NLG can of course be high in itself, since building a system is expert work that pays off only when the volume of produced texts is high enough; this has been witnessed by companies that have investigated potential uses of NLG in their business.
+The cost can be particularly high for **languages other than English**, where building the system can be more demanding (because of complex grammar and lack of existing resources).
+Most existing NLG targets English, and so for instance languages of developing countries - whose speakers might need it the most because of lack of human-written text - seldom have access to NLG systems.
+
+The balance between advantages and problems in NLG changes if move from monolingual to **multilingual** NLG.
+Think about a technology with the following characteristics:
+- it can generate many languages from the same data;
+- adding a new language is much cheaper than starting with the first language.
+
+
+''\noindent''
+Such an NLG system could be used for the **dissemination of information** simultaneously to many languages.
+It would enable
+- authorities to keep all linguistic groups in a region informed in a uniform way,
+- companies to market their products at many markets simultaneously,
+- ideal organizations to disseminate information world-wide.
+
+
+''\noindent''
+This kind of system is precisely what our target is in this tutorial.
+In the 23 years of GF, previous experience has been gained from numerous NLG applications, for example,
+- mathematics education material (WebALT),
+- descriptions of paintings in museums (MOLTO),
+- product descriptions in e-commerce (Digital Grammars, Textual),
+- descriptions of buildings from accessibility perspective (Digital Grammars, Tillgänglighetsdatabasen),
+- software and system specifications (KeY, Altran).
+
+
+''\noindent''
+From the users' point of view, multilingual NLG is often introduced as a replacement of **translation**.
+The starting point is a workflow where
+- a copywriter produces a **master document** (usually in English) based on some data,
+- translators translate the master document to different languages.
+
+
+''\noindent''
+To reduce the cost and improve the speed and consistency of this completely manual process, an often used method is **machine translation**: only the master document needs a human author, whereas the translations are done automatically.
+From the NLG perspective, this is a very roundabout procedure: why translate an English text when one could generate different languages (including English) directly from the data?
+
+Machine translation can in fact be seen as an application, or extension, of NLG.
+NLG goes from data to texts.
+Translation adds to this a component that goes from text to data.
+The data is, by definition, something **structured** and **formal**.
+Unlike natural language, it is **unambiguous**.
+The NLG part of translation (from data to text) is therefore **deterministic**.
+The text-to-data part, in contrast, requires **ambiguity resolution**, which is the most demanding part of translation: no algorithm has so far succeeded to perform it in a completely reliable way.
+Therefore NLG can be not only a cheaper solution to multilingual dissemination, but also yield better quality.
+
+
++++Abstract Wikipedia+++
+
+The Wikipedia is an on-line freely available encyclopedia on the internet.
+It has been built by millions of authors, together producing over 20 million articles in over 300 languages.
+Those languages, however, vary immensely in coverage and quality:
+- English has much more articles than other languages,
+- many articles available in other languages are not available in English,
+- the quality and length of corresponding articles in different languages can vary a lot.
+
+
+''\noindent''
+**Abstract Wikipedia** is an initiative from the Wikimedia foundation to solve this problem by the use of NLG.
+The basis of NLG is data stored in **Wikidata**, which is a database containing basic facts (in the form of RDF triples, such as (France,capital,Paris)).
+Wikidata is already used for generating some parts of Wikipedia articles, for instance, in the fact boxes.
+The vision of Abstract Wikipedia is to generalize this in terms of both language coverage and richer content.
+
+The following tutorial is structured with the Abstract Wikipedia in mind.
+We proceed bottom-up as follows:
+- atomic facts: direct renderings of RDF triples,
+- more idiomatic ways to express atomic facts,
+- texts consisting of combining facts in more fluent ways than just listing them,
+- selecting facts and inferring interesting generalizations from them.
+
+
+''\noindent''
+All of this can be made into a fully automatic process, for which we will show code that combines GF and Python.
+However, the last step, selecting interesting content, cannot be fully automated.
+Therefore the ultimate outcome is an **interactive NLG system**, where a human is in the loop filtering the data and restructuring it in the way that can result in relevant and fluent Wikipedia articles.
+
+Having a human in the loop resembles the set-up with a copywriter of a master document.
+But in this case, the master document is not English but a formal representation of an **abstract syntax**: a data structure that combines source content with a specification of syntactic structure.
+It is a kind of **second-order data** (where Wikidata itself is first-order), which still has the virtue of enabling deterministic NLG, at the same time as its correctness can be verified in relation to the first-order data.
+
+The scale of Abstract Wikipedia is enormous, just thinking about the combination of 20 million articles and 300 languages.
+For GF, this means scaling up from 40 languages to 300, and from a few special areas of knowledge to everything under the sun.
+There is also a new technological challenge: how to enable Wikipedia authors to produce master documents in abstract syntax with an effort not much higher than writing them in English.
+
+All in all, we can see the Abstract Wikipedia as a "man on the moon" project of NLG.
+It is vastly more demanding than anything done before --- but at the same time, we know enough about the science and technology that is needed to be convinced that it can be done.
+It is mostly a matter of resources and effort.
+
+
+
+
+
+
+
+
 
 ++Who is this document for?++
 
@@ -88,7 +192,7 @@ What makes this possible is the GF Resource Grammar Library (RGL), which hides t
 The user of the RGL only needs to master a subset of the GF programming language, since many of the more specialized features are only needed when implementing the linguistic details of a new language in the RGL.
 
 A special target group is those who want to contribute to the Abstract Wikipedia.
-Much of the data in our examples is collected from Wikidata.
+Much of the data in our examples is collected from Wikidata, and the order of presentation follows the strategy outlined above where we proceed from atomic facts to second-order data.
 
 
 
@@ -1321,8 +1425,38 @@ Hence attention has to be paid to **interaction**, where a human author can easi
 
 +Generation from formal languages+
 
+- a more systematic view of second-order data
+- in earlier project, content-planning has been taken for granted, as the formal structures have been given
 
-+A high-level API for NLG structures+
+
+++Predicate calculus++
+
+- the CADE paper 2011 presents an architecture that has shown useful
+- the Haskell part is here rewritten in Python
+
+
+++Query languages++
+
+- SQL and relational databases
+- SPARQL and Wikidata
+- the CADE architecture in action
+- two-way conversions (also from NL to formal)
+
+
+++Specification languages++
+
+- OCL and Z
+- examples of really large documents
+- engineer, manager, and customer views
+- the CADE architecture in action
+- two-way conversions (also from NL to formal)
+
+
+
++An API for NLG functionalities+
+
+- documentation of the most mature state reached above
+
 
 
 
