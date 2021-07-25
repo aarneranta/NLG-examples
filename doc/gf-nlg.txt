@@ -1,6 +1,42 @@
-Natural Language Generation with the Grammatical Framework
+NLGGF
 Aarne Ranta
 
+
+%!Encoding:utf8
+%!postproc(tex): "\\documentclass{article}" ""
+%!postproc(tex): "\\title{NLGGF}" ""
+%!postproc(tex): "colorlinks=true" "colorlinks=true,citecolor=black"
+%!postproc(tex): "urlcolor=blue" "urlcolor=black,linkcolor=black"
+%!postproc(tex): "\\section" "\\chapter"
+%!postproc(tex): "\\subsection" "\\section"
+%!postproc(tex): "\\subsubsection*{" "\\subsection{"
+%!postproc(tex): "\\subsection*{" "\\subsection{"
+%!postproc(tex): "#BEQU" "begin{quote}"
+%!postproc(tex): "#ENQU" "end{quote}"
+%!postproc(tex): "#BECE" "begin{center}"
+%!postproc(tex): "#ENCE" "end{center}"
+%!postproc(tex): "#NEW" "mbox{}"
+%!postproc(tex): "#SMALL" "small"
+%!postproc(tex): "#ARROW" "lrarrow"
+%!postproc(tex): "#NORMAL" "normalsize"
+%!postproc(tex): "#NOINDENT" "noindent"
+%!postproc(tex): "#ENDDOC" "end{document}"
+%!postproc(tex): #FURTHER "mbox{}"
+%!postproc(tex): "#BERE" "begin{quote}"
+%!postproc(tex): "#ENRE" "end{quote}"
+%!postproc(tex): "#LB" "lbreak"
+
+
+'''
+\newcommand{\indxbf}[1]{\index{#1}{\textbf{#1}}}
+\newcommand{\ixbf}[2]{\index{#2}{\textbf{#1}}}
+\newcommand{\ixnobf}[2]{\index{#2}{#1}}
+\newcommand{\closure}[2]{#1\{#2\}}
+\newcommand{\bequ}{\begin{quote}}
+\newcommand{\enqu}{\end{quote}}
+\newcommand{\lbreak}{\\}
+\newcommand{\lrarrow}{$\;\longrightarrow\;$}
+'''
 
 +Introduction+
 
@@ -21,8 +57,9 @@ From this data, a very simple NLG system can produce the sentences
 
 ''\noindent''
 These sentences essentially list the individual facts in the data, row by row from the table.
-The system can still be useful, for instance as a device to feed the data to speech synthesis.
-A step beyond this is not just to list the data point by point, but also express interesting observations or summaries based on the data.
+This simple system can still be useful, for instance as a device to feed the data to speech synthesis.
+
+A step beyond the simplest conceivable system is not just to list the data point by point, but also express interesting observations or summaries based on the data.
 Thus a slightly more advanced NLG system could also produce
 - //United States has over seven times more inhabitants than Argentina.//
 
@@ -72,13 +109,24 @@ Even the order of words may have to vary as a function of what data is described
 Building in correct grammar into NLG is a nontrivial task, but it can be helped by software tools and libraries.
 In this document, we will introduce the solution provided by Grammatical Framework (GF), which has been used in NLG for over 40 languages.
 
+Another recent trend in NLG is **language models**, such as BERT.
+They are algorithms that can produce text automatically by continuing a given text in the "most probable" way, based on a vast collection of already seen texts.
+While these systems can produce impressive and natural-looking texts, a closer inspection often reveals them to be nonsense.
+The problem is that language models only model the language, without relation to data outside the language.
+Another problem is that models of appropriate size are very costly to build (in terms of money and even of climate impact).
+What is more, many languages of interest simply do not have enough data available to build such models.
+
+We will consider language models as a way to help GF-based NLG to find the most natural renderings of data.
+But we will stress the utility of rule-based, fully controllable methods to generate language that is faithful to the content we want NLG to express.
+
+
 
 ++What is NLG good for?++
 
-Traditionally, NLG is often used because of its **speed** and **low price**.
-Once an NLG system for sport events or financial data or weather report is in place, it can produce new documents automatically and in seconds, as opposed to human reporters working for hours against payment.
+Traditionally, NLG is used for text production because of its **low price** and **speed**.
+Once an NLG system for sport events or financial data or weather reports is in place, it can produce new documents for free and in seconds, as opposed to human reporters working against payment for hours.
 Such a system can also guarantee **correctness**, as it is free from accidental errors in converting data to text.
-A related aspect is **uniformity**: it can create documents in a specific format without any deviations, which means that if the documents are used for instance for decision making, their readers can easily find the information they want.
+A related aspect is **uniformity**: NLG can create documents in a specific format without any deviations, which means that if the documents are used for instance for decision making, their readers can easily find the information they want.
 
 With uniformity comes also the risk of **monotony**, which means that the texts might not be entertaining to read.
 This affects the cost/benefit balance of NLG, because readers might not be willing to pay as much for NLG-produced texts as for natural ones.
@@ -86,7 +134,7 @@ The initial **cost** of NLG can of course be high in itself, since building a sy
 The cost can be particularly high for **languages other than English**, where building the system can be more demanding (because of complex grammar and lack of existing resources).
 Most existing NLG targets English, and so for instance languages of developing countries - whose speakers might need it the most because of lack of human-written text - seldom have access to NLG systems.
 
-The balance between advantages and problems in NLG changes if move from monolingual to **multilingual** NLG.
+The balance between advantages and problems in NLG changes if we move from monolingual to **multilingual** NLG.
 Think about a technology with the following characteristics:
 - it can generate many languages from the same data;
 - adding a new language is much cheaper than starting with the first language.
@@ -101,10 +149,11 @@ It would enable
 
 
 ''\noindent''
-This kind of system is precisely what our target is in this tutorial.
+This kind of system is precisely the target of this tutorial.
 In the 23 years of GF, previous experience has been gained from numerous NLG applications, for example,
 - mathematics education material (WebALT),
 - descriptions of paintings in museums (MOLTO),
+- healthcare documents in underresourced languages (Meraka Institute, South Africa),
 - product descriptions in e-commerce (Digital Grammars, Textual),
 - descriptions of buildings from accessibility perspective (Digital Grammars, Tillgänglighetsdatabasen),
 - software and system specifications (KeY, Altran).
@@ -114,12 +163,12 @@ In the 23 years of GF, previous experience has been gained from numerous NLG app
 From the users' point of view, multilingual NLG is often introduced as a replacement of **translation**.
 The starting point is a workflow where
 - a copywriter produces a **master document** (usually in English) based on some data,
-- translators translate the master document to different languages.
+- translators translate the master document into different languages.
 
 
 ''\noindent''
 To reduce the cost and improve the speed and consistency of this completely manual process, an often used method is **machine translation**: only the master document needs a human author, whereas the translations are done automatically.
-From the NLG perspective, this is a very roundabout procedure: why translate an English text when one could generate different languages (including English) directly from the data?
+From the NLG perspective, this is a very roundabout procedure: why write an English document to describe the data and translate the English text, when one could generate different languages (including English) directly from the data?
 
 Machine translation can in fact be seen as an application, or extension, of NLG.
 NLG goes from data to texts.
@@ -138,7 +187,7 @@ It has been built by millions of authors, together producing over 20 million art
 Those languages, however, vary immensely in coverage and quality:
 - English has much more articles than other languages,
 - many articles available in other languages are not available in English,
-- the quality and length of corresponding articles in different languages can vary a lot.
+- the quality and length of corresponding articles in different languages varies.
 
 
 ''\noindent''
@@ -170,13 +219,7 @@ There is also a new technological challenge: how to enable Wikipedia authors to 
 
 All in all, we can see the Abstract Wikipedia as a "man on the moon" project of NLG.
 It is vastly more demanding than anything done before --- but at the same time, we know enough about the science and technology that is needed to be convinced that it can be done.
-It is mostly a matter of resources and effort.
-
-
-
-
-
-
+It is just a matter of resources and effort.
 
 
 

@@ -1,0 +1,17 @@
+\documentclass[12pt]{book}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{framed}
+
+\makeindex
+
+\newcommand{\sembrack}[1]{[\![#1]\!]}
+\newcommand{\subex}[2]{#1_{#2}}
+\newcommand{\commentOut}[1]{}
+\newcommand{\eop}[1]{\mbox{\textsl{#1}}}
+\newcommand{\ttop}[1]{\mbox{\texttt{#1}}}
+
+\title{Natural Language Generation \\ with the Grammatical Framework}
+
+
