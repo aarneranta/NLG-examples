@@ -1591,10 +1591,20 @@ If moreover the translations of names can be extracted from data, adding a new l
 - two-way conversions (also from NL to formal)
 
 
+++CNL as a formal language++
+
+- e.g. Attempto Controlled English (ACE)
+- as formal as any, if we have a parser - just easier for a layman to read or write
+- essentially what is used in ``facts3/country_facts.country_texts_parsed``
+
 
 +An API for NLG functionalities+
 
-- documentation of the most mature state reached above
+- documentation of the most mature state reached in the project
+- morphological lexica
+- semantic multilingual lexica
+- semantic RGL level, e.g. tenses, referring expressions
+- CNL for fact documentation
 
 
 
