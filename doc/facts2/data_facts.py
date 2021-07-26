@@ -27,6 +27,10 @@ class FactSystem:
         except:
             print("WARNING:","no", cat, "from", s)
             return pgf.Expr(s,[])
+
+    def exp2str(self,exp):
+        eng = self.grammar.languages[self.language1]
+        return eng.linearize(exp)
         
     def run(self,datafile,fact_generator):
         gr = self.grammar
