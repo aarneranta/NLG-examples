@@ -109,7 +109,7 @@ Even the order of words may have to vary as a function of what data is described
 Building in correct grammar into NLG is a nontrivial task, but it can be helped by software tools and libraries.
 In this document, we will introduce the solution provided by Grammatical Framework (GF), which has been used in NLG for over 40 languages.
 
-Another recent trend in NLG is **language models**, such as BERT.
+Another recent trend in NLG is **language models**, such as BERT and GPT-3; the idea was originally conceived by Shannon in the 1940.
 They are algorithms that can produce text automatically by continuing a given text in the "most probable" way, based on a vast collection of already seen texts.
 While these systems can produce impressive and natural-looking texts, a closer inspection often reveals them to be nonsense.
 The problem is that language models only model the language, without relation to data outside the language.
@@ -123,7 +123,7 @@ But we will stress the utility of rule-based, fully controllable methods to gene
 
 ++What is NLG good for?++
 
-Traditionally, NLG is used for text production because of its **low price** and **speed**.
+NLG is used for text production because of its **low price** and **high speed**.
 Once an NLG system for sport events or financial data or weather reports is in place, it can produce new documents for free and in seconds, as opposed to human reporters working against payment for hours.
 Such a system can also guarantee **correctness**, as it is free from accidental errors in converting data to text.
 A related aspect is **uniformity**: NLG can create documents in a specific format without any deviations, which means that if the documents are used for instance for decision making, their readers can easily find the information they want.
