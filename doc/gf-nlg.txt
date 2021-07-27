@@ -46,13 +46,13 @@ Natural Language Generation (NLG) is a programming task where data is converted 
 An example is a table that lists countries and their populations:
 
 || country  | population
-| Argentina | 41343201 
-| United States | 310232863
+| Argentina | 44938712 
+| United States | 331449281
 
 ''\noindent''
 From this data, a very simple NLG system can produce the sentences
-- //The population of Argentina is 41343201.//
-- //The population of United States is 310232863.//
+- //The population of Argentina is 44938712.//
+- //The population of United States is 331449281.//
 
 
 ''\noindent''
@@ -162,13 +162,23 @@ In the 23 years of GF, previous experience has been gained from numerous NLG app
 ''\noindent''
 From the users' point of view, multilingual NLG is often introduced as a replacement of **translation**.
 The starting point is a workflow where
-- a copywriter produces a **master document** (usually in English) based on some data,
+- a technical writer (or a copywriter) produces a **master document** (usually in English) based on some data,
 - translators translate the master document into different languages.
 
 
+'''
+\begin{center}
+\includegraphics[width=0.8\textwidth]{traditional.png}
+\end{center}
+'''
 ''\noindent''
 To reduce the cost and improve the speed and consistency of this completely manual process, an often used method is **machine translation**: only the master document needs a human author, whereas the translations are done automatically.
 From the NLG perspective, this is a very roundabout procedure: why write an English document to describe the data and translate the English text, when one could generate different languages (including English) directly from the data?
+'''
+\begin{center}
+\includegraphics[width=0.6\textwidth]{nlg.png}
+\end{center}
+'''
 
 Machine translation can in fact be seen as an application, or extension, of NLG.
 NLG goes from data to texts.
@@ -209,9 +219,21 @@ All of this can be made into a fully automatic process, for which we will show c
 However, the last step, selecting interesting content, cannot be fully automated.
 Therefore the ultimate outcome is an **interactive NLG system**, where a human is in the loop filtering the data and restructuring it in the way that can result in relevant and fluent Wikipedia articles.
 
-Having a human in the loop resembles the set-up with a copywriter of a master document.
+Having a human in the loop resembles the set-up with a technical writer of a master document.
 But in this case, the master document is not English but a formal representation of an **abstract syntax**: a data structure that combines source content with a specification of syntactic structure.
 It is a kind of **second-order data** (where Wikidata itself is first-order), which still has the virtue of enabling deterministic NLG, at the same time as its correctness can be verified in relation to the first-order data.
+'''
+\begin{center}
+\includegraphics[width=0.8\textwidth]{int-nlg.png}
+\end{center}
+'''
+'''
+\noindent
+'''
+Notice that the abstract syntax does not need to be a formal notation.
+It can look exactly like natural language, as long as it is a **controlled natural language** (**CNL**).
+A CNL is a formally defined subset of natural language, which has an unambiguous syntax and semantics.
+With the methods to be presented here, a CNL comes in as a natural input mode for interactive NLG.
 
 The scale of Abstract Wikipedia is enormous, just thinking about the combination of 20 million articles and 300 languages.
 For GF, this means scaling up from 40 languages to 300, and from a few special areas of knowledge to everything under the sun.
@@ -264,7 +286,7 @@ The results have been edited slightly, so that, in particular, every country app
 ''\noindent''
 We will proceed bottom-up from the simplest kind of NLG to more involved:
 - Stage 1: atomic facts with templates to which data is inserted, e.g. //the capital of Argentina is Buenos Aires, the population of Argentina is 44938712, the continent of Argentina is South America//.
-- Stage 2: atomic facts with grammar, enabling other languages than English, with translations and proper inflections of names, e.g. Finnish //Suomi, Suomen, // ("Finland", "of Finland"), as well as idiomatic expressions for atomic facts, e.g. //Argentina has 44938712 inhabitants, Argentina is in South America//.
+- Stage 2: atomic facts with grammar, enabling other languages than English, with translations and proper inflections of names, e.g. Finnish //Suomi, Suomen// ("Finland", "of Finland"), as well as idiomatic expressions for atomic facts, e.g. //Argentina has 44938712 inhabitants, Argentina is in South America//.
 - Stage 3: combinations of facts into fluent texts, e.g. //Argentina is a South American country with 44000000 inhabitants. Its area is 2780000 square kilometres. The capital of Argentina is Buenos Aires and its currency is Argentine peso.//
 - Stage 4: summaries and aggregation of data, e.g. //Brazil is the larges country in South America, with a population of over 210 million and an area of over 8 million square kilometres.//
 
@@ -738,7 +760,7 @@ Thus in Wikidata, the fact that Cairo is the capital of Egypt is represented as 
 where ``wd:Q85`` is an identifier for Cairo, ``wd:Q79`` for Egypt, and ``wdt:Q85`` for the relation "is the capital of".
 
 Wikidata is accessible via its query interface https://query.wikidata.org/.
-In this interface, one can write queries in the SPARQL language (**SPARQL Protogol and RDF Query Language**) and get answers in a tabular form.
+In this interface, one can write queries in the SPARQL language (**SPARQL Protocol and RDF Query Language**) and get answers in a tabular form.
 For example, the following SPARQL query generates a table of countries and their capitals:
 ```
 select ?city ?country ?cityLabel ?countryLabel {
