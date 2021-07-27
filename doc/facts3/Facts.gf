@@ -37,4 +37,15 @@ fun
   NameValue : Name -> Value ;
   IntValue : Int -> Value ;
 
+--------------------
+-- data aggregation
+
+  CountKindFact : Int -> Kind -> Fact ;
+  CountKindModifierFact : Int -> Kind -> Modifier -> Fact ;
+  MaxObjectAttributeFact : Object -> Attribute -> Fact ;
+  MinObjectAttributeFact : Object -> Attribute -> Fact ;
+  SumAttributeFact : Attribute -> Object -> Int -> Fact ;
+
+  UniqueInKindFact : Object -> Kind -> Fact ;
+
 }

@@ -18,8 +18,13 @@ lin
   currency_Kind = mkCN (mkN "currency") ;
   inhabitant_Kind = mkCN (mkN "inhabitant") ;
 
+  the_world_CName = mkNP the_Det (mkN "world") ;
+
   populationFact cname int = mkCl cname have_V2 (mkNP <symb int : Card> (mkN "inhabitant")) ;
   continentFact cname name = mkCl cname (SyntaxEng.mkAdv in_Prep name) ;
+
+  inCNameModifier cname = SyntaxEng.mkAdv in_Prep cname ;
+  inCDNameModifier cname = SyntaxEng.mkAdv in_Prep cname.np ;
 
 oper
   mkAttribute : Str -> CN = \s -> mkCN (mkN s) ;

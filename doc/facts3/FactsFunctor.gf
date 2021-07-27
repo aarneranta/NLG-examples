@@ -1,4 +1,10 @@
-incomplete concrete FactsFunctor of Facts = open Syntax, Symbolic, Prelude in {
+incomplete concrete FactsFunctor of Facts = open
+  Syntax,
+  Symbolic,
+  Grammar,
+  Prelude
+
+in {
 
 lincat
   Doc = Text ;
@@ -39,7 +45,28 @@ lin
   NameValue name = name ;
   IntValue int = symb int ;
 
+--------------------
+-- data aggregation
+
+  CountKindFact int kind = mkCl (mkNP <symb int : Card> kind) ;
+  CountKindModifierFact int kind mod = Grammar.ExistNPAdv (mkNP <symb int : Card> kind) mod ;
+  MaxObjectAttributeFact obj attr = mkCl obj.np have_V2 (mkNP the_Det (mkCN largest_AP attr)) ;
+  MinObjectAttributeFact obj attr = mkCl obj.np have_V2 (mkNP the_Det (mkCN smallest_AP attr)) ;
+  SumAttributeFact attr obj int = AttributeFact (mkCN total_AP attr) obj (IntValue int) ;
+
+  UniqueInKindFact obj kind = mkCl obj.np (mkNP the_Det (mkCN only_AP kind)) ;
+
+  
+-------------------
 oper
   npPron : NP -> Pron = \np -> it_Pron ;
+
+----------------------
+-- functor parameters
+
+-- largest_AP : AP
+-- smallest_AP : AP
+-- total_AP : AP
+-- only_AP : AP
 
 }
