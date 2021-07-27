@@ -11,5 +11,6 @@ oper
   smallest_AP : AP = GrammarEng.AdjOrd (mkOrd (mkA "small")) ;
   total_AP : AP = mkAP (mkA "total") ; 
   only_AP : AP = mkAP (mkA "only") ; 
-
+  million_N = mkN "million" "million" ;
+  billion_N = mkN "billion" "billion" ;
 }

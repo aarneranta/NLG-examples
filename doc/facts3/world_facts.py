@@ -10,17 +10,18 @@ def world_texts(factsys,data):
     facts = []
     
     ncountries = len(data)
-        
-    doc = factsys.str2exp("Doc",
-                ("there are {} countries in the world.").format(ncountries))
-    facts.append(doc)
+    largestpop = max(data, key=lambda c: int(c.population)).country
+    largestarea = max(data, key=lambda c: int(c.area)).country
+    totalpop = sum([int(c.population) for c in data])//1000000
+
+    facts.append(
+        factsys.str2exp("Doc",
+          ("there are {} countries in the world.").format(ncountries)))
+    facts.append(factsys.str2exp("Doc",
+          ("{} has the largest population and {} has the largest area.").format(largestpop,largestarea)))
+    facts.append(factsys.str2exp("Doc",
+          ("the population of the world is {} million.").format(totalpop)))
     
-    largest = max(data, key=lambda c: int(c.population)).country
-
-    doc = factsys.str2exp("Doc",
-                ("{} has the largest population.").format(largest))
-
-    facts.append(doc)
     return facts
     
         

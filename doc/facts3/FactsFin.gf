@@ -17,5 +17,8 @@ oper
   largest_AP : AP = GrammarFin.AdjOrd (mkOrd (mkA (mkN "suuri" "suuria"))) ;
   smallest_AP : AP = GrammarFin.AdjOrd (mkOrd (mkA (mkN "pieni" "pieniä"))) ;
   total_AP : AP = mkAP (mkA "yhteenlaskettu") ; 
-  only_AP : AP = mkAP (mkA "ainoa") ; 
+  only_AP : AP = mkAP (mkA "ainoa") ;
+  million_N = mkN "miljoona" ;
+  billion_N = mkN "miljardi" ;
+
 }

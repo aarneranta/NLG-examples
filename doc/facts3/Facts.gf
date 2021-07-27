@@ -37,6 +37,9 @@ fun
   NameValue : Name -> Value ;
   IntValue : Int -> Value ;
 
+  IntMillionValue : Int -> Value ;
+  IntBillionValue : Int -> Value ;
+
 --------------------
 -- data aggregation
 

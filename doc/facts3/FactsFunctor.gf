@@ -45,6 +45,9 @@ lin
   NameValue name = name ;
   IntValue int = symb int ;
 
+  IntMillionValue int = mkNP <symb int : Card> million_N ;
+  IntBillionValue int = mkNP <symb int : Card> billion_N ;
+  
 --------------------
 -- data aggregation
 
@@ -68,5 +71,7 @@ oper
 -- smallest_AP : AP
 -- total_AP : AP
 -- only_AP : AP
+-- million_N : N ;
+-- billion_N : N ;
 
 }

@@ -39,7 +39,7 @@ class FactSystem:
         for lang in langs:
             text = []
             for tree in fact_generator(self,data):
-                text.append(lang.linearize(tree))
+                text.append(lang.linearize(tree).capitalize())
             print('\n'.join(text))
 
 
