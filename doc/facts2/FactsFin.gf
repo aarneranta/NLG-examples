@@ -9,7 +9,7 @@ lincat
   Name = NP ;
 
 lin
-  AttributeFact prop obj val = mkCl (mkNP (E.GenNP obj) prop) val ;
+  AttributeFact attr obj val = mkCl (mkNP (E.GenNP obj) attr) val ;
   NameObject name = name ;
   NameValue name = name ;
   IntValue int = symb int ;

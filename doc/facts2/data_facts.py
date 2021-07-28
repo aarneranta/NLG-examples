@@ -30,6 +30,9 @@ class FactSystem:
     def exp2str(self,exp):
         eng = self.grammar.languages[self.language1]
         return eng.linearize(exp)
+
+    def data2lin(self,cat,s):
+        return self.exp2str(self.str2exp(cat,s))
         
     def run(self,datafile,fact_generator):
         gr = self.grammar

@@ -529,7 +529,7 @@ lincat
   Name = Str ;
 
 lin
-  AttributeFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val ;
+  AttributeFact attr obj val = "the" ++ attr ++ "of" ++ obj ++ "is" ++ val ;
 
   capital_Attribute = "capital" ;
   area_Attribute = "area" ;
@@ -560,7 +560,7 @@ We will extend it to richer types later.
 The linearization functions are defined with expressions that combine **variables** with **string literals**.
 Thus the first rule
 ```
-  AttributeFact prop obj val = "the" ++ prop ++ "of" ++ obj ++ "is" ++ val
+  AttributeFact attr obj val = "the" ++ attr ++ "of" ++ obj ++ "is" ++ val
 ```
 ''\noindent''
 uses the variables ``prop``, ``obj``, and ``val``, which stand for the arguments of the function, and the literals ``"the"``, ``"of"``, and ``"is"``.
@@ -576,7 +576,7 @@ concrete FactsGer of Facts = {
 -- lincat as in FactsEng
 
 lin
-  AttributeFact prop obj val = prop ++ "von" ++ obj ++ "ist" ++ val ;
+  AttributeFact attr obj val = attr ++ "von" ++ obj ++ "ist" ++ val ;
 
   capital_Attribute = "die Hauptstadt" ;
   area_Attribute = "die Fläche" ;
@@ -593,7 +593,7 @@ The GitHub directory contains (at the time of writing), also Finnish.
 
 A potentially useful hack, common in templates-based NLG, is shown in ``FactsFin``:
 ```
-  AttributeFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
+  AttributeFact attr obj val = "maan" ++ obj ++ attr ++ "on" ++ val ;
 ```
 ''\noindent''
 When assigning an attribute to country name, the name must be inflected in the genitive.
@@ -719,7 +719,7 @@ The following classes and methods are used in this first version of Python NLG:
 
 
 - ``Concr``, class of concrete syntaxes obtained from PGF languages:
-  - ``PGF.languages``, class variable with a dictionary mapping module names to ``Concr`` objects,
+  - ``PGF.languages``, class   < variable with a dictionary mapping module names to ``Concr`` objects,
   - Concr.linearize(expr), linearization function for trees.
 
 
@@ -749,27 +749,24 @@ def get_countries(filename):
     return countries
 
 #for each tuple, build a list of GF trees, one for each atomic fact
-def country_facts(c):
-  object = mkApp('NameObject', [mkName(c.country)])
+  object = pgf.Expr('NameObject', [mkName(c.country)])
   return [
-    mkApp('AttributeFact',[mkApp(prop,[]),object,val])
-      for (prop,val) in [
-        ('capital_Attribute',    mkApp('NameValue',[mkName(c.capital)])),
-        ('area_Attribute',       mkApp('IntValue', [mkInt(c.area)])),
-        ('population_Attribute', mkApp('IntValue', [mkInt(c.population)])),
-        ('continent_Attribute',  mkApp('NameValue',[mkName(c.continent)])),
-        ('currency_Attribute',   mkApp('NameValue',[mkName(c.currency)]))
+    pgf.Expr('AttributeFact',[pgf.Expr(attr,[]),object,val])
+      for (attr,val) in [
+        ('capital_Attribute',    pgf.Expr('NameValue',[mkName(c.capital)])),
+        ('area_Attribute',       pgf.Expr('IntValue', [mkInt(c.area)])),
+        ('population_Attribute', pgf.Expr('IntValue', [mkInt(c.population)])),
+        ('continent_Attribute',  pgf.Expr('NameValue',[mkName(c.continent)])),
+        ('currency_Attribute',   pgf.Expr('NameValue',[mkName(c.currency)]))
         ]
     ]
 
-# auxiliary functions for building trees
-def mkApp(f,xs):  # applying a function to subtrees
-    return pgf.Expr(f,xs)
-
-def mkInt(s):  # building an integer literal from a string
+# building an integer literal from a string
+def mkInt(s):  
     return pgf.readExpr(str(s))
 
-def mkName(s): # building a Name from a string
+# building a Name tree from a string
+def mkName(s): 
     return mkApp('StringName',[pgf.readExpr(str('"' + s + '"'))])
 
 # putting it all together
@@ -1051,8 +1048,8 @@ lincat
   Name = NP ;
 
 lin
-  AttributeFact prop obj val =
-    mkCl (mkNP the_Det (mkCN prop (mkAdv possess_Prep obj))) val ;
+  AttributeFact attr obj val =
+    mkCl (mkNP the_Det (mkCN attr (mkAdv possess_Prep obj))) val ;
   NameObject name = name ;
   NameValue name = name ;
   IntValue int = symb int ;
@@ -1103,7 +1100,7 @@ Since this linguistic ground work has been done once and for all in the RGL, NLG
 But we do need to develop an idea about what combinations of RGL functions are possible.
 The linearization of ``AttributeFact`` is quite a mouthful to start with:
 ```
-  mkCl (mkNP the_Det (mkCN prop (mkAdv possess_Prep obj))) val
+  mkCl (mkNP the_Det (mkCN attr (mkAdv possess_Prep obj))) val
 ```
 ''\noindent''
 Let us work out an example to see how it fits this pattern:
@@ -1249,7 +1246,7 @@ This diagram hides dozens of modules that underlie the explicitly opened RGL mod
 The user of the RGL seldom needs to be aware of them.
 
 
-+++Python code+++
++++Python code: the generic method+++
 
 As in ``facts1``, we use a Python file to
 - read data from a TSV file,
@@ -1315,12 +1312,31 @@ A possibly surprising method in the class is one that uses the **parser**:
 Even though we are mainly interested in generation and not parsing, this is a useful way to map, for instance, data attributes to GF attribute functions.
 Then we need not assume hard-coded conventions such as from data attribute ``area`` to GF function ``area_Attribute``, as we did in ``facts1``.
 
+The ``parse`` method of a concrete syntax works as in the following Python session:
+```
+# extract a concrete syntax
+>>> eng = gr.languages['CountriesEng']
+
+# parse a string in a wanted category
+>>> pp = eng.parse('the capital of Italy is Rome',
+           cat=pgf.readType('Fact'))
+
+# the result is a interator on probabilities and trees
+# extract the first (most probable) tree
+>>> _,tree = pp.__next__()
+
+# show tre tree
+>>> print(tree)
+AttributeFact capital_Attribute (NameObject (cName Italy_CName))
+  (NameValue (cName Rome_CName))
+```
+
 A baseline ``fact_generator`` is ``simple_facts()``, which expresses each datapoint with ``AttributeFact``,
 in the same way as at Stege 1 but now using the parser to map data attribute names to GF function names.
 The function if moreover generic for any dataset, as it takes the field names and the data key from a class variable of a ``FactSystem`` (assuming that the key attribute is in field 0):
 ```
 def simple_facts(factsys,data):
-    "for each tuple in data, generate an attribute fact sentence for each field"
+    "for every field in every tuple, generate an attribute fact sentence"
     fields = factsys.fieldnames.split()    
     facts = []
     for tuple in data:
@@ -1351,7 +1367,8 @@ def example_run():
     factsys.run('../data/countries.tsv',simple_facts)
 ```
 
-- TODO explain parser, ``country_facts``
+
++++Python code: domain-specific methods+++
 
 
 
@@ -1374,7 +1391,7 @@ lincat
   Name = NP ;
 
 lin
-  AttributeFact prop obj val = mkCl (mkNP (E.GenNP obj) prop) val ;
+  AttributeFact attr obj val = mkCl (mkNP (E.GenNP obj) prop) val ;
   NameObject name = name ;
   NameValue name = name ;
   IntValue int = symb int ;

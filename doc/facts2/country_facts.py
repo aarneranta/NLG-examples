@@ -3,7 +3,8 @@ from data_facts import *
 pgffile = 'Countries.pgf'
 datafile = '../data/countries.tsv'
 
-def country_facts(factsys,tuple):
+# 0.238s
+def country_facts_embedded(factsys,tuple):
     countr = factsys.str2exp("CName",tuple[0])
     cap    = factsys.str2exp('Name',tuple.capital)
     cont   = factsys.str2exp('CName',tuple.continent)
@@ -23,8 +24,27 @@ def country_facts(factsys,tuple):
       G.AttributeFact(G.currency_Attribute, object, G.NameValue(curr))
       ]
 
+# 0.367s
+def country_facts_parsed(factsys,tuple):
+    countr = factsys.data2lin("CName",tuple[0])
+    cap    = factsys.data2lin('Name',tuple.capital)
+    cont   = factsys.data2lin('CName',tuple.continent)
+    curr   = factsys.data2lin('Name',tuple.currency)
+    pop    = mkInt(tuple.population)
+    are    = mkInt(tuple.area)
+
+    return [ factsys.str2exp('Fact',s) for s in
+        [
+        "the capital of {} is {}".format(countr,cap),
+        "the area of {} is {}".format(countr,are),
+        "{} has {} inhabitants".format(countr,pop),
+        "{} is in {}".format(countr, cont),
+        "the currency of {} is {}".format(countr,are)
+        ]
+      ]
+
 def countries_facts(factsys,cs):
-    return [t for c in cs for t in country_facts(factsys,c)]
+    return [t for c in cs for t in country_facts_embedded(factsys,c)]
 
 def mkInt(s):
     return pgf.readExpr(str(s))

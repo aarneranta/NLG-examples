@@ -8,7 +8,7 @@ lincat
   Name = NP ;
 
 lin
-  AttributeFact prop obj val = mkCl (mkNP the_Det (mkCN prop (mkAdv possess_Prep obj))) val ;
+  AttributeFact attr obj val = mkCl (mkNP the_Det (mkCN attr (mkAdv possess_Prep obj))) val ;
   NameObject name = name ;
   NameValue name = name ;
   IntValue int = symb int ;

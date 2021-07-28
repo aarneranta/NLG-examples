@@ -8,7 +8,7 @@ lincat
   Name = Str ;
 
 lin
-  AttributeFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
+  AttributeFact attr obj val = "maan" ++ obj ++ attr ++ "on" ++ val ;
 
   capital_Attribute = "pääkaupunki" ;
   area_Attribute = "pinta-ala" ;

@@ -16,26 +16,23 @@ def get_countries(filename):
 
   
 def country_facts(c):
-  object = mkApp('NameObject', [mkName(c.country)])
+  object = pgf.Expr('NameObject', [mkName(c.country)])
   return [
-    mkApp('AttributeFact',[mkApp(prop,[]),object,val])
-      for (prop,val) in [
-        ('capital_Attribute',    mkApp('NameValue',[mkName(c.capital)])),
-        ('area_Attribute',       mkApp('IntValue', [mkInt(c.area)])),
-        ('population_Attribute', mkApp('IntValue', [mkInt(c.population)])),
-        ('continent_Attribute',  mkApp('NameValue',[mkName(c.continent)])),
-        ('currency_Attribute',   mkApp('NameValue',[mkName(c.currency)]))
+    pgf.Expr('AttributeFact',[pgf.Expr(attr,[]),object,val])
+      for (attr,val) in [
+        ('capital_Attribute',    pgf.Expr('NameValue',[mkName(c.capital)])),
+        ('area_Attribute',       pgf.Expr('IntValue', [mkInt(c.area)])),
+        ('population_Attribute', pgf.Expr('IntValue', [mkInt(c.population)])),
+        ('continent_Attribute',  pgf.Expr('NameValue',[mkName(c.continent)])),
+        ('currency_Attribute',   pgf.Expr('NameValue',[mkName(c.currency)]))
         ]
     ]
-
-def mkApp(f,xs):
-    return pgf.Expr(f,xs)
 
 def mkInt(s):
     return pgf.readExpr(str(s))
 
 def mkName(s):
-    return mkApp('StringName',[pgf.readExpr(str('"' + s + '"'))])
+    return pgf.Expr('StringName',[pgf.readExpr(str('"' + s + '"'))])
 
 def main():
     gr = pgf.readPGF(pgf_file)
