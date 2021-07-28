@@ -8,8 +8,9 @@ python3 data_facts.py
 python3 country_facts.py
 cd ..
 cd facts3
-gf -make FactsEng.gf FactsFin.gf
+gf -make FactsEng.gf FactsFin.gf FactsGer.gf
 python3 data_facts.py
 python3 country_facts.py
+python3 world_facts.py
 cd ..
 

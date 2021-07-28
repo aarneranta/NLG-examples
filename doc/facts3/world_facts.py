@@ -1,5 +1,7 @@
+import sys
+sys.path.append('../facts2/')
 from data_facts import *
-from country_facts import round_int
+
 import pgf
 
 
@@ -35,7 +37,7 @@ def main():
                           'CountriesEng'
                         )
             
-    factsys.run('countries.tsv',world_texts)
+    factsys.run('../data/countries.tsv',world_texts)
 
 if __name__ == "__main__":
     main()
