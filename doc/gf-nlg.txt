@@ -878,7 +878,7 @@ We will return to Wikidata many times later, but you can get a first feeling of 
 
 
 
-++Stage 2: Improving NLG for atomic facts++
+++Stage 2: Improved NLG for atomic facts++
 
 We will now improve the quality of NLG by making full use of GF.
 The code for this can be found in the directory ``facts2/``.
@@ -1469,16 +1469,12 @@ In the current case the difference is negligible: 0.367 seconds instead of 0.238
 
 
 
-+++Other concrete syntaxes: German and Finnish+++
-
-- TODO write about German first, then less about Finnish
-
++++Another concrete syntax: German+++
 
 The German concrete syntax has naturally the same structure as English.
-The ``FactsFin`` module looks as follows:
+The ``FactsGer`` module looks exactly the same, except for the header:
 ```
-concrete FactsFin of Facts = 
-  open SyntaxFin, SymbolicFin, (E=ExtendFin) in {
+concrete FactsGer of Facts = open SyntaxGer, SymbolicGer in {
 
 lincat
   Fact = Cl ;
@@ -1486,16 +1482,136 @@ lincat
   Attribute = CN ;
   Value = NP ;
   Name = NP ;
-
 lin
-  AttributeFact attr obj val = mkCl (mkNP (E.GenNP obj) prop) val ;
+  AttributeFact attr obj val =
+    mkCl (mkNP the_Det (mkCN attr (mkAdv possess_Prep obj))) val ;
   NameObject name = name ;
   NameValue name = name ;
   IntValue int = symb int ;
 }
 ```
 ''\noindent''
-Two new GF features are used:
+The similarity is due to the language-independent API of the RGL.
+We will see later how to exploit this so that we don't even need to copy and paste the code.
+
+The ``CountryNamesGer`` module is obviously the one that differs the most from English.
+The first step to create it when Wikidata is available is to fetch the country and other names with a query:
+```
+select ?country ?countryLabelEn ?countryLabelDe {
+  ?country wdt:P31/wdt:P279* wd:Q3624078 .
+  ?country rdfs:label ?countryLabelEn .
+  ?country rdfs:label ?countryLabelDe .
+  filter(lang(?countryLabelEn)='en')
+  filter(lang(?countryLabelDe)='de')
+}
+```
+With some simple programming, the German names can be inserted as linearizations of the constants:
+```
+lin Addis_Ababa_CName = mkCName "Addis Abeba" ;
+lin Athens_CName = mkCName "Athen" ;
+lin Switzerland_CName = mkCName "Schweiz" ;
+lin United_States_of_America_CName = mkCName "Vereinigte Staaten" ;
+```
+''\noindent''
+However, this is not enough to obtain flawless German.
+There are problems that are shared with many other languages as well, for instance Finnish and French:
+- The morphological features (inflection, gender) are not always predictable from the string alone, but require more information.
+Example: //Schweiz//, which usually appears with the feminine definite article //die// inflected //der// in the dative and genitive (//von der Schweiz// "of Switzerland").
+- Some "names" are actually complex noun phrases with parts that undergo agreement in syntactic combinations. Example: //Vereinigte Staaten//, where the adjective is inflected (//von der Vereinigten Staaten// "of the United States").
+
+
+''\noindent''
+The outcome of this is that we need to
+- enrich the linearization type of ``CName``,
+- introduce constructors that can provide information not visible in the string.
+
+
+''\noindent''
+Here is the the beginning of ``CountryNamesGer``:
+```
+concrete CountryNamesGer of CountryNames = 
+  open SyntaxGer, ParadigmsGer in {
+
+lincat CName = NP ;
+
+oper mkCName = overload {
+  mkCName : Str -> NP = \s -> mkNP (mkPN s) ;
+  mkCName : NP -> NP = \np -> np ;
+  } ;
+```
+''\noindent''
+The operation ``mkCName`` is now **overloaded** and covers two functions with the same name but different types. The first function needs just a string (with the "most probable" inflection inferred).
+The second one takes an arbitrary ``NP``.
+
+Here are some examples of how the enriched set of constructors is used:
+```
+-- no change of name
+lin Addis_Ababa_CName = mkCName "Addis Abeba" ;
+
+-- just the name changed
+lin Athens_CName = mkCName "Athen" ;
+
+-- telling that the feminine definite article is used
+lin Switzerland_CName = mkCName (mkNP the_Det (mkN "Schweiz" feminine)) ;
+
+-- giving a structure with plural definite, adjective, and noun
+lin United_States_of_America_CName =
+  mkCName (mkNP thePl_Det
+    (mkCN (mkA "Vereinigt") (mkN "Staat" "Staaten" masculine))) ;
+```
+''\noindent''
+Most of the strings give the right properties "out of the box" and hence need no changes in the geneted file.
+But a manual inspection round is needed to make sure that all names get their right grammatical properties.
+(This has by the time of writing not yet been done in the GitHub code.)
+
+The top module ``CountriesGer`` looks like the English, except for the attribute names, which now need complex noun properties, and the predicate "Country is in Continent", where the verb //liegen// ("lie") is idiomatically used instead of the copula:
+```
+concrete CountriesGer of Countries = FactsGer, CountryNamesGer **
+  open SyntaxGer, ParadigmsGer, SymbolicGer in {
+
+lin
+  cName name = name ;
+  capital_Attribute =
+    mkAttribute (mkN "Hauptstadt" "Hauptstädte" feminine) ;
+  area_Attribute = mkAttribute (mkN "Fläche") ;
+  population_Attribute =
+    mkAttribute (mkN "Einwohnerzahl" feminine) ;
+  continent_Attribute =
+    mkAttribute (mkN "Kontinent" "Kontinente" masculine) ;
+  currency_Attribute = mkAttribute (mkN "Währung") ;
+
+  populationFact cname int =
+    mkCl cname have_V2 (mkNP <symb int : Card> (mkN "Einwohner")) ;
+  continentFact cname name =
+    mkCl cname (mkVP (mkVP (mkV "liegen")) (SyntaxGer.mkAdv in_Prep name)) ;
+
+oper
+  mkAttribute : N -> CN = \n -> mkCN n ;
+}
+```
+
+
++++Finnish specifics+++
+
+Finnish has a complex morphology and syntactic features different from Indo-European languages.
+This has not made it impossible to implement the RGL for Finnish, but some more attention is required from the application programmer.
+The code shown in this section also includes some new GF constructs, which will certainly turn out useful for other languages as well.
+The reader not familiar with, or not interested in, Finnish can skim through this section for those new features:
+- qualified opening of modules: ``open (E=ExtendFin)``,
+- records and record types: ``{np : NP ; isIn : Bool}``,
+- record extension ``**``,
+- the ``Bool`` type and ``case`` expressions.
+
+
+In ``FactsFin``, we have changed just the header and the rule for ``AttributeFact``:
+```
+concrete FactsFin of Facts = 
+  open SyntaxFin, SymbolicFin, (E=ExtendFin) in {
+lin
+  AttributeFact attr obj val = mkCl (mkNP (E.GenNP obj) prop) val ;
+}
+```
+Two new GF features are used here:
 - in the ``open`` list, the module ``ExtendFin`` is imported in a **qualified mode**, where all its uses need to be marked with ``E.``;
 - in ``AttributeFact``, a qualified function ``E.GenNP`` is used; this is similar to ``SyntaxEng.mkAdv`` above, except that ``E`` is not the name of a module, but an alias name defined in the ``open`` list.
 
@@ -1509,22 +1625,7 @@ It does not belong to the standard API, because it is not available for all lang
 For English, ``ExtendEng.GenNP`` does exist, but it is not used in this grammar.
 It would produce //France's capital// instead of //the capital of France//.
 
-Apart from the genitive construction, the code in ``FactsFin`` is similar to ``FactsEng``.
-When the RGL API is used, one can actually bootstrap new languages by just copying the code of an old language and changing the quoted strings.
-This would result in somewhat clumsy Finnish but still work mostly better than the simple templates of ``facts1``.
-
-The ``CountryNamesFin`` module is obviously the one that differs the most from English.
-The first step to create it when Wikidata is available is to fetch the country and other names with a query:
-```
-select ?country ?countryLabelEn ?countryLabelFi {
-  ?country wdt:P31/wdt:P279* wd:Q3624078 .
-  ?country rdfs:label ?countryLabelEn .
-  ?country rdfs:label ?countryLabelFi .
-  filter(lang(?countryLabelEn)='en')
-  filter(lang(?countryLabelFi)='fi')
-}
-```
-With some simple programming, the Finnish names can be inserted as linearizations of the constants:
+Finnish place names can be extracted from Wikidata in the same way as the German ones:
 ```
 lin Bucharest_CName = mkCName "Bukarest" ;
 lin Finland_CName = mkCName "Suomi" ;
@@ -1533,12 +1634,9 @@ lin Russia_CName = mkCName "Venäjä" ;
 lin United_States_of_America_CName = mkCName "Yhdysvallat" ;
 ```
 ''\noindent''
-However, this is not enough to obtain flawless Finnish.
-There are three kinds of problems --- and these are in fact problems for many other languages as well, for instance French and German.
-So let us try to explain them on the general level:
-- The morphological features (inflection, gender) are not always predictable from the string alone, but require more information.
-Example: //United States//, which is inflected in plural but agrees as singular (//The United States has...//).
-- Some "names" are actually complex noun phrases with many parts that undergo agreement in syntactic combinations. Example: //new shekel//, where both the adjective and the noun need to be changed in the plural.
+Just like in German, plain strings are not enough to obtain flawless Finnish.
+The problem of inflection is shared with German.
+But there is also a new problem (also shared by French, and probably by German as well):
 - When using a name as location, some countries may use a preposition or case corresponding to //on//, some to //in//.
 
 
@@ -1560,7 +1658,8 @@ lincat CName = LocName ;
 oper LocName = {np : NP ; isIn : Bool} ;
 
 oper mkCName = overload {
-  mkCName : Str -> LocName = \s -> {np = mkNP (foreignPN s) ; isIn = True} ;
+  mkCName : Str -> LocName =
+    \s -> {np = mkNP (foreignPN s) ; isIn = True} ;
   mkCName : N -> LocName = \n -> {np = mkNP n ; isIn = True} ;
   mkCName : NP -> LocName = \np -> {np = np ; isIn = True} ;
   } ;
@@ -1570,10 +1669,10 @@ oper mkCName = overload {
    name ** {np = forceNumberNP singular name.np} ;
 ```
 ''\noindent''
-The code still gets a lot for free from the RGL, but does need some GF features of a "lower level" than mere applications of functions:
+The code gets a lot for free from the RGL, but does need some GF features of a "lower level" than mere applications of functions:
 - The RGL module ``Prelude`` is opened to provide ``Bool`` of **booleans** and its elements ``True`` and ``False``.
-- The linearization type of ``CName`` is a **record type** with two **fields**: one for a noun phrase with **label** ``np``, another for a boolean with label ``isIn`` (defining whether to use "internal" or "external" locative cases).
-- The operation ``mkCName`` is now **overloaded** and covers three functions with the same name but different types. The simplest function needs just a string (with the "most probable" inflection inferred), the next one a noun (``N``), which can be given by any of the ``mkN`` instance of the RGL, and the most complex one an arbitrary ``NP``.
+- The linearization type of ``CName`` is a **record type** with two **fields**: one for a noun phrase with **label** ``np``, another for a boolean with label ``isIn`` defining whether to use "internal" or "external" locative cases.
+- The overloaded operation ``mkCName`` covers three functions with the same name but different types. The simplest function needs just a string (with the "most probable" inflection inferred), the next one a noun (``N``), which can be given by any of the ``mkN`` instance of the RGL, and the most complex one an arbitrary ``NP``.
 - The definitions of ``mkCName`` functions are **records** that match the record type ``LocName``.
 - Two additional operations can be used to change the fields of an already constructed ``CName``.
 The changes are performed by the **record extension** operator ``**``, which overwrites (or adds) the values of desired fields in a record.
@@ -1585,19 +1684,20 @@ In this way, if we need to change the type of ``CName`` - which is common under 
 
 Here are some examples of how the enriched set of constructors is used:
 ```
-lin Bucharest_CName = mkCName "Bukarest" ;
-  -- no changes needed
+-- select a less common paradigm
 lin Finland_CName = mkCName (mkN "Suomi" "Suomia") ;
-  -- select a less common paradigm
+
+-- genuinely plural noun phrase, preposition "on"
 lin Marshall_Islands_CName =
   exCName (mkCName (mkNP thePl_Det
       (mkN "Marshallin" (mkN "saari" "saaria")))) ;
-  -- genuinely plural noun phrase, preposition "on"
+
+-- one says "on Russia" in Finnish!
 lin Russia_CName = exCName (mkCName "Venäjä") ;
-  -- one says "on Russia" in Finnish!
+
+-- plural inflection, singular agreement
 lin United_States_of_America_CName =
   sgCName (mkCName (mkNP thePl_Det (mkN "Yhdysvalta"))) ;
-  -- plural inflection, singular agreement
 ```
 ''\noindent''
 Most of the strings give the right properties "out of the box" and hence need no changes in the geneted file.
@@ -1626,7 +1726,7 @@ oper
 }
 ```
 ''\noindent''
-The following explanations refer to Finnish, but are relevant for other languages as well:
+The following explanations refer to Finnish, but will be relevant for other languages as well:
 - ``cName`` must now pick the ``np`` field of its argument to be type-correct.
 - The locative case is extracted from the ``CName`` by the ``locCase`` operation.
 It would be possible to have the case directly as a field of ``LocCase``.
