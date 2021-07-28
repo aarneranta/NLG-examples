@@ -51,9 +51,11 @@ An example is a table that lists countries and their populations:
 
 ''\noindent''
 From this data, a very simple NLG system can produce the sentences
-- //The population of Argentina is 44938712.//
-- //The population of United States is 331449281.//
-
+''\bequ''
+//The population of Argentina is 44938712.//
+''\\''
+//The population of United States is 331449281.//
+''\enqu''
 
 ''\noindent''
 These sentences essentially list the individual facts in the data, row by row from the table.
@@ -61,8 +63,9 @@ This simple system can still be useful, for instance as a device to feed the dat
 
 A step beyond the simplest conceivable system is not just to list the data point by point, but also express interesting observations or summaries based on the data.
 Thus a slightly more advanced NLG system could also produce
-- //United States has over seven times more inhabitants than Argentina.//
-
+''\bequ''
+//United States has over seven times more inhabitants than Argentina.//
+''\enqu''
 
 ''\noindent''
 which combines two facts in a hopefully interesting way.
@@ -82,15 +85,19 @@ and for comparisons of two countries,
 ''\noindent''
 Sooner or later, the template method may turn out insufficient, because the words belonging to the template may be different for different data values.
 A typical example is the number of the noun, which should be as in
-- //You have 2 new messages.//
-- //You have 1 new message.//
-
+''\bequ''
+//You have 2 new messages.//
+''\\''
+//You have 1 new message.//
+''\enqu''
 
 ''\noindent''
 Witnessing a wide-spread use of templates, it is still very common to see examples such as
-- //You have 1 new messages.//
-- //You have 1 new message(s).//
-
+''\bequ''
+//You have 1 new messages.//
+''\\''
+//You have 1 new message(s).//
+''\enqu''
 
 ''\noindent''
 The problem is often harder for other languages than English.
@@ -247,14 +254,22 @@ It is just a matter of resources and effort.
 
 ++Who is this document for?++
 
-This document is meant for everyone who wants to use Grammatical Framework (GF) as a tool for Natural Language Generation (NLG).
-NLG was the first intended application of GF, and it is still the area where GF excels the most compared with other approaches.
-This applies in particular to **multilingual NLG**, where GF is perhaps the only systematic and scalable approach supported by mature software and language resources.
+This document is a hands-on guide on Natural Language Generation and GF.
+The focus is on multilingual NLG, where GF is perhaps the only systematic and scalable approach supported by mature software and language resources.
 
-Previous knowledge of GF from an introduction course (such as a summer school), the GF book (Ranta 2011), or an on-line tutorial, is useful for an in-depth understanding of the scope and limitations of GF.
-However, this document is meant to be self-contained: it can be followed by anyone with a basic knowledge of programming.
-What makes this possible is the **GF Resource Grammar Library** (**RGL**), which hides the linguistic details needed in multilingual NLG.
-When the RGL is used, the GF application programmer needs only to master a subset of the GF programming language, since many features of GF are only needed when implementing the linguistic details of a new language in the RGL.
+This document is meant to be self-contained: it can be followed by anyone with a basic knowledge of programming.
+In particular, no previous knowledge of GF is assumed.
+Such knowledge is of course useful for an in-depth understanding of the scope and limitations of GF, and it can be gained from an introduction course (such as a summer school), the GF book (Ranta 2011), or an on-line tutorial.
+But here we take some shortcuts and show only those parts of GF that are needed for the tasks at hand.
+
+The shortcuts are made this possible by the **GF Resource Grammar Library** (**RGL**), which takes care of the linguistic details needed in multilingual NLG.
+Many features of GF are only needed when implementing those details.
+Hence, when the RGL is used, the GF application programmer needs only to master a subset of the GF programming language.
+
+Besides GF, we will use Python.
+To understand the Python code, the reader is assumed to have previous knowledge of Python.
+However, the algorithms written in Python will also be explained independently of the code, and it is possible to just run the code without going into details.
+Similar code could be written in Java or Haskell or C, since GF is interoperable with all these languages.
 
 A special target group is those who want to contribute to the Abstract Wikipedia.
 Much of the data in our examples is collected from Wikidata, and the order of presentation follows the strategy outlined above where we proceed from atomic facts to second-order data.
@@ -264,13 +279,14 @@ Much of the data in our examples is collected from Wikidata, and the order of pr
 +A gradual introduction to NLG in GF+
 
 Let us start the work with a data set that is simple and well-known, yet rich enough to illustrate the main issues of NLG.
-The set is a table with information about countries from Wikidata (in the category "sovereign states"). 
+The set is a table with information about countries from Wikidata (in the category "sovereign states", ``wd:Q3624078`` in Wikidata). 
 The original query can be found in
 - https://w.wiki/3fV$
 
 
 ''\noindent''
 The results have been edited slightly, so that, in particular, every country appears only once in the result.
+Here is a fragment of the table:
 
 ''\scriptsize''
 || country | capital | area | population | continent | currency
@@ -279,23 +295,45 @@ The results have been edited slightly, so that, in particular, every country app
 | Algeria | Algiers | 2381741 | 41318142 | Africa | Algerian dinar
 | Andorra | Andorra la Vella | 468 | 76177 | Europe | euro
 | Angola | Luanda | 1246700 | 29784193 | Africa | kwanza
-| Antigua and Barbuda | Saint John's | 440 | 102012 | North America | Eastern Caribbean dollar
 | Argentina | Buenos Aires | 2780400 | 44938712 | South America | Argentine peso
 
 ''\normalsize''
 ''\noindent''
 We will proceed bottom-up from the simplest kind of NLG to more involved:
-- Stage 1: atomic facts with templates to which data is inserted, e.g. //the capital of Argentina is Buenos Aires, the population of Argentina is 44938712, the continent of Argentina is South America//.
+
+- Stage 1: atomic facts with templates to which data is inserted, e.g.
+''\bequ''
+//the capital of Argentina is Buenos Aires//
+''\\''
+//the population of Argentina is 44938712//
+''\\''
+//the continent of Argentina is South America//
+''\enqu''
+
 - Stage 2: atomic facts with grammar, enabling other languages than English, with translations and proper inflections of names, e.g. Finnish //Suomi, Suomen// ("Finland", "of Finland"), as well as idiomatic expressions for atomic facts, e.g. //Argentina has 44938712 inhabitants, Argentina is in South America//.
-- Stage 3: combinations of facts into fluent texts, e.g. //Argentina is a South American country with 44000000 inhabitants. Its area is 2780000 square kilometres. The capital of Argentina is Buenos Aires and its currency is Argentine peso.//
-- Stage 4: summaries and aggregation of data, e.g. //Brazil is the larges country in South America, with a population of over 210 million and an area of over 8 million square kilometres.//
+''\bequ''
+//Argentina has 44938712 inhabitants//
+''\\''
+//Argentina is in South America//
+''\enqu''
+
+- Stage 3: combinations of facts into fluent texts
+''\bequ''
+//Argentina is a South American country with 44000000 inhabitants. Its area is 2780000 square kilometres. The capital of Argentina is Buenos Aires and its currency is Argentine peso.//
+''\enqu''
+
+- Stage 4: selection, aggregation, and summarization of data, e.g.
+''\bequ''
+//Brazil is the larges country in South America, with a population of over 210 million and an area of over 8 million square kilometres.//
+''\enqu''
 
 
 ''\noindent''
 At each stage, we provide both GF and Python code.
-The essential parts of the code are shown and explained in the text, while the entire code can be find in GitHub,
-- https://github.com/aarneranta/NLG-examples
-
+The essential parts of the code are shown and explained in the text, while the entire code can be found in GitHub,
+''\bequ''
+https://github.com/aarneranta/NLG-examples
+''\enqu''
 
 ''\noindent''
 in the subdirectories
@@ -305,7 +343,7 @@ in the subdirectories
 
 
 ''\noindent''
-In the exercises of this gradual introduction, readers are encouraged to apply the methods to their own languages and domains of interest.
+Each stage concludes with exercises, where readers are encouraged to apply the methods to their own languages and their own data.
 
 
 
@@ -349,23 +387,50 @@ The code consists of three kinds of files:
 
 ''\noindent''
 The focus will be on the GF files, which would not require any changes if the Python files were replaced by equivalent C, Haskell, or Java files or the TSV files with other formats such as XML or Json.
-But we want to start with a full definition of a concrete, runnable system to help the readers to build their own systems.
+But we stick to Python and TSV so that we can quickly build a runnable system that the readers can test and develop further.
 
 The minimum number of GF files is two: one for an **abstract syntax** and one for a **concrete syntax**.
-The abstract syntax defines a set of fact **trees** (**abstract syntax trees**), which are language-neutral representations of linguistic structures.
-The concrete syntax shows how trees are **linearized**, i.e. converted to **strings** in a natural language.
-The strength of GF comes from the possibility to have several concrete syntaxes, each corresponding to a different language.
-Thus a multilingual NLG system can be built and extended by just adding GF modules, while leaving the Python files and data files intact.
-The following diagram shows the structure of an NLG system based on this idea:
+The abstract syntax defines a set of fact **trees** (**abstract syntax trees**), which are language-neutral representations of linguistic structures - for example,
+```
+  AttributeFact
+    population_Attribute
+    (NameObject (StringName "Argentina"))
+    (IntValue 44938712)
+```
+(in GF code), equivalently
+This tree can also be shown in a graphical representation,
+'''
+\begin{center}
+\includegraphics[width=0.6\textwidth]{argentina.eps}
+\end{center}
+\noindent
+'''
+in a graphical representation.
+The concrete syntax shows how trees are **linearized**, i.e. converted to **strings** in a natural language - for example,
+''\bequ''
+//the population of Argentina is 44938712//
+''\enqu''
+The strength of GF lies in the possibility to have several concrete syntaxes, each corresponding to a different language:
+''\bequ''
+//Argentinas befolkning är 44938712//
+''\\''
+//Argentiinan väkiluku on 44938712//
+''\enqu''
+The conversion of data to text is performed in Python (or other **host language**) code, which maps data to abstract syntax trees, rather than concrete strings.
+Thus a system can be extended with new languages by only writing new concrete syntax modules in GF, without touching the Python.
+
+The following diagram shows the structure of an NLG systems we will build:
 '''
 \begin{center}
 \includegraphics[width=0.9\textwidth]{mnlg.png}
 \end{center}
 '''
 
+
 +++Abstract syntax+++
 
-The GF file ``Facts.gf``  defines an abstract syntax for atomic facts:
+The GF file ``Facts.gf``  defines an abstract syntax for atomic facts.
+The complete code is here:
 ```
 abstract Facts = {
 
@@ -395,8 +460,8 @@ fun
 The parts of this file are
 - a **module header** indicating that this is an abstract syntax module named ``Facts``,
 - a **module body**, in curly braces, consisting of two kinds of **judgements** ("rules"):
-  - ``cat``, **categories** of linguistic objects,
-  - ``fun``, **functions** for building such objects from 0 or more given objects.
+  - ``cat``, **categories** of trees,
+  - ``fun``, **functions** for building trees from zero or more given trees.
 
 
 ''\noindent''
@@ -428,7 +493,7 @@ Thus the representation of the sentence
 
 
 ''\noindent''
-is a tree of type ``Fact`` built by the function ``AttributeFact`` as follows:
+is a tree of type ``Fact`` built by the function ``AttributeFact`` as follows (repeating what was shown above):
 ```
   AttributeFact
     population_Attribute
@@ -436,18 +501,23 @@ is a tree of type ``Fact`` built by the function ``AttributeFact`` as follows:
     (IntValue 44938712)
 ```
 ''\noindent''
-This tree can also be shown in a graphical representation,
-'''
-\begin{center}
-\includegraphics[width=0.6\textwidth]{argentina.eps}
-\end{center}
-'''
+Notice the GF syntax for function applications,
+```
+  f a b c
+```
+''\noindent''
+similar to Haskell, rather than
+```
+  f(a,b,c)
+```
+''\noindent''
+as in Python and Java.
 
 
 +++Concrete syntax+++
 
 A concrete syntax specifies how abstract syntax trees are linearized to strings in some language.
-Our first example is the file ``FactsEng.gf``,
+Here is the complete code from the file ``FactsEng.gf``,
 ```
 concrete FactsEng of Facts = {
 
@@ -484,7 +554,8 @@ This concrete syntax file consists of
 ''\noindent''
 The simplest linearization type is ``Str``, **string**.
 This type is sufficient for expressing **context-free grammars** in GF.
-It is too limited for full-scale NLG, but provides an easy to grasp introduction; we will extend it to richer types later.
+It is too limited for full-scale NLG, but provides an easy way to introduce GF.
+We will extend it to richer types later.
 
 The linearization functions are defined with expressions that combine **variables** with **string literals**.
 Thus the first rule
@@ -493,40 +564,150 @@ Thus the first rule
 ```
 ''\noindent''
 uses the variables ``prop``, ``obj``, and ``val``, which stand for the arguments of the function, and the literals ``"the"``, ``"of"``, and ``"is"``.
-The method of combination is **concatenation**, denoted by ``++``.
+The method of combination is **concatenation**, denoted by ``++`` (again borrowed from Haskell).
 
 The built-in types ``Int`` and ``String`` have more complex linearization types than ``Str``.
 Hence their objects cannot be used directly when a ``Str``  is expected, but extracted as a **projection** ``.s`` --- a notation that will be fully explained later.
 
-A slight variant of ``FactsEng`` defines a concrete syntax for Finnish:
+A slight variant of ``FactsGer`` defines a concrete syntax for German:
 ```
-concrete FactsFin of Facts = {
+concrete FactsGer of Facts = {
 
 -- lincat as in FactsEng
 
 lin
-  AttributeFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
+  AttributeFact prop obj val = prop ++ "von" ++ obj ++ "ist" ++ val ;
 
-  capital_Attribute = "pääkaupunki" ;
-  area_Attribute = "pinta-ala" ;
-  population_Attribute = "asukasluku" ;
-  continent_Attribute = "maanosa" ;
-  currency_Attribute = "valuutta" ;
+  capital_Attribute = "die Hauptstadt" ;
+  area_Attribute = "die Fläche" ;
+  population_Attribute = "die Einwohnerzahl" ;
+  continent_Attribute = "der Kontinent" ;
+  currency_Attribute = "die Währung" ;
 
 -- the remaining lin as in FactsEng
 }
 ```
 ''\noindent''
-The ``AttributeFact`` rule uses a well-known trick to avoid the genitive inflection of country names: it wraps the name with the word //maa// ("country"), which is turned into the genitive to build an equivalent of English //of the country X//.
-The result is grammatically correct but extremely clumsy Finnish, which immediately reveals that text as machine-generated.
-Another indicator of this is, obviously, the country names for which plain English strings are used.
-Both of these problems will be solved shortly when we extend the model by a richer use of GF.
+More languages can be added as an easy exercise (see below).
+The GitHub directory contains (at the time of writing), also Finnish.
+
+A potentially useful hack, common in templates-based NLG, is shown in ``FactsFin``:
+```
+  AttributeFact prop obj val = "maan" ++ obj ++ prop ++ "on" ++ val ;
+```
+''\noindent''
+When assigning an attribute to country name, the name must be inflected in the genitive.
+But there is no simple way to do this, so the wrapper word //maa// ("country") is added amd turned into the genitive //maan//.
+The result is an equivalent of English //of the country X//.
+It is grammatically correct but extremely clumsy Finnish, immediately revealing that the text is machine-generated.
+This trick is used frequently for instance in Facebook, to report someneone's location: //Urho on paikassa Helsinki// instead of //Urho on Helsingissä//.
+
+
++++Testing grammars in the GF shell+++
+
+The GF shell, just like the Python shell, is a line-based tool that enables testing GF code while developing it.
+The following session shows some useful commands in the shell:
+```
+# start gf in the OS shell, see the welcome message
+$ gf
+                              
+         *  *  *              
+      *           *           
+    *               *         
+   *                          
+   *                          
+   *        * * * * * *       
+   *        *         *       
+    *       * * * *  *        
+      *     *      *          
+         *  *  *              
+                              
+This is GF version 3.10.4. 
+
+# importing (i) a GF file makes a language available
+> i FactsEng.gf
+linking ... OK
+
+Languages: FactsEng
+1 msec
+
+# generate random (gr) abstract syntax tree
+Facts> gr
+AttributeFact area_Attribute (NameObject (StringName "Foo")) (IntValue 999)
+
+# generate random tree and pipe (|) it to linearize (l)
+Facts> gr | l
+the population of Foo is Foo
+
+# parse (p) a string into a tree
+Facts> p "the capital of France is Paris"
+AttributeFact capital_Attribute (NameObject (StringName "France"))
+  (NameValue (StringName "Paris"))
+
+# import another concrete syntax for the same abstract
+Facts> i FactsGer.gf
+linking ... OK
+
+Languages: FactsEng FactsGer
+
+# translate by parsing in one language and linearizing into another one
+Facts> p -lang=Eng "the capital of France is Paris" | l -lang=Ger
+die Hauptstadt von France ist Paris
+
+# quit (q) GF and return to the OS shell
+Facts> q
+See you.
+```
 
 
 +++Python code converting data to text+++
 
-In this section, we assume basic knowledge of Python and will not explain its standard constructs.
-But what needs some explanation is the ``pgf`` library, which makes GF grammars accessible from Python programs.
+GF grammars can be used in Python via the library called ``pgf``.
+**Portable Grammar Format** (**PGF**) is the binary "machine language" of GF.
+
+The first step in using GF from Python is to compile the GF source code into PGF:
+```
+  gf -make FactsEng.gf FactsFin.gf FactsGer.gf
+```
+''\noindent''
+The result is a single file, ``Facts.pgf``, which can be read by Python via the classes and functions in the ``pgf`` library.
+
+Here is an example of a python3 session illustrating the functionalities we need to star with:
+```
+>>> import pgf
+
+# read a PGF object from file
+>>> gr = pgf.readPGF('Facts.pgf')
+
+# show the names of the available concrete syntaxes
+>>> print(list(gr.languages.keys()))
+['FactsEng', 'FactsFin', 'FactsGer']
+
+# extract the concrete syntax object for English
+>>> eng = gr.languages['FactsEng']
+
+# build a tree, "Expression" in technical jargon
+>>> attr = pgf.Expr('area_Attribute',[])
+
+# linearize the tree in English
+>>> eng.linearize(attr)
+area
+
+# build some more trees incrementally
+>>> obj = pgf.readExpr('NameObject (StringName "France")')
+>>> val = pgf.readExpr('123')
+>>> fact = pgf.Expr('AttributeFact',[attr,obj,val])
+
+# show the resulting tree in GF notation
+>>> print(fact)
+AttributeFact area_Attribute (NameObject (StringName "France")) 123
+
+# linearize the resulting tree
+>>> print(eng.linearize(fact))
+the area of France is 123
+```
+
+
 The following classes and methods are used in this first version of Python NLG:
 - ``PGF``, class of objects obtained from ``.pgf`` files (no constructor used here):
   - ``readPGF(<filename>)``, function that returns a ``PGF`` object;
@@ -545,38 +726,13 @@ The following classes and methods are used in this first version of Python NLG:
 ''\noindent''
 Some other functions, such as a parsing method, will be introduced later as needed.
 Complete documentation can be found in
-- http://www.grammaticalframework.org/doc/runtime-api.html#python
+''\bequ''
+http://www.grammaticalframework.org/doc/runtime-api.html#python
+''\enqu''
 
-
-''\noindent''
-**PGF** (**Portable Grammar Format**) is the binary "machine language" of GF.
-It can be produced from the GF source files with the shell command
-```
-  gf -make FactsEng.gf FactsFin.gf
-```
-''\noindent''
-The result is a single file, ``Facts.pgf``, which can be read by Python via the classes and functions in the ``pgf`` module delivered together with GF.
-
-Here is an example of a python3 session using ``Facts.pgf``:
-```
->>> import pgf
->>> gr = pgf.readPGF('Facts.pgf')
->>> print(list(gr.languages.keys()))
-['FactsEng', 'FactsFin']
->>> eng = gr.languages['FactsEng']
->>> attr = pgf.Expr('area_Attribute',[])
->>> eng.linearize(attr)
-area
->>> obj = pgf.readExpr('NameObject (StringName "France")')
->>> val = pgf.readExpr('123')
->>> fact = pgf.Expr('AttributeFact',[attr,obj,val])
->>> print(fact)
-AttributeFact area_Attribute (NameObject (StringName "France")) 123
->>> print(eng.linearize(fact))
-the area of France is 123
-```
 
 The Python program ``facts1/facts.py`` reads a TSV file and a GF grammar, and prints out a linearization of every atomic fact in all of the languages covered by the grammar.
+The complete code is here:
 ```
 import pgf
 
@@ -618,8 +774,8 @@ def mkName(s): # building a Name from a string
 
 # putting it all together
 def main():
-    gr = pgf.readPGF('facts.pgf')   # read the compiled grammar
-    countries = get_countries('countries.tsv')
+    gr = pgf.readPGF('Facts.pgf')   # read the compiled grammar
+    countries = get_countries('../data/countries.tsv')
     langs = list(gr.languages.values())
     for lang in langs:
         text = []
@@ -631,7 +787,7 @@ def main():
 main()
 ```
 ''\noindent''
-Running the Python code results in 1940 sentences, stating 5 atomic facts about 194 countries in two languages:
+Running this Python code results in 1940 sentences, stating 5 atomic facts about 194 countries in two languages:
 ```
 $ python3 facts.py | more
 the capital of Afghanistan is Kabul
@@ -640,91 +796,27 @@ the population of Afghanistan is 36643815
 the continent of Afghanistan is Asia
 the currency of Afghanistan is Afghan afghani
 ...
-maan Zimbabwe pääkaupunki on Harare
-maan Zimbabwe pinta-ala on 390757
-maan Zimbabwe asukasluku on 16529904
-maan Zimbabwe maanosa on Africa
-maan Zimbabwe valuutta on United States dollar
+maan Peru pääkaupunki on Lima
+maan Peru pinta-ala on 1285216
+maan Peru asukasluku on 29381884
+maan Peru maanosa on South America
+maan Peru valuutta on Peruvian sol
+...
+die Hauptstadt von Zimbabwe ist Harare
+die Fläche von Zimbabwe ist 390757
+die Einwohnerzahl von Zimbabwe ist 16529904
+der Kontinent von Zimbabwe ist Africa
+die Währung von Zimbabwe ist United States dollar
 ```
 ''\noindent''
 
 
-+++Testing grammars in the GF shell+++
 
-The GF shell, just like the Python shell, is a line-based tool that enables testing GF code while developing it.
-The following session shows some useful commands in the shell:
-```
-# start gf in the OS shell, see the welcome message
-$ gf
-                              
-         *  *  *              
-      *           *           
-    *               *         
-   *                          
-   *                          
-   *        * * * * * *       
-   *        *         *       
-    *       * * * *  *        
-      *     *      *          
-         *  *  *              
-                              
-This is GF version 3.10.4. 
-Built on darwin/x86_64 with ghc-8.4, flags: interrupt server c-runtime
-License: see help -license.   
-
-# no languages are available yet
-Languages:
-
-# importing (i) a GF file makes a language available
-> i FactsEng.gf
-linking ... OK
-
-Languages: FactsEng
-1 msec
-
-# generate random (gr) abstract syntax tree
-Facts> gr
-AttributeFact area_Attribute (NameObject (StringName "Foo")) (IntValue 999)
-
-0 msec
-
-# generate random tree and pipe (|) it to linearize (l)
-Facts> gr | l
-the population of Foo is Foo
-
-0 msec
-
-# parse (p) a string into a tree
-Facts> p "the capital of France is Paris"
-AttributeFact capital_Attribute (NameObject (StringName "France"))
-  (NameValue (StringName "Paris"))
-
-0 msec
-
-# import another concrete syntax for the same abstract
-Facts> i FactsFin.gf
-linking ... OK
-
-Languages: FactsEng FactsFin
-1 msec
-
-# translate by parsing in one language and linearizing into another one
-Facts> p -lang=Eng "the capital of France is Paris" | l -lang=Fin
-maan France pääkaupunki on Paris
-
-0 msec
-
-# quit (q) GF and return to the OS shell
-Facts> q
-See you.
-0 msec
-$ 
-```
 +++Exercises+++
 
 ===Add a language===
 
-As an easy exercise for the reader, we could now suggest her to add a module for her own language:
+An easy exercise to start with is to add a module for a new own language:
 - copy and modify ``FactsEng.gf``
 - compile the pgf file with this new module included
 - run the ``facts.py`` script
@@ -734,9 +826,9 @@ As an easy exercise for the reader, we could now suggest her to add a module for
 Don't worry if it looks hopeless to get the grammar right: we will fix this by using more power of GF.
 
 
-===Change the data===
+===Change the domain of data===
 
-The ``Facts`` grammar is completely general for any kind of data that can be presented in the format "the Attribute of Object is Value", except for the names of the attributes and the wrapper word ``maan`` in ``FactsFin.gf``.
+The ``Facts`` grammar is completely general for any kind of data that can be presented in the format "the Attribute of Object is Value", except for the names of the attributes and wrapper words such as ``maan`` in ``FactsFin.gf``.
 You can hence apply it to some other tabular data, with the following modifications: 
 - in ``facts.py``,
   - change ``get_countries()`` to reflect the number and meaning of the fields in your data,
@@ -748,7 +840,7 @@ You can hence apply it to some other tabular data, with the following modificati
   - if necessary, change the wrapper words used in different languages.
 
 
-===Semantic triples===
+===Get Wikidata===
 
 The data format "the Attribute of Object is Value" is a special case of **semantic triples**, such as those used in RDF (**Resource Description Framework**).
 RDF if a standard format for storing data on the web and is used, for example, in Wikidata, which is a data resource for the Wikipedia.
@@ -759,7 +851,10 @@ Thus in Wikidata, the fact that Cairo is the capital of Egypt is represented as 
 ''\noindent''
 where ``wd:Q85`` is an identifier for Cairo, ``wd:Q79`` for Egypt, and ``wdt:Q85`` for the relation "is the capital of".
 
-Wikidata is accessible via its query interface https://query.wikidata.org/.
+Wikidata is accessible via its query interface
+''\bequ''
+https://query.wikidata.org/
+''\enqu''
 In this interface, one can write queries in the SPARQL language (**SPARQL Protocol and RDF Query Language**) and get answers in a tabular form.
 For example, the following SPARQL query generates a table of countries and their capitals:
 ```
@@ -776,7 +871,7 @@ select ?city ?country ?cityLabel ?countryLabel {
 ''\noindent''
 The result is displayed as a table in the web browser, but it can also be downloaded in the TSV format.
 This gives a direct way to apply the methods seen by now to Wikidata.
-What is more, it also gives a way to obtain translations of names, by varying the language code (e.g. from ``en`` to ``fi``).
+What is more, the query also suggests a way to obtain translations of names, by varying the language code (e.g. from ``en`` to ``fi``).
 
 We will return to Wikidata many times later, but you can get a first feeling of it by writing some query, downloading the result as TSV, and using the result in the way explained in the previous exercise.
 
@@ -786,7 +881,7 @@ We will return to Wikidata many times later, but you can get a first feeling of 
 
 
 
-++Stage 2: Improving the NLG for atomic facts++
+++Stage 2: Improving NLG for atomic facts++
 
 We will now improve the quality of NLG by making full use of GF.
 The code for this can be found in the directory ``facts2/``.

@@ -1,6 +1,10 @@
-country_file = 'countries.tsv'
+country_file = '../data/countries.tsv'
+labels_file = '../data/alllabels.tsv'
 name_cat = 'CName'
 included_fields = [0,1,4,5]
+
+source_field = 1  # English
+target_field = 4  # German
 
 def get_names(filename):
     names = set()
@@ -11,11 +15,11 @@ def get_names(filename):
             names.add(fields[i].strip())
     return names
      
-def name_rules(name,cat):
+def name_rules(name,cat,lin):
     fun = mkFun(name,cat)
     return (
       ' '.join(["fun",fun,':',cat,';']),
-      ' '.join(["lin",fun,'=','mk'+cat, '"'+name+'"', ';'])
+      ' '.join(["lin",fun,'=','mk'+cat, '"'+lin+'"', ';'])
       )
 
 def escape(s):
@@ -45,13 +49,29 @@ def mkFun(name,cat):
     return fun
 
 
-def main():
+def main_eng():
   names = get_names(country_file)
   for name in names:
-      fun,lin = name_rules(name,name_cat)
+      fun,lin = name_rules(name,name_cat,name)
       print(fun)
       print(lin)
     
+def main_lang():
+    
+    labeldefs = open(labels_file)
+    labels = {}
+    for row in labeldefs:
+        cols = row.split('\t')
+        labels[cols[source_field].strip()] = cols[target_field].strip()
+
+    names = get_names(country_file)
+    for name in names:
+        linname = labels.get(name,name)
+        fun,lin = name_rules(name,name_cat,linname)
+        print(fun)
+        print(lin)
+    
 if __name__ == "__main__":
-    main()
+    main_lang()
+
 

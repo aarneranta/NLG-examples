@@ -39,7 +39,8 @@ class FactSystem:
         for lang in langs:
             text = []
             for tree in fact_generator(self,data):
-                text.append(lang.linearize(tree).capitalize())
+                lin = lang.linearize(tree)
+                text.append(lin[0].upper() + lin[1:])
             print('\n'.join(text))
 
 
@@ -66,7 +67,7 @@ def example_run():
                           'CountriesEng'
                         )
             
-    factsys.run('countries.tsv',simple_facts)
+    factsys.run('../data/countries.tsv',simple_facts)
 
 if __name__ == "__main__":
     example_run()

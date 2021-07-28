@@ -1,7 +1,7 @@
 from data_facts import *
 
 pgffile = 'Countries.pgf'
-datafile = 'countries.tsv'
+datafile = '../data/countries.tsv'
 
 def country_facts(factsys,tuple):
     countr = factsys.str2exp("CName",factsys.datakey(tuple))

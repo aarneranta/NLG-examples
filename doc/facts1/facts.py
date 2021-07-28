@@ -2,7 +2,7 @@ import pgf
 from collections import namedtuple
 
 pgf_file = 'Facts.pgf'
-country_file = 'countries.tsv'
+country_file = '../data/countries.tsv'
 
 def get_countries(filename):
     countries = []
