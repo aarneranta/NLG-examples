@@ -1370,6 +1370,103 @@ def example_run():
 
 +++Python code: domain-specific methods+++
 
+Similarly to ``Facts.gf``, ``data_facts.py`` applies to any data that is arranged in tables where the columns are attributes and the rows are their combinations corresponding to data objects.
+The generated language consists of straightforward sentences of the form //the Attribute of Object is Value//.
+The specific modules ``CountryNames.gf`` are ``Countries.gf`` are only used to obtain the natural language names of attributes and values.
+
+The file ``country_facts.py`` makes use of the domain-specific GF constructs, illustrated by ``populationFact`` and ``continentFact``.
+The fact generator function ``country_facts_embedded`` uses these functions for the population and the continent, whereas all the others are still treated in the generic way:
+```
+def country_facts_embedded(factsys,tuple):
+    countr = factsys.str2exp("CName",tuple[0])
+    cap    = factsys.str2exp('Name',tuple.capital)
+    cont   = factsys.str2exp('CName',tuple.continent)
+    curr   = factsys.str2exp('Name',tuple.currency)
+    pop    = mkInt(tuple.population)
+    are    = mkInt(tuple.area)
+
+    factsys.grammar.embed("G")
+    import G
+    object = G.NameObject(G.cName(countr))
+    
+    return [
+      G.AttributeFact(G.capital_Attribute, object, G.NameValue(cap)),
+      G.AttributeFact(G.area_Attribute, object, G.IntValue(are)),
+      G.populationFact(countr, pop),
+      G.continentFact(countr, cont),
+      G.AttributeFact(G.currency_Attribute, object, G.NameValue(curr))
+      ]
+```
+''\noindent''
+This function illustrates another new functionality from Python's PGF library:
+- ``grammar.embedded("G")`` creates a **Python module** called ``G``.
+  - This module can be **imported** just like any Python module.
+  - It contains functions ``G.``//f//  for all functions //f// in the abstract syntax.
+
+
+''\noindent''
+The use of the ``G`` functions is much more concise than the constructor ``pgf.Expr``.
+Just compare the first returned tree with
+```
+  pgf.Expr('AttributeFact',
+    [pgf.Expr('capital_Attribute',[]), object, pgf.Expr('NameValue',[cap])])
+```
+''\noindent''
+Another advantage - even more important in larger projects - is that existence of ``G`` functions is checked by Python's dynamic type checker, so that proper feedback is obtained for errors like misspellings.
+(Their arity, however, is only checked by an assertion in the C code underlying the Python's pgf module.)
+The generated module ``G`` is called an **embedded grammar**, since it is a grammar embedded in Python.
+
+A possibly even easier way to construct abstract syntax trees in Python is, surprise surprise, by using the parser.
+The same behaviour as ``country_facts_embedded`` is obtained by ``country_facts_parsed``:
+```
+def country_facts_parsed(factsys,tuple):
+    countr = factsys.data2lin("CName",tuple[0])
+    cap    = factsys.data2lin('Name',tuple.capital)
+    cont   = factsys.data2lin('CName',tuple.continent)
+    curr   = factsys.data2lin('Name',tuple.currency)
+    pop    = mkInt(tuple.population)
+    are    = mkInt(tuple.area)
+
+    return [ factsys.str2exp('Fact',s) for s in
+        [
+        "the capital of {} is {}".format(countr,cap),
+        "the area of {} is {}".format(countr,are),
+        "{} has {} inhabitants".format(countr,pop),
+        "{} is in {}".format(countr, cont),
+        "the currency of {} is {}".format(countr,are)
+        ]
+      ]
+```
+''\noindent''
+The fact trees are now obtained by parsing strings with the concrete syntax of the input language.
+The strings are built separately for each tuple by inserting values in braces and using Python's ``format()`` method.
+
+Notice the way in which the values are given:
+```
+  cap = factsys.data2lin('Name',tuple.capital)
+```
+''\noindent''
+We could actually write simply
+```
+  cap = tuple.capital
+```
+''\noindent''
+if we knew that the linearization of the capital is the same as its name in the data.
+But since this would be an unnecessarily restrictive assumption, we perform the roundtrip via parsing and linearization.
+
+The roundtrip method is defined as follows in the ``FactSystem`` class:
+```
+    def exp2str(self,exp):
+        eng = self.grammar.languages[self.language1]
+        return eng.linearize(exp)
+
+    def data2lin(self,cat,s):
+        return self.exp2str(self.str2exp(cat,s))
+```
+''\noindent''
+As parsing is usually the most expensive PGF function, the parser method of defining trees may result in slower code than the embedding method.
+In the current case the difference is negligible: 0.367 seconds instead of 0.238 seconds for the whole table.
+
 
 
 +++Other concrete syntaxes: German and Finnish+++

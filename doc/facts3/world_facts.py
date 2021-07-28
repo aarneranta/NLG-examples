@@ -32,7 +32,6 @@ def main():
     gr = pgf.readPGF('Countries.pgf')
 
     factsys = FactSystem('country capital area population continent currency',
-                          lambda t: t.country,
                           gr,
                           'CountriesEng'
                         )
