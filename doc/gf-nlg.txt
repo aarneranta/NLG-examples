@@ -889,21 +889,21 @@ The main improvents are
 - going from static templates to grammatical structures,
 - thereby enabling more fluent language,
 - translating the names to different languages,
-- restructuring the code so that it is easier to extend.
+- restructuring the code so that it is easier to extend and reuse.
 
 
 ''\noindent''
 These improvements are based on two new concepts of GF:
 - the **Resource Grammar Library** (RGL), giving an easy access to grammar rules,
-- the **module system**, enabling a modular structure of the code.
+- the **module system** of GF, enabling a modular structure of the code.
 
 
 
 +++Refactoring abstract syntax+++
 
 The GF code in ``facts1/``  is monolithic: there is just one GF file for the abstract syntax and one for each language.
-This file contains both generic concepts about facts and concepts specific for countries.
-If we want to apply it on some other domain, such as novels, we have to make a copy of the code and change some parts of it.
+These files contain both generic concepts about facts and concepts specific to countries.
+If we want to apply the grammar on some other domain, such as Nobel prize winners, we have to make a copy of the code and change some parts of it.
 A better way to do this is to divide the code into a generic and domain-specific part:
 - ``Facts.gf``, defining general categories and syntactic structures,
 - ``Countries.gf``, defining domain-specific concepts, such as the attributes,
@@ -937,11 +937,9 @@ cat
 
 fun
   AttributeFact : Attribute -> Object -> Value -> Fact ;
-
   NameObject : Name -> Object ;
   NameValue : Name -> Value ;
   IntValue : Int -> Value ;
-
 }
 ```
 ''\noindent''
@@ -964,17 +962,18 @@ fun South_America_CName : CName ;
 }
 ```
 This module contains
-- domain-specific name categories, here just ``CName``, but we could also have different categories for countries, cities, and currencies,
+- domain-specific name categories, here just ``CName``, but we could also have separate categories for continents, countries, cities, and currencies,
 - names extracted from data, here for all continents, countries, cities, and currencies
 
 
 ''\noindent''
-The rationale with domain-specific categories will become obvious later.
-One reason is that different categories can have different properties, for instance, from a country name one can form an expression for a citizen of that country, which is not possible for some other types of names.
+The rationale of domain-specific categories will become obvious later.
+One reason is that different categories can have different properties.
+For example, a country name can include an expression for a citizen of that country, which is not possible for some other types of names.
 
 Extracting names from data can be done in different ways.
-For example, the Wikimedia identifiers (such as ``wd:Q79`` for Egypt) would work well as an abstract function names.
-Here we have, however, used the English names to make it easier to manually inspect the grammar.
+For example, the Wikimedia identifiers (such as ``wd:Q79`` for Egypt) would work perfectly as abstract function names: they are unique, and they have well-defined mappings to names ("labels") in different languages.
+Here we have, however, used the English names to make it easier to inspect the grammar.
 The important thing in both cases is to make sure the function names are valid GF identifiers.
 This means, among other things, surrounding them by single quotes if they contain special characters.
 The function
@@ -982,8 +981,8 @@ The function
   extract_names.mkFun(name,category)
 ```
 ''\noindent''
-in ``facts2/extract_names.py`` is a way to guarantee this.
-The same module also has the function ``name_rules()``, which forms a pair of GF ``fun`` and ``lin`` rules for a name.
+in ``facts2/extract_names.py`` is a way to guarantee this (in almost all cases).
+The same module also has the function ``name_rules()``, which forms a pair of GF ``fun`` and ``lin`` rules for a name in a wanted language, given a TSV file with aligned names.
 
 The topmost module ``Countries`` inherits both ``Facts`` and ``CountryNames``, to which it adds some code of its own:
 ```
@@ -1007,14 +1006,14 @@ fun
 ''\noindent''
 The main parts are
 - a header that lists the inherited modules and adds (with operator ``**``) a body of new judgements,
-- functions for using domain-specific names in the general category ``Name``,
+- functions for using domain-specific names in the domain-independent category ``Name``,
 - domain-specific attributes,
 - other domain-specific functions, which enable idiomatic expressions of facts.
 
 
 ''\noindent''
 The last part is a main ingredient in making NLG more natural.
-It introduces alternative ways for expressing facts --- in the present case,
+Here wi illustrate it with just two alternative ways for expressing facts:
 - //Argentina has 41343201 inhabitants// (``populationFact``)
 - //Argentina is in South America// (``continentFact``)
 
@@ -1039,8 +1038,8 @@ The graph generated by ``dg`` uses
 
 ''\noindent''
 Just to refactor ``FactsEng`` in this way would not require more explanation.
-But we will now introduce a new concept: the use of **resource modules** with reusable operations.
-The first one out is ``FactsEng``:
+But we will now introduce a new concept: **resource modules** with reusable operations.
+Here is how they are used in ``FactsEng``:
 ```
 concrete FactsEng of Facts = open SyntaxEng, SymbolicEng in {
 
@@ -1061,8 +1060,8 @@ lin
 ```
 ''\noindent''
 The only new notation in this module is the ``open`` directive on the first line.
-It means that the contents of the two modules, ``SyntaxEng`` and ``SymbolicEng``, become usable in the module body.
-But the contents are not inherited --- in fact, this would not even make sense, because the opened modules are not concrete syntaxes but of yet another kind, **resource modules**.
+It makes the contents of two modules, ``SyntaxEng`` and ``SymbolicEng``, usable in the module body.
+But the contents are not inherited --- in fact, this would not even make sense, because the opened modules are not concrete syntaxes but of a third kind, **resource modules**.
 
 We do not need to write any resource modules ourselves at this point, but just use those available in the RGL (GF Resource Grammar Library).
 The three most important modules are, for each language with its language code as suffix,
@@ -1074,17 +1073,18 @@ The three most important modules are, for each language with its language code a
 ''\noindent''
 The RGL is installed in a standard, although platform-specific, place in the file system, where the GF compiler finds it via the environment variable ``GF_LIB_PATH``.
 If you can import ``FactsEng`` without error messages in GF, the installation works as it should, and you do not need to worry about it.
-Then you can study the contents of the library via its API,
+
+The next thing is to study the contents of the library via its API,
 - https://www.grammaticalframework.org/lib/doc/synopsis/
 
 
 ''\noindent''
-Instead of a systematic RGL tutorial, let us focus on the parts relevant to the current task.
+Instead of giving a systematic RGL tutorial (which can be found elsewhere), let us just look at the parts relevant to the current task.
 The first objective is to define linearization types in terms of RGL categories.
 The ones used in ``FactsEng`` are
 - ``Cl``, **clause**, sentences expressing simple predications,
 - ``NP``, **noun phrase**, phrases usable as subjects and objects in clauses,
-- ``CN``, **common noun**, phrases usable as parts of noun phrases by adding determiners.
+- ``CN``, **common noun**, phrases from which noun phrases can be built adding determiners.
 
 
 ''\noindent''
@@ -1093,22 +1093,23 @@ To give an example, //country// is a ``CN``, from which one can form ``NP``s suc
 Thus a ``CN`` has both singular and plural forms, whereas an ``NP`` already has a fixed number, either singular or plural.
 
 The authors of the RGL have to define in detail
-- how the forms of ``CN``s are built: //country-countries// vs.\ //continent-continents//;
-- how the forms are used in ``NP``s: //this country// vs.\ //these countries//;
-- how ``NP``s are used in ``Cl``s:  //this country **is** in Europe// vs.\ //these countries **are** in Europe//;
+- how the forms of ``CN``s are built: //country-countries// vs. //continent-continents//;
+- what forms are selected in ``NP``s: //this country// vs. //these countries//;
+- how ``NP``s are used in ``Cl``s:  //this country **is** in Europe// vs. //these countries **are** in Europe//;
 
 
 ''\noindent''
-Since this linguistic ground work has been done once and for all in the RGL, we NLG engineers do not need to repeat it.
-But we do need to develop an idea about what combinations are possible for these categories.
+Since this linguistic ground work has been done once and for all in the RGL, NLG engineers do not need to repeat it.
+But we do need to develop an idea about what combinations of RGL functions are possible.
 The linearization of ``AttributeFact`` is quite a mouthful to start with:
 ```
   mkCl (mkNP the_Det (mkCN prop (mkAdv possess_Prep obj))) val
 ```
 ''\noindent''
 Let us work out an example to see how it fits this pattern:
-- //the capital of Italy is Rome//
-
+''\bequ''
+//the capital of Italy is Rome//
+''\enqu''
 
 ''\noindent''
 The outermost part of the GF expression is ``mkCl`` applied to two ``NP``s, presented as follows in the API:
@@ -1117,7 +1118,7 @@ The outermost part of the GF expression is ``mkCl`` applied to two ``NP``s, pres
 ```
 ''\noindent''
 The example following the type of the function contains two ``NP``s, //she// and //the woman//, which get connected with the **copula** //is// (or //are// or //am//, depending on the first ``NP``).
-Applying this to our example, we have an expression of the form
+Applying this to our example, we build a GF expression of the form
 ```
   mkCl <the capital of Italy> <Rome>
 ```
@@ -1134,8 +1135,9 @@ It uses the following API functions, which we now annotate with the current exam
 ```
 ''\noindent''
 We recommend you to convince yourself that the functions are combined in a proper way, so that the value types of each subexpression match the expected argument types!
+
 Once we manage to build a **type-correct** expression in this way from RGL function, we can be sure that the result is **grammatically correct**.
-Of course, it may not be the expression you want: to guarantee this, you need to test your grammar (e.g.\ with random generation and linearization) and gradually gain experience that reduces the need of testing.
+Of course, it may not be the expression you want: to guarantee this, you need to test your grammar (e.g. with random generation and linearization) and gradually gain experience that reduces the need of testing.
 
 The remaining judgements in **FactsEng** are simple.
 ``IntValue`` uses the RGL operation
@@ -1192,7 +1194,7 @@ Examples include
 
 
 ''\noindent''
-We will return to this question when discussing the Finnish implementation, which is impossible to get working with just plain strings.
+We will return to this question when discussing the German and Finnish implementations, which are impossible to get working with just plain strings.
 
 
 +++The top module+++
@@ -1246,7 +1248,7 @@ Now that we have walked through the refactored modules using the RGL, we can dra
 '''
 ''\noindent''
 Resource modules are shown as dashed ellipses and opening them as dashed arrows.
-This diagram hides the dozens of modules that underlie the explicitly opened RGL modules.
+This diagram hides dozens of modules that underlie the explicitly opened RGL modules.
 The user of the RGL seldom needs to be aware of them.
 
 
@@ -1634,6 +1636,12 @@ concrete FactsEng of Facts = FactsFunctor with
 ```
 ''\noindent''
 That is, it only needs to indicate what instances is interface has.
+'''
+\begin{center}
+\includegraphics[width=1.0\textwidth]{functor.eps}
+\end{center}
+'''
+
 
 Functors help extending a grammar in both the abstract and concrete dimensions:
 - to add an abstract function, its concrete syntax only needs to be defined in the functor,
