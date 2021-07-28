@@ -3,9 +3,8 @@ from collections import namedtuple
 
 
 class FactSystem:
-    def __init__(self,fnames,dkey,gr,lang1):
+    def __init__(self,fnames,gr,lang1):
         self.fieldnames = fnames 
-        self.datakey = dkey      # the key among fieldnames
         self.grammar = gr
         self.language1 = lang1   # the language in which entities are parsed to trees
 
@@ -49,10 +48,11 @@ def simple_facts(factsys,data):
     fields = factsys.fieldnames.split()    
     facts = []
     for tuple in data:
-        for (attr,val) in [(fields[i],list(tuple)[i]) for i in range(1,len(fields))]:
+        ltuple = list(tuple)
+        for (attr,val) in [(fields[i],ltuple[i]) for i in range(1,len(fields))]:
             fact = pgf.Expr("AttributeFact", [
                     factsys.str2exp("Attribute",attr),
-                    factsys.str2exp("Object",factsys.datakey(tuple)),
+                    factsys.str2exp("Object",ltuple[0]),
                     factsys.str2exp("Value",val)])
             facts.append(fact)
     return facts
@@ -60,12 +60,11 @@ def simple_facts(factsys,data):
 
 def example_run():
     gr = pgf.readPGF('Countries.pgf')
-
-    factsys = FactSystem('country capital area population continent currency',
-                          lambda t: t.country,
-                          gr,
-                          'CountriesEng'
-                        )
+    factsys = FactSystem(
+        'country capital area population continent currency',
+        gr,
+        'CountriesEng'
+        )
             
     factsys.run('../data/countries.tsv',simple_facts)
 

@@ -4,7 +4,7 @@ pgffile = 'Countries.pgf'
 datafile = '../data/countries.tsv'
 
 def country_facts(factsys,tuple):
-    countr = factsys.str2exp("CName",factsys.datakey(tuple))
+    countr = factsys.str2exp("CName",tuple[0])
     cap    = factsys.str2exp('Name',tuple.capital)
     cont   = factsys.str2exp('CName',tuple.continent)
     curr   = factsys.str2exp('Name',tuple.currency)
@@ -34,7 +34,6 @@ def main():
 
     factsys = FactSystem(
       'country capital area population continent currency',
-      lambda t: t.country,
       gr,
       'CountriesEng'
       )

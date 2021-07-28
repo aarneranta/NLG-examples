@@ -1166,9 +1166,6 @@ oper mkCName : Str -> NP = \s -> mkNP (mkPN s) ;
 lin Africa_CName = mkCName "Africa" ;
 lin Asia_CName = mkCName "Asia" ;
 lin Central_America_CName = mkCName "Central America" ;
-lin Europe_CName = mkCName "Europe" ;
-lin North_America_CName = mkCName "North America" ;
-lin South_America_CName = mkCName "South America" ;
 ```
 ''\noindent''
 A new kind of judgement, with the keyword ``oper``, is used here:
@@ -1268,18 +1265,23 @@ But this time we have modularized the Python code in a way analogous to the gram
 
 ''\noindent''
 The specific part is optional, in the sense that ``data_facts.py`` alone is sufficient to generate basic natural language texts based on the ``Countries`` grammar.
-These texts follow a simple pattern: for each data attribute, they use ``AttributeFact <attr_Attribute> obj val``, where ``<attr_Attribute>`` is the GF function corresponding to the data attribute ``attr``.
-
+These texts follow a simple pattern: for each data attribute, they use the tree
+```
+  AttributeFact <attr_Attribute> obj val
+```
+where ``<attr_Attribute>`` is the GF function corresponding to the data attribute ``attr``.
 The simple procedure is already better than ``facts1`` as it uses a grammar.
+The advantages are not seen in the English output, but make a clear difference in German and Finnish.
+
 In the specialized procedure of ``country_facts.py``, we moreover use special functions such as those for population and continent.
-The code also scales up to deeper data analysis and **aggregation**, which are powerful NLG techniques to be discussed later.
+
+The module ``facts2/data_facts.py`` also scales up to the next stages and needs therefore not to be changed in ``facts3``.
 
 The central part of the code is the class ``FactSystem``, which contains a grammar and methods for converting data into text by using the grammar.
 ```
 class FactSystem:
-    def __init__(self,fnames,dkey,gr,lang1):
+    def __init__(self,fnames,gr,lang1):
         self.fieldnames = fnames # names of datafields as a string
-        self.datakey = dkey      # the key attribute among fieldnames
         self.grammar = gr        # a PGF object
         self.language1 = lang1   # the language used for parsing input
 
@@ -1288,6 +1290,16 @@ class FactSystem:
         ...
         return data
 
+    # run a fact_generator function that converts data to trees    
+    def run(self,datafile,fact_generator):
+            ...
+            for tree in fact_generator(self,data):
+                text.append(lang.linearize(tree))
+            ...
+```
+''\noindent''
+A possibly surprising method in the class is one that uses the **parser**:
+```
     # parse strings to trees in category cat
     def str2exp(self,cat,s):
         eng = self.grammar.languages[self.language1]
@@ -1298,33 +1310,25 @@ class FactSystem:
         except:
             print("WARNING:","no", cat, "from", s)
             return pgf.Expr(s,[])
-	    
-    # run a fact_generator function that converts data to trees    
-    def run(self,datafile,fact_generator):
-        gr = self.grammar
-        data = sorted(list(self.get_data(datafile)))
-        langs = list(gr.languages.values())
-        for lang in langs:
-            text = []
-            for tree in fact_generator(self,data):
-                text.append(lang.linearize(tree))
-            print('\n'.join(text))
 ```
 ''\noindent''
-Notice how the parser from the ``pgf`` library is put into use in the ``string2exp`` method.
 Even though we are mainly interested in generation and not parsing, this is a useful way to map, for instance, data attributes to GF attribute functions.
 Then we need not assume hard-coded conventions such as from data attribute ``area`` to GF function ``area_Attribute``, as we did in ``facts1``.
 
-A baseline ``fact_generator`` is one that expresses each datapoint with ``AttributeFact``.
+A baseline ``fact_generator`` is ``simple_facts()``, which expresses each datapoint with ``AttributeFact``,
+in the same way as at Stege 1 but now using the parser to map data attribute names to GF function names.
+The function if moreover generic for any dataset, as it takes the field names and the data key from a class variable of a ``FactSystem`` (assuming that the key attribute is in field 0):
 ```
 def simple_facts(factsys,data):
+    "for each tuple in data, generate an attribute fact sentence for each field"
     fields = factsys.fieldnames.split()    
     facts = []
     for tuple in data:
-        for (attr,val) in [(fields[i],list(tuple)[i]) for i in range(1,len(fields))]:
+        ltuple = list(tuple)
+        for (attr,val) in [(fields[i],ltuple[i]) for i in range(1,len(fields))]:
             fact = pgf.Expr("AttributeFact", [
                     factsys.str2exp("Attribute",attr),
-                    factsys.str2exp("Object",factsys.datakey(tuple)),
+                    factsys.str2exp("Object",ltuple[0]),
                     factsys.str2exp("Value",val)])
             facts.append(fact)
     return facts
@@ -1339,22 +1343,24 @@ To run NLG on a datafile, we then
 ```
 def example_run():
     gr = pgf.readPGF('Countries.pgf')
-
-    factsys = FactSystem('country capital area population continent currency',
-                          lambda t: t.country,
-                          gr,
-                          'CountriesEng'
-                        )
-            
-    factsys.run('countries.tsv',simple_facts)
+    factsys = FactSystem(
+        'country capital area population continent currency',
+        gr,
+        'CountriesEng'
+        )
+    factsys.run('../data/countries.tsv',simple_facts)
 ```
 
+- TODO explain parser, ``country_facts``
 
 
 
-+++Another concrete syntax: Finnish+++
++++Other concrete syntaxes: German and Finnish+++
 
-The Finnish concrete syntax has naturally the same structure as English.
+- TODO write about German first, then less about Finnish
+
+
+The German concrete syntax has naturally the same structure as English.
 The ``FactsFin`` module looks as follows:
 ```
 concrete FactsFin of Facts = 
