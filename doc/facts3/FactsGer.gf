@@ -13,4 +13,17 @@ oper
   only_AP : AP = mkAP (mkA "einzig") ; 
   million_N = mkN "Million" "Millionen" feminine ;
   billion_N = mkN "Milliarde" ;
+
+{-
+-- functions left to instantiation
+lin
+  IntMillionNumeric int = M.mkDet int.s (M.mkDet "million" plural) ;
+  IntBillionNumeric int = M.mkDet int.s (M.mkDet "billion" plural) ;
+  IntTrillionNumeric int = M.mkDet int.s (M.mkDet "trillion" plural) ;
+
+  AboutNumeric num = M.mkDet "about" num ;
+  OverNumeric num = M.mkDet "over" num ;
+  UnderNumeric num = M.mkDet "under" num ;
+-}
+
 }

@@ -2036,6 +2036,72 @@ The plan can be implemented as a GF function and exported as a **Wikifunction**,
 
 ++Manual planning and document authoring++
 
+++Where is the standard NLG pipeline?++
+
+The standard architecture (Reiter and Dale 2002) divides NLG into six subtasks, which are often seen as parts of a pipeline.
+The authors themselves note:
+''\bequ''
+//this does not mean that an NLG system needs six modules; most systems use an architecture where one module simultaneously performs several tasks//
+''\enqu''
+Now, even though the system we have built definitely does not consist of six modules corresponding to these subtasks, it is useful to see how it accomplishes each of the tasks.
+
+
++++Content determination+++
+
+''\bequ''
+//the process of deciding what information should be communicated in the text//
+''\enqu''
+At Stages 1 to 3, we choose the simplest possible strategy and communicate every atomic fact in the data.
+At Stage 4, we introduce data selection and aggregation.
+
+
+
++++Discourse planning+++
+
+''\bequ''
+//imposing ordering and structure over the messages to be conveyed//
+''\enqu''
+At Stages 1 and 2, we follow the order in which the facts appear in the data.
+At Stages 3 and 4, we combine facts to be aggregated syntactically.
+
+
+
+
++++Sentence aggregation+++
+
+''\bequ''
+//grouping messages together into sentences//
+''\enqu''
+This was introduced at Stage 3.
+The necessary functions are defined in GF, and the Python code decides where to use them.
+
+
++++Lexicalization+++
+
+''\bequ''
+//deciding which specific words and phrases should be chosen to express the domain concepts and relations which appear in the messages//
+''\enqu''
+These decisions are made in the GF concrete syntax modules.
+
+
++++Referring expression generation+++
+
+''\bequ''
+//selecting words or phrases to identify domain entities//
+''\enqu''
+This is done at Stage 3, albeit in a very simple fashion.
+Much more could be done.
+
+
++++Linguistic realization+++
+
+''\bequ''
+//applying the rules of grammar to produce a text which is syntactically, morphologically, and orthographically correct//
+''\enqu''
+This is delegated to the RGL.
+In the multilingual setting, this part is actually the most labour-intensive one, since the other parts (except lexicalization) are shared by all the languages.
+The most important advantage of GF is probably here --- in the existence of the RGL and its shared API.
+The gain becomes even larger via the use of functors, which is the topic of the next chapter.
 
 
 +Sharing code between languages via a functor+
@@ -2146,70 +2212,6 @@ Hence the use of functors is a productive way to build multilingual grammars.
 If moreover the translations of names can be extracted from data, adding a new language is almost an automatic task - provided that the language is included in the RGL.
 
 
-
-++Where is the standard NLG pipeline?++
-
-The standard architecture (Reiter and Dale 2002) divides NLG into six subtasks, which are often seen as parts of a pipeline.
-The authors themselves note:
-''\bequ''
-//this does not mean that an NLG system needs six modules; most systems use an architecture where one module simultaneously performs several tasks//
-''\enqu''
-Now, even though the system we have built definitely does not consist of six modules corresponding to these subtasks, it is useful to see how it accomplishes each of the tasks.
-
-
-+++Content determination+++
-
-''\bequ''
-//the process of deciding what information should be communicated in the text//
-''\enqu''
-At Stages 1 to 3, we choose the simplest possible strategy and communicate every atomic fact in the data.
-At Stage 4, we introduce data selection and aggregation.
-
-
-
-+++Discourse planning+++
-
-''\bequ''
-//imposing ordering and structure over the messages to be conveyed//
-''\enqu''
-At Stages 1 and 2, we follow the order in which the facts appear in the data.
-At Stages 3 and 4, we combine facts to be aggregated syntactically.
-
-
-
-
-+++Sentence aggregation+++
-
-''\bequ''
-//grouping messages together into sentences//
-''\enqu''
-This was introduced at Stage 3.
-The necessary functions are defined in GF, and the Python code decides where to use them.
-
-
-+++Lexicalization+++
-
-''\bequ''
-//deciding which specific words and phrases should be chosen to express the domain concepts and relations which appear in the messages//
-''\enqu''
-These decisions are made in the GF concrete syntax modules.
-
-
-+++Referring expression generation+++
-
-''\bequ''
-//selecting words or phrases to identify domain entities//
-''\enqu''
-This is done at Stage 3, albeit in a very simple fashion.
-Much more could be done.
-
-
-+++Linguistic realization+++
-
-''\bequ''
-//applying the rules of grammar to produce a text which is syntactically, morphologically, and orthographically correct//
-''\enqu''
-This is delegated to the RGL.
 
 
 +NLG from formal languages+

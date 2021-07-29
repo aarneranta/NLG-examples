@@ -17,6 +17,7 @@ lincat
   Kind = CN ;
   Value = NP ;
   Name = NP ;
+  Numeric = Det ;
 
 lin
   OneSentenceDoc sent = mkText sent ;
@@ -35,27 +36,33 @@ lin
   PropertyKind prop kind = mkCN prop kind ;
   ModifierKind kind mod = mkCN kind mod ;
 
-  NumberKindModifier int kind = mkAdv with_Prep (mkNP <symb int : Card> kind) ;
+  NumericKindModifier num kind = mkAdv with_Prep (mkNP num kind) ;
 
   NameObject name = {np = name ; pron = npPron name ; isPron = False} ;
   PronObject name =
     let pron = npPron name in {np = mkNP pron ; pron = pron ; isPron = True} ;
 
-  NumberKindValue int kind = mkNP <symb int : Card> kind ;
+  NumericKindValue num kind = mkNP num kind ;
   NameValue name = name ;
-  IntValue int = symb int ;
+  NumericValue num = mkNP num ;
 
-  IntMillionValue int = mkNP <symb int : Card> million_N ;
-  IntBillionValue int = mkNP <symb int : Card> billion_N ;
+  IntNumeric int = mkDet <symb int : Card> ;
+-- in instantiations
+--
+--  IntMillionNumeric int = 
+--  IntBillionNumeric int = 
+--  AboutNumeric num = 
+--  OverNumeric num = 
+--  UnderNumeric num = 
   
 --------------------
 -- data aggregation
 
-  CountKindFact int kind = mkCl (mkNP <symb int : Card> kind) ;
-  CountKindModifierFact int kind mod = Grammar.ExistNPAdv (mkNP <symb int : Card> kind) mod ;
+  NumericKindFact num kind = mkCl (mkNP num kind) ;
+  NumericKindModifierFact num kind mod = Grammar.ExistNPAdv (mkNP num kind) mod ;
   MaxObjectAttributeFact obj attr = mkCl obj.np have_V2 (mkNP the_Det (mkCN largest_AP attr)) ;
   MinObjectAttributeFact obj attr = mkCl obj.np have_V2 (mkNP the_Det (mkCN smallest_AP attr)) ;
-  SumAttributeFact attr obj int = AttributeFact (mkCN total_AP attr) obj (IntValue int) ;
+  SumAttributeFact attr obj int = AttributeFact (mkCN total_AP attr) obj (NumericValue int) ;
 
   UniqueInKindFact obj kind = mkCl obj.np (mkNP the_Det (mkCN only_AP kind)) ;
 
@@ -71,7 +78,6 @@ oper
 -- smallest_AP : AP
 -- total_AP : AP
 -- only_AP : AP
--- million_N : N ;
--- billion_N : N ;
+-- about_AdN : AdN ;
 
 }

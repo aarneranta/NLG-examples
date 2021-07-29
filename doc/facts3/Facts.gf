@@ -13,42 +13,47 @@ cat
   Kind ;
   Value ;
   Name ;
+  Numeric ;
 
 fun
-  OneSentenceDoc : Sentence -> Doc ;
-  AddSentenceDoc : Doc -> Sentence -> Doc ;
+  OneSentenceDoc : Sentence -> Doc ;           -- S.
+  AddSentenceDoc : Doc -> Sentence -> Doc ;    -- D. S.
 
-  ConjSentence : Sentence -> Sentence -> Sentence ;
-  FactSentence : Fact -> Sentence ;
+  ConjSentence : Sentence -> Sentence -> Sentence ; -- S and S
+  FactSentence : Fact -> Sentence ;                 -- F
 
-  KindFact : Object -> Kind -> Fact ;
-  PropertyFact : Object -> Property -> Fact ;
-  AttributeFact : Attribute -> Object -> Value -> Fact ;
+  KindFact : Object -> Kind -> Fact ;               -- O is a K
+  PropertyFact : Object -> Property -> Fact ;       -- O is P
+  AttributeFact : Attribute -> Object -> Value -> Fact ; -- the A of O is V
 
-  PropertyKind : Property -> Kind -> Kind ;
-  ModifierKind : Kind -> Modifier -> Kind ;
+  PropertyKind : Property -> Kind -> Kind ;  -- P K
+  ModifierKind : Kind -> Modifier -> Kind ;  -- K M
 
-  NumberKindModifier : Int -> Kind -> Modifier ;
+  NumericKindModifier : Numeric -> Kind -> Modifier ; -- with N K
 
-  NameObject : Name -> Object ;
-  PronObject : Name -> Object ;
+  NameObject : Name -> Object ;  -- N
+  PronObject : Name -> Object ;  -- it
 
-  NumberKindValue : Int -> Kind -> Value ;
-  NameValue : Name -> Value ;
-  IntValue : Int -> Value ;
+  NumericKindValue : Numeric -> Kind -> Value ; -- N K
+  NameValue : Name -> Value ;                   -- N
+  NumericValue : Numeric -> Value ;             -- N V
 
-  IntMillionValue : Int -> Value ;
-  IntBillionValue : Int -> Value ;
+  IntNumeric : Int -> Numeric ;          -- I
+  IntMillionNumeric : Int -> Numeric ;   -- I million
+  IntBillionNumeric : Int -> Numeric ;   -- I billion
+  AboutNumeric : Numeric -> Numeric ;    -- about N
+  OverNumeric : Numeric -> Numeric ;     -- over N
+  UnderNumeric : Numeric -> Numeric ;    -- over N
 
 --------------------
 -- data aggregation
 
-  CountKindFact : Int -> Kind -> Fact ;
-  CountKindModifierFact : Int -> Kind -> Modifier -> Fact ;
-  MaxObjectAttributeFact : Object -> Attribute -> Fact ;
-  MinObjectAttributeFact : Object -> Attribute -> Fact ;
-  SumAttributeFact : Attribute -> Object -> Int -> Fact ;
+  NumericKindFact : Numeric -> Kind -> Fact ;                     -- there are N K
+  NumericKindModifierFact : Numeric -> Kind -> Modifier -> Fact ; -- there are N K M
+  MaxObjectAttributeFact : Object -> Attribute -> Fact ;          -- O has the largest A
+  MinObjectAttributeFact : Object -> Attribute -> Fact ;          -- O has the smallest A
+  SumAttributeFact : Attribute -> Object -> Numeric -> Fact ;     -- the total A of O is N
 
-  UniqueInKindFact : Object -> Kind -> Fact ;
+  UniqueInKindFact : Object -> Kind -> Fact ;  -- O is the only K
 
 }
