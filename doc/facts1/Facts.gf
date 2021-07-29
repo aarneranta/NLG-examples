@@ -7,7 +7,6 @@ cat
   Object ;
   Attribute ;
   Value ;
-  Name ;
 
 fun
   AttributeFact : Attribute -> Object -> Value -> Fact ;
@@ -18,10 +17,7 @@ fun
   continent_Attribute : Attribute ;
   currency_Attribute : Attribute ;
 
-  NameObject : Name -> Object ;
-  NameValue : Name -> Value ;
-  IntValue : Int -> Value ;
-
-  StringName : String -> Name ;
+  StringObject : String -> Object ;
+  StringValue : String -> Value ;
 
 }

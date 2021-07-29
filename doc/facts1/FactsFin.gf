@@ -5,7 +5,6 @@ lincat
   Object = Str ;
   Attribute = Str ;
   Value = Str ;
-  Name = Str ;
 
 lin
   AttributeFact attr obj val = "maan" ++ obj ++ attr ++ "on" ++ val ;
@@ -16,10 +15,6 @@ lin
   continent_Attribute = "maanosa" ;
   currency_Attribute = "valuutta" ;
 
-  NameObject name = name ;
-  NameValue name = name ;
-  IntValue int = int.s ;
-
-  StringName str = str.s ;
-
+  StringObject str = str.s ;
+  StringValue str = str.s ;
 }

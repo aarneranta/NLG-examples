@@ -16,23 +16,21 @@ def get_countries(filename):
 
   
 def country_facts(c):
-  object = pgf.Expr('NameObject', [mkName(c.country)])
+  object = pgf.Expr('StringObject',[string_expr(c.country)])
   return [
-    pgf.Expr('AttributeFact',[pgf.Expr(attr,[]),object,val])
+    pgf.Expr('AttributeFact',
+             [pgf.Expr(attr,[]),object,pgf.Expr('StringValue',[string_expr(val)])])
       for (attr,val) in [
-        ('capital_Attribute',    pgf.Expr('NameValue',[mkName(c.capital)])),
-        ('area_Attribute',       pgf.Expr('IntValue', [mkInt(c.area)])),
-        ('population_Attribute', pgf.Expr('IntValue', [mkInt(c.population)])),
-        ('continent_Attribute',  pgf.Expr('NameValue',[mkName(c.continent)])),
-        ('currency_Attribute',   pgf.Expr('NameValue',[mkName(c.currency)]))
+        ('capital_Attribute', c.capital),   
+        ('area_Attribute', c.area),
+        ('population_Attribute', c.population),
+        ('continent_Attribute', c.continent),
+        ('currency_Attribute', c.currency)
         ]
     ]
 
-def mkInt(s):
-    return pgf.readExpr(str(s))
-
-def mkName(s):
-    return pgf.Expr('StringName',[pgf.readExpr(str('"' + s + '"'))])
+def string_expr(s):
+    return pgf.readExpr(str('"' + s + '"'))
 
 def main():
     gr = pgf.readPGF(pgf_file)

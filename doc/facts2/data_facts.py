@@ -24,7 +24,7 @@ class FactSystem:
             _,e = pp.__next__()
             return e
         except:
-            print("WARNING:","no", cat, "from", s)
+            print("WARNING:","no", cat, "from", s,"with",self.language1)
             return pgf.Expr(s,[])
 
     def exp2str(self,exp):
@@ -47,15 +47,15 @@ class FactSystem:
 
 
 def simple_facts(factsys,data):
-    "for each tuple in data, generate an attribute fact sentence for each field"
+    "for each tuple in data, generate an attribute fact for each field"
     fields = factsys.fieldnames.split()    
     facts = []
     for tuple in data:
-        ltuple = list(tuple)
-        for (attr,val) in [(fields[i],ltuple[i]) for i in range(1,len(fields))]:
+        object = factsys.str2exp("Object",tuple[0])
+        for (attr,val) in [(fields[i],tuple[i]) for i in range(1,len(fields))]:
             fact = pgf.Expr("AttributeFact", [
                     factsys.str2exp("Attribute",attr),
-                    factsys.str2exp("Object",ltuple[0]),
+                    object,
                     factsys.str2exp("Value",val)])
             facts.append(fact)
     return facts

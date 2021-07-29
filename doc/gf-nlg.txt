@@ -399,8 +399,8 @@ The abstract syntax defines a set of fact **trees** (**abstract syntax trees**),
 ```
   AttributeFact
     population_Attribute
-    (NameObject (StringName "Argentina"))
-    (IntValue 44938712)
+    (StringObject "Argentina")
+    (StringValue "44938712")
 ```
 (in GF code), equivalently
 This tree can also be shown in a graphical representation,
@@ -444,8 +444,6 @@ cat
   Object ;
   Attribute ;
   Value ;
-  Name ;
-
 fun
   AttributeFact : Attribute -> Object -> Value -> Fact ;
 
@@ -455,10 +453,8 @@ fun
   continent_Attribute : Attribute ;
   currency_Attribute : Attribute ;
 
-  NameObject : Name -> Object ;
-  NameValue : Name -> Value ;
-  IntValue : Int -> Value ;
-  StringName : String -> Name ;
+  StringObject : String -> Object ;
+  StringValue : String -> Value ;
 }
 ```
 ''\noindent''
@@ -485,12 +481,12 @@ The limiting case are **constant functions**, which have no argument types --- h
 
 The functions
 ```
-  IntValue : Int -> Value ;
-  StringName : String -> Name ;
+  StringObject : String -> Object
+  StringValue : String -> Object
 ```
 ''\noindent''
-have as their argument types the **built-in categories** ``Int`` and ``String``.
-These categories are not declared in the ``cat`` judgments and have no user-defined functions to build trees in them: their objects are given as **integer literals** (such as ``44938712``) and **string literals** (``"Argentina"``), respectively.
+have as their argument type the **built-in category** ``String``.
+This category is not declared in the ``cat`` judgments and has no user-defined functions to build trees in them: its objects are given **string literals** in double quotes, e.g. ``"Argentina"``.
 
 For other categories than the built-in ones, trees are built by combining smaller trees with functions.
 Thus the representation of the sentence
@@ -500,10 +496,8 @@ Thus the representation of the sentence
 ''\noindent''
 is a tree of type ``Fact`` built by the function ``AttributeFact`` as follows (repeating what was shown above):
 ```
-  AttributeFact
-    population_Attribute
-    (NameObject (StringName "Argentina"))
-    (IntValue 44938712)
+  AttributeFact population_Attribute
+    (StringObject "Argentina") (StringValue "44938712")
 ```
 ''\noindent''
 Notice the GF syntax for function applications,
@@ -517,6 +511,9 @@ similar to Haskell, rather than
 ```
 ''\noindent''
 as in Python and Java.
+
+(We notice also that GF has ``Int`` and ``Float`` literals in addition to ``String``.
+But their use would be an unnecessary complication in the current application.)
 
 
 ++Concrete syntax++
@@ -536,10 +533,10 @@ lincat
   Object = Str ;
   Attribute = Str ;
   Value = Str ;
-  Name = Str ;
 
 lin
-  AttributeFact attr obj val = "the" ++ attr ++ "of" ++ obj ++ "is" ++ val ;
+  AttributeFact attr obj val =
+    "the" ++ attr ++ "of" ++ obj ++ "is" ++ val ;
 
   capital_Attribute = "capital" ;
   area_Attribute = "area" ;
@@ -547,10 +544,8 @@ lin
   continent_Attribute = "continent" ;
   currency_Attribute = "currency" ;
 
-  NameObject name = name ;
-  NameValue name = name ;
-  IntValue int = int.s ;
-  StringName str = str.s ;
+  StringObject str = str.s ;
+  StringValue str = str.s ;
 }
 ```
 ''\noindent''
@@ -570,14 +565,15 @@ We will extend it to richer types later.
 The linearization functions are defined with expressions that combine **variables** with **string literals**.
 Thus the first rule
 ```
-  AttributeFact attr obj val = "the" ++ attr ++ "of" ++ obj ++ "is" ++ val
+  AttributeFact attr obj val =
+    "the" ++ attr ++ "of" ++ obj ++ "is" ++ val
 ```
 ''\noindent''
 uses the variables ``prop``, ``obj``, and ``val``, which stand for the arguments of the function, and the literals ``"the"``, ``"of"``, and ``"is"``.
 The method of combination is **concatenation**, denoted by ``++`` (again borrowed from Haskell).
 
-The built-in types ``Int`` and ``String`` have more complex linearization types than ``Str``.
-Hence their objects cannot be used directly when a ``Str``  is expected, but extracted as a **projection** ``.s`` --- a notation that will be fully explained later.
+The built-in type ``String`` have more complex linearization types than ``Str``.
+Hence its objects cannot be used directly when a ``Str``  is expected, but extracted as a **projection** ``.s`` --- a notation that will be fully explained later.
 
 
 +++German and Finnish+++
@@ -589,7 +585,8 @@ concrete FactsGer of Facts = {
 -- lincat as in FactsEng
 
 lin
-  AttributeFact attr obj val = attr ++ "von" ++ obj ++ "ist" ++ val ;
+  AttributeFact attr obj val =
+    attr ++ "von" ++ obj ++ "ist" ++ val ;
 
   capital_Attribute = "die Hauptstadt" ;
   area_Attribute = "die Fläche" ;
@@ -606,7 +603,8 @@ The GitHub directory contains (at the time of writing), also Finnish.
 
 A potentially useful hack, common in templates-based NLG, is shown in ``FactsFin``:
 ```
-  AttributeFact attr obj val = "maan" ++ obj ++ attr ++ "on" ++ val ;
+  AttributeFact attr obj val =
+    "maan" ++ obj ++ attr ++ "on" ++ val ;
 ```
 ''\noindent''
 When assigning an attribute to country name, the name must be inflected in the genitive.
@@ -646,7 +644,7 @@ Languages: FactsEng
 
 # generate random (gr) abstract syntax tree
 Facts> gr
-AttributeFact area_Attribute (NameObject (StringName "Foo")) (IntValue 999)
+AttributeFact area_Attribute (StringObject "Foo") (StringValue "999")
 
 # generate random tree and pipe (|) it to linearize (l)
 Facts> gr | l
@@ -654,8 +652,8 @@ the population of Foo is Foo
 
 # parse (p) a string into a tree
 Facts> p "the capital of France is Paris"
-AttributeFact capital_Attribute (NameObject (StringName "France"))
-  (NameValue (StringName "Paris"))
+AttributeFact capital_Attribute (StringObject "France")
+  (StringValue "Paris")
 
 # import another concrete syntax for the same abstract
 Facts> i FactsGer.gf
@@ -663,7 +661,7 @@ linking ... OK
 
 Languages: FactsEng FactsGer
 
-# translate by parsing in one language and linearizing into another one
+# translate: parse in one language and linearize into another
 Facts> p -lang=Eng "the capital of France is Paris" | l -lang=Ger
 die Hauptstadt von France ist Paris
 
@@ -709,17 +707,18 @@ Here is an example of a python3 session illustrating the functionalities we need
 area
 
 # build some more trees incrementally
->>> obj = pgf.readExpr('NameObject (StringName "France")')
->>> val = pgf.readExpr('123')
+>>> obj = pgf.readExpr('StringObject "France"')
+>>> val = pgf.readExpr('StringValue "123"')
 >>> fact = pgf.Expr('AttributeFact',[attr,obj,val])
 
 # show the resulting tree in GF notation
 >>> print(fact)
-AttributeFact area_Attribute (NameObject (StringName "France")) 123
+AttributeFact area_Attribute
+  (StringObject "France") (StringValue "643")
 
 # linearize the resulting tree
 >>> print(eng.linearize(fact))
-the area of France is 123
+the area of France is 643
 ```
 
 
@@ -768,27 +767,25 @@ def get_countries(filename):
     return countries
 
 #for each tuple, build a list of GF trees, one for each atomic fact
-  object = pgf.Expr('NameObject', [mkName(c.country)])
+def country_facts(c):
+  object = pgf.Expr('StringObject',[string_expr(c.country)])
   return [
-    pgf.Expr('AttributeFact',[pgf.Expr(attr,[]),object,val])
+    pgf.Expr('AttributeFact',
+             [pgf.Expr(attr,[]),object,pgf.Expr('StringValue',[string_expr(val)])])
       for (attr,val) in [
-        ('capital_Attribute',    pgf.Expr('NameValue',[mkName(c.capital)])),
-        ('area_Attribute',       pgf.Expr('IntValue', [mkInt(c.area)])),
-        ('population_Attribute', pgf.Expr('IntValue', [mkInt(c.population)])),
-        ('continent_Attribute',  pgf.Expr('NameValue',[mkName(c.continent)])),
-        ('currency_Attribute',   pgf.Expr('NameValue',[mkName(c.currency)]))
+        ('capital_Attribute', c.capital),   
+        ('area_Attribute', c.area),
+        ('population_Attribute', c.population),
+        ('continent_Attribute', c.continent),
+        ('currency_Attribute', c.currency)
         ]
     ]
 
-# building an integer literal from a string
-def mkInt(s):  
-    return pgf.readExpr(str(s))
+# build a GF string literal tree from a string
+def string_expr(s):
+    return pgf.readExpr(str('"' + s + '"'))
 
-# building a Name tree from a string
-def mkName(s): 
-    return mkApp('StringName',[pgf.readExpr(str('"' + s + '"'))])
-
-# putting it all together
+# put it all together
 def main():
     gr = pgf.readPGF('Facts.pgf')   # read the compiled grammar
     countries = get_countries('../data/countries.tsv')
@@ -915,7 +912,7 @@ These improvements are based on two new concepts of GF:
 
 
 
-++Refactoring abstract syntax++
+++Refactoring the abstract syntax++
 
 The GF code in ``facts1/``  is monolithic: there is just one GF file for the abstract syntax and one for each language.
 These files contain both generic concepts about facts and concepts specific to countries.
@@ -943,7 +940,7 @@ The resulting graph looks as follows:
 
 +++The generic module+++
 
-The generic ``Facts`` module is now a proper part of the earlier ``Facts`` module:
+The generic ``Facts`` module is now smaller than the earlier ``Facts`` module:
 ```
 abstract Facts = {
 
@@ -962,6 +959,10 @@ fun
 }
 ```
 ''\noindent''
+The individual attributes have been left out, since they are domain-specific.
+But the construction of objects and values has changed.
+There is now an intermediate category ``Name``, which will be defined by a list of **lexical entries**, zero-argument GF functions with different linearizations in each language.
+Values can, in addition to names, be numeric ``Int`` values.
 
 
 +++The name lexicon+++
@@ -1001,13 +1002,16 @@ For example, the Wikimedia identifiers (such as ``wd:Q79`` for Egypt) would work
 Here we have, however, used the English names to make it easier to inspect the grammar.
 The important thing in both cases is to make sure the function names are valid GF identifiers.
 This means, among other things, surrounding them by single quotes if they contain special characters.
-The function
+
+The Python file
 ```
-  extract_names.mkFun(name,category)
+  facts2/extract_names.py
 ```
 ''\noindent''
-in ``facts2/extract_names.py`` is a way to guarantee this (in almost all cases).
-The same module also has the function ``name_rules()``, which forms a pair of GF ``fun`` and ``lin`` rules for a name in a wanted language, given a TSV file with aligned names.
+can be run to produce a set of ``fun`` and ``lin`` rules from a tab-separated with names in different languages.
+It can choose both the function name and its linearization from the same column, for instance to build the English modules as we did.
+The linearization column can then be varied to produce other languages.
+The generation has a function name building function that guarantees that the name is a well-formed GF idetifier.
 
 
 +++The domain-specific top module+++
@@ -1047,7 +1051,7 @@ Here wi illustrate it with just two alternative ways for expressing facts:
 
 
 
-++Refactoring concrete syntax++
+++Refactoring the concrete syntax++
 
 The concrete syntax is usually, although not necessarily, divided into modules parallel to the abstract syntax.
 The module structure then looks as follows:
@@ -1284,7 +1288,7 @@ This diagram hides dozens of modules that underlie the explicitly opened RGL mod
 The user of the RGL seldom needs to be aware of them.
 
 
-++Python code
+++Refactoring the Python code++
 
 +++The generic method+++
 
@@ -1385,15 +1389,16 @@ in the same way as at Stege 1 but now using the parser to map data attribute nam
 The function if moreover generic for any dataset, as it takes the field names and the data key from a class variable of a ``FactSystem`` (assuming that the key attribute is in field 0):
 ```
 def simple_facts(factsys,data):
-    "for every field in every tuple, generate an attribute fact sentence"
+    "for each tuple in data, generate an attribute fact for each field"
     fields = factsys.fieldnames.split()    
     facts = []
     for tuple in data:
-        ltuple = list(tuple)
-        for (attr,val) in [(fields[i],ltuple[i]) for i in range(1,len(fields))]:
+        object = factsys.str2exp("Object",tuple[0])
+        for (attr,val) in
+	      [(fields[i],tuple[i]) for i in range(1,len(fields))]:
             fact = pgf.Expr("AttributeFact", [
                     factsys.str2exp("Attribute",attr),
-                    factsys.str2exp("Object",ltuple[0]),
+                    object,
                     factsys.str2exp("Value",val)])
             facts.append(fact)
     return facts
@@ -1647,7 +1652,7 @@ oper
 ```
 
 
-++Finnish specifics++
++++Another example: Finnish+++
 
 Finnish has a complex morphology and syntactic features different from Indo-European languages.
 This has not made it impossible to implement the RGL for Finnish, but some more attention is required from the application programmer.
@@ -2144,7 +2149,7 @@ If moreover the translations of names can be extracted from data, adding a new l
 
 ++Where is the standard NLG pipeline?++
 
-The standard textbook (Dale and Reiter 2000) divides NLG into six subtasks, which are often seen as parts of a pipeline.
+The standard architecture (Reiter and Dale 2002) divides NLG into six subtasks, which are often seen as parts of a pipeline.
 The authors themselves note:
 ''\bequ''
 //this does not mean that an NLG system needs six modules; most systems use an architecture where one module simultaneously performs several tasks//
@@ -2270,7 +2275,7 @@ This is delegated to the RGL.
 
 - Ranta 2011
 
-- Reiter and Dale 2000
+- Reiter and Dale 2002
 
 - Vrandečić 2021
 
