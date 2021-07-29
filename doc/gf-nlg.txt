@@ -9,8 +9,9 @@ Aarne Ranta
 %!postproc(tex): "urlcolor=blue" "urlcolor=black,linkcolor=black"
 %!postproc(tex): "\\section" "\\chapter"
 %!postproc(tex): "\\subsection" "\\section"
-%!postproc(tex): "\\subsubsection*{" "\\subsection{"
-%!postproc(tex): "\\subsection*{" "\\subsection{"
+%!postproc(tex): "\\subsubsection" "\\subsection"
+%% %!postproc(tex): "\\subsubsection*{" "\\subsection*{"
+%% %!postproc(tex): "\\subsection*{" "\\section*{"
 %!postproc(tex): "#BEQU" "begin{quote}"
 %!postproc(tex): "#ENQU" "end{quote}"
 %!postproc(tex): "#BECE" "begin{center}"
@@ -197,7 +198,7 @@ The text-to-data part, in contrast, requires **ambiguity resolution**, which is 
 Therefore NLG can be not only a cheaper solution to multilingual dissemination, but also yield better quality.
 
 
-+++Abstract Wikipedia+++
+++Abstract Wikipedia++
 
 The Wikipedia is an on-line freely available encyclopedia on the internet.
 It has been built by millions of authors, together producing over 20 million articles in over 300 languages.
@@ -276,7 +277,7 @@ Much of the data in our examples is collected from Wikidata, and the order of pr
 
 
 
-+A gradual introduction to NLG in GF+
++NLG from tabular data+
 
 Let us start the work with a data set that is simple and well-known, yet rich enough to illustrate the main issues of NLG.
 The set is a table with information about countries from Wikidata (in the category "sovereign states", ``wd:Q3624078`` in Wikidata). 
@@ -298,7 +299,10 @@ Here is a fragment of the table:
 | Argentina | Buenos Aires | 2780400 | 44938712 | South America | Argentine peso
 
 ''\normalsize''
-''\noindent''
+
+
+++Bottom-up development stages++
+
 We will proceed bottom-up from the simplest kind of NLG to more involved:
 
 - Stage 1: atomic facts with templates to which data is inserted, e.g.
@@ -346,10 +350,7 @@ in the subdirectories
 Each stage concludes with exercises, where readers are encouraged to apply the methods to their own languages and their own data.
 
 
-
-
-
-++Atomic facts++
+++Atomic vs. composite facts++
 
 The first kind of things we want to express is **atomic facts** assigning **values** of **attributes** to **objects**.
 In our table, the objects of primary interest are the countries in the first column.
@@ -374,8 +375,12 @@ But it is already natural language and thereby serves some of the purposes of NL
 It constitutes a baseline from which the text can be improved with various NLG techniques.
 It is a **canonical representation** of the data contained in the cells of a table, where the sentences stand in one-to-one correspondance with the data itself.
 
+Atomic facts are the focus of Stages 1 and 2 below.
+At Stage 3, we start discussing how to **combine** facts to fluent and coherent texts.
+At Stage 4, we will form new facts by selection and aggregation.
 
-++Stage 1: Baseline NLG for atomic facts++
+
++Stage 1: Baseline NLG for atomic facts+
 
 We will now start writing code for an NLG system and use atomic facts as the first step.
 We will show parts of the full code, which can be found in the directory ``facts1/``.
@@ -427,7 +432,7 @@ The following diagram shows the structure of an NLG systems we will build:
 '''
 
 
-+++Abstract syntax+++
+++Abstract syntax++
 
 The GF file ``Facts.gf``  defines an abstract syntax for atomic facts.
 The complete code is here:
@@ -514,9 +519,14 @@ similar to Haskell, rather than
 as in Python and Java.
 
 
-+++Concrete syntax+++
+++Concrete syntax++
 
 A concrete syntax specifies how abstract syntax trees are linearized to strings in some language.
+
+
++++English+++
+
+We start with Englith.
 Here is the complete code from the file ``FactsEng.gf``,
 ```
 concrete FactsEng of Facts = {
@@ -569,7 +579,10 @@ The method of combination is **concatenation**, denoted by ``++`` (again borrowe
 The built-in types ``Int`` and ``String`` have more complex linearization types than ``Str``.
 Hence their objects cannot be used directly when a ``Str``  is expected, but extracted as a **projection** ``.s`` --- a notation that will be fully explained later.
 
-A slight variant of ``FactsGer`` defines a concrete syntax for German:
+
++++German and Finnish+++
+
+A slight variant of ``FactsEng`` defines a concrete syntax for German:
 ```
 concrete FactsGer of Facts = {
 
@@ -603,7 +616,7 @@ It is grammatically correct but extremely clumsy Finnish, immediately revealing 
 This trick is used frequently for instance in Facebook, to report someneone's location: //Urho on paikassa Helsinki// instead of //Urho on Helsingissä//.
 
 
-+++Testing grammars in the GF shell+++
+++Testing grammars in the GF shell++
 
 The GF shell, just like the Python shell, is a line-based tool that enables testing GF code while developing it.
 The following session shows some useful commands in the shell:
@@ -660,7 +673,9 @@ See you.
 ```
 
 
-+++Python code converting data to text+++
+++Python code converting data to text++
+
++++PGF: how to produce, how to use+++
 
 GF grammars can be used in Python via the library called ``pgf``.
 **Portable Grammar Format** (**PGF**) is the binary "machine language" of GF.
@@ -708,6 +723,8 @@ the area of France is 123
 ```
 
 
++++The pgf module of Python+++
+
 The following classes and methods are used in this first version of Python NLG:
 - ``PGF``, class of objects obtained from ``.pgf`` files (no constructor used here):
   - ``readPGF(<filename>)``, function that returns a ``PGF`` object;
@@ -730,6 +747,8 @@ Complete documentation can be found in
 http://www.grammaticalframework.org/doc/runtime-api.html#python
 ''\enqu''
 
+
++++The NLG module+++
 
 The Python program ``facts1/facts.py`` reads a TSV file and a GF grammar, and prints out a linearization of every atomic fact in all of the languages covered by the grammar.
 The complete code is here:
@@ -809,7 +828,7 @@ die Währung von Zimbabwe ist United States dollar
 
 
 
-+++Exercises+++
+++Exercises++
 
 ===Add a language===
 
@@ -878,7 +897,7 @@ We will return to Wikidata many times later, but you can get a first feeling of 
 
 
 
-++Stage 2: Improved NLG for atomic facts++
++Stage 2: Improved NLG for atomic facts+
 
 We will now improve the quality of NLG by making full use of GF.
 The code for this can be found in the directory ``facts2/``.
@@ -896,7 +915,7 @@ These improvements are based on two new concepts of GF:
 
 
 
-+++Refactoring abstract syntax+++
+++Refactoring abstract syntax++
 
 The GF code in ``facts1/``  is monolithic: there is just one GF file for the abstract syntax and one for each language.
 These files contain both generic concepts about facts and concepts specific to countries.
@@ -921,6 +940,9 @@ The resulting graph looks as follows:
 \end{center}
 '''
 
+
++++The generic module+++
+
 The generic ``Facts`` module is now a proper part of the earlier ``Facts`` module:
 ```
 abstract Facts = {
@@ -940,7 +962,11 @@ fun
 }
 ```
 ''\noindent''
-Notice that, in additions to the country-specific attributes, we have left out the ``StringName`` function that builds names from string literals.
+
+
++++The name lexicon+++
+
+Notice that, in addition to the country-specific attributes, we have left out the ``StringName`` function that builds names from string literals.
 The reason is that we now want to introduce names as abstract syntax identifiers, so that we can linearize them in language-specific ways.
 This brings us to the module ``CountryNames``:
 ```
@@ -968,6 +994,8 @@ The rationale of domain-specific categories will become obvious later.
 One reason is that different categories can have different properties.
 For example, a country name can include an expression for a citizen of that country, which is not possible for some other types of names.
 
++++Extracting names from data+++
+
 Extracting names from data can be done in different ways.
 For example, the Wikimedia identifiers (such as ``wd:Q79`` for Egypt) would work perfectly as abstract function names: they are unique, and they have well-defined mappings to names ("labels") in different languages.
 Here we have, however, used the English names to make it easier to inspect the grammar.
@@ -980,6 +1008,9 @@ The function
 ''\noindent''
 in ``facts2/extract_names.py`` is a way to guarantee this (in almost all cases).
 The same module also has the function ``name_rules()``, which forms a pair of GF ``fun`` and ``lin`` rules for a name in a wanted language, given a TSV file with aligned names.
+
+
++++The domain-specific top module+++
 
 The topmost module ``Countries`` inherits both ``Facts`` and ``CountryNames``, to which it adds some code of its own:
 ```
@@ -1016,7 +1047,7 @@ Here wi illustrate it with just two alternative ways for expressing facts:
 
 
 
-+++Refactoring concrete syntax+++
+++Refactoring concrete syntax++
 
 The concrete syntax is usually, although not necessarily, divided into modules parallel to the abstract syntax.
 The module structure then looks as follows:
@@ -1036,7 +1067,11 @@ The graph generated by ``dg`` uses
 ''\noindent''
 Just to refactor ``FactsEng`` in this way would not require more explanation.
 But we will now introduce a new concept: **resource modules** with reusable operations.
-Here is how they are used in ``FactsEng``:
+
+
++++Using the RGL+++
+
+Here is how resource modules are used in ``FactsEng``:
 ```
 concrete FactsEng of Facts = open SyntaxEng, SymbolicEng in {
 
@@ -1070,6 +1105,9 @@ The three most important modules are, for each language with its language code a
 ''\noindent''
 The RGL is installed in a standard, although platform-specific, place in the file system, where the GF compiler finds it via the environment variable ``GF_LIB_PATH``.
 If you can import ``FactsEng`` without error messages in GF, the installation works as it should, and you do not need to worry about it.
+
+
++++Some RGL categories and functions+++
 
 The next thing is to study the contents of the library via its API,
 - https://www.grammaticalframework.org/lib/doc/synopsis/
@@ -1133,7 +1171,7 @@ It uses the following API functions, which we now annotate with the current exam
 ''\noindent''
 We recommend you to convince yourself that the functions are combined in a proper way, so that the value types of each subexpression match the expected argument types!
 
-Once we manage to build a **type-correct** expression in this way from RGL function, we can be sure that the result is **grammatically correct**.
+Once we manage to build a **type-correct** expression in this way from RGL function, we can be sure that the result is **grammatically correct** (modulo the correctness of the RGL).
 Of course, it may not be the expression you want: to guarantee this, you need to test your grammar (e.g. with random generation and linearization) and gradually gain experience that reduces the need of testing.
 
 The remaining judgements in **FactsEng** are simple.
@@ -1148,7 +1186,7 @@ As a rule of thumb,
 
 
 
-+++Defining the concrete syntax lexicon+++
++++The lexicon+++
 
 The concrete syntax of ``CountryNames`` opens ``SyntaxEng`` and now also ``ParadigmsEng``:
 ```
@@ -1246,7 +1284,9 @@ This diagram hides dozens of modules that underlie the explicitly opened RGL mod
 The user of the RGL seldom needs to be aware of them.
 
 
-+++Python code: the generic method+++
+++Python code
+
++++The generic method+++
 
 As in ``facts1``, we use a Python file to
 - read data from a TSV file,
@@ -1274,6 +1314,9 @@ In the specialized procedure of ``country_facts.py``, we moreover use special fu
 
 The module ``facts2/data_facts.py`` also scales up to the next stages and needs therefore not to be changed in ``facts3``.
 
+
++++The FactSystem class+++
+
 The central part of the code is the class ``FactSystem``, which contains a grammar and methods for converting data into text by using the grammar.
 ```
 class FactSystem:
@@ -1295,7 +1338,11 @@ class FactSystem:
             ...
 ```
 ''\noindent''
-A possibly surprising method in the class is one that uses the **parser**:
+
+
++++Calling the parser+++
+
+A possibly surprising method in the FactSystem class is one that uses the **parser**:
 ```
     # parse strings to trees in category cat
     def str2exp(self,cat,s):
@@ -1330,6 +1377,8 @@ The ``parse`` method of a concrete syntax works as in the following Python sessi
 AttributeFact capital_Attribute (NameObject (cName Italy_CName))
   (NameValue (cName Rome_CName))
 ```
+
++++Generating simple facts+++
 
 A baseline ``fact_generator`` is ``simple_facts()``, which expresses each datapoint with ``AttributeFact``,
 in the same way as at Stege 1 but now using the parser to map data attribute names to GF function names.
@@ -1368,7 +1417,7 @@ def example_run():
 ```
 
 
-+++Python code: domain-specific methods+++
++++Generation via embedded grammars+++
 
 Similarly to ``Facts.gf``, ``data_facts.py`` applies to any data that is arranged in tables where the columns are attributes and the rows are their combinations corresponding to data objects.
 The generated language consists of straightforward sentences of the form //the Attribute of Object is Value//.
@@ -1415,6 +1464,9 @@ Just compare the first returned tree with
 Another advantage - even more important in larger projects - is that existence of ``G`` functions is checked by Python's dynamic type checker, so that proper feedback is obtained for errors like misspellings.
 (Their arity, however, is only checked by an assertion in the C code underlying the Python's pgf module.)
 The generated module ``G`` is called an **embedded grammar**, since it is a grammar embedded in Python.
+
+
++++Generation via parsing+++
 
 A possibly even easier way to construct abstract syntax trees in Python is, surprise surprise, by using the parser.
 The same behaviour as ``country_facts_embedded`` is obtained by ``country_facts_parsed``:
@@ -1469,7 +1521,9 @@ In the current case the difference is negligible: 0.367 seconds instead of 0.238
 
 
 
-+++Another concrete syntax: German+++
+++Adding a concrete syntax++
+
++++Example: German+++
 
 The German concrete syntax has naturally the same structure as English.
 The ``FactsGer`` module looks exactly the same, except for the header:
@@ -1493,6 +1547,8 @@ lin
 ''\noindent''
 The similarity is due to the language-independent API of the RGL.
 We will see later how to exploit this so that we don't even need to copy and paste the code.
+
++++Implementing the lexicon+++
 
 The ``CountryNamesGer`` module is obviously the one that differs the most from English.
 The first step to create it when Wikidata is available is to fetch the country and other names with a query:
@@ -1591,7 +1647,7 @@ oper
 ```
 
 
-+++Finnish specifics+++
+++Finnish specifics++
 
 Finnish has a complex morphology and syntactic features different from Indo-European languages.
 This has not made it impossible to implement the RGL for Finnish, but some more attention is required from the application programmer.
@@ -1735,18 +1791,18 @@ However, a boolean parametre is preferrable, because in Finnish it affects many 
 
 
 
-+++Exercises+++
+++Exercises++
 
 ===Add a language===
 
 ===Add some fact rules===
 
-===Vary the data===
+===Change the domain===
 
 
 
 
-++Stage 3: Building a fluent text++
++Stage 3: Building a fluent text+
 
 We have by now generated sentences for each atomic fact separately.
 Each country is thereby described by five sentences.
@@ -1761,29 +1817,186 @@ But a lively text requires more radical measures:
 ''\noindent''
 In this section, we will go through these techniques one by one.
 The resulting code is found in ``facts3/``.
-This directory also contains the grammar rules used in the next section.
+This directory also contains the code used in the next section.
 We will no longer show entire modules in the text, but just the individual rules under discussion.
 
 
+++Referring expressions++
+
+The interpretation of pronouns is notoriously difficult for machines.
+This is easy to see for instance in machine translation, when translating between languages that have different gender systems.
+However, the generation of pronouns in NLG is easier.
+One has to make sure that
+- the pronoun has the right gender determined by its reference,
+- the reference of the pronoun of that gender is unique in the context.
 
 
-+++Referring expressions+++
+''\noindent''
+A typical example is a traditional love story.
+As long as it talks about one man and one woman, the pronouns //he// and //she// can be used uniquely for them.
+However, a language that has only one, gender-neutral, pronoun such as Finnish (//hän//), must be more careful and choose definite descriptions ("the man", "the woman") whenever there is uncertainty.
+A related problem arises in languages like German and French, where the equivalents for //he// and //she// also correspond to English //it// referring to masculine and feminine objects.
+
+Algorithms for choosing unique referring expressions in a context can be found for instance in Ranta (1994).
+In this tutorial, we consider only the special case, where we generate texts for countries.
+In each text,
+- the pronoun //it// refers to the country that the text is about,
+- the gender and number of the pronoun must agree to the country name.
 
 
-+++Syntactic aggregation+++
+''\noindent''
+Among the languages we have considered, the gender matters only in German.
+The number, however, is relevant for English and Finnish, too: countries such as Marshall Islands are plural.
+An interesting case is United States: even though internally plural, its agreement is singular in English and Finnish.
+But in German it is consistently plural:
+''\bequ''
+//Die Vereinigten Staaten von Amerika sind der drittgrößte Staat der Erde.//
+''\\''
+https://de.wikipedia.org/wiki/Vereinigte_Staaten
+''\\''
+"The United States of America //are// the third largest state of the Earth."
+''\enqu''
 
-+++Unlexing and markup+++
+To implement the simple idea of using pronouns for countries, we add one functions to the abstract syntax:
+```
+  PronObject : Name -> Object
+```
+''\noindent''
+The concrete syntax also needs some changes in the linearization types and rules:
+```
+lincat Object = {np : NP ; pron : Pron ; isPron : Bool}
 
-hover for referent
+lin NameObject name =
+    {np = name ; pron = npPron name ; isPron = False}
 
-+++Creating alternative renderings+++
+oper npPron : NP -> Pron -- language-dependent
+```
+''\noindent''
+The linearization type of ``Object`` was previously just ``NP`` but is now replaced with a record, where
+- ``np`` is the noun phrase used as subject or object in clauses,
+- ``pron`` is the pronoun that can be used for referring to it,
+- ``isPron`` determines whether to use the pronoun.
+
+
+''\noindent''
+``NameObject`` is an expression that uses the full name, not the pronoun.
+The ``pron`` field is actually superfluous here: it is included only because the type requires it.
+(However, in a larger grammar, it could be needed for instance to provide the reflexive pronoun.)
+
+``PronObject`` is different: its main noun phrase is formed from the pronoun,
+```
+  lin PronObject name =
+    let pron = npPron name
+    in {np = mkNP pron ; pron = pron ; isPron = True}
+```
+''\noindent''
+(The ``let...in`` expression is a **local definition**, here used to avoid repeating a complex expression.)
+The ``pron`` field is used to generate the possessive, //its//, in attribute facts:
+```
+  AttributeFact attr obj val = case obj.isPron of {
+    True => mkCl (mkNP (mkDet obj.pron) attr) val ;
+    _ => mkCl (mkNP the_Det (mkCN attr (mkAdv possess_Prep obj.np))) val
+    } ;
+```
+''\noindent''
+The outcome is that, from a given country name such as //Italy//, we can form attribute facts in two different ways:
+''\bequ''
+//the capital of Italy is Rome//
+
+//its capital is Rome//
+''\enqu''
+
+
+++Syntactic aggregation++
+
+The simplest form of syntactic aggregation is the use of **conjunctions**, such as //and//:
+''\bequ''
+//France is in Europe. Italy is in Europe.//
+
+''\lrarrow'' //France and Italy are in Europe.//
+''\enqu''
+This example shows an **NP conjunction**, which enables to share the common part of the two sentences.
+
+We will not have natural opportunities for NP aggregation at the current stage, when we generate texts for each country separately.
+But we can use conjunctions of sentences to bind together atomic facts:
+''\bequ''
+//The capital of Sri Lanka is Colombo and its currency is Sri Lankan rupee.//
+''\enqu''
+
+Sentence conjunction is achieved by the following addition to the abstract syntax:
+```
+cat
+  Sentence ;
+fun
+  ConjSentence : Sentence -> Sentence -> Sentence ;
+  FactSentence : Fact -> Sentence ;
+```
+''\noindent''
+The concrete syntax is
+```
+lincat
+  Sentence = S ;
+lin
+  ConjSentence a b = mkS and_Conj a b ;
+  FactSentence fact = mkS presentTense positivePol fact ;
+```
+''\noindent''
+The important addition is the use of the RGL type ``S`` (sentence).
+It differs from ``Cl`` (clause) by having a fixed tense (present, past, etc) and polarity (positive, negative).
+Clauses have forms for all tenses and polarities, even though the linearization shows the present tense positive by default.
+But the sentences combined with a conjunction can have different tenses and polarities.
+This is why we have to fix them before forming the conjunction.
+Present positive is enough for our purposes now, but when for instance generating texts about history, past tenses will be needed:
+''\bequ''
+//In the 19th century, the capital of Russia was St. Petersburg.//
+''\enqu''
+Such sentences can be formed from the same facts as before by just adding another function from ``Fact`` to ``Sentence``.
+
+We noticed that subject NP aggregation is not yet relevant when we are talking about individual countries.
+But the aggregation of **properties** is:
+''\bequ''
+//Slovakia is a European country with 5397036 inhabitants//
+''\enqu''
+To enable sentences like this, we extend the abstract syntax with
+- **kinds**, common nouns such as //country//,
+- **properties**, adjectival phrases such as //European//,
+- **modifiers**, adverbial phrases such as //with 5397036 inhabitants//.
+
+
+''\noindent''
+The code for these constructs is easy to find in ``facts3/``.
 
 
 
-++Stage 4: Data aggregation and content planning++
+++Unlexing and markup++
+
+- the Doc category
+- use of the RGL module for HTML
+- add boldface for the first occurrence of the country name 
+- hover on pronoun to see the referent
+
+
+++Creating alternative renderings++
+
+- rounding
+- unit conversions
+
+
+++Python code for text construction++
+
+```
+doc = factsys.str2exp("Doc",
+  ("{} is a {} country with {} inhabitants. " 
+   "its area is {}. "
+   "the capital of {} is {} and its currency is {}.").format(
+                          countr,cont,pop,are,countr,cap,curr))
+```
+
+
++Stage 4: Data aggregation and content planning+
 
 Until now, we have built sentences and texts that accurately represent all information in a dataset.
-This is something that NLG in any case has to be able to do, at least on demand.
+This is something that NLG in has to be able to do, at least on demand.
 The result is texts from which the GF parser could actually reconstruct the original data.
 
 But in many NLG tasks, the relation to the dataset is less direct.
@@ -1794,7 +2007,7 @@ We want things such as
 
 
 ''\noindent''
-Most of the work in these categories is done on the Python side: what is needed in GF is just some new categories and functions which enable expressing these derived facts.
+Most of the work in these categories is done on the host language (Python) side: what is needed in GF is just some new categories and functions which enable expressing the derived facts.
 Following the overall structure of GF-NLG, Python functions analyse data to find interesting derived facts and convert them to abstract syntax trees, whereupon GF takes over and linearizes the trees to different languages.
 A slight difference from the earlier is that the choice of trees can be language dependent - for instance that the English text uses miles but the Finnish text kilometres.
 
@@ -1806,22 +2019,38 @@ However, the Abstract Wikipedia project cannot fully rely on automation, since h
 And not only this: human judgement is needed in **text planning** as well, to select truly readable ways to express the selected data.
 Hence attention has to be paid to **interaction**, where a human author can easily create multilingual texts with the help of algorithms but in full control over them.
 
+Planning can of course be made for //types// of data and not just for some particular data.
+For example, there can be a general plan for texts about countries.
+The plan can be implemented as a GF function and exported as a **Wikifunction**, which provides an easy to use interface accessible for Wikipedia authors without knowledge of GF.
 
 
-+++Automatic planning+++
-
-+++Manual planning and document authoring+++
 
 
 
-++Sharing code between languages via a functor++
+++Automatic planning++
+
+++Manual planning and document authoring++
+
+
+
++Sharing code between languages via a functor+
+
+++Interfaces and instances++
 
 The concrete syntax of ``Facts`` in ``facts3`` is built by using a **functor**, a.k.a. a **parameterized module** or an **incomplete module**.
-What makes it incomplete is that it imports one or more **interfaces**, which just declare the types of some functions but do not give their definitions.
+What makes it incomplete is that it imports one or more **interfaces**, which declare the types of some functions but do not give their definitions.
 The definitions are given in **instances** of interfaces.
-The RGL is built in such a way that the modules ``Syntax`` and ``Symbolic`` are interfaces, which have different instances in different languages.
-We have already used this fact implicitly, when we have copied much of the code from English to Finnish, which is possible because the RGL modules for both have the same interface.
-But at this stage, we make a more systematic use of this, which makes it easier to extend the grammar with new functions and new languages.
+The interface-instance relation in GF is a generalization of abstract and concrete syntax: any abstract syntax is an interface of which its concrete syntaxes are instances.
+But there are also interfaces that could not be defined as abstract syntaxes.
+The overloaded operations of the RGL are an example: abstract syntax function names cannot be overloaded, because they have to be unique.
+
+In the RGL, the modules ``Syntax`` and ``Symbolic`` are interfaces, which have different instances in different languages.
+We have already used this fact implicitly, when we have copied much of the code from English to German and Finnish.
+The ultimate reason why this is possible is that the RGL modules for all these languages have the same interface.
+But now we want to make a more systematic use of the shared interfaces, to make it easier to extend the grammar with new functions and new languages.
+
+
+++Functors and instantiations++
 
 A functor module looks as follows:
 ```
@@ -1856,6 +2085,7 @@ concrete FactsEng of Facts = FactsFunctor with
 ```
 ''\noindent''
 That is, it only needs to indicate what instances is interface has.
+The structure underlying this functor instantiation is shown in the following diagram:
 '''
 \begin{center}
 \includegraphics[width=1.0\textwidth]{functor.eps}
@@ -1863,13 +2093,15 @@ That is, it only needs to indicate what instances is interface has.
 '''
 
 
+++Adding a new language++
+
 Functors help extending a grammar in both the abstract and concrete dimensions:
 - to add an abstract function, its concrete syntax only needs to be defined in the functor,
 - to add a language, its concrete syntax needs only a few lines of trivial GF code.
 
 
 ''\noindent''
-For example, a German concrete syntax can be written
+For example, a German concrete syntax is
 ```
 concrete FactsGer of Facts = FactsFunctor with
   (Syntax = SyntaxGer),
@@ -1877,9 +2109,11 @@ concrete FactsGer of Facts = FactsFunctor with
   ;
 ```
 
+++Restricted inheritance++
+
 But what to do if the functor definitions are not good enough for a language.
 They are guaranteed to be grammatically correct (modulo the correctness of the RGL), but can be clumsy.
-For these situations, one can use **restricted inheritance** from the functor, simply excluding some of its definitions and replacing them by the desired ones:
+For these situations, one can use **restricted inheritance** from the functor, excluding some of its definitions and replacing them by the desired ones:
 ```
 concrete FactsFin of Facts =
   FactsFunctor - [AttributeFact]
@@ -1894,20 +2128,86 @@ lin
 ```
 ''\noindent''
 This forces the deviant rule for attribute facts in Finnish, which was discussed above.
+The syntax for exclusion is
+```
+  <Module> - [<exclusionlist>]
+```
+''\noindent''
+This notation is actually available for all module types, not just functors.
+(There is a dual concept of inclusion lists, stating that only certain parts of a module are inherited.)
 
-In our experience, restricted inheritance is used only for a small minority of functions in different languages.
+In our experience, restricted inheritance of functors is needed only for a small minority of functions in different languages.
 Hence the use of functors is a productive way to build multilingual grammars.
-If moreover the translations of names can be extracted from data, adding a new language is almost an automatic task - provided that it is included in the RGL.
+If moreover the translations of names can be extracted from data, adding a new language is almost an automatic task - provided that the language is included in the RGL.
 
 
 
 ++Where is the standard NLG pipeline?++
 
-- our presentation has followed an opposite order: planning last
+The standard textbook (Dale and Reiter 2000) divides NLG into six subtasks, which are often seen as parts of a pipeline.
+The authors themselves note:
+''\bequ''
+//this does not mean that an NLG system needs six modules; most systems use an architecture where one module simultaneously performs several tasks//
+''\enqu''
+Now, even though the system we have built definitely does not consist of six modules corresponding to these subtasks, it is useful to see how it accomplishes each of the tasks.
+
+
++++Content determination+++
+
+''\bequ''
+//the process of deciding what information should be communicated in the text//
+''\enqu''
+At Stages 1 to 3, we choose the simplest possible strategy and communicate every atomic fact in the data.
+At Stage 4, we introduce data selection and aggregation.
 
 
 
-+Generation from formal languages+
++++Discourse planning+++
+
+''\bequ''
+//imposing ordering and structure over the messages to be conveyed//
+''\enqu''
+At Stages 1 and 2, we follow the order in which the facts appear in the data.
+At Stages 3 and 4, we combine facts to be aggregated syntactically.
+
+
+
+
++++Sentence aggregation+++
+
+''\bequ''
+//grouping messages together into sentences//
+''\enqu''
+This was introduced at Stage 3.
+The necessary functions are defined in GF, and the Python code decides where to use them.
+
+
++++Lexicalization+++
+
+''\bequ''
+//deciding which specific words and phrases should be chosen to express the domain concepts and relations which appear in the messages//
+''\enqu''
+These decisions are made in the GF concrete syntax modules.
+
+
++++Referring expression generation+++
+
+''\bequ''
+//selecting words or phrases to identify domain entities//
+''\enqu''
+This is done at Stage 3, albeit in a very simple fashion.
+Much more could be done.
+
+
++++Linguistic realization+++
+
+''\bequ''
+//applying the rules of grammar to produce a text which is syntactically, morphologically, and orthographically correct//
+''\enqu''
+This is delegated to the RGL.
+
+
++NLG from formal languages+
 
 - a more systematic view of second-order data is logical formulas that can be treated as data
 - in earlier project, content-planning has been taken for granted, as the formal structures have been given
@@ -1936,10 +2236,10 @@ If moreover the translations of names can be extracted from data, adding a new l
 - two-way conversions (also from NL to formal)
 
 
-++CNL as a formal language++
++NLG from a CNL+
 
 - e.g. Attempto Controlled English (ACE)
-- as formal as any, if we have a parser - just easier for a layman to read or write
+- a CNL is as formal as any formal language, if we have a parser - just easier for a layman to read or write
 - essentially what is used in ``facts3/country_facts.country_texts_parsed``
 
 
@@ -1948,7 +2248,11 @@ If moreover the translations of names can be extracted from data, adding a new l
 - documentation of the most mature state reached in the project
 - morphological lexica
 - semantic multilingual lexica
-- semantic RGL level, e.g. tenses, referring expressions
+- semantic RGL level
+   - tense and aspect
+   - referring expressions
+
+
 - CNL for fact documentation
 
 
@@ -1960,8 +2264,15 @@ If moreover the translations of names can be extracted from data, adding a new l
 
 
 
+=References=
 
+- Ranta 1994
 
+- Ranta 2011
+
+- Reiter and Dale 2000
+
+- Vrandečić 2021
 
 
 

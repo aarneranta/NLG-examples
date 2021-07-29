@@ -44,7 +44,7 @@ def country_facts_parsed(factsys,tuple):
       ]
 
 def countries_facts(factsys,cs):
-    return [t for c in cs for t in country_facts_parsed(factsys,c)]
+    return [t for c in cs for t in country_facts_embedded(factsys,c)]
 
 def mkInt(s):
     return pgf.readExpr(str(s))
