@@ -21,7 +21,7 @@ def continent_text(factsys,data,cont):
     doc = factsys.str2exp("Doc",
             ("there are {} countries in {}.").format(ncountries,cont))
     doc = G.AddSentenceDoc(doc, factsys.str2exp("Sentence",
-            ("the population of {} is {} million").format(cont,totalpop)))
+            ("the total population of {} is {} million").format(cont,totalpop)))
     doc = G.AddSentenceDoc(doc, factsys.str2exp("Sentence",
             ("{} has the largest population and {} has the largest area").format(largestpop,largestarea)))
 

@@ -1497,7 +1497,15 @@ def country_facts_parsed(factsys,tuple):
 ''\noindent''
 The fact trees are now obtained by parsing strings with the concrete syntax of the input language.
 The strings are built separately for each tuple by inserting values in braces and using Python's ``format()`` method.
+Notice the resemblance to template filling when this method is used.
+The differences are obviously that
+- the function builds a syntax tree, not just a string,
+- the tree is linearized before the final string is formed,
+- therefore, the constant parts of the template can change when different values are inserted,
+- and of course, the tree given in English can be linearized to other languages as well.
 
+
+''\noindent''
 Notice the way in which the values are given:
 ```
   cap = factsys.data2lin('Name',tuple.capital)
@@ -1989,8 +1997,10 @@ The code for these constructs is easy to find in ``facts3/``.
 
 ++Python code for text construction++
 
+The easiest way to form trees is again by using the parser.
+We can not parse the whole text as one ``Doc``: 
 ```
-doc = factsys.str2exp("Doc",
+factsys.str2exp("Doc",
   ("{} is a {} country with {} inhabitants. " 
    "its area is {}. "
    "the capital of {} is {} and its currency is {}.").format(
@@ -2008,15 +2018,15 @@ But in many NLG tasks, the relation to the dataset is less direct.
 We want things such as
 - **data selection**: show only data considered interesting, not all data;
 - **data trimming**: **rounding** of population //30327877//, to //30 million//, and **conversion** of //147181 square kilometres// to //56827 square miles//;
-- **data aggregation**: build sentences that are //valid consequences// from the data but not explicity shown there, for instance, //there are 45 countries in Asia//.
+- **data aggregation**: build sentences that are **valid consequences** from the data but not explicity shown there, for instance, //there are 45 countries in Asia//.
 
 
 ''\noindent''
 Most of the work in these categories is done on the host language (Python) side: what is needed in GF is just some new categories and functions which enable expressing the derived facts.
 Following the overall structure of GF-NLG, Python functions analyse data to find interesting derived facts and convert them to abstract syntax trees, whereupon GF takes over and linearizes the trees to different languages.
-A slight difference from the earlier is that the choice of trees can be language dependent - for instance that the English text uses miles but the Finnish text kilometres.
+A slight difference from the earlier is that the choice of trees can be language dependent - for instance that the English text might use miles but the Finnish text kilometres.
 
-A common term for the task of choosing what data to show is **content planning**.
+A common term for the task of choosing what data to show is **content planning**, or **content determination**.
 Much of NLG research has focused on how to automate this task.
 For instance, in creating stock market reports from numeric data, one has to find interesting trends fast to be able to report them before it is too late.
 
@@ -2030,9 +2040,33 @@ The plan can be implemented as a GF function and exported as a **Wikifunction**,
 
 
 
-
-
 ++Automatic planning++
+
+Python code from ``facts3/world_facts.py`` for documenting the world and each continent.
+```
+    cont_data = [d for d in data if cont in [d.continent,the_world]]
+    ncountries = len(cont_data)
+    largestpop = max(cont_data, key=lambda c: int(c.population)).country
+    largestarea = max(cont_data, key=lambda c: int(c.area)).country
+    totalpop = sum([int(c.population) for c in cont_data])//1000000
+
+    doc = factsys.str2exp("Doc",
+            ("there are {} countries in {}.").format(ncountries,cont))
+    doc = G.AddSentenceDoc(doc, factsys.str2exp("Sentence",
+            ("the total population of {} is {} million").format(cont,totalpop)))
+    doc = G.AddSentenceDoc(doc, factsys.str2exp("Sentence",
+            ("{} has the largest population and {} has the largest area").
+	        format(largestpop,largestarea)))
+
+    billions = [c.country for c in cont_data if int(c.population) > 1000000000]
+    if len(billions) == 1:
+        objects = billions[0] + ' is the only country '
+    elif len(billions) > 1:
+        objects = ' , '.join(billions[:-1]) + ' and ' + billions[-1] + ' are the only countries '
+    if billions:
+        doc = G.AddSentenceDoc(doc, factsys.str2exp('Sentence',
+                objects + 'with over a billion inhabitants'))
+```
 
 ++Manual planning and document authoring++
 
@@ -2102,6 +2136,8 @@ This is delegated to the RGL.
 In the multilingual setting, this part is actually the most labour-intensive one, since the other parts (except lexicalization) are shared by all the languages.
 The most important advantage of GF is probably here --- in the existence of the RGL and its shared API.
 The gain becomes even larger via the use of functors, which is the topic of the next chapter.
+
+
 
 
 +Sharing code between languages via a functor+
@@ -2260,7 +2296,82 @@ If moreover the translations of names can be extracted from data, adding a new l
    - referring expressions
 
 
-- CNL for fact documentation
+++The Facts module abstract syntax++
+
+Here is the latest generic abstract syntax in ``facts3``.
+It extends atomic facts with many constructs needed for fluent text and data aggregation.
+Not all of them have been explained in the above text.
+
+Every function in the module is commented with a template that shows how trees dominated with this function can be built by parsing.
+```
+abstract Facts = {
+
+flags startcat = Doc ;
+
+cat
+  Doc ;       -- complete document
+  Sentence ;  -- sentence with determinate tense and polarity
+  Fact ;      -- predicative clause whose tense and polarity can vary
+  Object ;    -- argument in predication, either constant or pronoun
+  Property ;  -- modifying adjectival phrase, e.g. "European"
+  Attribute ; -- single property of an object, e.g. "population"
+  Modifier ;  -- post-modifier, e.g. adverbial phrase or relative clause
+  Kind ;      -- type of objects, e.g. "European country"
+  Value ;     -- value of an attribute, such as entity name or numeric
+  Name ;      -- name of an entity, e.g. "Honduras", "South America"
+  Numeric ;   -- cardinal number, e.g. "23", "100 million", "over a billion" 
+
+fun
+  OneSentenceDoc : Sentence -> Doc ;           -- S.
+  AddSentenceDoc : Doc -> Sentence -> Doc ;    -- D. S.
+
+  ConjSentence : Sentence -> Sentence -> Sentence ; -- S and S
+  FactSentence : Fact -> Sentence ;                 -- F
+
+  KindFact : Object -> Kind -> Fact ;               -- O is a K
+  PropertyFact : Object -> Property -> Fact ;       -- O is P
+  AttributeFact : Attribute -> Object -> Value -> Fact ; -- the A of O is V
+
+  PropertyKind : Property -> Kind -> Kind ;  -- P K
+  ModifierKind : Kind -> Modifier -> Kind ;  -- K M
+
+  NumericKindModifier : Numeric -> Kind -> Modifier ; -- with N K
+
+  NameObject : Name -> Object ;  -- N
+  PronObject : Name -> Object ;  -- it
+
+  NumericKindValue : Numeric -> Kind -> Value ; -- N K
+  NameValue : Name -> Value ;                   -- N
+  NumericValue : Numeric -> Value ;             -- N V
+
+  IntNumeric : Int -> Numeric ;          -- I
+  IntMillionNumeric : Int -> Numeric ;   -- I million
+  IntBillionNumeric : Int -> Numeric ;   -- I billion
+  IntTrillionNumeric : Int -> Numeric ;  -- I billion
+  a_billion_Numeric : Numeric ;          -- a billion
+  AboutNumeric : Numeric -> Numeric ;    -- about N
+  OverNumeric : Numeric -> Numeric ;     -- over N
+  UnderNumeric : Numeric -> Numeric ;    -- over N
+
+--------------------
+-- data aggregation
+
+cat
+  [Object] {2} ; -- list of 2 or more Object expressions
+
+fun
+  ConjObject : [Object] -> Object ;  -- O, O and O
+  
+  NumericKindFact : Numeric -> Kind -> Fact ;                     -- there are N K
+  NumericKindModifierFact : Numeric -> Kind -> Modifier -> Fact ; -- there are N K M
+  MaxObjectAttributeFact : Object -> Attribute -> Fact ;      -- O has the largest A
+  MinObjectAttributeFact : Object -> Attribute -> Fact ;      -- O has the smallest A
+  SumAttributeFact : Attribute -> Object -> Numeric -> Fact ; -- the total A of O is N
+
+  UniqueInKindFact : Object -> Kind -> Fact ;  -- O is the only K
+}
+```
+
 
 
 

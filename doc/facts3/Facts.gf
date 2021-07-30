@@ -3,17 +3,17 @@ abstract Facts = {
 flags startcat = Doc ;
 
 cat
-  Doc ;
-  Sentence ;
-  Fact ;
-  Object ;
-  Property ;
-  Attribute ;
-  Modifier ;
-  Kind ;
-  Value ;
-  Name ;
-  Numeric ;
+  Doc ;       -- complete document
+  Sentence ;  -- sentence with determinate tense and polarity
+  Fact ;      -- predicative clause whose tense and polarity can vary
+  Object ;    -- argument in predication, either constant or pronoun
+  Property ;  -- modifying adjectival phrase, e.g. "European"
+  Attribute ; -- single property of an object, e.g. "population"
+  Modifier ;  -- post-modifier, e.g. adverbial phrase or relative clause
+  Kind ;      -- type of objects, e.g. "European country"
+  Value ;     -- value of an attribute, such as entity name or numeric
+  Name ;      -- name of an entity, e.g. "Honduras", "South America"
+  Numeric ;   -- cardinal number, e.g. "23", "100 million", "over a billion" 
 
 fun
   OneSentenceDoc : Sentence -> Doc ;           -- S.
