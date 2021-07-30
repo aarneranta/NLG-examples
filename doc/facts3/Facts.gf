@@ -41,6 +41,8 @@ fun
   IntNumeric : Int -> Numeric ;          -- I
   IntMillionNumeric : Int -> Numeric ;   -- I million
   IntBillionNumeric : Int -> Numeric ;   -- I billion
+  IntTrillionNumeric : Int -> Numeric ;  -- I billion
+  a_billion_Numeric : Numeric ;          -- a billion
   AboutNumeric : Numeric -> Numeric ;    -- about N
   OverNumeric : Numeric -> Numeric ;     -- over N
   UnderNumeric : Numeric -> Numeric ;    -- over N
@@ -48,6 +50,12 @@ fun
 --------------------
 -- data aggregation
 
+cat
+  [Object] {2} ;
+
+fun
+  ConjObject : [Object] -> Object ;  -- O, O and O
+  
   NumericKindFact : Numeric -> Kind -> Fact ;                     -- there are N K
   NumericKindModifierFact : Numeric -> Kind -> Modifier -> Fact ; -- there are N K M
   MaxObjectAttributeFact : Object -> Attribute -> Fact ;          -- O has the largest A

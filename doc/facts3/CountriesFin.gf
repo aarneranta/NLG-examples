@@ -22,11 +22,11 @@ lin
 
   the_world_CName = mkCName "maailma" ;
 
-  populationFact cname int = mkCl cname.np (mkV2 (caseV (locCase cname) have_V2)) (mkNP <symb int : Card> (mkN "asukas")) ;
-  continentFact cname name = mkCl cname.np (SyntaxFin.mkAdv (casePrep (locCase name)) name.np) ;
+  populationFact cname num = mkCl cname.np (mkV2 (caseV (locCase cname) have_V2)) (mkNP num (mkN "asukas")) ;
+  continentFact obj cdname = mkCl obj.np (SyntaxFin.mkAdv in_Prep cdname.np) ;
 
-  inCNameModifier cname = SyntaxFin.mkAdv (casePrep (locCase cname)) cname.np ;
-  inCDNameModifier cname = SyntaxFin.mkAdv (casePrep (locCase cname)) cname.np ;
+  inCNameModifier cname = mkModifier (SyntaxFin.mkAdv (casePrep (locCase cname)) cname.np) ;
+  inCDNameModifier cname = mkModifier (SyntaxFin.mkAdv (casePrep (locCase cname)) cname.np) ;
 
 oper
   mkAttribute : Str -> CN = \s -> mkCN (mkN s) ;

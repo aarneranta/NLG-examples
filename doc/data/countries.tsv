@@ -14,7 +14,7 @@ Bangladesh	Dhaka	147570	165775000	Asia	Bangladeshi taka
 Barbados	Bridgetown	439	285719	North America	Barbadian dollar
 Belarus	Minsk	207595	9349645	Europe	Belarusian ruble
 Belgium	City of Brussels	30528	11431406	Europe	euro
-Belize	Belmopan	22966	374681	North America	Belize dollar
+Belize	Belmopan	22966	374681	Central America	Belize dollar
 Benin	Porto-Novo	114763	11175692	Africa	West African CFA franc
 Bhutan	Thimphu	38394	807610	Asia	ngultrum
 Bolivia	La Paz	1098581	11051600	South America	boliviano
@@ -34,7 +34,7 @@ Chad	N'Djamena	1284000	15477751	Africa	Central African CFA franc
 Chile	Santiago	756102	18054726	South America	Chilean peso
 Colombia	Bogotá	1141748	49065615	South America	Colombian cincuenta centavos
 Comoros	Moroni	2034	823652	Africa	Comorian franc
-Costa Rica	San José	51100	4905769	North America	Costa Rican colón
+Costa Rica	San José	51100	4905769	Central America	Costa Rican colón
 Croatia	Zagreb	56594	4105493	Europe	Croatian kuna
 Cuba	Havana	109884	11484636	North America	Cuban peso
 Cyprus	Nicosia	9242	1141166	Europe	euro
@@ -47,7 +47,7 @@ Dominican Republic	Santo Domingo	48671	10403761	North America	Dominican peso
 East Timor	Dili	14919	1296311	Asia	East Timor centavo coins
 Ecuador	Quito	283560	16624858	South America	United States dollar
 Egypt	Cairo	1010408	94798827	Africa	Egyptian pound
-El Salvador	San Salvador	20742	6420746	North America	United States dollar
+El Salvador	San Salvador	20742	6420746	Central America	United States dollar
 Equatorial Guinea	Malabo	28051	1267689	Africa	Central African CFA franc
 Eritrea	Asmara	117600	3497000	Africa	nakfa
 Estonia	Tallinn	45339	1324820	Europe	euro
@@ -63,12 +63,12 @@ Germany	Berlin	357400	83149300	Europe	euro
 Ghana	Accra	238535	26908262	Africa	Ghana cedi
 Greece	Athens	131957	10760421	Europe	euro
 Grenada	St. George's	348	107825	North America	Eastern Caribbean dollar
-Guatemala	Guatemala City	108889	17263239	North America	quetzal
+Guatemala	Guatemala City	108889	17263239	Central America	quetzal
 Guinea	Conakry	245857	12717176	Africa	Guinean franc
 Guinea-Bissau	Bissau	36125	1861283	Africa	West African CFA franc
 Guyana	Georgetown	214970	777859	South America	Guyanese dollar
 Haiti	Port-au-Prince	27750	10981229	North America	gourde
-Honduras	Tegucigalpa	112492	9265067	North America	Honduran lempira
+Honduras	Tegucigalpa	112492	9265067	Central America	Honduran lempira
 Hungary	Budapest	93011	9769526	Europe	forint
 Iceland	Reykjavík	103004	357050	Europe	Icelandic króna
 India	New Delhi	3287263	1326093247	Asia	Indian rupee
@@ -127,7 +127,7 @@ Norway	Oslo	385207	5391369	Europe	Norwegian krone
 Oman	Muscat	309500	4829480	Asia	Omani rial
 Pakistan	Islamabad	881913	216565318	Asia	Pakistani rupee
 Palau	Ngerulmud	466	21729	insular Oceania	United States dollar
-Panama	Panama City	74177	4098587	North America	Panamanian balboa
+Panama	Panama City	74177	4098587	Central America	Panamanian balboa
 Papua New Guinea	Port Moresby	462840	8935000	insular Oceania	kina
 Paraguay	Asunción	406756	6811297	South America	Paraguayan guaraní
 People's Republic of China	Beijing	9596961	1409517397	Asia	renminbi

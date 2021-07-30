@@ -20,11 +20,11 @@ lin
 
   the_world_CName = mkNP the_Det (mkN "Welt" feminine) ;
 
-  populationFact cname int = mkCl cname have_V2 (mkNP <symb int : Card> (mkN "Einwohner")) ;
-  continentFact cname name = mkCl cname (mkVP (mkVP (mkV "liegen")) (SyntaxGer.mkAdv in_Prep name)) ;
+  populationFact cname num = mkCl cname have_V2 (mkNP num (mkN "Einwohner")) ;
+  continentFact obj cdname = mkCl obj.np (mkVP (mkVP (mkV "liegen")) (SyntaxGer.mkAdv in_Prep cdname.np)) ;
 
-  inCNameModifier cname = SyntaxGer.mkAdv in_Prep cname ;
-  inCDNameModifier cname = SyntaxGer.mkAdv in_Prep cname.np ;
+  inCNameModifier cname = mkModifier (SyntaxGer.mkAdv in_Prep cname) ;
+  inCDNameModifier cname = mkModifier (SyntaxGer.mkAdv in_Prep cname.np) ;
 
 oper
   mkAttribute : N -> CN = \n -> mkCN n ;

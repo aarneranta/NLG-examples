@@ -24,8 +24,8 @@ fun
   the_world_CName : CName ;
 
 -- specialized expressions for properties
-  populationFact : CName -> Int -> Fact ;
-  continentFact : CName -> CName -> Fact ;
+  populationFact : CName -> Numeric -> Fact ;
+  continentFact : Object -> CDName -> Fact ;
 
 -- location as modifier
   inCNameModifier : CName -> Modifier ;

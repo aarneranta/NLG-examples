@@ -13,11 +13,11 @@ lincat
   Object = {np : NP ; pron : Pron ; isPron : Bool} ;
   Property = AP ;
   Attribute = CN ;
-  Modifier = Adv ;
+  Modifier = {adv : Adv ; rs : RS ; isAdv : Bool} ;
   Kind = CN ;
   Value = NP ;
   Name = NP ;
-  Numeric = Det ;
+  Numeric = Card ;
 
 lin
   OneSentenceDoc sent = mkText sent ;
@@ -34,9 +34,12 @@ lin
     } ;
 
   PropertyKind prop kind = mkCN prop kind ;
-  ModifierKind kind mod = mkCN kind mod ;
+  ModifierKind kind mod = case mod.isAdv of {
+    False => mkCN kind mod.rs ;
+    True => mkCN kind mod.adv
+    } ;
 
-  NumericKindModifier num kind = mkAdv with_Prep (mkNP num kind) ;
+  NumericKindModifier num kind = mkModifier (mkAdv with_Prep (mkNP num kind)) ;
 
   NameObject name = {np = name ; pron = npPron name ; isPron = False} ;
   PronObject name =
@@ -44,32 +47,41 @@ lin
 
   NumericKindValue num kind = mkNP num kind ;
   NameValue name = name ;
-  NumericValue num = mkNP num ;
+  NumericValue num = mkNP (mkDet num) ;
 
-  IntNumeric int = mkDet <symb int : Card> ;
--- in instantiations
---
---  IntMillionNumeric int = 
---  IntBillionNumeric int = 
---  AboutNumeric num = 
---  OverNumeric num = 
---  UnderNumeric num = 
+  IntNumeric int = <symb int : Card> ;
   
 --------------------
 -- data aggregation
 
+lincat
+  [Object] = [NP] ;
+
+lin
+  BaseObject o p = BaseNP o.np p.np ;
+  ConsObject o os = ConsNP o.np os ;
+  ConjObject objs = {np = ConjNP and_Conj objs ; pron = they_Pron ; isPron = False} ;
+
   NumericKindFact num kind = mkCl (mkNP num kind) ;
-  NumericKindModifierFact num kind mod = Grammar.ExistNPAdv (mkNP num kind) mod ;
+  NumericKindModifierFact num kind mod = case mod.isAdv of {
+    False => mkCl (mkNP num (mkCN kind mod.rs)) ;
+    True => Grammar.ExistNPAdv (mkNP num kind) mod.adv
+    } ;
   MaxObjectAttributeFact obj attr = mkCl obj.np have_V2 (mkNP the_Det (mkCN largest_AP attr)) ;
   MinObjectAttributeFact obj attr = mkCl obj.np have_V2 (mkNP the_Det (mkCN smallest_AP attr)) ;
   SumAttributeFact attr obj int = AttributeFact (mkCN total_AP attr) obj (NumericValue int) ;
 
-  UniqueInKindFact obj kind = mkCl obj.np (mkNP the_Det (mkCN only_AP kind)) ;
+  UniqueInKindFact obj kind = mkCl obj.np (mkNP (mkDet the_Quant (npNum obj.np)) (mkCN only_AP kind)) ;
 
   
 -------------------
 oper
   npPron : NP -> Pron = \np -> it_Pron ;
+
+  mkModifier = overload {
+    mkModifier : Adv -> Modifier = \adv -> lin Modifier {adv = adv ; rs = mkRS (mkRCl which_RP adv) ; isAdv = True} ;
+    mkModifier : RS -> Modifier = \rs -> lin Modifier {adv = somewhere_Adv ; rs = rs ; isAdv = False} --- adv never used
+    } ;
 
 ----------------------
 -- functor parameters
@@ -78,6 +90,7 @@ oper
 -- smallest_AP : AP
 -- total_AP : AP
 -- only_AP : AP
--- about_AdN : AdN ;
+-- about_AdN : AdN
+-- npNum : NP -> Num 
 
 }

@@ -1,16 +1,16 @@
 concrete FactsFin of Facts =
-  FactsFunctor - [AttributeFact,NumberKindModifier]
+  FactsFunctor - [AttributeFact,NumericKindModifier]
   with
     (Syntax = SyntaxFin),
     (Symbolic = SymbolicFin),
     (Grammar = GrammarFin)
 
 **
-  open ParadigmsFin,(E=ExtendFin) in {
+  open ParadigmsFin,(E=ExtendFin), (X=ExtraFin) in {
 
 lin
   AttributeFact attr obj val = mkCl (mkNP (E.GenNP obj.np) attr) val ;
-  NumberKindModifier int kind = mkAdv (mkPrep "jossa on" nominative) (mkNP <symb int : Card> kind) ; --- hack
+  NumericKindModifier num kind = mkModifier (mkRS (X.RelExistNP in_Prep which_RP (mkNP num kind))) ;
 
 -- functor parameters
 oper
@@ -18,19 +18,22 @@ oper
   smallest_AP : AP = GrammarFin.AdjOrd (mkOrd (mkA (mkN "pieni" "pieniä"))) ;
   total_AP : AP = mkAP (mkA "yhteenlaskettu") ; 
   only_AP : AP = mkAP (mkA "ainoa") ;
-  million_N = mkN "miljoona" ;
-  billion_N = mkN "miljardi" ;
 
-{-
+  npNum : NP -> Num = \np ->
+    case ifPluralNP np of {False => singularNum ; True => pluralNum} ;
+
+
 -- functions left to instantiation
 lin
-  IntMillionNumeric int = M.mkDet int.s (M.mkDet "million" plural) ;
-  IntBillionNumeric int = M.mkDet int.s (M.mkDet "billion" plural) ;
-  IntTrillionNumeric int = M.mkDet int.s (M.mkDet "trillion" plural) ;
+  IntMillionNumeric int = E.CardCNCard <symb int : Card> (mkCN (mkN "miljoona")) ;
+  IntBillionNumeric int = E.CardCNCard <symb int : Card> (mkCN (mkN "miljardi")) ;
+  IntTrillionNumeric int = E.CardCNCard <symb int : Card> (mkCN (mkN "biljoona")) ;
 
-  AboutNumeric num = M.mkDet "about" num ;
-  OverNumeric num = M.mkDet "over" num ;
-  UnderNumeric num = M.mkDet "under" num ;
--}
+  a_billion_Numeric = E.CardCNCard (<symb (mkSymb "") : Card> ** {n = singular}) (mkCN (mkN "miljardi")) ; --- hack
+  
+  AboutNumeric num = mkCard (ParadigmsFin.mkAdN "noin") num ;
+  OverNumeric num = mkCard (ParadigmsFin.mkAdN "yli") num ;
+  UnderNumeric num = mkCard (ParadigmsFin.mkAdN "alle") num ;
+
 
 }
