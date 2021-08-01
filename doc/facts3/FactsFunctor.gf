@@ -26,7 +26,7 @@ lin
   ConjSentence a b = mkS and_Conj a b ;
   FactSentence fact = mkS presentTense positivePol fact ;
 
-  KindFact obj kind = mkCl obj.np kind ;
+  KindFact obj kind = mkCl obj.np (mkNP a_Det kind) ; --- sind ein Land
   PropertyFact obj prop = mkCl obj.np prop ;
   AttributeFact attr obj val = case obj.isPron of {
     True => mkCl (mkNP (mkDet obj.pron) attr) val ;
@@ -80,7 +80,7 @@ oper
 
   mkModifier = overload {
     mkModifier : Adv -> Modifier = \adv -> lin Modifier {adv = adv ; rs = mkRS (mkRCl which_RP adv) ; isAdv = True} ;
-    mkModifier : RS -> Modifier = \rs -> lin Modifier {adv = somewhere_Adv ; rs = rs ; isAdv = False} --- adv never used
+    mkModifier : RS -> Modifier = \rs -> lin Modifier {adv = somewhere_Adv ; rs = rs ; isAdv = False} --- adv not used
     } ;
 
 ----------------------

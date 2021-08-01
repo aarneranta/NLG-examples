@@ -1,9 +1,14 @@
-concrete FactsGer of Facts = FactsFunctor with
+concrete FactsGer of Facts = FactsFunctor - [npPron] with
   (Syntax = SyntaxGer),
   (Symbolic = SymbolicGer),
   (Grammar = GrammarGer)
 
-  ** open ParadigmsGer, (E=ExtendGer) in {
+  ** open ParadigmsGer, (E=ExtendGer), Prelude in {
+
+-- exceptions
+oper
+  npPron : NP -> Pron = \np -> case ifPluralNP np of {True => they_Pron ; False => it_Pron} ;
+
 
 -- functor parameters
 oper
