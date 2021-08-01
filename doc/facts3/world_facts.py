@@ -27,15 +27,17 @@ def continent_text(factsys,data,cont):
 
     billions = [c.country for c in cont_data if int(c.population) > 1000000000]
     if len(billions) == 1:
-        objects = billions[0] + ' is the only country '
+        subject = billions[0]
+        property = ' is the only country '
     elif len(billions) > 1:
-        objects = ' , '.join(billions[:-1]) + ' and ' + billions[-1] + ' are the only countries '
+        subject = ', '.join(billions[:-1]) + ' and ' + billions[-1]
+        property = ' are the only countries '
     if billions:
         doc = G.AddSentenceDoc(doc, factsys.str2exp('Sentence',
-                objects + 'with over a billion inhabitants'))
+                subject + property + 'with over a billion inhabitants'))
 
     return doc
-
+    
 
 def world_texts(factsys,data):
     texts = [continent_text(factsys,data,the_world)]

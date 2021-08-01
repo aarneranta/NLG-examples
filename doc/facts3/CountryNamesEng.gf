@@ -16,7 +16,7 @@ lin Africa_CDName = mkCDName "Africa" "African" ;
 lin Asia_CDName = mkCDName "Asia" "Asian" ;
 lin Central_America_CDName = mkCDName "Central America" "Central American" ;
 lin Europe_CDName = mkCDName "Europe" "European" ;
-lin North_America_CDName = mkCDName "North America" "Noth American" ;
+lin North_America_CDName = mkCDName "North America" "North American" ;
 lin South_America_CDName = mkCDName "South America" "South American" ;
 lin insular_Oceania_CDName = mkCDName "insular Oceania" "Oceanian" ;
 

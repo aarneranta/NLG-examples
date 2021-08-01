@@ -5,7 +5,6 @@ concrete FactsEng of Facts = FactsFunctor with
 
   ** open
        ParadigmsEng,
-       (M=MakeStructuralEng),
        (E=ExtendEng)
      in {
 
