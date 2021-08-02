@@ -282,8 +282,9 @@ Much of the data in our examples is collected from Wikidata, and the order of pr
 Let us start the work with a data set that is simple and well-known, yet rich enough to illustrate the main issues of NLG.
 The set is a table with information about countries from Wikidata (in the category "sovereign states", ``wd:Q3624078`` in Wikidata). 
 The original query can be found in
-- https://w.wiki/3fV$
-
+''\bequ''
+https://w.wiki/3fV$
+''\enqu''
 
 ''\noindent''
 The results have been edited slightly, so that, in particular, every country appears only once in the result.
@@ -887,6 +888,11 @@ This gives a direct way to apply the methods seen by now to Wikidata.
 What is more, the query also suggests a way to obtain translations of names, by varying the language code (e.g. from ``en`` to ``fi``).
 
 We will return to Wikidata many times later, but you can get a first feeling of it by writing some query, downloading the result as TSV, and using the result in the way explained in the previous exercise.
+
+A tutorial on SPARQL as used in Wikidata can be found in
+''\bequ''
+https://www.wikidata.org/wiki/Wikidata:SPARQL_tutorial
+''\enqu''
 
 
 
