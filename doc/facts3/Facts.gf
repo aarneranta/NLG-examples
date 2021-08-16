@@ -23,7 +23,8 @@ fun
 
   ConjSentence : Sentence -> Sentence -> Sentence ; -- S and S
   FactSentence : Fact -> Sentence ;                 -- F
-  PastFactSentence : Fact -> Sentence ;             -- F
+  ContinuousPastFactSentence : Fact -> Sentence ;   -- F (imparfait)
+  PunctualPastFactSentence : Fact -> Sentence ;     -- F (passé simple)
 
   KindFact : Object -> Kind -> Fact ;               -- O is a K
   PropertyFact : Object -> Property -> Fact ;       -- O is P
@@ -34,7 +35,8 @@ fun
   ModifierKind : Kind -> Modifier -> Kind ;  -- K M
 
   ActModifier : Act -> Modifier ; -- that A
-  PastActModifier : Act -> Modifier ; -- that A
+  ContinuousPastActModifier : Act -> Modifier ; -- that A 
+  PunctualPastActModifier : Act -> Modifier ; -- that A
 
   NumericKindModifier : Numeric -> Kind -> Modifier ; -- with N K
 

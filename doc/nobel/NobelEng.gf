@@ -22,8 +22,13 @@ lin
   bornAct date city country =
     mkVP (mkVP (mkVP (mkVP (mkA "born")) (S.mkAdv in_Prep city)) (S.mkAdv in_Prep country)) date ;
   dieAct date = mkVP (mkVP (mkV "die")) date ;
-  winPrizeAct prize date = mkVP (mkVP (mkV2 I.win_V) (mkNP the_Det prize)) date ;
+  winPrizeAct prize = mkVP (mkV2 I.win_V) (mkNP the_Det prize) ;
+  winPrizeDateAct prize date = mkVP (mkVP (mkV2 I.win_V) (mkNP the_Det prize)) date ;
 
+  YoungestInKindFact object kind = mkCl object.np (mkNP (mkDet the_Quant (S.mkOrd (mkA "young" "younger" "youngest" "youngly"))) kind) ;
+
+  woman_Kind = mkCN (mkN "woman" "women") ;
+  winnerOfPrizeKind prize = mkCN (mkN "winner") (S.mkAdv possess_Prep (mkNP the_Det prize)) ;
 
   peacePrize = mkCN (mkN "Nobel Peace Prize") ;
   chemistryPrize = mkCN (mkN "Nobel Prize") (S.mkAdv in_Prep (mkNP (mkN "Chemistry"))) ;

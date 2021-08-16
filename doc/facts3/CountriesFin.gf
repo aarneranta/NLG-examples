@@ -8,6 +8,8 @@ lin
   cName name = {np = name.np ; pron = npPron name.np} ;
   cdName name = {np = name.np ; pron = npPron name.np} ;
 
+  stringCName s = {np = symb (mkSymb s.s) ; isIn = True} ;
+
   cdProperty name = name.ap ;
 
   capital_Attribute = mkAttribute "pääkaupunki" ;

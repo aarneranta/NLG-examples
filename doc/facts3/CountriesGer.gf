@@ -6,7 +6,9 @@ lin
   cName name = {np = name ; pron = npPron name} ;
   cdName name = {np = name.np ; pron = npPron name.np} ;
   cdProperty name = name.ap ;
-
+  
+  stringCName s = symb (mkSymb s.s) ;
+  
   capital_Attribute = mkAttribute (mkN "Hauptstadt" "Hauptstädte" feminine) ;
   area_Attribute = mkAttribute (mkN "Fläche") ;
   population_Attribute = mkAttribute (mkN "Einwohnerzahl" feminine) ;

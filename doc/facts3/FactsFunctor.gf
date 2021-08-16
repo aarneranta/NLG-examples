@@ -27,7 +27,8 @@ lin
 
   ConjSentence a b = mkS and_Conj a b ;
   FactSentence fact = mkS presentTense positivePol fact ;
-  PastFactSentence fact = mkS pastTense positivePol fact ;
+  ContinuousPastFactSentence fact = mkS pastTense positivePol fact ;
+  PunctualPastFactSentence fact = mkS pastTense positivePol fact ;
 
   KindFact obj kind = mkCl obj.np (mkNP a_Det kind) ; --- sind ein Land
   PropertyFact obj prop = mkCl obj.np prop ;
@@ -44,7 +45,8 @@ lin
     } ;
 
   ActModifier act = mkModifier (mkRS (mkRCl which_RP act)) ;
-  PastActModifier act = mkModifier (mkRS pastTense (mkRCl which_RP act)) ;
+  ContinuousPastActModifier act = mkModifier (mkRS pastTense (mkRCl which_RP act)) ;
+  PunctualPastActModifier act = mkModifier (mkRS pastTense (mkRCl which_RP act)) ;
 
   NumericKindModifier num kind = mkModifier (mkAdv with_Prep (mkNP num kind)) ;
 

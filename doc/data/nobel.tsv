@@ -8,14 +8,14 @@ Ernesto Teodoro Moneta	male	Nobel Peace Prize	1907-01-01T00:00:00Z	1833-09-20T00
 His Holiness the Dalai Lama 14 Tendzin Gyatso	male	Nobel Peace Prize	1989-01-01T00:00:00Z	1935-07-06T00:00:00Z	Taktser	People's Republic of China	
 Elie Wiesel	male	Nobel Peace Prize	1986-01-01T00:00:00Z	1928-09-30T00:00:00Z	Sighetu Marmației	Romania	2016-07-02T00:00:00Z
 Bertha von Suttner	female	Nobel Peace Prize	1905-01-01T00:00:00Z	1843-06-09T00:00:00Z	Prague	Czech Republic	1914-06-21T00:00:00Z
-Al Gore	male	Nobel Peace Prize	2007-01-01T00:00:00Z	1948-03-31T00:00:00Z	Washington, D.C.	United States of America	
-Jimmy Carter	male	Nobel Peace Prize	2002-01-01T00:00:00Z	1924-10-01T00:00:00Z	Lillian G. Carter Nursing Center	United States of America	
+Al Gore	male	Nobel Peace Prize	2007-01-01T00:00:00Z	1948-03-31T00:00:00Z	Washington, D.C.	the United States	
+Jimmy Carter	male	Nobel Peace Prize	2002-01-01T00:00:00Z	1924-10-01T00:00:00Z	Lillian G. Carter Nursing Center	the United States	
 Mikhail Gorbachev	male	Nobel Peace Prize	1990-01-01T00:00:00Z	1931-03-02T00:00:00Z	Privolnoye	Russia	
 Mother Teresa	female	Nobel Peace Prize	1979-01-01T00:00:00Z	1910-08-26T00:00:00Z	Skopje	North Macedonia	1997-09-05T00:00:00Z
 Malala Yousafzai	female	Nobel Peace Prize	2014-01-01T00:00:00Z	1997-07-12T00:00:00Z	Mingora	Pakistan	
-Theodore Roosevelt	male	Nobel Peace Prize	1906-01-01T00:00:00Z	1858-10-27T00:00:00Z	Theodore Roosevelt Birthplace National Historic Site	United States of America	1919-01-06T00:00:00Z
+Theodore Roosevelt	male	Nobel Peace Prize	1906-01-01T00:00:00Z	1858-10-27T00:00:00Z	Theodore Roosevelt Birthplace National Historic Site	the United States	1919-01-06T00:00:00Z
 Yasser Arafat	male	Nobel Peace Prize	1994-01-01T00:00:00Z	1929-08-04T00:00:00Z	Amman	Jordan	2004-11-11T00:00:00Z
-Woodrow Wilson	male	Nobel Peace Prize	1919-01-01T00:00:00Z	1856-12-28T00:00:00Z	Staunton	United States of America	1924-02-03T00:00:00Z
+Woodrow Wilson	male	Nobel Peace Prize	1919-01-01T00:00:00Z	1856-12-28T00:00:00Z	Staunton	the United States	1924-02-03T00:00:00Z
 Liu Xiaobo	male	Nobel Peace Prize	2010-01-01T00:00:00Z	1955-12-28T00:00:00Z	Changchun	People's Republic of China	2017-07-13T00:00:00Z
 Liu Xiaobo	male	Nobel Peace Prize	2010-01-01T00:00:00Z	1955-12-28T00:00:00Z	Changchun	Manchukuo	2017-07-13T00:00:00Z
 Anwar Sadat	male	Nobel Peace Prize	1978-01-01T00:00:00Z	1918-12-25T00:00:00Z	Mit Abu al-Kum	Egypt	1981-10-06T00:00:00Z
@@ -23,8 +23,8 @@ Desmond Tutu	male	Nobel Peace Prize	1984-01-01T00:00:00Z	1931-10-07T00:00:00Z	Kl
 Muhammad Yunus	male	Nobel Peace Prize	2006-01-01T00:00:00Z	1940-06-28T00:00:00Z	Chattogram	Bangladesh	
 Kim Dae-jung	male	Nobel Peace Prize	2000-01-01T00:00:00Z	1924-01-06T00:00:00Z	Haui-do	South Korea	2009-08-18T00:00:00Z
 Wangari Muta Maathai	female	Nobel Peace Prize	2004-01-01T00:00:00Z	1940-04-01T00:00:00Z	Nyeri	Kenya	2011-09-25T00:00:00Z
-Linus Pauling	male	Nobel Peace Prize	1962-01-01T00:00:00Z	1901-02-28T00:00:00Z	Portland	United States of America	1994-08-18T00:00:00Z
-Linus Pauling	male	Nobel Peace Prize	1962-01-01T00:00:00Z	1901-02-28T00:00:00Z	Portland	United States of America	1994-08-19T00:00:00Z
+Linus Pauling	male	Nobel Peace Prize	1962-01-01T00:00:00Z	1901-02-28T00:00:00Z	Portland	the United States	1994-08-18T00:00:00Z
+Linus Pauling	male	Nobel Peace Prize	1962-01-01T00:00:00Z	1901-02-28T00:00:00Z	Portland	the United States	1994-08-19T00:00:00Z
 Albert Schweitzer	male	Nobel Peace Prize	1952-01-01T00:00:00Z	1875-01-14T00:00:00Z	Kaysersberg	France	1965-09-04T00:00:00Z
 Hjalmar Branting	male	Nobel Peace Prize	1921-01-01T00:00:00Z	1860-11-23T00:00:00Z	Klara Church Parish	Sweden	1925-02-24T00:00:00Z
 Juan Manuel Santos	male	Nobel Peace Prize	2016-01-01T00:00:00Z	1951-08-10T00:00:00Z	Bogotá	Colombia	
@@ -41,72 +41,72 @@ Menachem Begin	male	Nobel Peace Prize	1978-01-01T00:00:00Z	1913-08-16T00:00:00Z	
 Mohamed ElBaradei	male	Nobel Peace Prize	2005-01-01T00:00:00Z	1942-06-17T00:00:00Z	Cairo	Egypt	
 F. W. de Klerk	male	Nobel Peace Prize	1993-01-01T00:00:00Z	1936-03-18T00:00:00Z	Johannesburg	South Africa	
 Alva Myrdal	female	Nobel Peace Prize	1982-01-01T00:00:00Z	1902-01-31T00:00:00Z	Uppsala Cathedral Assembly	Sweden	1986-02-01T00:00:00Z
-Norman Borlaug	male	Nobel Peace Prize	1970-01-01T00:00:00Z	1914-03-25T00:00:00Z	Cresco	United States of America	2009-09-12T00:00:00Z
-Mairead Maguire	female	Nobel Peace Prize	1976-01-01T00:00:00Z	1944-01-27T00:00:00Z	Belfast	United Kingdom	
-Betty Williams	female	Nobel Peace Prize	1976-01-01T00:00:00Z	1943-05-22T00:00:00Z	Belfast	United Kingdom	2020-03-17T00:00:00Z
+Norman Borlaug	male	Nobel Peace Prize	1970-01-01T00:00:00Z	1914-03-25T00:00:00Z	Cresco	the United States	2009-09-12T00:00:00Z
+Mairead Maguire	female	Nobel Peace Prize	1976-01-01T00:00:00Z	1944-01-27T00:00:00Z	Belfast	the United Kingdom	
+Betty Williams	female	Nobel Peace Prize	1976-01-01T00:00:00Z	1943-05-22T00:00:00Z	Belfast	the United Kingdom	2020-03-17T00:00:00Z
 Nathan Söderblom	male	Nobel Peace Prize	1930-01-01T00:00:00Z	1866-01-15T00:00:00Z	Trönö	Sweden	1931-07-12T00:00:00Z
-John Mott	male	Nobel Peace Prize	1946-01-01T00:00:00Z	1865-05-25T00:00:00Z	New York City	United States of America	1955-01-31T00:00:00Z
+John Mott	male	Nobel Peace Prize	1946-01-01T00:00:00Z	1865-05-25T00:00:00Z	New York City	the United States	1955-01-31T00:00:00Z
 Eisaku Satō	male	Nobel Peace Prize	1974-01-01T00:00:00Z	1901-03-27T00:00:00Z	Tabuse	Japan	1975-06-03T00:00:00Z
 Aristide Briand	male	Nobel Peace Prize	1926-01-01T00:00:00Z	1862-03-28T00:00:00Z	Nantes	France	1932-03-07T00:00:00Z
-Jane Addams	female	Nobel Peace Prize	1931-01-01T00:00:00Z	1860-09-06T00:00:00Z	Cedarville	United States of America	1935-05-21T00:00:00Z
+Jane Addams	female	Nobel Peace Prize	1931-01-01T00:00:00Z	1860-09-06T00:00:00Z	Cedarville	the United States	1935-05-21T00:00:00Z
 Rigoberta Menchú	female	Nobel Peace Prize	1992-01-01T00:00:00Z	1959-01-09T00:00:00Z	Laj Chimel	Guatemala	
-Austen Chamberlain	male	Nobel Peace Prize	1925-01-01T00:00:00Z	1863-10-16T00:00:00Z	Birmingham	United Kingdom	1937-03-16T00:00:00Z
-Randal Cremer	male	Nobel Peace Prize	1903-01-01T00:00:00Z	1828-03-18T00:00:00Z	Fareham	United Kingdom	1908-07-22T00:00:00Z
+Austen Chamberlain	male	Nobel Peace Prize	1925-01-01T00:00:00Z	1863-10-16T00:00:00Z	Birmingham	the United Kingdom	1937-03-16T00:00:00Z
+Randal Cremer	male	Nobel Peace Prize	1903-01-01T00:00:00Z	1828-03-18T00:00:00Z	Fareham	the United Kingdom	1908-07-22T00:00:00Z
 Henri La Fontaine	male	Nobel Peace Prize	1913-01-01T00:00:00Z	1854-04-22T00:00:00Z	City of Brussels	Belgium	1943-05-14T00:00:00Z
 Fredrik Bajer	male	Nobel Peace Prize	1908-01-01T00:00:00Z	1837-04-21T00:00:00Z	Vester Egede	Denmark	1922-01-22T00:00:00Z
-David Trimble	male	Nobel Peace Prize	1998-01-01T00:00:00Z	1944-10-15T00:00:00Z	Bangor	United Kingdom	
+David Trimble	male	Nobel Peace Prize	1998-01-01T00:00:00Z	1944-10-15T00:00:00Z	Bangor	the United Kingdom	
 Klas Pontus Arnoldson	male	Nobel Peace Prize	1908-01-01T00:00:00Z	1844-10-21T00:00:00Z	Domkyrkoförsamlingen in Göteborg	Sweden	1916-02-20T00:00:00Z
-Frank B. Kellogg	male	Nobel Peace Prize	1929-01-01T00:00:00Z	1856-12-22T00:00:00Z	Potsdam	United States of America	1937-12-21T00:00:00Z
+Frank B. Kellogg	male	Nobel Peace Prize	1929-01-01T00:00:00Z	1856-12-22T00:00:00Z	Potsdam	the United States	1937-12-21T00:00:00Z
 Carlos Saavedra Lamas	male	Nobel Peace Prize	1936-01-01T00:00:00Z	1878-11-01T00:00:00Z	Buenos Aires	Argentina	1959-05-05T00:00:00Z
 Auguste Beernaert	male	Nobel Peace Prize	1909-01-01T00:00:00Z	1829-07-26T00:00:00Z	Ostend	Belgium	1912-10-06T00:00:00Z
-Cordell Hull	male	Nobel Peace Prize	1945-01-01T00:00:00Z	1871-10-02T00:00:00Z	Pickett County	United States of America	1955-07-23T00:00:00Z
-Cordell Hull	male	Nobel Peace Prize	1945-01-01T00:00:00Z	1871-10-02T00:00:00Z	Olympus	United States of America	1955-07-23T00:00:00Z
+Cordell Hull	male	Nobel Peace Prize	1945-01-01T00:00:00Z	1871-10-02T00:00:00Z	Pickett County	the United States	1955-07-23T00:00:00Z
+Cordell Hull	male	Nobel Peace Prize	1945-01-01T00:00:00Z	1871-10-02T00:00:00Z	Olympus	the United States	1955-07-23T00:00:00Z
 Alfonso García Robles	male	Nobel Peace Prize	1982-01-01T00:00:00Z	1911-03-20T00:00:00Z	Zamora de Hidalgo	Mexico	1991-09-02T00:00:00Z
 Christian Lous Lange	male	Nobel Peace Prize	1921-01-01T00:00:00Z	1869-09-17T00:00:00Z	Stavanger	Norway	1938-12-11T00:00:00Z
 Adolfo Pérez Esquivel	male	Nobel Peace Prize	1980-01-01T00:00:00Z	1931-11-26T00:00:00Z	Buenos Aires	Argentina	
-Jody Williams	female	Nobel Peace Prize	1997-01-01T00:00:00Z	1950-10-09T00:00:00Z	Brattleboro	United States of America	
+Jody Williams	female	Nobel Peace Prize	1997-01-01T00:00:00Z	1950-10-09T00:00:00Z	Brattleboro	the United States	
 Albert John Mvumbi Luthuli	male	Nobel Peace Prize	1960-01-01T00:00:00Z	1898-01-01T00:00:00Z	Bulawayo	Zimbabwe	1967-07-21T00:00:00Z
 Albert John Mvumbi Luthuli	male	Nobel Peace Prize	1960-01-01T00:00:00Z	1898-01-01T00:00:00Z	Bulawayo	Rhodesia	1967-07-21T00:00:00Z
 Albert John Mvumbi Luthuli	male	Nobel Peace Prize	1960-01-01T00:00:00Z	1898-01-01T00:00:00Z	Bulawayo	Southern Rhodesia	1967-07-21T00:00:00Z
 Albert John Mvumbi Luthuli	male	Nobel Peace Prize	1960-01-01T00:00:00Z	1898-01-01T00:00:00Z	Bulawayo	Zimbabwe Rhodesia	1967-07-21T00:00:00Z
-Emily Greene Balch	female	Nobel Peace Prize	1946-01-01T00:00:00Z	1867-01-08T00:00:00Z	Jamaica Plain	United States of America	1961-01-09T00:00:00Z
+Emily Greene Balch	female	Nobel Peace Prize	1946-01-01T00:00:00Z	1867-01-08T00:00:00Z	Jamaica Plain	the United States	1961-01-09T00:00:00Z
 Tobias Asser	male	Nobel Peace Prize	1911-01-01T00:00:00Z	1838-04-28T00:00:00Z	Amsterdam	Netherlands	1913-06-29T00:00:00Z
 Tobias Asser	male	Nobel Peace Prize	1911-01-01T00:00:00Z	1838-04-28T00:00:00Z	Amsterdam	Kingdom of the Netherlands	1913-06-29T00:00:00Z
 Tobias Asser	male	Nobel Peace Prize	1911-01-01T00:00:00Z	1838-04-28T00:00:00Z	Amsterdam	Netherlands	1913-07-29T00:00:00Z
 Tobias Asser	male	Nobel Peace Prize	1911-01-01T00:00:00Z	1838-04-28T00:00:00Z	Amsterdam	Kingdom of the Netherlands	1913-07-29T00:00:00Z
 Joseph Rotblat	male	Nobel Peace Prize	1995-01-01T00:00:00Z	1908-11-04T00:00:00Z	Warsaw	Poland	2005-08-31T00:00:00Z
-Elihu Root	male	Nobel Peace Prize	1912-01-01T00:00:00Z	1845-02-15T00:00:00Z	Clinton	United States of America	1937-02-07T00:00:00Z
+Elihu Root	male	Nobel Peace Prize	1912-01-01T00:00:00Z	1845-02-15T00:00:00Z	Clinton	the United States	1937-02-07T00:00:00Z
 Louis Renault	male	Nobel Peace Prize	1907-01-01T00:00:00Z	1843-05-21T00:00:00Z	Autun	France	1918-02-08T00:00:00Z
 René Cassin	male	Nobel Peace Prize	1968-01-01T00:00:00Z	1887-10-05T00:00:00Z	Bayonne	France	1976-02-20T00:00:00Z
 Le Duc Tho	male	Nobel Peace Prize	1973-01-01T00:00:00Z	1911-10-14T00:00:00Z	Hà Nam	Vietnam	1990-10-13T00:00:00Z
 Seán MacBride	male	Nobel Peace Prize	1974-01-01T00:00:00Z	1904-01-26T00:00:00Z	Paris	France	1988-01-15T00:00:00Z
-Nicholas Murray Butler	male	Nobel Peace Prize	1931-01-01T00:00:00Z	1862-04-02T00:00:00Z	Elizabeth	United States of America	1947-12-07T00:00:00Z
-Norman Angell	male	Nobel Peace Prize	1933-01-01T00:00:00Z	1872-12-26T00:00:00Z	Holbeach	United Kingdom	1967-10-07T00:00:00Z
+Nicholas Murray Butler	male	Nobel Peace Prize	1931-01-01T00:00:00Z	1862-04-02T00:00:00Z	Elizabeth	the United States	1947-12-07T00:00:00Z
+Norman Angell	male	Nobel Peace Prize	1933-01-01T00:00:00Z	1872-12-26T00:00:00Z	Holbeach	the United Kingdom	1967-10-07T00:00:00Z
 Ferdinand Buisson	male	Nobel Peace Prize	1927-01-01T00:00:00Z	1841-12-20T00:00:00Z	Paris	France	1932-02-16T00:00:00Z
-John Boyd Orr, 1st Baron Boyd-Orr	male	Nobel Peace Prize	1949-01-01T00:00:00Z	1880-09-23T00:00:00Z	Kilmaurs	United Kingdom	1971-06-25T00:00:00Z
-Bob Dylan	male	Nobel Prize in Literature	2016-01-01T00:00:00Z	1941-05-24T00:00:00Z	Duluth	United States of America	
+John Boyd Orr, 1st Baron Boyd-Orr	male	Nobel Peace Prize	1949-01-01T00:00:00Z	1880-09-23T00:00:00Z	Kilmaurs	the United Kingdom	1971-06-25T00:00:00Z
+Bob Dylan	male	Nobel Prize in Literature	2016-01-01T00:00:00Z	1941-05-24T00:00:00Z	Duluth	the United States	
 Dario Fo	male	Nobel Prize in Literature	1997-01-01T00:00:00Z	1926-03-24T00:00:00Z	Sangiano	Italy	2016-10-13T00:00:00Z
 Joseph Brodsky	male	Nobel Prize in Literature	1987-01-01T00:00:00Z	1940-05-24T00:00:00Z	Saint Petersburg	Russia	1996-01-28T00:00:00Z
 Gabriel García Márquez	male	Nobel Prize in Literature	1982-01-01T00:00:00Z	1927-03-06T00:00:00Z	Aracataca	Colombia	2014-04-17T00:00:00Z
 Günter Grass	male	Nobel Prize in Literature	1999-01-01T00:00:00Z	1927-10-16T00:00:00Z	Gdańsk	Poland	2015-04-13T00:00:00Z
 Marie Curie	female	Nobel Prize in Physics	1903-01-01T00:00:00Z	1867-11-07T00:00:00Z	Warsaw	Poland	1934-07-04T00:00:00Z
-Winston Churchill	male	Nobel Prize in Literature	1953-01-01T00:00:00Z	1874-11-30T00:00:00Z	Blenheim Palace	United Kingdom	1965-01-24T00:00:00Z
+Winston Churchill	male	Nobel Prize in Literature	1953-01-01T00:00:00Z	1874-11-30T00:00:00Z	Blenheim Palace	the United Kingdom	1965-01-24T00:00:00Z
 Mo Yan	male	Nobel Prize in Literature	2012-01-01T00:00:00Z	1955-02-17T00:00:00Z	Gaomi	People's Republic of China	
 Max Planck	male	Nobel Prize in Physics	1918-01-01T00:00:00Z	1858-04-23T00:00:00Z	Kiel	Germany	1947-10-04T00:00:00Z
 Max Planck	male	Nobel Prize in Physics	1918-01-01T00:00:00Z	1858-04-23T00:00:00Z	Kiel	Germany	1947-12-04T00:00:00Z
 Charles K. Kao	male	Nobel Prize in Physics	2009-01-01T00:00:00Z	1933-11-04T00:00:00Z	Shanghai	People's Republic of China	2018-09-23T00:00:00Z
 George Bernard Shaw	male	Nobel Prize in Literature	1925-01-01T00:00:00Z	1856-07-26T00:00:00Z	Dublin	Ireland	1950-11-02T00:00:00Z
-Ernest Hemingway	male	Nobel Prize in Literature	1954-01-01T00:00:00Z	1899-07-21T00:00:00Z	Oak Park	United States of America	1961-07-02T00:00:00Z
-Bertrand Russell	male	Nobel Prize in Literature	1950-01-01T00:00:00Z	1872-05-18T00:00:00Z	Trellech	United Kingdom	1970-02-02T00:00:00Z
+Ernest Hemingway	male	Nobel Prize in Literature	1954-01-01T00:00:00Z	1899-07-21T00:00:00Z	Oak Park	the United States	1961-07-02T00:00:00Z
+Bertrand Russell	male	Nobel Prize in Literature	1950-01-01T00:00:00Z	1872-05-18T00:00:00Z	Trellech	the United Kingdom	1970-02-02T00:00:00Z
 Albert Camus	male	Nobel Prize in Literature	1957-01-01T00:00:00Z	1913-11-07T00:00:00Z	Dréan	Algeria	1960-01-04T00:00:00Z
 Thomas Mann	male	Nobel Prize in Literature	1929-01-01T00:00:00Z	1875-06-06T00:00:00Z	Lübeck	Germany	1955-08-12T00:00:00Z
 José Saramago	male	Nobel Prize in Literature	1998-01-01T00:00:00Z	1922-11-16T00:00:00Z	Azinhaga	Portugal	2010-06-18T00:00:00Z
 José Saramago	male	Nobel Prize in Literature	1998-01-01T00:00:00Z	1922-11-16T00:00:00Z	Golegã	Portugal	2010-06-18T00:00:00Z
 Samuel Beckett	male	Nobel Prize in Literature	1969-01-01T00:00:00Z	1906-04-13T00:00:00Z	Foxrock	Ireland	1989-12-22T00:00:00Z
-T. S. Eliot	male	Nobel Prize in Literature	1948-01-01T00:00:00Z	1888-09-26T00:00:00Z	St. Louis	United States of America	1965-01-04T00:00:00Z
-William Faulkner	male	Nobel Prize in Literature	1949-01-01T00:00:00Z	1897-09-25T00:00:00Z	New Albany	United States of America	1962-07-06T00:00:00Z
-John Steinbeck	male	Nobel Prize in Literature	1962-01-01T00:00:00Z	1902-02-27T00:00:00Z	Salinas	United States of America	1968-12-20T00:00:00Z
-Richard Feynman	male	Nobel Prize in Physics	1965-01-01T00:00:00Z	1918-05-11T00:00:00Z	Far Rockaway	United States of America	1988-02-15T00:00:00Z
+T. S. Eliot	male	Nobel Prize in Literature	1948-01-01T00:00:00Z	1888-09-26T00:00:00Z	St. Louis	the United States	1965-01-04T00:00:00Z
+William Faulkner	male	Nobel Prize in Literature	1949-01-01T00:00:00Z	1897-09-25T00:00:00Z	New Albany	the United States	1962-07-06T00:00:00Z
+John Steinbeck	male	Nobel Prize in Literature	1962-01-01T00:00:00Z	1902-02-27T00:00:00Z	Salinas	the United States	1968-12-20T00:00:00Z
+Richard Feynman	male	Nobel Prize in Physics	1965-01-01T00:00:00Z	1918-05-11T00:00:00Z	Far Rockaway	the United States	1988-02-15T00:00:00Z
 Mario Vargas Llosa	male	Nobel Prize in Literature	2010-01-01T00:00:00Z	1936-03-28T00:00:00Z	Arequipa	Peru	
 Wole Soyinka	male	Nobel Prize in Literature	1986-01-01T00:00:00Z	1934-07-13T00:00:00Z	Abeokuta	Nigeria	
 Hendrik Lorentz	male	Nobel Prize in Physics	1902-01-01T00:00:00Z	1853-07-18T00:00:00Z	Arnhem	Netherlands	1928-02-04T00:00:00Z
@@ -117,7 +117,7 @@ Mikhail Sholokhov	male	Nobel Prize in Literature	1965-01-01T00:00:00Z	1905-05-24
 Anatole France	male	Nobel Prize in Literature	1921-01-01T00:00:00Z	1844-04-16T00:00:00Z	Paris	France	1924-10-12T00:00:00Z
 J. M. Coetzee	male	Nobel Prize in Literature	2003-01-01T00:00:00Z	1940-02-09T00:00:00Z	Cape Town	South Africa	
 Gerhart Hauptmann	male	Nobel Prize in Literature	1912-01-01T00:00:00Z	1862-11-15T00:00:00Z	Szczawno-Zdrój	Poland	1946-06-06T00:00:00Z
-William Golding	male	Nobel Prize in Literature	1983-01-01T00:00:00Z	1911-09-19T00:00:00Z	Newquay	United Kingdom	1993-06-19T00:00:00Z
+William Golding	male	Nobel Prize in Literature	1983-01-01T00:00:00Z	1911-09-19T00:00:00Z	Newquay	the United Kingdom	1993-06-19T00:00:00Z
 Rudolf Mössbauer	male	Nobel Prize in Physics	1961-01-01T00:00:00Z	1929-01-31T00:00:00Z	Munich	Germany	2011-09-14T00:00:00Z
 Czesław Miłosz	male	Nobel Prize in Literature	1980-01-01T00:00:00Z	1911-06-30T00:00:00Z	Šeteniai	Lithuania	2004-08-14T00:00:00Z
 Bjørnstjerne Bjørnson	male	Nobel Prize in Literature	1903-01-01T00:00:00Z	1832-01-01T00:00:00Z	Kvikne	Norway	1910-01-01T00:00:00Z
@@ -144,20 +144,20 @@ Miguel Ángel Asturias Rosales	male	Nobel Prize in Literature	1967-01-01T00:00:0
 Wolfgang Ketterle	male	Nobel Prize in Physics	2001-01-01T00:00:00Z	1957-10-21T00:00:00Z	Heidelberg	Germany	
 J. Hans D. Jensen	male	Nobel Prize in Physics	1963-01-01T00:00:00Z	1907-06-25T00:00:00Z	Hamburg	Germany	1973-02-11T00:00:00Z
 Kenzaburō Ōe	male	Nobel Prize in Literature	1994-01-01T00:00:00Z	1935-01-31T00:00:00Z	Ōse	Japan	
-Pearl S. Buck	female	Nobel Prize in Literature	1938-01-01T00:00:00Z	1892-06-26T00:00:00Z	Hillsboro	United States of America	1973-03-06T00:00:00Z
+Pearl S. Buck	female	Nobel Prize in Literature	1938-01-01T00:00:00Z	1892-06-26T00:00:00Z	Hillsboro	the United States	1973-03-06T00:00:00Z
 Jaroslav Seifert	male	Nobel Prize in Literature	1984-01-01T00:00:00Z	1901-09-23T00:00:00Z	Prague	Czech Republic	1986-01-10T00:00:00Z
 Jaroslav Seifert	male	Nobel Prize in Literature	1984-01-01T00:00:00Z	1901-09-23T00:00:00Z	Žižkov	Czech Republic	1986-01-10T00:00:00Z
 Aage Niels Bohr	male	Nobel Prize in Physics	1975-01-01T00:00:00Z	1922-06-19T00:00:00Z	Copenhagen	Danish Realm	2009-09-08T00:00:00Z
 Vitaly Ginzburg	male	Nobel Prize in Physics	2003-01-01T00:00:00Z	1916-10-04T00:00:00Z	Moscow	Russia	2009-11-08T00:00:00Z
-Saul Perlmutter	male	Nobel Prize in Physics	2011-01-01T00:00:00Z	1959-09-22T00:00:00Z	Champaign	United States of America	
-Hugh David Politzer	male	Nobel Prize in Physics	2004-01-01T00:00:00Z	1949-08-31T00:00:00Z	New York City	United States of America	
-Frank Wilczek	male	Nobel Prize in Physics	2004-01-01T00:00:00Z	1951-05-15T00:00:00Z	Mineola	United States of America	
+Saul Perlmutter	male	Nobel Prize in Physics	2011-01-01T00:00:00Z	1959-09-22T00:00:00Z	Champaign	the United States	
+Hugh David Politzer	male	Nobel Prize in Physics	2004-01-01T00:00:00Z	1949-08-31T00:00:00Z	New York City	the United States	
+Frank Wilczek	male	Nobel Prize in Physics	2004-01-01T00:00:00Z	1951-05-15T00:00:00Z	Mineola	the United States	
 Charles Édouard Guillaume	male	Nobel Prize in Physics	1920-01-01T00:00:00Z	1861-02-15T00:00:00Z	Fleurier	Switzerland	1938-06-13T00:00:00Z
-Sinclair Lewis	male	Nobel Prize in Literature	1930-01-01T00:00:00Z	1885-02-07T00:00:00Z	Sauk Centre	United States of America	1951-01-10T00:00:00Z
+Sinclair Lewis	male	Nobel Prize in Literature	1930-01-01T00:00:00Z	1885-02-07T00:00:00Z	Sauk Centre	the United States	1951-01-10T00:00:00Z
 Albert A. Michelson	male	Nobel Prize in Physics	1907-01-01T00:00:00Z	1852-12-19T00:00:00Z	Strzelno	Poland	1931-05-09T00:00:00Z
 Roger Martin du Gard	male	Nobel Prize in Literature	1937-01-01T00:00:00Z	1881-03-23T00:00:00Z	Neuilly-sur-Seine	France	1958-08-22T00:00:00Z
 Verner von Heidenstam	male	Nobel Prize in Literature	1916-01-01T00:00:00Z	1859-07-06T00:00:00Z	Olshammar	Sweden	1940-05-20T00:00:00Z
-Robert Hofstadter	male	Nobel Prize in Physics	1961-01-01T00:00:00Z	1915-02-05T00:00:00Z	New York City	United States of America	1990-11-17T00:00:00Z
+Robert Hofstadter	male	Nobel Prize in Physics	1961-01-01T00:00:00Z	1915-02-05T00:00:00Z	New York City	the United States	1990-11-17T00:00:00Z
 Juan Ramón Jiménez	male	Nobel Prize in Literature	1956-01-01T00:00:00Z	1881-12-24T00:00:00Z	Moguer	Spain	1958-05-29T00:00:00Z
 Claude Simon	male	Nobel Prize in Literature	1985-01-01T00:00:00Z	1913-10-10T00:00:00Z	Antananarivo	Madagascar	2005-07-06T00:00:00Z
 Camilo José Cela	male	Nobel Prize in Literature	1989-01-01T00:00:00Z	1916-05-11T00:00:00Z	Iria Flavia	Spain	2002-01-17T00:00:00Z
@@ -166,37 +166,37 @@ Vicente Aleixandre	male	Nobel Prize in Literature	1977-01-01T00:00:00Z	1898-04-2
 Louis Néel	male	Nobel Prize in Physics	1970-01-01T00:00:00Z	1904-11-22T00:00:00Z	Lyon	France	2000-11-17T00:00:00Z
 Eugene Wigner	male	Nobel Prize in Physics	1963-01-01T00:00:00Z	1902-11-17T00:00:00Z	Budapest	Hungary	1995-01-01T00:00:00Z
 Hans Bethe	male	Nobel Prize in Physics	1967-01-01T00:00:00Z	1906-07-02T00:00:00Z	Strasbourg	France	2005-03-06T00:00:00Z
-Russell Alan Hulse	male	Nobel Prize in Physics	1993-01-01T00:00:00Z	1950-11-28T00:00:00Z	New York City	United States of America	
+Russell Alan Hulse	male	Nobel Prize in Physics	1993-01-01T00:00:00Z	1950-11-28T00:00:00Z	New York City	the United States	
 Johannes V. Jensen	male	Nobel Prize in Literature	1944-01-01T00:00:00Z	1873-01-20T00:00:00Z	Farsø	Denmark	1950-11-25T00:00:00Z
-William Shockley	male	Nobel Prize in Physics	1956-01-01T00:00:00Z	1910-02-13T00:00:00Z	London	United Kingdom	1989-08-12T00:00:00Z
+William Shockley	male	Nobel Prize in Physics	1956-01-01T00:00:00Z	1910-02-13T00:00:00Z	London	the United Kingdom	1989-08-12T00:00:00Z
 Giorgos Seferis	male	Nobel Prize in Literature	1963-01-01T00:00:00Z	1900-03-13T00:00:00Z	Urla	Turkey	1971-09-20T00:00:00Z
-Owen Willans Richardson	male	Nobel Prize in Physics	1928-01-01T00:00:00Z	1879-04-26T00:00:00Z	Dewsbury	United Kingdom	1959-02-15T00:00:00Z
-Carl David Anderson	male	Nobel Prize in Physics	1936-01-01T00:00:00Z	1905-09-03T00:00:00Z	New York City	United States of America	1991-01-11T00:00:00Z
+Owen Willans Richardson	male	Nobel Prize in Physics	1928-01-01T00:00:00Z	1879-04-26T00:00:00Z	Dewsbury	the United Kingdom	1959-02-15T00:00:00Z
+Carl David Anderson	male	Nobel Prize in Physics	1936-01-01T00:00:00Z	1905-09-03T00:00:00Z	New York City	the United States	1991-01-11T00:00:00Z
 Pyotr Kapitsa	male	Nobel Prize in Physics	1978-01-01T00:00:00Z	1894-07-08T00:00:00Z	Kronstadt	Russia	1984-04-08T00:00:00Z
 Emilio G. Segrè	male	Nobel Prize in Physics	1959-01-01T00:00:00Z	1905-02-01T00:00:00Z	Tivoli	Italy	1989-04-22T00:00:00Z
-George F. Smoot	male	Nobel Prize in Physics	2006-01-01T00:00:00Z	1945-02-20T00:00:00Z	Yukon	United States of America	
-Jack Kilby	male	Nobel Prize in Physics	2000-01-01T00:00:00Z	1923-11-08T00:00:00Z	Jefferson City	United States of America	2005-06-20T00:00:00Z
-Edward Mills Purcell	male	Nobel Prize in Physics	1952-01-01T00:00:00Z	1912-08-30T00:00:00Z	Taylorville	United States of America	1997-03-07T00:00:00Z
+George F. Smoot	male	Nobel Prize in Physics	2006-01-01T00:00:00Z	1945-02-20T00:00:00Z	Yukon	the United States	
+Jack Kilby	male	Nobel Prize in Physics	2000-01-01T00:00:00Z	1923-11-08T00:00:00Z	Jefferson City	the United States	2005-06-20T00:00:00Z
+Edward Mills Purcell	male	Nobel Prize in Physics	1952-01-01T00:00:00Z	1912-08-30T00:00:00Z	Taylorville	the United States	1997-03-07T00:00:00Z
 Walter Houser Brattain	male	Nobel Prize in Physics	1956-01-01T00:00:00Z	1902-02-10T00:00:00Z	Xiamen	People's Republic of China	1987-10-13T00:00:00Z
-Jerome Isaac Friedman	male	Nobel Prize in Physics	1990-01-01T00:00:00Z	1930-03-28T00:00:00Z	Chicago	United States of America	
+Jerome Isaac Friedman	male	Nobel Prize in Physics	1990-01-01T00:00:00Z	1930-03-28T00:00:00Z	Chicago	the United States	
 Frits Zernike	male	Nobel Prize in Physics	1953-01-01T00:00:00Z	1888-07-16T00:00:00Z	Amsterdam	Netherlands	1966-03-10T00:00:00Z
 Frits Zernike	male	Nobel Prize in Physics	1953-01-01T00:00:00Z	1888-07-16T00:00:00Z	Amsterdam	Kingdom of the Netherlands	1966-03-10T00:00:00Z
-Peter Higgs	male	Nobel Prize in Physics	2013-01-01T00:00:00Z	1929-05-29T00:00:00Z	Newcastle upon Tyne	United Kingdom	
+Peter Higgs	male	Nobel Prize in Physics	2013-01-01T00:00:00Z	1929-05-29T00:00:00Z	Newcastle upon Tyne	the United Kingdom	
 Ilya Frank	male	Nobel Prize in Physics	1958-01-01T00:00:00Z	1908-10-23T00:00:00Z	Saint Petersburg	Russia	1990-06-22T00:00:00Z
 Kai Siegbahn	male	Nobel Prize in Physics	1981-01-01T00:00:00Z	1918-04-20T00:00:00Z	Lund	Sweden	2007-07-20T00:00:00Z
-Barack Obama	male	Nobel Peace Prize	2009-01-01T00:00:00Z	1961-08-04T00:00:00Z	Kapiolani Medical Center for Women and Children	United States of America	
+Barack Obama	male	Nobel Peace Prize	2009-01-01T00:00:00Z	1961-08-04T00:00:00Z	Kapiolani Medical Center for Women and Children	the United States	
 Lech Wałęsa	male	Nobel Peace Prize	1983-01-01T00:00:00Z	1943-09-29T00:00:00Z	Popowo	Poland	
 Luigi Pirandello	male	Nobel Prize in Literature	1934-01-01T00:00:00Z	1867-06-28T00:00:00Z	Agrigento	Italy	1936-12-10T00:00:00Z
 Najib Mahfouz	male	Nobel Prize in Literature	1988-01-01T00:00:00Z	1911-12-11T00:00:00Z	Cairo	Egypt	2006-08-30T00:00:00Z
 Rabindranath Tagore	male	Nobel Prize in Literature	1913-11-13T00:00:00Z	1861-05-07T00:00:00Z	Kolkata	India	1941-08-07T00:00:00Z
 Grazia Deledda	female	Nobel Prize in Literature	1926-01-01T00:00:00Z	1871-09-27T00:00:00Z	Nuoro	Italy	1936-08-15T00:00:00Z
-Martin Luther King Jr.	male	Nobel Peace Prize	1964-01-01T00:00:00Z	1929-01-15T00:00:00Z	Atlanta	United States of America	1968-04-04T00:00:00Z
+Martin Luther King Jr.	male	Nobel Peace Prize	1964-01-01T00:00:00Z	1929-01-15T00:00:00Z	Atlanta	the United States	1968-04-04T00:00:00Z
 Jean-Paul Sartre	male	Nobel Prize in Literature	1964-01-01T00:00:00Z	1905-01-01T00:00:00Z	Paris	France	1980-01-01T00:00:00Z
 Jean-Paul Sartre	male	Nobel Prize in Literature	1964-01-01T00:00:00Z	1905-06-21T00:00:00Z	Paris	France	1980-01-01T00:00:00Z
 Jean-Paul Sartre	male	Nobel Prize in Literature	1964-01-01T00:00:00Z	1905-01-01T00:00:00Z	Paris	France	1980-04-15T00:00:00Z
 Jean-Paul Sartre	male	Nobel Prize in Literature	1964-01-01T00:00:00Z	1905-06-21T00:00:00Z	Paris	France	1980-04-15T00:00:00Z
 Henry Dunant	male	Nobel Peace Prize	1901-01-01T00:00:00Z	1828-05-08T00:00:00Z	Geneva	Switzerland	1910-10-30T00:00:00Z
-Robert Cecil	male	Nobel Peace Prize	1937-01-01T00:00:00Z	1864-09-14T00:00:00Z	Cavendish Square	United Kingdom	1958-11-24T00:00:00Z
+Robert Cecil	male	Nobel Peace Prize	1937-01-01T00:00:00Z	1864-09-14T00:00:00Z	Cavendish Square	the United Kingdom	1958-11-24T00:00:00Z
 Gao Xingjian	male	Nobel Prize in Literature	2000-01-01T00:00:00Z	1940-01-04T00:00:00Z	Ganxian District	People's Republic of China	
 Theodor Mommsen	male	Nobel Prize in Literature	1902-01-01T00:00:00Z	1817-11-30T00:00:00Z	Garding	Germany	1903-11-01T00:00:00Z
 Hermann Hesse	male	Nobel Prize in Literature	1946-01-01T00:00:00Z	1877-07-02T00:00:00Z	Calw	Germany	1962-08-09T00:00:00Z
@@ -211,7 +211,7 @@ William Butler Yeats	male	Nobel Prize in Literature	1923-01-01T00:00:00Z	1865-06
 Knut Hamsun	male	Nobel Prize in Literature	1920-01-01T00:00:00Z	1859-08-04T00:00:00Z	Vågå	Norway	1952-02-19T00:00:00Z
 Knut Hamsun	male	Nobel Prize in Literature	1920-01-01T00:00:00Z	1859-08-04T00:00:00Z	Lom	Norway	1952-02-19T00:00:00Z
 Doris Lessing	female	Nobel Prize in Literature	2007-01-01T00:00:00Z	1919-10-22T00:00:00Z	Kermanshah	Iran	2013-11-17T00:00:00Z
-Harold Pinter	male	Nobel Prize in Literature	2005-01-01T00:00:00Z	1930-10-10T00:00:00Z	London	United Kingdom	2008-12-24T00:00:00Z
+Harold Pinter	male	Nobel Prize in Literature	2005-01-01T00:00:00Z	1930-10-10T00:00:00Z	London	the United Kingdom	2008-12-24T00:00:00Z
 Boris Pasternak	male	Nobel Prize in Literature	1958-01-01T00:00:00Z	1890-02-10T00:00:00Z	Moscow	Russia	1960-05-30T00:00:00Z
 Henryk Sienkiewicz	male	Nobel Prize in Literature	1905-01-01T00:00:00Z	1846-05-05T00:00:00Z	Wola Okrzejska	Poland	1916-11-15T00:00:00Z
 Henri Bergson	male	Nobel Prize in Literature	1927-01-01T00:00:00Z	1859-10-18T00:00:00Z	Paris	France	1941-01-04T00:00:00Z
@@ -234,7 +234,7 @@ Ivo Andrić	male	Nobel Prize in Literature	1961-01-01T00:00:00Z	1892-10-10T00:00
 Óscar Arias Sánchez	male	Nobel Peace Prize	1987-01-01T00:00:00Z	1941-09-13T00:00:00Z	Heredia	Costa Rica	
 Maurice Maeterlinck	male	Nobel Prize in Literature	1911-01-01T00:00:00Z	1862-08-29T00:00:00Z	Ghent	Belgium	1949-05-06T00:00:00Z
 Nelly Sachs	female	Nobel Prize in Literature	1966-01-01T00:00:00Z	1891-12-10T00:00:00Z	Berlin-Schöneberg	Germany	1970-05-12T00:00:00Z
-Toni Morrison	female	Nobel Prize in Literature	1993-01-01T00:00:00Z	1931-02-18T00:00:00Z	Lorain	United States of America	2019-08-05T00:00:00Z
+Toni Morrison	female	Nobel Prize in Literature	1993-01-01T00:00:00Z	1931-02-18T00:00:00Z	Lorain	the United States	2019-08-05T00:00:00Z
 Isaac Bashevis Singer	male	Nobel Prize in Literature	1978-01-01T00:00:00Z	1902-11-21T00:00:00Z	Leoncin	Poland	1991-07-24T00:00:00Z
 Isaac Bashevis Singer	male	Nobel Prize in Literature	1978-01-01T00:00:00Z	1904-07-14T00:00:00Z	Leoncin	Poland	1991-07-24T00:00:00Z
 Paul Heyse	male	Nobel Prize in Literature	1910-01-01T00:00:00Z	1830-03-13T00:00:00Z	Berlin	Germany	1914-04-02T00:00:00Z
@@ -244,20 +244,20 @@ Halldór Laxness	male	Nobel Prize in Literature	1955-01-01T00:00:00Z	1902-04-23T
 Gabriela Mistral	female	Nobel Prize in Literature	1945-01-01T00:00:00Z	1889-04-07T00:00:00Z	Vicuña	Chile	1957-01-10T00:00:00Z
 Sigrid Undset	female	Nobel Prize in Literature	1928-01-01T00:00:00Z	1882-05-20T00:00:00Z	Kalundborg	Denmark	1949-06-10T00:00:00Z
 François Mauriac	male	Nobel Prize in Literature	1952-01-01T00:00:00Z	1885-10-11T00:00:00Z	Bordeaux	France	1970-09-01T00:00:00Z
-John Galsworthy	male	Nobel Prize in Literature	1932-01-01T00:00:00Z	1867-08-14T00:00:00Z	Kingston upon Thames	United Kingdom	1933-01-31T00:00:00Z
+John Galsworthy	male	Nobel Prize in Literature	1932-01-01T00:00:00Z	1867-08-14T00:00:00Z	Kingston upon Thames	the United Kingdom	1933-01-31T00:00:00Z
 Salvatore Quasimodo	male	Nobel Prize in Literature	1959-01-01T00:00:00Z	1901-08-20T00:00:00Z	Modica	Italy	1968-06-14T00:00:00Z
 Saul Bellow	male	Nobel Prize in Literature	1976-01-01T00:00:00Z	1915-06-10T00:00:00Z	Lachine	Canada	2005-04-05T00:00:00Z
 Eugenio Montale	male	Nobel Prize in Literature	1975-01-01T00:00:00Z	1896-10-12T00:00:00Z	Genoa	Italy	1981-09-12T00:00:00Z
 Jacinto Benavente	male	Nobel Prize in Literature	1922-01-01T00:00:00Z	1866-08-12T00:00:00Z	Madrid	Spain	1954-07-14T00:00:00Z
 Pär Lagerkvist	male	Nobel Prize in Literature	1951-01-01T00:00:00Z	1891-05-23T00:00:00Z	Växjö	Sweden	1974-07-11T00:00:00Z
-Eugene O'Neill	male	Nobel Prize in Literature	1936-01-01T00:00:00Z	1888-10-16T00:00:00Z	New York City	United States of America	1953-11-27T00:00:00Z
-Seamus Heaney	male	Nobel Prize in Literature	1995-01-01T00:00:00Z	1939-04-13T00:00:00Z	Castledawson	United Kingdom	2013-08-30T00:00:00Z
+Eugene O'Neill	male	Nobel Prize in Literature	1936-01-01T00:00:00Z	1888-10-16T00:00:00Z	New York City	the United States	1953-11-27T00:00:00Z
+Seamus Heaney	male	Nobel Prize in Literature	1995-01-01T00:00:00Z	1939-04-13T00:00:00Z	Castledawson	the United Kingdom	2013-08-30T00:00:00Z
 Leymah Gbowee	female	Nobel Peace Prize	2011-01-01T00:00:00Z	1972-02-01T00:00:00Z	Monrovia	Liberia	
 Władysław Reymont	male	Nobel Prize in Literature	1924-01-01T00:00:00Z	1867-05-07T00:00:00Z	Kobiele Wielkie	Poland	1925-12-05T00:00:00Z
 Élie Ducommun	male	Nobel Peace Prize	1902-01-01T00:00:00Z	1833-02-19T00:00:00Z	Geneva	Switzerland	1906-12-07T00:00:00Z
 José Echegaray	male	Nobel Prize in Literature	1904-01-01T00:00:00Z	1832-04-19T00:00:00Z	Madrid	Spain	1916-09-14T00:00:00Z
-Patrick White	male	Nobel Prize in Literature	1973-01-01T00:00:00Z	1912-05-28T00:00:00Z	London	United Kingdom	1990-09-29T00:00:00Z
-Patrick White	male	Nobel Prize in Literature	1973-01-01T00:00:00Z	1912-05-28T00:00:00Z	London	United Kingdom	1990-09-30T00:00:00Z
+Patrick White	male	Nobel Prize in Literature	1973-01-01T00:00:00Z	1912-05-28T00:00:00Z	London	the United Kingdom	1990-09-29T00:00:00Z
+Patrick White	male	Nobel Prize in Literature	1973-01-01T00:00:00Z	1912-05-28T00:00:00Z	London	the United Kingdom	1990-09-30T00:00:00Z
 Shirin Ebadi	female	Nobel Peace Prize	2003-01-01T00:00:00Z	1947-06-21T00:00:00Z	Hamadan	Iran	
 Eyvind Johnson	male	Nobel Prize in Literature	1974-01-01T00:00:00Z	1900-07-29T00:00:00Z	Boden	Sweden	1976-08-25T00:00:00Z
 Karl Adolph Gjellerup	male	Nobel Prize in Literature	1917-01-01T00:00:00Z	1857-06-02T00:00:00Z	Roholte	Denmark	1919-10-11T00:00:00Z
@@ -265,17 +265,17 @@ Saint-John Perse	male	Nobel Prize in Literature	1960-01-01T00:00:00Z	1887-05-31T
 Derek Walcott	male	Nobel Prize in Literature	1992-01-01T00:00:00Z	1930-01-23T00:00:00Z	Castries	Saint Lucia	2017-03-17T00:00:00Z
 Frans Eemil Sillanpää	male	Nobel Prize in Literature	1939-01-01T00:00:00Z	1888-09-16T00:00:00Z	Hämeenkyrö	Finland	1964-06-03T00:00:00Z
 Erik Axel Karlfeldt	male	Nobel Prize in Literature	1931-01-01T00:00:00Z	1864-07-20T00:00:00Z	Folkärna	Sweden	1931-04-08T00:00:00Z
-George Marshall	male	Nobel Peace Prize	1953-01-01T00:00:00Z	1880-12-31T00:00:00Z	Uniontown	United States of America	1959-10-16T00:00:00Z
+George Marshall	male	Nobel Peace Prize	1953-01-01T00:00:00Z	1880-12-31T00:00:00Z	Uniontown	the United States	1959-10-16T00:00:00Z
 Léon Jouhaux	male	Nobel Peace Prize	1951-01-01T00:00:00Z	1879-07-01T00:00:00Z	15th arrondissement of Paris	France	1954-04-28T00:00:00Z
 Dominique Pire	male	Nobel Peace Prize	1958-01-01T00:00:00Z	1910-02-10T00:00:00Z	Leffe	Belgium	1969-01-30T00:00:00Z
 Odysseas Elytis	male	Nobel Prize in Literature	1979-01-01T00:00:00Z	1911-11-02T00:00:00Z	Heraklion	Greece	1996-03-18T00:00:00Z
 Charles Albert Gobat	male	Nobel Peace Prize	1902-01-01T00:00:00Z	1843-05-21T00:00:00Z	Tramelan	Switzerland	1914-03-16T00:00:00Z
 Frédéric Passy	male	Nobel Peace Prize	1901-01-01T00:00:00Z	1822-05-20T00:00:00Z	Paris	France	1912-06-12T00:00:00Z
-Charles G. Dawes	male	Nobel Peace Prize	1925-01-01T00:00:00Z	1865-08-27T00:00:00Z	Marietta	United States of America	1951-04-23T00:00:00Z
-John Hume	male	Nobel Peace Prize	1998-01-01T00:00:00Z	1937-01-18T00:00:00Z	Derry	United Kingdom	2020-08-03T00:00:00Z
-Arthur Henderson	male	Nobel Peace Prize	1934-01-01T00:00:00Z	1863-09-13T00:00:00Z	Glasgow	United Kingdom	1935-10-20T00:00:00Z
-Philip Noel-Baker, Baron Noel-Baker	male	Nobel Peace Prize	1959-01-01T00:00:00Z	1889-11-01T00:00:00Z	Hendon	United Kingdom	1982-10-08T00:00:00Z
-Ralph Bunche	male	Nobel Peace Prize	1950-01-01T00:00:00Z	1904-08-07T00:00:00Z	Detroit	United States of America	1971-12-09T00:00:00Z
+Charles G. Dawes	male	Nobel Peace Prize	1925-01-01T00:00:00Z	1865-08-27T00:00:00Z	Marietta	the United States	1951-04-23T00:00:00Z
+John Hume	male	Nobel Peace Prize	1998-01-01T00:00:00Z	1937-01-18T00:00:00Z	Derry	the United Kingdom	2020-08-03T00:00:00Z
+Arthur Henderson	male	Nobel Peace Prize	1934-01-01T00:00:00Z	1863-09-13T00:00:00Z	Glasgow	the United Kingdom	1935-10-20T00:00:00Z
+Philip Noel-Baker, Baron Noel-Baker	male	Nobel Peace Prize	1959-01-01T00:00:00Z	1889-11-01T00:00:00Z	Hendon	the United Kingdom	1982-10-08T00:00:00Z
+Ralph Bunche	male	Nobel Peace Prize	1950-01-01T00:00:00Z	1904-08-07T00:00:00Z	Detroit	the United States	1971-12-09T00:00:00Z
 Léon Bourgeois	male	Nobel Peace Prize	1920-01-01T00:00:00Z	1851-05-29T00:00:00Z	former 9th arrondissement of Paris	France	1925-09-29T00:00:00Z
 Henrik Pontoppidan	male	Nobel Prize in Literature	1917-01-01T00:00:00Z	1857-07-24T00:00:00Z	Fredericia	Denmark	1943-08-21T00:00:00Z
 Carlos Filipe Ximenes Belo	male	Nobel Peace Prize	1996-01-01T00:00:00Z	1948-02-03T00:00:00Z	Baucau	East Timor	
@@ -283,19 +283,19 @@ Paul-Henri-Benjamin d'Estournelles de Constant	male	Nobel Peace Prize	1909-01-01
 Orhan Pamuk	male	Nobel Prize in Literature	2006-01-01T00:00:00Z	1952-06-07T00:00:00Z	Istanbul	Turkey	
 Svetlana Aleksievich	female	Nobel Prize in Literature	2015-01-01T00:00:00Z	1948-05-31T00:00:00Z	Ivano-Frankivsk	Ukraine	
 Denis Mukwege	male	Nobel Peace Prize	2018-01-01T00:00:00Z	1955-03-01T00:00:00Z	Bukavu	Democratic Republic of the Congo	
-Louise Glück	female	Nobel Prize in Literature	2020-01-01T00:00:00Z	1943-04-22T00:00:00Z	New York City	United States of America	
+Louise Glück	female	Nobel Prize in Literature	2020-01-01T00:00:00Z	1943-04-22T00:00:00Z	New York City	the United States	
 Adolf Butenandt	male	Nobel Prize in Chemistry	1939-01-01T00:00:00Z	1903-03-24T00:00:00Z	Bremerhaven	Germany	1995-01-18T00:00:00Z
 Wilhelm Ostwald	male	Nobel Prize in Chemistry	1909-01-01T00:00:00Z	1853-09-02T00:00:00Z	Riga	Latvia	1932-04-04T00:00:00Z
 Eduard Buchner	male	Nobel Prize in Chemistry	1907-01-01T00:00:00Z	1860-05-20T00:00:00Z	Munich	Germany	1917-08-13T00:00:00Z
 Dan Shechtman	male	Nobel Prize in Chemistry	2011-01-01T00:00:00Z	1941-01-24T00:00:00Z	Tel Aviv	Israel	
-Archer Martin	male	Nobel Prize in Chemistry	1952-01-01T00:00:00Z	1910-03-01T00:00:00Z	London	United Kingdom	2002-07-28T00:00:00Z
-Linus Pauling	male	Nobel Prize in Chemistry	1954-01-01T00:00:00Z	1901-02-28T00:00:00Z	Portland	United States of America	1994-08-18T00:00:00Z
-Linus Pauling	male	Nobel Prize in Chemistry	1954-01-01T00:00:00Z	1901-02-28T00:00:00Z	Portland	United States of America	1994-08-19T00:00:00Z
-Cyril Norman Hinshelwood	male	Nobel Prize in Chemistry	1956-01-01T00:00:00Z	1897-06-19T00:00:00Z	London	United Kingdom	1967-10-09T00:00:00Z
+Archer Martin	male	Nobel Prize in Chemistry	1952-01-01T00:00:00Z	1910-03-01T00:00:00Z	London	the United Kingdom	2002-07-28T00:00:00Z
+Linus Pauling	male	Nobel Prize in Chemistry	1954-01-01T00:00:00Z	1901-02-28T00:00:00Z	Portland	the United States	1994-08-18T00:00:00Z
+Linus Pauling	male	Nobel Prize in Chemistry	1954-01-01T00:00:00Z	1901-02-28T00:00:00Z	Portland	the United States	1994-08-19T00:00:00Z
+Cyril Norman Hinshelwood	male	Nobel Prize in Chemistry	1956-01-01T00:00:00Z	1897-06-19T00:00:00Z	London	the United Kingdom	1967-10-09T00:00:00Z
 Nikolay Semyonov	male	Nobel Prize in Chemistry	1956-01-01T00:00:00Z	1896-04-15T00:00:00Z	Saratov	Russia	1986-09-25T00:00:00Z
-Melvin Calvin	male	Nobel Prize in Chemistry	1961-01-01T00:00:00Z	1911-04-08T00:00:00Z	Saint Paul	United States of America	1997-01-08T00:00:00Z
-Robert Robinson	male	Nobel Prize in Chemistry	1947-01-01T00:00:00Z	1886-09-13T00:00:00Z	Chesterfield	United Kingdom	1975-02-08T00:00:00Z
-Jennifer Doudna	female	Nobel Prize in Chemistry	2020-01-01T00:00:00Z	1964-02-19T00:00:00Z	Washington, D.C.	United States of America	
+Melvin Calvin	male	Nobel Prize in Chemistry	1961-01-01T00:00:00Z	1911-04-08T00:00:00Z	Saint Paul	the United States	1997-01-08T00:00:00Z
+Robert Robinson	male	Nobel Prize in Chemistry	1947-01-01T00:00:00Z	1886-09-13T00:00:00Z	Chesterfield	the United Kingdom	1975-02-08T00:00:00Z
+Jennifer Doudna	female	Nobel Prize in Chemistry	2020-01-01T00:00:00Z	1964-02-19T00:00:00Z	Washington, D.C.	the United States	
 Otto Hahn	male	Nobel Prize in Chemistry	1944-01-01T00:00:00Z	1879-03-08T00:00:00Z	Frankfurt am Main	Germany	1968-07-28T00:00:00Z
 Venkatraman Ramakrishnan	male	Nobel Prize in Chemistry	2009-01-01T00:00:00Z	1952-04-05T00:00:00Z	Chidambaram	India	
 Hermann Emil Fischer	male	Nobel Prize in Chemistry	1902-01-01T00:00:00Z	1852-10-09T00:00:00Z	Euskirchen	Germany	1919-07-15T00:00:00Z
@@ -321,79 +321,79 @@ Fritz Pregl	male	Nobel Prize in Chemistry	1923-01-01T00:00:00Z	1869-09-03T00:00:
 Richard Kuhn	male	Nobel Prize in Chemistry	1938-01-01T00:00:00Z	1900-12-03T00:00:00Z	Vienna	Austria	1967-07-31T00:00:00Z
 Richard Kuhn	male	Nobel Prize in Chemistry	1938-01-01T00:00:00Z	1900-12-03T00:00:00Z	Vienna	Austria	1967-08-01T00:00:00Z
 Walter Kohn	male	Nobel Prize in Chemistry	1998-01-01T00:00:00Z	1923-03-09T00:00:00Z	Vienna	Austria	2016-04-19T00:00:00Z
-Robert Lefkowitz	male	Nobel Prize in Chemistry	2012-01-01T00:00:00Z	1943-04-15T00:00:00Z	The Bronx	United States of America	
+Robert Lefkowitz	male	Nobel Prize in Chemistry	2012-01-01T00:00:00Z	1943-04-15T00:00:00Z	The Bronx	the United States	
 Vladimir Prelog	male	Nobel Prize in Chemistry	1975-01-01T00:00:00Z	1906-07-23T00:00:00Z	Sarajevo	Bosnia and Herzegovina	1998-01-07T00:00:00Z
 Sidney Altman	male	Nobel Prize in Chemistry	1989-01-01T00:00:00Z	1939-05-07T00:00:00Z	Montreal	Canada	
-Christian B. Anfinsen	male	Nobel Prize in Chemistry	1972-01-01T00:00:00Z	1916-03-26T00:00:00Z	Monessen	United States of America	1995-05-14T00:00:00Z
-Francis William Aston	male	Nobel Prize in Chemistry	1922-01-01T00:00:00Z	1877-09-01T00:00:00Z	Birmingham	United Kingdom	1945-11-20T00:00:00Z
-Francis William Aston	male	Nobel Prize in Chemistry	1922-01-01T00:00:00Z	1877-09-01T00:00:00Z	Harborne	United Kingdom	1945-11-20T00:00:00Z
-Herbert C. Brown	male	Nobel Prize in Chemistry	1979-01-01T00:00:00Z	1912-05-22T00:00:00Z	London	United Kingdom	2004-12-19T00:00:00Z
-Derek Barton	male	Nobel Prize in Chemistry	1969-01-01T00:00:00Z	1918-09-08T00:00:00Z	Gravesend	United Kingdom	1998-03-16T00:00:00Z
+Christian B. Anfinsen	male	Nobel Prize in Chemistry	1972-01-01T00:00:00Z	1916-03-26T00:00:00Z	Monessen	the United States	1995-05-14T00:00:00Z
+Francis William Aston	male	Nobel Prize in Chemistry	1922-01-01T00:00:00Z	1877-09-01T00:00:00Z	Birmingham	the United Kingdom	1945-11-20T00:00:00Z
+Francis William Aston	male	Nobel Prize in Chemistry	1922-01-01T00:00:00Z	1877-09-01T00:00:00Z	Harborne	the United Kingdom	1945-11-20T00:00:00Z
+Herbert C. Brown	male	Nobel Prize in Chemistry	1979-01-01T00:00:00Z	1912-05-22T00:00:00Z	London	the United Kingdom	2004-12-19T00:00:00Z
+Derek Barton	male	Nobel Prize in Chemistry	1969-01-01T00:00:00Z	1918-09-08T00:00:00Z	Gravesend	the United Kingdom	1998-03-16T00:00:00Z
 Henri Moissan	male	Nobel Prize in Chemistry	1906-01-01T00:00:00Z	1852-09-28T00:00:00Z	Paris	France	1907-02-20T00:00:00Z
 Jacobus Henricus van 't Hoff	male	Nobel Prize in Chemistry	1901-01-01T00:00:00Z	1852-08-30T00:00:00Z	Rotterdam	Netherlands	1911-03-01T00:00:00Z
-Frederick Soddy	male	Nobel Prize in Chemistry	1921-01-01T00:00:00Z	1877-09-02T00:00:00Z	Eastbourne	United Kingdom	1956-09-22T00:00:00Z
+Frederick Soddy	male	Nobel Prize in Chemistry	1921-01-01T00:00:00Z	1877-09-02T00:00:00Z	Eastbourne	the United Kingdom	1956-09-22T00:00:00Z
 Peter Debye	male	Nobel Prize in Chemistry	1936-01-01T00:00:00Z	1884-03-24T00:00:00Z	Maastricht	Netherlands	1966-11-02T00:00:00Z
 Paul Sabatier	male	Nobel Prize in Chemistry	1912-01-01T00:00:00Z	1854-11-05T00:00:00Z	Carcassonne	France	1941-08-14T00:00:00Z
 Victor Grignard	male	Nobel Prize in Chemistry	1912-01-01T00:00:00Z	1871-05-06T00:00:00Z	Cherbourg	France	1935-12-13T00:00:00Z
-John Howard Northrop	male	Nobel Prize in Chemistry	1946-01-01T00:00:00Z	1891-07-05T00:00:00Z	Yonkers	United States of America	1987-05-27T00:00:00Z
+John Howard Northrop	male	Nobel Prize in Chemistry	1946-01-01T00:00:00Z	1891-07-05T00:00:00Z	Yonkers	the United States	1987-05-27T00:00:00Z
 Ahmed Zewail	male	Nobel Prize in Chemistry	1999-01-01T00:00:00Z	1946-02-26T00:00:00Z	Damanhur	Egypt	2016-08-02T00:00:00Z
-Martin Chalfie	male	Nobel Prize in Chemistry	2008-01-01T00:00:00Z	1947-01-15T00:00:00Z	Chicago	United States of America	
-Alan J. Heeger	male	Nobel Prize in Chemistry	2000-01-01T00:00:00Z	1936-01-22T00:00:00Z	Sioux City	United States of America	
-James B. Sumner	male	Nobel Prize in Chemistry	1946-01-01T00:00:00Z	1887-11-19T00:00:00Z	Canton	United States of America	1955-08-12T00:00:00Z
-George Porter, Baron Porter of Luddenham	male	Nobel Prize in Chemistry	1967-01-01T00:00:00Z	1920-12-06T00:00:00Z	Stainforth	United Kingdom	2002-08-31T00:00:00Z
+Martin Chalfie	male	Nobel Prize in Chemistry	2008-01-01T00:00:00Z	1947-01-15T00:00:00Z	Chicago	the United States	
+Alan J. Heeger	male	Nobel Prize in Chemistry	2000-01-01T00:00:00Z	1936-01-22T00:00:00Z	Sioux City	the United States	
+James B. Sumner	male	Nobel Prize in Chemistry	1946-01-01T00:00:00Z	1887-11-19T00:00:00Z	Canton	the United States	1955-08-12T00:00:00Z
+George Porter, Baron Porter of Luddenham	male	Nobel Prize in Chemistry	1967-01-01T00:00:00Z	1920-12-06T00:00:00Z	Stainforth	the United Kingdom	2002-08-31T00:00:00Z
 Jean-Marie Lehn	male	Nobel Prize in Chemistry	1987-01-01T00:00:00Z	1939-09-30T00:00:00Z	Rosheim	France	
 Hideki Shirakawa	male	Nobel Prize in Chemistry	2000-01-01T00:00:00Z	1936-08-20T00:00:00Z	Tokyo	Japan	
-Karl Barry Sharpless	male	Nobel Prize in Chemistry	2001-01-01T00:00:00Z	1941-04-28T00:00:00Z	Philadelphia	United States of America	
-William Lipscomb	male	Nobel Prize in Chemistry	1976-01-01T00:00:00Z	1919-12-09T00:00:00Z	Cleveland	United States of America	2011-04-14T00:00:00Z
+Karl Barry Sharpless	male	Nobel Prize in Chemistry	2001-01-01T00:00:00Z	1941-04-28T00:00:00Z	Philadelphia	the United States	
+William Lipscomb	male	Nobel Prize in Chemistry	1976-01-01T00:00:00Z	1919-12-09T00:00:00Z	Cleveland	the United States	2011-04-14T00:00:00Z
 Alan MacDiarmid	male	Nobel Prize in Chemistry	2000-01-01T00:00:00Z	1927-04-14T00:00:00Z	Masterton	New Zealand	2007-02-07T00:00:00Z
-William Standish Knowles	male	Nobel Prize in Chemistry	2001-01-01T00:00:00Z	1917-06-01T00:00:00Z	Taunton	United States of America	2012-06-13T00:00:00Z
+William Standish Knowles	male	Nobel Prize in Chemistry	2001-01-01T00:00:00Z	1917-06-01T00:00:00Z	Taunton	the United States	2012-06-13T00:00:00Z
 Kurt Wüthrich	male	Nobel Prize in Chemistry	2002-01-01T00:00:00Z	1938-10-04T00:00:00Z	Aarberg	Switzerland	
-Frank Sherwood Rowland	male	Nobel Prize in Chemistry	1995-01-01T00:00:00Z	1927-06-28T00:00:00Z	Delaware	United States of America	2012-03-10T00:00:00Z
+Frank Sherwood Rowland	male	Nobel Prize in Chemistry	1995-01-01T00:00:00Z	1927-06-28T00:00:00Z	Delaware	the United States	2012-03-10T00:00:00Z
 Leopold Ružička	male	Nobel Prize in Chemistry	1939-01-01T00:00:00Z	1887-09-13T00:00:00Z	Vukovar	Croatia	1976-09-26T00:00:00Z
 Paul Josef Crutzen	male	Nobel Prize in Chemistry	1995-01-01T00:00:00Z	1933-12-03T00:00:00Z	Amsterdam	Netherlands	2021-01-28T00:00:00Z
 Paul Josef Crutzen	male	Nobel Prize in Chemistry	1995-01-01T00:00:00Z	1933-12-03T00:00:00Z	Amsterdam	Kingdom of the Netherlands	2021-01-28T00:00:00Z
-Donald J. Cram	male	Nobel Prize in Chemistry	1987-01-01T00:00:00Z	1919-04-22T00:00:00Z	Chester	United States of America	2001-06-17T00:00:00Z
-Thomas Cech	male	Nobel Prize in Chemistry	1989-01-01T00:00:00Z	1947-12-08T00:00:00Z	Chicago	United States of America	
+Donald J. Cram	male	Nobel Prize in Chemistry	1987-01-01T00:00:00Z	1919-04-22T00:00:00Z	Chester	the United States	2001-06-17T00:00:00Z
+Thomas Cech	male	Nobel Prize in Chemistry	1989-01-01T00:00:00Z	1947-12-08T00:00:00Z	Chicago	the United States	
 Frédéric Joliot-Curie	male	Nobel Prize in Chemistry	1935-01-01T00:00:00Z	1900-03-19T00:00:00Z	Paris	France	1958-08-14T00:00:00Z
-Frederick Sanger	male	Nobel Prize in Chemistry	1958-01-01T00:00:00Z	1918-08-13T00:00:00Z	Rendcomb	United Kingdom	2013-11-19T00:00:00Z
-Frederick Sanger	male	Nobel Prize in Chemistry	1980-01-01T00:00:00Z	1918-08-13T00:00:00Z	Rendcomb	United Kingdom	2013-11-19T00:00:00Z
-William Howard Stein	male	Nobel Prize in Chemistry	1972-01-01T00:00:00Z	1911-06-25T00:00:00Z	New York City	United States of America	1980-02-02T00:00:00Z
-Kary Mullis	male	Nobel Prize in Chemistry	1993-01-01T00:00:00Z	1944-12-28T00:00:00Z	Lenoir	United States of America	2019-08-07T00:00:00Z
-Alexander R. Todd, Baron Todd	male	Nobel Prize in Chemistry	1957-01-01T00:00:00Z	1907-10-02T00:00:00Z	Glasgow	United Kingdom	1997-01-10T00:00:00Z
-Harry Kroto	male	Nobel Prize in Chemistry	1996-01-01T00:00:00Z	1939-10-07T00:00:00Z	Wisbech	United Kingdom	2016-04-30T00:00:00Z
-Irving Langmuir	male	Nobel Prize in Chemistry	1932-01-01T00:00:00Z	1881-01-31T00:00:00Z	Brooklyn	United States of America	1957-08-16T00:00:00Z
+Frederick Sanger	male	Nobel Prize in Chemistry	1958-01-01T00:00:00Z	1918-08-13T00:00:00Z	Rendcomb	the United Kingdom	2013-11-19T00:00:00Z
+Frederick Sanger	male	Nobel Prize in Chemistry	1980-01-01T00:00:00Z	1918-08-13T00:00:00Z	Rendcomb	the United Kingdom	2013-11-19T00:00:00Z
+William Howard Stein	male	Nobel Prize in Chemistry	1972-01-01T00:00:00Z	1911-06-25T00:00:00Z	New York City	the United States	1980-02-02T00:00:00Z
+Kary Mullis	male	Nobel Prize in Chemistry	1993-01-01T00:00:00Z	1944-12-28T00:00:00Z	Lenoir	the United States	2019-08-07T00:00:00Z
+Alexander R. Todd, Baron Todd	male	Nobel Prize in Chemistry	1957-01-01T00:00:00Z	1907-10-02T00:00:00Z	Glasgow	the United Kingdom	1997-01-10T00:00:00Z
+Harry Kroto	male	Nobel Prize in Chemistry	1996-01-01T00:00:00Z	1939-10-07T00:00:00Z	Wisbech	the United Kingdom	2016-04-30T00:00:00Z
+Irving Langmuir	male	Nobel Prize in Chemistry	1932-01-01T00:00:00Z	1881-01-31T00:00:00Z	Brooklyn	the United States	1957-08-16T00:00:00Z
 Theodor Svedberg	male	Nobel Prize in Chemistry	1926-01-01T00:00:00Z	1884-08-30T00:00:00Z	Q10712147	Sweden	1971-02-25T00:00:00Z
-Theodore William Richards	male	Nobel Prize in Chemistry	1914-01-01T00:00:00Z	1868-01-31T00:00:00Z	Germantown	United States of America	1928-04-02T00:00:00Z
+Theodore William Richards	male	Nobel Prize in Chemistry	1914-01-01T00:00:00Z	1868-01-31T00:00:00Z	Germantown	the United States	1928-04-02T00:00:00Z
 Aaron Klug	male	Nobel Prize in Chemistry	1982-01-01T00:00:00Z	1926-08-11T00:00:00Z	Želva	Lithuania	2018-11-20T00:00:00Z
-Robert H. Grubbs	male	Nobel Prize in Chemistry	2005-01-01T00:00:00Z	1942-02-27T00:00:00Z	Possum Trot	United States of America	
-Richard R. Schrock	male	Nobel Prize in Chemistry	2005-01-01T00:00:00Z	1945-01-04T00:00:00Z	Berne	United States of America	
-Norman Haworth	male	Nobel Prize in Chemistry	1937-01-01T00:00:00Z	1883-03-19T00:00:00Z	Chorley	United Kingdom	1950-03-19T00:00:00Z
+Robert H. Grubbs	male	Nobel Prize in Chemistry	2005-01-01T00:00:00Z	1942-02-27T00:00:00Z	Possum Trot	the United States	
+Richard R. Schrock	male	Nobel Prize in Chemistry	2005-01-01T00:00:00Z	1945-01-04T00:00:00Z	Berne	the United States	
+Norman Haworth	male	Nobel Prize in Chemistry	1937-01-01T00:00:00Z	1883-03-19T00:00:00Z	Chorley	the United Kingdom	1950-03-19T00:00:00Z
 Osamu Shimomura	male	Nobel Prize in Chemistry	2008-01-01T00:00:00Z	1928-08-27T00:00:00Z	Fukuchiyama	Japan	2018-10-19T00:00:00Z
-Roderick MacKinnon	male	Nobel Prize in Chemistry	2003-01-01T00:00:00Z	1956-02-19T00:00:00Z	Burlington	United States of America	
-John Kendrew	male	Nobel Prize in Chemistry	1962-01-01T00:00:00Z	1917-03-24T00:00:00Z	Oxford	United Kingdom	1997-08-23T00:00:00Z
+Roderick MacKinnon	male	Nobel Prize in Chemistry	2003-01-01T00:00:00Z	1956-02-19T00:00:00Z	Burlington	the United States	
+John Kendrew	male	Nobel Prize in Chemistry	1962-01-01T00:00:00Z	1917-03-24T00:00:00Z	Oxford	the United Kingdom	1997-08-23T00:00:00Z
 Avram Hershko	male	Nobel Prize in Chemistry	2004-01-01T00:00:00Z	1937-12-31T00:00:00Z	Karcag	Hungary	
-John Pople	male	Nobel Prize in Chemistry	1998-01-01T00:00:00Z	1925-10-31T00:00:00Z	Burnham-on-Sea	United Kingdom	2004-03-15T00:00:00Z
+John Pople	male	Nobel Prize in Chemistry	1998-01-01T00:00:00Z	1925-10-31T00:00:00Z	Burnham-on-Sea	the United Kingdom	2004-03-15T00:00:00Z
 Henry Taube	male	Nobel Prize in Chemistry	1983-01-01T00:00:00Z	1915-11-30T00:00:00Z	Neudorf	Canada	2005-11-16T00:00:00Z
 Yuan T. Lee	male	Nobel Prize in Chemistry	1986-01-01T00:00:00Z	1936-11-19T00:00:00Z	Shinchiku	Empire of Japan	
-Dudley R. Herschbach	male	Nobel Prize in Chemistry	1986-01-01T00:00:00Z	1932-06-18T00:00:00Z	San Jose	United States of America	
+Dudley R. Herschbach	male	Nobel Prize in Chemistry	1986-01-01T00:00:00Z	1932-06-18T00:00:00Z	San Jose	the United States	
 Charles J. Pedersen	male	Nobel Prize in Chemistry	1987-01-01T00:00:00Z	1904-10-03T00:00:00Z	Busan	South Korea	1989-10-26T00:00:00Z
 Roald Hoffmann	male	Nobel Prize in Chemistry	1981-01-01T00:00:00Z	1937-07-18T00:00:00Z	Zolochiv	Ukraine	
 Roald Hoffmann	male	Nobel Prize in Chemistry	1981-01-01T00:00:00Z	1937-07-18T00:00:00Z	Zolochiv	Austria-Hungary	
 Roald Hoffmann	male	Nobel Prize in Chemistry	1981-01-01T00:00:00Z	1937-07-18T00:00:00Z	Zolochiv	Austrian Empire	
-Fraser Stoddart	male	Nobel Prize in Chemistry	2016-01-01T00:00:00Z	1942-05-24T00:00:00Z	Edinburgh	United Kingdom	
-Eric Betzig	male	Nobel Prize in Chemistry	2014-01-01T00:00:00Z	1960-01-13T00:00:00Z	Ann Arbor	United States of America	
-William E. Moerner	male	Nobel Prize in Chemistry	2014-01-01T00:00:00Z	1953-06-24T00:00:00Z	Pleasanton	United States of America	
-Richard Henderson	male	Nobel Prize in Chemistry	2017-01-01T00:00:00Z	1945-07-19T00:00:00Z	Edinburgh	United Kingdom	
+Fraser Stoddart	male	Nobel Prize in Chemistry	2016-01-01T00:00:00Z	1942-05-24T00:00:00Z	Edinburgh	the United Kingdom	
+Eric Betzig	male	Nobel Prize in Chemistry	2014-01-01T00:00:00Z	1960-01-13T00:00:00Z	Ann Arbor	the United States	
+William E. Moerner	male	Nobel Prize in Chemistry	2014-01-01T00:00:00Z	1953-06-24T00:00:00Z	Pleasanton	the United States	
+Richard Henderson	male	Nobel Prize in Chemistry	2017-01-01T00:00:00Z	1945-07-19T00:00:00Z	Edinburgh	the United Kingdom	
 Albert Einstein	male	Nobel Prize in Physics	1921-01-01T00:00:00Z	1879-03-14T00:00:00Z	Ulm	Germany	1955-04-18T00:00:00Z
-John Bardeen	male	Nobel Prize in Physics	1956-01-01T00:00:00Z	1908-05-23T00:00:00Z	Madison	United States of America	1991-01-30T00:00:00Z
-John Bardeen	male	Nobel Prize in Physics	1972-01-01T00:00:00Z	1908-05-23T00:00:00Z	Madison	United States of America	1991-01-30T00:00:00Z
+John Bardeen	male	Nobel Prize in Physics	1956-01-01T00:00:00Z	1908-05-23T00:00:00Z	Madison	the United States	1991-01-30T00:00:00Z
+John Bardeen	male	Nobel Prize in Physics	1972-01-01T00:00:00Z	1908-05-23T00:00:00Z	Madison	the United States	1991-01-30T00:00:00Z
 Niels Bohr	male	Nobel Prize in Physics	1922-01-01T00:00:00Z	1885-10-07T00:00:00Z	Copenhagen	Danish Realm	1962-11-18T00:00:00Z
 Enrico Fermi	male	Nobel Prize in Physics	1938-01-01T00:00:00Z	1901-09-29T00:00:00Z	Rome	Italy	1954-11-28T00:00:00Z
 Erwin Schrödinger	male	Nobel Prize in Physics	1933-01-01T00:00:00Z	1887-08-12T00:00:00Z	Vienna	Austria	1961-01-04T00:00:00Z
 Wilhelm Röntgen	male	Nobel Prize in Physics	1901-01-01T00:00:00Z	1845-03-27T00:00:00Z	Lennep	Germany	1923-02-10T00:00:00Z
-David Gross	male	Nobel Prize in Physics	2004-01-01T00:00:00Z	1941-02-19T00:00:00Z	Washington, D.C.	United States of America	
+David Gross	male	Nobel Prize in Physics	2004-01-01T00:00:00Z	1941-02-19T00:00:00Z	Washington, D.C.	the United States	
 Werner Heisenberg	male	Nobel Prize in Physics	1932-01-01T00:00:00Z	1901-12-05T00:00:00Z	Würzburg	Germany	1976-02-01T00:00:00Z
-William Alfred Fowler	male	Nobel Prize in Physics	1983-01-01T00:00:00Z	1911-08-09T00:00:00Z	Pittsburgh	United States of America	1995-03-14T00:00:00Z
+William Alfred Fowler	male	Nobel Prize in Physics	1983-01-01T00:00:00Z	1911-08-09T00:00:00Z	Pittsburgh	the United States	1995-03-14T00:00:00Z
 Hannes Alfvén	male	Nobel Prize in Physics	1970-01-01T00:00:00Z	1908-05-30T00:00:00Z	Norrköping	Sweden	1995-04-02T00:00:00Z
 James Franck	male	Nobel Prize in Physics	1925-01-01T00:00:00Z	1882-08-26T00:00:00Z	Hamburg	Germany	1964-05-21T00:00:00Z
 Wilhelm Wien	male	Nobel Prize in Physics	1911-01-01T00:00:00Z	1864-01-13T00:00:00Z	Parusnoje	Russia	1928-08-30T00:00:00Z
@@ -401,100 +401,100 @@ Gustav Ludwig Hertz	male	Nobel Prize in Physics	1925-01-01T00:00:00Z	1887-07-22T
 Otto Stern	male	Nobel Prize in Physics	1943-01-01T00:00:00Z	1888-02-17T00:00:00Z	Żory	Poland	1969-08-17T00:00:00Z
 Wolfgang Paul	male	Nobel Prize in Physics	1989-01-01T00:00:00Z	1913-08-10T00:00:00Z	Lorenzkirch	Germany	1993-12-07T00:00:00Z
 C. V. Raman	male	Nobel Prize in Physics	1930-01-01T00:00:00Z	1888-11-07T00:00:00Z	Trichy	India	1970-11-21T00:00:00Z
-David J. Wineland	male	Nobel Prize in Physics	2012-01-01T00:00:00Z	1944-02-24T00:00:00Z	Milwaukee	United States of America	
+David J. Wineland	male	Nobel Prize in Physics	2012-01-01T00:00:00Z	1944-02-24T00:00:00Z	Milwaukee	the United States	
 Heike Kamerlingh Onnes	male	Nobel Prize in Physics	1913-01-01T00:00:00Z	1853-09-21T00:00:00Z	Groningen	Netherlands	1926-02-21T00:00:00Z
-John Cockcroft	male	Nobel Prize in Physics	1951-01-01T00:00:00Z	1897-05-27T00:00:00Z	Todmorden	United Kingdom	1967-09-18T00:00:00Z
-Roy J. Glauber	male	Nobel Prize in Physics	2005-01-01T00:00:00Z	1925-09-01T00:00:00Z	New York City	United States of America	2018-12-26T00:00:00Z
+John Cockcroft	male	Nobel Prize in Physics	1951-01-01T00:00:00Z	1897-05-27T00:00:00Z	Todmorden	the United Kingdom	1967-09-18T00:00:00Z
+Roy J. Glauber	male	Nobel Prize in Physics	2005-01-01T00:00:00Z	1925-09-01T00:00:00Z	New York City	the United States	2018-12-26T00:00:00Z
 Herbert Kroemer	male	Nobel Prize in Physics	2000-01-01T00:00:00Z	1928-08-25T00:00:00Z	Weimar	Germany	
 Alfred Kastler	male	Nobel Prize in Physics	1966-01-01T00:00:00Z	1902-05-03T00:00:00Z	Guebwiller	France	1984-01-07T00:00:00Z
 Klaus von Klitzing	male	Nobel Prize in Physics	1985-01-01T00:00:00Z	1943-06-28T00:00:00Z	Gmina Środa Wielkopolska	Poland	
 Georg Bednorz	male	Nobel Prize in Physics	1987-01-01T00:00:00Z	1950-05-16T00:00:00Z	Neuenkirchen	Germany	
 Pavel Cherenkov	male	Nobel Prize in Physics	1958-01-01T00:00:00Z	1904-07-28T00:00:00Z	Novaya Chigla	Russia	1990-01-06T00:00:00Z
-James Chadwick	male	Nobel Prize in Physics	1935-01-01T00:00:00Z	1891-01-01T00:00:00Z	Bollington	United Kingdom	1974-01-01T00:00:00Z
-James Chadwick	male	Nobel Prize in Physics	1935-01-01T00:00:00Z	1892-10-20T00:00:00Z	Bollington	United Kingdom	1974-01-01T00:00:00Z
-James Chadwick	male	Nobel Prize in Physics	1935-01-01T00:00:00Z	1891-01-01T00:00:00Z	Bollington	United Kingdom	1974-07-24T00:00:00Z
-James Chadwick	male	Nobel Prize in Physics	1935-01-01T00:00:00Z	1892-10-20T00:00:00Z	Bollington	United Kingdom	1974-07-24T00:00:00Z
+James Chadwick	male	Nobel Prize in Physics	1935-01-01T00:00:00Z	1891-01-01T00:00:00Z	Bollington	the United Kingdom	1974-01-01T00:00:00Z
+James Chadwick	male	Nobel Prize in Physics	1935-01-01T00:00:00Z	1892-10-20T00:00:00Z	Bollington	the United Kingdom	1974-01-01T00:00:00Z
+James Chadwick	male	Nobel Prize in Physics	1935-01-01T00:00:00Z	1891-01-01T00:00:00Z	Bollington	the United Kingdom	1974-07-24T00:00:00Z
+James Chadwick	male	Nobel Prize in Physics	1935-01-01T00:00:00Z	1892-10-20T00:00:00Z	Bollington	the United Kingdom	1974-07-24T00:00:00Z
 Alexander Prokhorov	male	Nobel Prize in Physics	1964-01-01T00:00:00Z	1916-07-11T00:00:00Z	Atherton	Australia	2002-01-08T00:00:00Z
 Nikolay Basov	male	Nobel Prize in Physics	1964-01-01T00:00:00Z	1922-12-14T00:00:00Z	Usman	Russia	2001-07-01T00:00:00Z
 Andre Geim	male	Nobel Prize in Physics	2010-01-01T00:00:00Z	1958-10-21T00:00:00Z	Sochi	Russia	
 Simon van der Meer	male	Nobel Prize in Physics	1984-01-01T00:00:00Z	1925-11-24T00:00:00Z	The Hague	Netherlands	2011-03-04T00:00:00Z
-Adam Riess	male	Nobel Prize in Physics	2011-01-01T00:00:00Z	1969-12-16T00:00:00Z	Washington, D.C.	United States of America	
-Norman Foster Ramsey	male	Nobel Prize in Physics	1989-01-01T00:00:00Z	1915-08-27T00:00:00Z	Washington, D.C.	United States of America	2011-11-04T00:00:00Z
-Sheldon Lee Glashow	male	Nobel Prize in Physics	1979-01-01T00:00:00Z	1932-12-05T00:00:00Z	New York City	United States of America	
+Adam Riess	male	Nobel Prize in Physics	2011-01-01T00:00:00Z	1969-12-16T00:00:00Z	Washington, D.C.	the United States	
+Norman Foster Ramsey	male	Nobel Prize in Physics	1989-01-01T00:00:00Z	1915-08-27T00:00:00Z	Washington, D.C.	the United States	2011-11-04T00:00:00Z
+Sheldon Lee Glashow	male	Nobel Prize in Physics	1979-01-01T00:00:00Z	1932-12-05T00:00:00Z	New York City	the United States	
 Karl Alexander Müller	male	Nobel Prize in Physics	1987-01-01T00:00:00Z	1927-04-20T00:00:00Z	Basel	Switzerland	
 Michel Mayor	male	Nobel Prize in Physics	2019-01-01T00:00:00Z	1942-01-12T00:00:00Z	Lausanne	Switzerland	
-Robert A. Millikan	male	Nobel Prize in Physics	1923-01-01T00:00:00Z	1868-03-22T00:00:00Z	Morrison	United States of America	1953-12-19T00:00:00Z
+Robert A. Millikan	male	Nobel Prize in Physics	1923-01-01T00:00:00Z	1868-03-22T00:00:00Z	Morrison	the United States	1953-12-19T00:00:00Z
 Johannes Diderik van der Waals	male	Nobel Prize in Physics	1910-01-01T00:00:00Z	1837-11-23T00:00:00Z	Leiden	Netherlands	1923-03-08T00:00:00Z
-Clinton Davisson	male	Nobel Prize in Physics	1937-01-01T00:00:00Z	1881-10-22T00:00:00Z	Bloomington	United States of America	1958-02-01T00:00:00Z
+Clinton Davisson	male	Nobel Prize in Physics	1937-01-01T00:00:00Z	1881-10-22T00:00:00Z	Bloomington	the United States	1958-02-01T00:00:00Z
 Gabriel Lippmann	male	Nobel Prize in Physics	1908-01-01T00:00:00Z	1845-08-16T00:00:00Z	Bonnevoie	Luxembourg	1921-07-13T00:00:00Z
-William Henry Bragg	male	Nobel Prize in Physics	1915-01-01T00:00:00Z	1862-07-02T00:00:00Z	Wigton	United Kingdom	1942-03-12T00:00:00Z
-George Paget Thomson	male	Nobel Prize in Physics	1937-01-01T00:00:00Z	1892-05-03T00:00:00Z	Cambridge	United Kingdom	1975-09-10T00:00:00Z
+William Henry Bragg	male	Nobel Prize in Physics	1915-01-01T00:00:00Z	1862-07-02T00:00:00Z	Wigton	the United Kingdom	1942-03-12T00:00:00Z
+George Paget Thomson	male	Nobel Prize in Physics	1937-01-01T00:00:00Z	1892-05-03T00:00:00Z	Cambridge	the United Kingdom	1975-09-10T00:00:00Z
 Jean Perrin	male	Nobel Prize in Physics	1926-01-01T00:00:00Z	1870-09-30T00:00:00Z	Lille	France	1942-04-17T00:00:00Z
 Subrahmanyan Chandrasekhar	male	Nobel Prize in Physics	1983-01-01T00:00:00Z	1910-10-19T00:00:00Z	Lahore	Pakistan	1995-08-21T00:00:00Z
 François Englert	male	Nobel Prize in Physics	2013-01-01T00:00:00Z	1932-11-06T00:00:00Z	Etterbeek	Belgium	
-Edward Victor Appleton	male	Nobel Prize in Physics	1947-01-01T00:00:00Z	1892-09-06T00:00:00Z	Bradford	United Kingdom	1965-04-21T00:00:00Z
-John Robert Schrieffer	male	Nobel Prize in Physics	1972-01-01T00:00:00Z	1931-05-31T00:00:00Z	Oak Park	United States of America	2019-07-27T00:00:00Z
+Edward Victor Appleton	male	Nobel Prize in Physics	1947-01-01T00:00:00Z	1892-09-06T00:00:00Z	Bradford	the United Kingdom	1965-04-21T00:00:00Z
+John Robert Schrieffer	male	Nobel Prize in Physics	1972-01-01T00:00:00Z	1931-05-31T00:00:00Z	Oak Park	the United States	2019-07-27T00:00:00Z
 Jack Steinberger	male	Nobel Prize in Physics	1988-01-01T00:00:00Z	1921-05-25T00:00:00Z	Bad Kissingen	Germany	2020-12-12T00:00:00Z
 Albert Fert	male	Nobel Prize in Physics	2007-01-01T00:00:00Z	1938-03-07T00:00:00Z	Carcassonne	France	
 Igor Tamm	male	Nobel Prize in Physics	1958-01-01T00:00:00Z	1895-07-08T00:00:00Z	Vladivostok	Russia	1971-04-12T00:00:00Z
 Masatoshi Koshiba	male	Nobel Prize in Physics	2002-01-01T00:00:00Z	1926-09-19T00:00:00Z	Toyohashi	Japan	2020-11-12T00:00:00Z
 Hideki Yukawa	male	Nobel Prize in Physics	1949-01-01T00:00:00Z	1907-01-23T00:00:00Z	Azabu	Japan	1981-09-08T00:00:00Z
-Charles Glover Barkla	male	Nobel Prize in Physics	1917-01-01T00:00:00Z	1877-06-07T00:00:00Z	Widnes	United Kingdom	1944-10-23T00:00:00Z
-Charles Thomson Rees Wilson	male	Nobel Prize in Physics	1927-01-01T00:00:00Z	1869-02-14T00:00:00Z	Glencorse	United Kingdom	1959-11-15T00:00:00Z
+Charles Glover Barkla	male	Nobel Prize in Physics	1917-01-01T00:00:00Z	1877-06-07T00:00:00Z	Widnes	the United Kingdom	1944-10-23T00:00:00Z
+Charles Thomson Rees Wilson	male	Nobel Prize in Physics	1927-01-01T00:00:00Z	1869-02-14T00:00:00Z	Glencorse	the United Kingdom	1959-11-15T00:00:00Z
 Isidor Isaac Rabi	male	Nobel Prize in Physics	1944-01-01T00:00:00Z	1898-07-29T00:00:00Z	Rymanów	Poland	1988-01-11T00:00:00Z
-Ernest Lawrence	male	Nobel Prize in Physics	1939-01-01T00:00:00Z	1901-08-08T00:00:00Z	Canton	United States of America	1958-08-27T00:00:00Z
-Robert Wilson	male	Nobel Prize in Physics	1978-01-01T00:00:00Z	1936-01-10T00:00:00Z	Houston	United States of America	
-Steven Chu	male	Nobel Prize in Physics	1997-01-01T00:00:00Z	1948-02-28T00:00:00Z	St. Louis	United States of America	
-Murray Gell-Mann	male	Nobel Prize in Physics	1969-01-01T00:00:00Z	1929-09-15T00:00:00Z	Lower Manhattan	United States of America	2019-05-24T00:00:00Z
+Ernest Lawrence	male	Nobel Prize in Physics	1939-01-01T00:00:00Z	1901-08-08T00:00:00Z	Canton	the United States	1958-08-27T00:00:00Z
+Robert Wilson	male	Nobel Prize in Physics	1978-01-01T00:00:00Z	1936-01-10T00:00:00Z	Houston	the United States	
+Steven Chu	male	Nobel Prize in Physics	1997-01-01T00:00:00Z	1948-02-28T00:00:00Z	St. Louis	the United States	
+Murray Gell-Mann	male	Nobel Prize in Physics	1969-01-01T00:00:00Z	1929-09-15T00:00:00Z	Lower Manhattan	the United States	2019-05-24T00:00:00Z
 Arno Allan Penzias	male	Nobel Prize in Physics	1978-01-01T00:00:00Z	1933-04-26T00:00:00Z	Munich	Germany	
-Raymond Davis Jr.	male	Nobel Prize in Physics	2002-01-01T00:00:00Z	1914-10-14T00:00:00Z	Washington, D.C.	United States of America	2006-05-31T00:00:00Z
-C. F. Powell	male	Nobel Prize in Physics	1950-01-01T00:00:00Z	1903-12-05T00:00:00Z	Tonbridge	United Kingdom	1969-08-09T00:00:00Z
-Luis Walter Alvarez	male	Nobel Prize in Physics	1968-01-01T00:00:00Z	1911-06-13T00:00:00Z	San Francisco	United States of America	1988-09-01T00:00:00Z
+Raymond Davis Jr.	male	Nobel Prize in Physics	2002-01-01T00:00:00Z	1914-10-14T00:00:00Z	Washington, D.C.	the United States	2006-05-31T00:00:00Z
+C. F. Powell	male	Nobel Prize in Physics	1950-01-01T00:00:00Z	1903-12-05T00:00:00Z	Tonbridge	the United Kingdom	1969-08-09T00:00:00Z
+Luis Walter Alvarez	male	Nobel Prize in Physics	1968-01-01T00:00:00Z	1911-06-13T00:00:00Z	San Francisco	the United States	1988-09-01T00:00:00Z
 Leo Esaki	male	Nobel Prize in Physics	1973-01-01T00:00:00Z	1925-03-12T00:00:00Z	Osaka	Japan	
-Brian David Josephson	male	Nobel Prize in Physics	1973-01-01T00:00:00Z	1940-01-04T00:00:00Z	Cardiff	United Kingdom	
+Brian David Josephson	male	Nobel Prize in Physics	1973-01-01T00:00:00Z	1940-01-04T00:00:00Z	Cardiff	the United Kingdom	
 Zhores Alfyorov	male	Nobel Prize in Physics	2000-01-01T00:00:00Z	1930-03-15T00:00:00Z	Vitebsk	Belarus	2019-03-01T00:00:00Z
 Ernest Walton	male	Nobel Prize in Physics	1951-01-01T00:00:00Z	1903-10-06T00:00:00Z	Abbeyside	Ireland	1995-06-25T00:00:00Z
-Owen Chamberlain	male	Nobel Prize in Physics	1959-01-01T00:00:00Z	1920-07-10T00:00:00Z	San Francisco	United States of America	2006-02-28T00:00:00Z
+Owen Chamberlain	male	Nobel Prize in Physics	1959-01-01T00:00:00Z	1920-07-10T00:00:00Z	San Francisco	the United States	2006-02-28T00:00:00Z
 Polykarp Kusch	male	Nobel Prize in Physics	1955-01-01T00:00:00Z	1911-01-26T00:00:00Z	Blankenburg	Germany	1993-03-20T00:00:00Z
 Gerard 't Hooft	male	Nobel Prize in Physics	1999-01-01T00:00:00Z	1946-07-05T00:00:00Z	Den Helder	Netherlands	
 Riccardo Giacconi	male	Nobel Prize in Physics	2002-01-01T00:00:00Z	1931-10-06T00:00:00Z	Genoa	Italy	2018-12-09T00:00:00Z
 Pierre-Gilles de Gennes	male	Nobel Prize in Physics	1991-01-01T00:00:00Z	1932-10-24T00:00:00Z	16th arrondissement of Paris	France	2007-05-18T00:00:00Z
-Nevill Francis Mott	male	Nobel Prize in Physics	1977-01-01T00:00:00Z	1905-09-30T00:00:00Z	Leeds	United Kingdom	1996-08-08T00:00:00Z
-Melvin Schwartz	male	Nobel Prize in Physics	1988-01-01T00:00:00Z	1932-11-02T00:00:00Z	New York City	United States of America	2006-08-28T00:00:00Z
+Nevill Francis Mott	male	Nobel Prize in Physics	1977-01-01T00:00:00Z	1905-09-30T00:00:00Z	Leeds	the United Kingdom	1996-08-08T00:00:00Z
+Melvin Schwartz	male	Nobel Prize in Physics	1988-01-01T00:00:00Z	1932-11-02T00:00:00Z	New York City	the United States	2006-08-28T00:00:00Z
 Nicolaas Bloembergen	male	Nobel Prize in Physics	1981-01-01T00:00:00Z	1920-03-11T00:00:00Z	Dordrecht	Netherlands	2017-09-05T00:00:00Z
-Antony Hewish	male	Nobel Prize in Physics	1974-01-01T00:00:00Z	1924-05-11T00:00:00Z	Fowey	United Kingdom	
-Henry Way Kendall	male	Nobel Prize in Physics	1990-01-01T00:00:00Z	1926-12-09T00:00:00Z	Boston	United States of America	1999-02-15T00:00:00Z
+Antony Hewish	male	Nobel Prize in Physics	1974-01-01T00:00:00Z	1924-05-11T00:00:00Z	Fowey	the United Kingdom	
+Henry Way Kendall	male	Nobel Prize in Physics	1990-01-01T00:00:00Z	1926-12-09T00:00:00Z	Boston	the United States	1999-02-15T00:00:00Z
 Claude Cohen-Tannoudji	male	Nobel Prize in Physics	1997-01-01T00:00:00Z	1933-04-01T00:00:00Z	Constantine	Algeria	
-Martin Ryle	male	Nobel Prize in Physics	1974-01-01T00:00:00Z	1918-09-27T00:00:00Z	Brighton	United Kingdom	1984-10-14T00:00:00Z
-Burton Richter	male	Nobel Prize in Physics	1976-01-01T00:00:00Z	1931-03-22T00:00:00Z	New York City	United States of America	2018-07-18T00:00:00Z
+Martin Ryle	male	Nobel Prize in Physics	1974-01-01T00:00:00Z	1918-09-27T00:00:00Z	Brighton	the United Kingdom	1984-10-14T00:00:00Z
+Burton Richter	male	Nobel Prize in Physics	1976-01-01T00:00:00Z	1931-03-22T00:00:00Z	New York City	the United States	2018-07-18T00:00:00Z
 Ivar Giaever	male	Nobel Prize in Physics	1973-01-01T00:00:00Z	1929-04-05T00:00:00Z	Bergen	Norway	
-Robert Coleman Richardson	male	Nobel Prize in Physics	1996-01-01T00:00:00Z	1937-06-26T00:00:00Z	Washington, D.C.	United States of America	2013-02-19T00:00:00Z
-Samuel C. C. Ting	male	Nobel Prize in Physics	1976-01-01T00:00:00Z	1936-01-27T00:00:00Z	Ann Arbor	United States of America	
-James Cronin	male	Nobel Prize in Physics	1980-01-01T00:00:00Z	1931-09-29T00:00:00Z	Chicago	United States of America	2016-08-25T00:00:00Z
-Roger Penrose	male	Nobel Prize in Physics	2020-01-01T00:00:00Z	1931-08-08T00:00:00Z	Colchester	United Kingdom	
-Brian Schmidt	male	Nobel Prize in Physics	2011-01-01T00:00:00Z	1967-02-24T00:00:00Z	Missoula	United States of America	
+Robert Coleman Richardson	male	Nobel Prize in Physics	1996-01-01T00:00:00Z	1937-06-26T00:00:00Z	Washington, D.C.	the United States	2013-02-19T00:00:00Z
+Samuel C. C. Ting	male	Nobel Prize in Physics	1976-01-01T00:00:00Z	1936-01-27T00:00:00Z	Ann Arbor	the United States	
+James Cronin	male	Nobel Prize in Physics	1980-01-01T00:00:00Z	1931-09-29T00:00:00Z	Chicago	the United States	2016-08-25T00:00:00Z
+Roger Penrose	male	Nobel Prize in Physics	2020-01-01T00:00:00Z	1931-08-08T00:00:00Z	Colchester	the United Kingdom	
+Brian Schmidt	male	Nobel Prize in Physics	2011-01-01T00:00:00Z	1967-02-24T00:00:00Z	Missoula	the United States	
 Richard E. Taylor	male	Nobel Prize in Physics	1990-01-01T00:00:00Z	1929-11-02T00:00:00Z	Medicine Hat	Canada	2018-02-22T00:00:00Z
 Daniel C. Tsui	male	Nobel Prize in Physics	1998-01-01T00:00:00Z	1939-02-28T00:00:00Z	Baofeng County	People's Republic of China	
 Martinus J. G. Veltman	male	Nobel Prize in Physics	1999-01-01T00:00:00Z	1931-06-27T00:00:00Z	Waalwijk	Netherlands	2021-01-04T00:00:00Z
 Makoto Kobayashi	male	Nobel Prize in Physics	2008-01-01T00:00:00Z	1944-04-07T00:00:00Z	Nagoya	Japan	
-Eric Allin Cornell	male	Nobel Prize in Physics	2001-01-01T00:00:00Z	1961-12-19T00:00:00Z	Palo Alto	United States of America	
-Val Logsdon Fitch	male	Nobel Prize in Physics	1980-01-01T00:00:00Z	1923-03-10T00:00:00Z	Merriman	United States of America	2015-02-04T00:00:00Z
-Val Logsdon Fitch	male	Nobel Prize in Physics	1980-01-01T00:00:00Z	1923-03-10T00:00:00Z	Merriman	United States of America	2015-02-05T00:00:00Z
+Eric Allin Cornell	male	Nobel Prize in Physics	2001-01-01T00:00:00Z	1961-12-19T00:00:00Z	Palo Alto	the United States	
+Val Logsdon Fitch	male	Nobel Prize in Physics	1980-01-01T00:00:00Z	1923-03-10T00:00:00Z	Merriman	the United States	2015-02-04T00:00:00Z
+Val Logsdon Fitch	male	Nobel Prize in Physics	1980-01-01T00:00:00Z	1923-03-10T00:00:00Z	Merriman	the United States	2015-02-05T00:00:00Z
 Gérard Mourou	male	Nobel Prize in Physics	2018-01-01T00:00:00Z	1944-06-22T00:00:00Z	Albertville	France	
-Arthur Ashkin	male	Nobel Prize in Physics	2018-01-01T00:00:00Z	1922-09-02T00:00:00Z	Brooklyn	United States of America	2020-09-21T00:00:00Z
-David J. Thouless	male	Nobel Prize in Physics	2016-01-01T00:00:00Z	1934-09-21T00:00:00Z	Bearsden	United Kingdom	2019-04-06T00:00:00Z
+Arthur Ashkin	male	Nobel Prize in Physics	2018-01-01T00:00:00Z	1922-09-02T00:00:00Z	Brooklyn	the United States	2020-09-21T00:00:00Z
+David J. Thouless	male	Nobel Prize in Physics	2016-01-01T00:00:00Z	1934-09-21T00:00:00Z	Bearsden	the United Kingdom	2019-04-06T00:00:00Z
 Jim Peebles	male	Nobel Prize in Physics	2019-01-01T00:00:00Z	1935-04-25T00:00:00Z	Winnipeg	Canada	
 Marie Curie	female	Nobel Prize in Chemistry	1911-01-01T00:00:00Z	1867-11-07T00:00:00Z	Warsaw	Poland	1934-07-04T00:00:00Z
 Dorothy Hodgkin	female	Nobel Prize in Chemistry	1964-01-01T00:00:00Z	1910-05-12T00:00:00Z	Cairo	Egypt	1994-07-29T00:00:00Z
-Edwin Mattison McMillan	male	Nobel Prize in Chemistry	1951-01-01T00:00:00Z	1907-09-18T00:00:00Z	Redondo Beach	United States of America	1991-09-07T00:00:00Z
+Edwin Mattison McMillan	male	Nobel Prize in Chemistry	1951-01-01T00:00:00Z	1907-09-18T00:00:00Z	Redondo Beach	the United States	1991-09-07T00:00:00Z
 Abdus Salam	male	Nobel Prize in Physics	1979-01-01T00:00:00Z	1926-01-29T00:00:00Z	Jhang	Pakistan	1996-11-21T00:00:00Z
-Vincent du Vigneaud	male	Nobel Prize in Chemistry	1955-01-01T00:00:00Z	1901-05-18T00:00:00Z	Chicago	United States of America	1978-12-11T00:00:00Z
+Vincent du Vigneaud	male	Nobel Prize in Chemistry	1955-01-01T00:00:00Z	1901-05-18T00:00:00Z	Chicago	the United States	1978-12-11T00:00:00Z
 Guglielmo Marconi	male	Nobel Prize in Physics	1909-01-01T00:00:00Z	1874-04-25T00:00:00Z	Bologna	Italy	1937-07-20T00:00:00Z
 Pierre Curie	male	Nobel Prize in Physics	1903-01-01T00:00:00Z	1859-05-15T00:00:00Z	Paris	France	1906-04-19T00:00:00Z
 Henri Becquerel	male	Nobel Prize in Physics	1903-01-01T00:00:00Z	1852-12-15T00:00:00Z	Paris	France	1908-08-25T00:00:00Z
-J. J. Thomson	male	Nobel Prize in Physics	1906-01-01T00:00:00Z	1856-12-18T00:00:00Z	Manchester	United Kingdom	1940-08-30T00:00:00Z
-Paul Dirac	male	Nobel Prize in Physics	1933-01-01T00:00:00Z	1902-08-08T00:00:00Z	Bristol	United Kingdom	1984-10-20T00:00:00Z
-Richard Laurence Millington Synge	male	Nobel Prize in Chemistry	1952-01-01T00:00:00Z	1914-10-28T00:00:00Z	Liverpool	United Kingdom	1994-08-18T00:00:00Z
+J. J. Thomson	male	Nobel Prize in Physics	1906-01-01T00:00:00Z	1856-12-18T00:00:00Z	Manchester	the United Kingdom	1940-08-30T00:00:00Z
+Paul Dirac	male	Nobel Prize in Physics	1933-01-01T00:00:00Z	1902-08-08T00:00:00Z	Bristol	the United Kingdom	1984-10-20T00:00:00Z
+Richard Laurence Millington Synge	male	Nobel Prize in Chemistry	1952-01-01T00:00:00Z	1914-10-28T00:00:00Z	Liverpool	the United Kingdom	1994-08-18T00:00:00Z
 Fritz Haber	male	Nobel Prize in Chemistry	1918-01-01T00:00:00Z	1868-12-09T00:00:00Z	Wrocław	Poland	1934-01-29T00:00:00Z
 Adolf von Baeyer	male	Nobel Prize in Chemistry	1905-01-01T00:00:00Z	1835-10-31T00:00:00Z	Berlin	Germany	1917-08-20T00:00:00Z
 Maria Goeppert Mayer	female	Nobel Prize in Physics	1963-01-01T00:00:00Z	1906-06-28T00:00:00Z	Katowice	Poland	1972-02-20T00:00:00Z
@@ -505,143 +505,143 @@ Wolfgang Pauli	male	Nobel Prize in Physics	1945-01-01T00:00:00Z	1900-04-25T00:00
 Theodor W. Hänsch	male	Nobel Prize in Physics	2005-01-01T00:00:00Z	1941-10-30T00:00:00Z	Heidelberg	Germany	
 Horst Ludwig Störmer	male	Nobel Prize in Physics	1998-01-01T00:00:00Z	1949-04-06T00:00:00Z	Frankfurt am Main	Germany	
 Ernst Ruska	male	Nobel Prize in Physics	1986-01-01T00:00:00Z	1906-12-25T00:00:00Z	Heidelberg	Germany	1988-05-27T00:00:00Z
-George E. Smith	male	Nobel Prize in Physics	2009-01-01T00:00:00Z	1930-05-10T00:00:00Z	White Plains	United States of America	
+George E. Smith	male	Nobel Prize in Physics	2009-01-01T00:00:00Z	1930-05-10T00:00:00Z	White Plains	the United States	
 Walther Bothe	male	Nobel Prize in Physics	1954-01-01T00:00:00Z	1891-01-08T00:00:00Z	Oranienburg	Germany	1957-02-08T00:00:00Z
 Gerhard Herzberg	male	Nobel Prize in Chemistry	1971-01-01T00:00:00Z	1904-12-25T00:00:00Z	Hamburg	Germany	1999-03-03T00:00:00Z
 Hans Fischer	male	Nobel Prize in Chemistry	1930-01-01T00:00:00Z	1881-07-27T00:00:00Z	Höchst	Germany	1945-03-31T00:00:00Z
 Gerd Binnig	male	Nobel Prize in Physics	1986-01-01T00:00:00Z	1947-07-20T00:00:00Z	Frankfurt am Main	Germany	
 Victor Francis Hess	male	Nobel Prize in Physics	1936-01-01T00:00:00Z	1883-06-24T00:00:00Z	Deutschfeistritz	Austria	1964-12-17T00:00:00Z
 Pieter Zeeman	male	Nobel Prize in Physics	1902-01-01T00:00:00Z	1865-05-25T00:00:00Z	Zonnemaire	Netherlands	1943-10-09T00:00:00Z
-Donald Arthur Glaser	male	Nobel Prize in Physics	1960-01-01T00:00:00Z	1926-09-21T00:00:00Z	Cleveland	United States of America	2013-02-28T00:00:00Z
-Leon Cooper	male	Nobel Prize in Physics	1972-01-01T00:00:00Z	1930-02-28T00:00:00Z	New York City	United States of America	
-John Strutt, 3rd Baron Rayleigh	male	Nobel Prize in Physics	1904-01-01T00:00:00Z	1842-11-12T00:00:00Z	Maldon	United Kingdom	1919-06-30T00:00:00Z
+Donald Arthur Glaser	male	Nobel Prize in Physics	1960-01-01T00:00:00Z	1926-09-21T00:00:00Z	Cleveland	the United States	2013-02-28T00:00:00Z
+Leon Cooper	male	Nobel Prize in Physics	1972-01-01T00:00:00Z	1930-02-28T00:00:00Z	New York City	the United States	
+John Strutt, 3rd Baron Rayleigh	male	Nobel Prize in Physics	1904-01-01T00:00:00Z	1842-11-12T00:00:00Z	Maldon	the United Kingdom	1919-06-30T00:00:00Z
 Louis de Broglie	male	Nobel Prize in Physics	1929-01-01T00:00:00Z	1892-08-15T00:00:00Z	Dieppe	France	1987-03-19T00:00:00Z
-Paul Berg	male	Nobel Prize in Chemistry	1980-01-01T00:00:00Z	1926-06-30T00:00:00Z	Brooklyn	United States of America	
-John C. Mather	male	Nobel Prize in Physics	2006-01-01T00:00:00Z	1946-08-07T00:00:00Z	Roanoke	United States of America	
+Paul Berg	male	Nobel Prize in Chemistry	1980-01-01T00:00:00Z	1926-06-30T00:00:00Z	Brooklyn	the United States	
+John C. Mather	male	Nobel Prize in Physics	2006-01-01T00:00:00Z	1946-08-07T00:00:00Z	Roanoke	the United States	
 Ei-ichi Negishi	male	Nobel Prize in Chemistry	2010-01-01T00:00:00Z	1935-07-14T00:00:00Z	Hsinking	Manchukuo	2021-06-06T00:00:00Z
-Richard F. Heck	male	Nobel Prize in Chemistry	2010-01-01T00:00:00Z	1931-08-15T00:00:00Z	Springfield	United States of America	2015-10-10T00:00:00Z
+Richard F. Heck	male	Nobel Prize in Chemistry	2010-01-01T00:00:00Z	1931-08-15T00:00:00Z	Springfield	the United States	2015-10-10T00:00:00Z
 Konstantin Novoselov	male	Nobel Prize in Physics	2010-01-01T00:00:00Z	1974-08-23T00:00:00Z	Nizhny Tagil	Russia	
-Martin Lewis Perl	male	Nobel Prize in Physics	1995-01-01T00:00:00Z	1927-06-24T00:00:00Z	Manhattan	United States of America	2014-09-30T00:00:00Z
-Ben Roy Mottelson	male	Nobel Prize in Physics	1975-01-01T00:00:00Z	1926-07-09T00:00:00Z	Chicago	United States of America	
-Thomas A. Steitz	male	Nobel Prize in Chemistry	2009-01-01T00:00:00Z	1940-08-23T00:00:00Z	Milwaukee	United States of America	2018-10-09T00:00:00Z
+Martin Lewis Perl	male	Nobel Prize in Physics	1995-01-01T00:00:00Z	1927-06-24T00:00:00Z	Manhattan	the United States	2014-09-30T00:00:00Z
+Ben Roy Mottelson	male	Nobel Prize in Physics	1975-01-01T00:00:00Z	1926-07-09T00:00:00Z	Chicago	the United States	
+Thomas A. Steitz	male	Nobel Prize in Chemistry	2009-01-01T00:00:00Z	1940-08-23T00:00:00Z	Milwaukee	the United States	2018-10-09T00:00:00Z
 Serge Haroche	male	Nobel Prize in Physics	2012-01-01T00:00:00Z	1944-09-11T00:00:00Z	Casablanca	Morocco	
 William Giauque	male	Nobel Prize in Chemistry	1949-01-01T00:00:00Z	1895-05-12T00:00:00Z	Niagara Falls	Canada	1982-03-28T00:00:00Z
-Stanford Moore	male	Nobel Prize in Chemistry	1972-01-01T00:00:00Z	1913-09-04T00:00:00Z	Chicago	United States of America	1982-08-23T00:00:00Z
+Stanford Moore	male	Nobel Prize in Chemistry	1972-01-01T00:00:00Z	1913-09-04T00:00:00Z	Chicago	the United States	1982-08-23T00:00:00Z
 Alfred Werner	male	Nobel Prize in Chemistry	1913-01-01T00:00:00Z	1866-12-12T00:00:00Z	Mulhouse	France	1919-11-15T00:00:00Z
 Felix Bloch	male	Nobel Prize in Physics	1952-01-01T00:00:00Z	1905-10-23T00:00:00Z	Zürich	Switzerland	1983-09-10T00:00:00Z
 Heinrich Rohrer	male	Nobel Prize in Physics	1986-01-01T00:00:00Z	1933-06-06T00:00:00Z	Buchs	Switzerland	2013-05-16T00:00:00Z
 Didier Queloz	male	Nobel Prize in Physics	2019-01-01T00:00:00Z	1966-02-23T00:00:00Z	Switzerland	Switzerland	
-Arthur Compton	male	Nobel Prize in Physics	1927-01-01T00:00:00Z	1892-09-10T00:00:00Z	Wooster	United States of America	1962-03-15T00:00:00Z
+Arthur Compton	male	Nobel Prize in Physics	1927-01-01T00:00:00Z	1892-09-10T00:00:00Z	Wooster	the United States	1962-03-15T00:00:00Z
 Lawrence Bragg	male	Nobel Prize in Physics	1915-01-01T00:00:00Z	1890-03-31T00:00:00Z	Adelaide	Australia	1971-07-01T00:00:00Z
 Lev Landau	male	Nobel Prize in Physics	1962-01-01T00:00:00Z	1908-01-22T00:00:00Z	Baku	Azerbaijan	1968-04-01T00:00:00Z
-Elias James Corey	male	Nobel Prize in Chemistry	1990-01-01T00:00:00Z	1928-07-12T00:00:00Z	Methuen	United States of America	
+Elias James Corey	male	Nobel Prize in Chemistry	1990-01-01T00:00:00Z	1928-07-12T00:00:00Z	Methuen	the United States	
 Georges Charpak	male	Nobel Prize in Physics	1992-01-01T00:00:00Z	1924-08-01T00:00:00Z	Dubrovytsia	Ukraine	2010-09-29T00:00:00Z
 Dennis Gabor	male	Nobel Prize in Physics	1971-01-01T00:00:00Z	1900-06-05T00:00:00Z	Budapest	Hungary	1979-02-08T00:00:00Z
 Gustaf Dalén	male	Nobel Prize in Physics	1912-01-01T00:00:00Z	1869-11-30T00:00:00Z	Stenstorp	Sweden	1937-12-09T00:00:00Z
 Manne Siegbahn	male	Nobel Prize in Physics	1924-01-01T00:00:00Z	1886-12-03T00:00:00Z	Örebro Nikolai parish	Sweden	1978-09-24T00:00:00Z
-Percy Williams Bridgman	male	Nobel Prize in Physics	1946-01-01T00:00:00Z	1882-04-21T00:00:00Z	Cambridge	United States of America	1961-08-20T00:00:00Z
-Steven Weinberg	male	Nobel Prize in Physics	1979-01-01T00:00:00Z	1933-05-03T00:00:00Z	New York City	United States of America	2021-07-23T00:00:00Z
-Harold Urey	male	Nobel Prize in Chemistry	1934-01-01T00:00:00Z	1893-04-29T00:00:00Z	Walkerton	United States of America	1981-01-05T00:00:00Z
+Percy Williams Bridgman	male	Nobel Prize in Physics	1946-01-01T00:00:00Z	1882-04-21T00:00:00Z	Cambridge	the United States	1961-08-20T00:00:00Z
+Steven Weinberg	male	Nobel Prize in Physics	1979-01-01T00:00:00Z	1933-05-03T00:00:00Z	New York City	the United States	2021-07-23T00:00:00Z
+Harold Urey	male	Nobel Prize in Chemistry	1934-01-01T00:00:00Z	1893-04-29T00:00:00Z	Walkerton	the United States	1981-01-05T00:00:00Z
 Chen-ning Yang	male	Nobel Prize in Physics	1957-01-01T00:00:00Z	1922-10-01T00:00:00Z	Hefei County	People's Republic of China	
 Ilya Prigogine	male	Nobel Prize in Chemistry	1977-01-01T00:00:00Z	1917-01-25T00:00:00Z	Moscow	Russia	2003-05-28T00:00:00Z
 Tsung-Dao Lee	male	Nobel Prize in Physics	1957-01-01T00:00:00Z	1926-11-24T00:00:00Z	Shanghai Municipality, Republic of China	Republic of China 1912–1949	
-Patrick Blackett, Baron Blackett	male	Nobel Prize in Physics	1948-01-01T00:00:00Z	1897-11-18T00:00:00Z	London	United Kingdom	1974-07-13T00:00:00Z
+Patrick Blackett, Baron Blackett	male	Nobel Prize in Physics	1948-01-01T00:00:00Z	1897-11-18T00:00:00Z	London	the United Kingdom	1974-07-13T00:00:00Z
 Sin-Itiro Tomonaga	male	Nobel Prize in Physics	1965-01-01T00:00:00Z	1906-03-31T00:00:00Z	Tokyo	Japan	1979-07-08T00:00:00Z
-Charles Hard Townes	male	Nobel Prize in Physics	1964-01-01T00:00:00Z	1915-07-28T00:00:00Z	Greenville	United States of America	2015-01-27T00:00:00Z
-Julian Schwinger	male	Nobel Prize in Physics	1965-01-01T00:00:00Z	1918-02-12T00:00:00Z	New York City	United States of America	1994-07-16T00:00:00Z
-Willis Lamb	male	Nobel Prize in Physics	1955-01-01T00:00:00Z	1913-07-12T00:00:00Z	Los Angeles	United States of America	2008-05-15T00:00:00Z
+Charles Hard Townes	male	Nobel Prize in Physics	1964-01-01T00:00:00Z	1915-07-28T00:00:00Z	Greenville	the United States	2015-01-27T00:00:00Z
+Julian Schwinger	male	Nobel Prize in Physics	1965-01-01T00:00:00Z	1918-02-12T00:00:00Z	New York City	the United States	1994-07-16T00:00:00Z
+Willis Lamb	male	Nobel Prize in Physics	1955-01-01T00:00:00Z	1913-07-12T00:00:00Z	Los Angeles	the United States	2008-05-15T00:00:00Z
 Carlo Rubbia	male	Nobel Prize in Physics	1984-01-01T00:00:00Z	1934-03-31T00:00:00Z	Gorizia	Italy	
 Yoichiro Nambu	male	Nobel Prize in Physics	2008-01-01T00:00:00Z	1921-01-18T00:00:00Z	Tokyo	Japan	2015-07-05T00:00:00Z
 Alexei Abrikosov	male	Nobel Prize in Physics	2003-01-01T00:00:00Z	1928-06-25T00:00:00Z	Moscow	Russia	2017-03-29T00:00:00Z
-Robert B. Laughlin	male	Nobel Prize in Physics	1998-01-01T00:00:00Z	1950-11-01T00:00:00Z	Visalia	United States of America	
-Arthur Leonard Schawlow	male	Nobel Prize in Physics	1981-01-01T00:00:00Z	1921-05-05T00:00:00Z	Mount Vernon	United States of America	1999-04-28T00:00:00Z
-James Rainwater	male	Nobel Prize in Physics	1975-01-01T00:00:00Z	1917-12-09T00:00:00Z	Council	United States of America	1986-05-31T00:00:00Z
-William Daniel Phillips	male	Nobel Prize in Physics	1997-01-01T00:00:00Z	1948-11-05T00:00:00Z	Wilkes-Barre	United States of America	
-Philip W. Anderson	male	Nobel Prize in Physics	1977-01-01T00:00:00Z	1923-12-13T00:00:00Z	Indianapolis	United States of America	2020-03-29T00:00:00Z
-Frederick Reines	male	Nobel Prize in Physics	1995-01-01T00:00:00Z	1918-03-16T00:00:00Z	Paterson	United States of America	1998-08-26T00:00:00Z
-Joseph Hooton Taylor	male	Nobel Prize in Physics	1993-01-01T00:00:00Z	1941-03-29T00:00:00Z	Philadelphia	United States of America	
+Robert B. Laughlin	male	Nobel Prize in Physics	1998-01-01T00:00:00Z	1950-11-01T00:00:00Z	Visalia	the United States	
+Arthur Leonard Schawlow	male	Nobel Prize in Physics	1981-01-01T00:00:00Z	1921-05-05T00:00:00Z	Mount Vernon	the United States	1999-04-28T00:00:00Z
+James Rainwater	male	Nobel Prize in Physics	1975-01-01T00:00:00Z	1917-12-09T00:00:00Z	Council	the United States	1986-05-31T00:00:00Z
+William Daniel Phillips	male	Nobel Prize in Physics	1997-01-01T00:00:00Z	1948-11-05T00:00:00Z	Wilkes-Barre	the United States	
+Philip W. Anderson	male	Nobel Prize in Physics	1977-01-01T00:00:00Z	1923-12-13T00:00:00Z	Indianapolis	the United States	2020-03-29T00:00:00Z
+Frederick Reines	male	Nobel Prize in Physics	1995-01-01T00:00:00Z	1918-03-16T00:00:00Z	Paterson	the United States	1998-08-26T00:00:00Z
+Joseph Hooton Taylor	male	Nobel Prize in Physics	1993-01-01T00:00:00Z	1941-03-29T00:00:00Z	Philadelphia	the United States	
 Bertram Brockhouse	male	Nobel Prize in Physics	1994-01-01T00:00:00Z	1918-07-15T00:00:00Z	Lethbridge	Canada	2003-10-13T00:00:00Z
-Leon M. Lederman	male	Nobel Prize in Physics	1988-01-01T00:00:00Z	1922-07-15T00:00:00Z	New York City	United States of America	2018-10-03T00:00:00Z
-Anthony James Leggett	male	Nobel Prize in Physics	2003-01-01T00:00:00Z	1938-03-26T00:00:00Z	Camberwell	United Kingdom	
-John Hasbrouck Van Vleck	male	Nobel Prize in Physics	1977-01-01T00:00:00Z	1899-03-13T00:00:00Z	Middletown	United States of America	1980-10-27T00:00:00Z
-Roger Y. Tsien	male	Nobel Prize in Chemistry	2008-01-01T00:00:00Z	1952-02-01T00:00:00Z	New York City	United States of America	2016-08-24T00:00:00Z
-Clifford Shull	male	Nobel Prize in Physics	1994-01-01T00:00:00Z	1915-09-23T00:00:00Z	Pittsburgh	United States of America	2001-03-31T00:00:00Z
-David Lee	male	Nobel Prize in Physics	1996-01-01T00:00:00Z	1931-01-20T00:00:00Z	Rye	United States of America	
+Leon M. Lederman	male	Nobel Prize in Physics	1988-01-01T00:00:00Z	1922-07-15T00:00:00Z	New York City	the United States	2018-10-03T00:00:00Z
+Anthony James Leggett	male	Nobel Prize in Physics	2003-01-01T00:00:00Z	1938-03-26T00:00:00Z	Camberwell	the United Kingdom	
+John Hasbrouck Van Vleck	male	Nobel Prize in Physics	1977-01-01T00:00:00Z	1899-03-13T00:00:00Z	Middletown	the United States	1980-10-27T00:00:00Z
+Roger Y. Tsien	male	Nobel Prize in Chemistry	2008-01-01T00:00:00Z	1952-02-01T00:00:00Z	New York City	the United States	2016-08-24T00:00:00Z
+Clifford Shull	male	Nobel Prize in Physics	1994-01-01T00:00:00Z	1915-09-23T00:00:00Z	Pittsburgh	the United States	2001-03-31T00:00:00Z
+David Lee	male	Nobel Prize in Physics	1996-01-01T00:00:00Z	1931-01-20T00:00:00Z	Rye	the United States	
 Toshihide Maskawa	male	Nobel Prize in Physics	2008-01-01T00:00:00Z	1940-02-07T00:00:00Z	Nagoya	Japan	2021-07-23T00:00:00Z
-Carl Wieman	male	Nobel Prize in Physics	2001-01-01T00:00:00Z	1951-03-26T00:00:00Z	Corvallis	United States of America	
-Douglas Osheroff	male	Nobel Prize in Physics	1996-01-01T00:00:00Z	1945-08-01T00:00:00Z	Aberdeen	United States of America	
-Robert Burns Woodward	male	Nobel Prize in Chemistry	1965-01-01T00:00:00Z	1917-04-10T00:00:00Z	Boston	United States of America	1979-07-08T00:00:00Z
+Carl Wieman	male	Nobel Prize in Physics	2001-01-01T00:00:00Z	1951-03-26T00:00:00Z	Corvallis	the United States	
+Douglas Osheroff	male	Nobel Prize in Physics	1996-01-01T00:00:00Z	1945-08-01T00:00:00Z	Aberdeen	the United States	
+Robert Burns Woodward	male	Nobel Prize in Chemistry	1965-01-01T00:00:00Z	1917-04-10T00:00:00Z	Boston	the United States	1979-07-08T00:00:00Z
 Arne Tiselius	male	Nobel Prize in Chemistry	1948-01-01T00:00:00Z	1902-08-10T00:00:00Z	Stockholm	Sweden	1971-10-29T00:00:00Z
 Luis Federico Leloir	male	Nobel Prize in Chemistry	1970-01-01T00:00:00Z	1906-09-06T00:00:00Z	Paris	France	1987-12-02T00:00:00Z
-John E. Walker	male	Nobel Prize in Chemistry	1997-01-01T00:00:00Z	1941-01-07T00:00:00Z	Halifax	United Kingdom	
-Kip S. Thorne	male	Nobel Prize in Physics	2017-01-01T00:00:00Z	1940-06-01T00:00:00Z	Logan	United States of America	
-Andrea M. Ghez	female	Nobel Prize in Physics	2020-01-01T00:00:00Z	1965-06-16T00:00:00Z	New York City	United States of America	
+John E. Walker	male	Nobel Prize in Chemistry	1997-01-01T00:00:00Z	1941-01-07T00:00:00Z	Halifax	the United Kingdom	
+Kip S. Thorne	male	Nobel Prize in Physics	2017-01-01T00:00:00Z	1940-06-01T00:00:00Z	Logan	the United States	
+Andrea M. Ghez	female	Nobel Prize in Physics	2020-01-01T00:00:00Z	1965-06-16T00:00:00Z	New York City	the United States	
 Shuji Nakamura	male	Nobel Prize in Physics	2014-01-01T00:00:00Z	1954-05-22T00:00:00Z	Ikata	Japan	
 Martin Karplus	male	Nobel Prize in Chemistry	2013-01-01T00:00:00Z	1930-03-15T00:00:00Z	Vienna	Austria	
-Duncan Haldane	male	Nobel Prize in Physics	2016-01-01T00:00:00Z	1951-09-14T00:00:00Z	London	United Kingdom	
+Duncan Haldane	male	Nobel Prize in Physics	2016-01-01T00:00:00Z	1951-09-14T00:00:00Z	London	the United Kingdom	
 Jens Christian Skou	male	Nobel Prize in Chemistry	1997-01-01T00:00:00Z	1918-10-08T00:00:00Z	Lemvig	Denmark	2018-05-28T00:00:00Z
-Michael Kosterlitz	male	Nobel Prize in Physics	2016-01-01T00:00:00Z	1943-06-22T00:00:00Z	Aberdeen	United Kingdom	
+Michael Kosterlitz	male	Nobel Prize in Physics	2016-01-01T00:00:00Z	1943-06-22T00:00:00Z	Aberdeen	the United Kingdom	
 Hiroshi Amano	male	Nobel Prize in Physics	2014-01-01T00:00:00Z	1960-09-11T00:00:00Z	Hamamatsu	Japan	
 Aziz Sancar	male	Nobel Prize in Chemistry	2015-01-01T00:00:00Z	1946-09-08T00:00:00Z	Savur	Turkey	
 Jacques Dubochet	male	Nobel Prize in Chemistry	2017-01-01T00:00:00Z	1942-06-08T00:00:00Z	Aigle	Switzerland	
-Gertrude B. Elion	female	Nobel Prize in Physiology or Medicine	1988-01-01T00:00:00Z	1918-01-23T00:00:00Z	New York City	United States of America	1999-02-21T00:00:00Z
+Gertrude B. Elion	female	Nobel Prize in Physiology or Medicine	1988-01-01T00:00:00Z	1918-01-23T00:00:00Z	New York City	the United States	1999-02-21T00:00:00Z
 Max Theiler	male	Nobel Prize in Physiology or Medicine	1951-01-01T00:00:00Z	1899-01-30T00:00:00Z	Pretoria	South Africa	1972-08-11T00:00:00Z
 Paul Ehrlich	male	Nobel Prize in Physiology or Medicine	1908-01-01T00:00:00Z	1854-03-14T00:00:00Z	Strzelin	Poland	1915-08-20T00:00:00Z
 Albrecht Kossel	male	Nobel Prize in Physiology or Medicine	1910-01-01T00:00:00Z	1853-09-16T00:00:00Z	Rostock	Germany	1927-07-05T00:00:00Z
 Otto Fritz Meyerhof	male	Nobel Prize in Physiology or Medicine	1922-01-01T00:00:00Z	1884-04-12T00:00:00Z	Hanover	Germany	1951-10-06T00:00:00Z
 Gerhard Domagk	male	Nobel Prize in Physiology or Medicine	1939-01-01T00:00:00Z	1895-10-30T00:00:00Z	Łagów, Świebodzin County	Poland	1964-04-24T00:00:00Z
-Martin Rodbell	male	Nobel Prize in Physiology or Medicine	1994-01-01T00:00:00Z	1925-12-01T00:00:00Z	Baltimore	United States of America	1998-12-07T00:00:00Z
+Martin Rodbell	male	Nobel Prize in Physiology or Medicine	1994-01-01T00:00:00Z	1925-12-01T00:00:00Z	Baltimore	the United States	1998-12-07T00:00:00Z
 Günter Blobel	male	Nobel Prize in Physiology or Medicine	1999-01-01T00:00:00Z	1936-05-21T00:00:00Z	Niegosławice, Lubusz Voivodeship	Poland	2018-02-18T00:00:00Z
-Henry Hallett Dale	male	Nobel Prize in Physiology or Medicine	1936-01-01T00:00:00Z	1875-06-09T00:00:00Z	London	United Kingdom	1968-07-23T00:00:00Z
+Henry Hallett Dale	male	Nobel Prize in Physiology or Medicine	1936-01-01T00:00:00Z	1875-06-09T00:00:00Z	London	the United Kingdom	1968-07-23T00:00:00Z
 Otto Warburg	male	Nobel Prize in Physiology or Medicine	1931-01-01T00:00:00Z	1883-10-08T00:00:00Z	Freiburg im Breisgau	Germany	1970-08-01T00:00:00Z
 Max Delbrück	male	Nobel Prize in Physiology or Medicine	1969-01-01T00:00:00Z	1906-09-04T00:00:00Z	Berlin	Germany	1981-03-09T00:00:00Z
 Robert Bárány	male	Nobel Prize in Physiology or Medicine	1914-01-01T00:00:00Z	1876-04-22T00:00:00Z	Vienna	Austria	1936-04-08T00:00:00Z
 Konrad Lorenz	male	Nobel Prize in Physiology or Medicine	1973-01-01T00:00:00Z	1903-11-07T00:00:00Z	Vienna	Austria	1989-02-27T00:00:00Z
 Shinya Yamanaka	male	Nobel Prize in Physiology or Medicine	2012-01-01T00:00:00Z	1962-09-04T00:00:00Z	Hiraoka	Japan	
-H.J. Muller	male	Nobel Prize in Physiology or Medicine	1946-01-01T00:00:00Z	1890-12-21T00:00:00Z	New York City	United States of America	1967-04-05T00:00:00Z
+H.J. Muller	male	Nobel Prize in Physiology or Medicine	1946-01-01T00:00:00Z	1890-12-21T00:00:00Z	New York City	the United States	1967-04-05T00:00:00Z
 Karl Landsteiner	male	Nobel Prize in Physiology or Medicine	1930-01-01T00:00:00Z	1868-06-14T00:00:00Z	Vienna	Austria	1943-06-26T00:00:00Z
 Karl Landsteiner	male	Nobel Prize in Physiology or Medicine	1930-01-01T00:00:00Z	1868-06-14T00:00:00Z	Baden bei Wien	Austria	1943-06-26T00:00:00Z
 Thomas C. Südhof	male	Nobel Prize in Physiology or Medicine	2013-01-01T00:00:00Z	1955-12-22T00:00:00Z	Göttingen	Germany	
 Ronald Ross	male	Nobel Prize in Physiology or Medicine	1902-01-01T00:00:00Z	1857-05-13T00:00:00Z	Almora	India	1932-09-16T00:00:00Z
-Andrew Huxley	male	Nobel Prize in Physiology or Medicine	1963-01-01T00:00:00Z	1917-11-22T00:00:00Z	Hampstead	United Kingdom	2012-05-30T00:00:00Z
+Andrew Huxley	male	Nobel Prize in Physiology or Medicine	1963-01-01T00:00:00Z	1917-11-22T00:00:00Z	Hampstead	the United Kingdom	2012-05-30T00:00:00Z
 Ralph Steinman	male	Nobel Prize in Physiology or Medicine	2011-01-01T00:00:00Z	1943-01-14T00:00:00Z	Montreal	Canada	2011-09-30T00:00:00Z
 Jules Hoffmann	male	Nobel Prize in Physiology or Medicine	2011-01-01T00:00:00Z	1941-08-02T00:00:00Z	Echternach	Luxembourg	
-Baruch Samuel Blumberg	male	Nobel Prize in Physiology or Medicine	1976-01-01T00:00:00Z	1925-07-28T00:00:00Z	Brooklyn	United States of America	2011-04-05T00:00:00Z
-Paul Lauterbur	male	Nobel Prize in Physiology or Medicine	2003-01-01T00:00:00Z	1929-05-06T00:00:00Z	Sidney	United States of America	2007-03-27T00:00:00Z
-Rosalyn Sussman Yalow	female	Nobel Prize in Physiology or Medicine	1977-01-01T00:00:00Z	1921-07-19T00:00:00Z	New York City	United States of America	2011-05-30T00:00:00Z
+Baruch Samuel Blumberg	male	Nobel Prize in Physiology or Medicine	1976-01-01T00:00:00Z	1925-07-28T00:00:00Z	Brooklyn	the United States	2011-04-05T00:00:00Z
+Paul Lauterbur	male	Nobel Prize in Physiology or Medicine	2003-01-01T00:00:00Z	1929-05-06T00:00:00Z	Sidney	the United States	2007-03-27T00:00:00Z
+Rosalyn Sussman Yalow	female	Nobel Prize in Physiology or Medicine	1977-01-01T00:00:00Z	1921-07-19T00:00:00Z	New York City	the United States	2011-05-30T00:00:00Z
 Har Gobind Khorana	male	Nobel Prize in Physiology or Medicine	1968-01-01T00:00:00Z	1922-01-09T00:00:00Z	Raipur	Pakistan	2011-11-09T00:00:00Z
-Daniel Carleton Gajdusek	male	Nobel Prize in Physiology or Medicine	1976-01-01T00:00:00Z	1923-09-09T00:00:00Z	Yonkers	United States of America	2008-12-12T00:00:00Z
+Daniel Carleton Gajdusek	male	Nobel Prize in Physiology or Medicine	1976-01-01T00:00:00Z	1923-09-09T00:00:00Z	Yonkers	the United States	2008-12-12T00:00:00Z
 Susumu Tonegawa	male	Nobel Prize in Physiology or Medicine	1987-01-01T00:00:00Z	1939-08-06T00:00:00Z	Nagoya	Japan	
 Susumu Tonegawa	male	Nobel Prize in Physiology or Medicine	1987-01-01T00:00:00Z	1939-09-05T00:00:00Z	Nagoya	Japan	
 Susumu Tonegawa	male	Nobel Prize in Physiology or Medicine	1987-01-01T00:00:00Z	1939-09-06T00:00:00Z	Nagoya	Japan	
-Robert F. Furchgott	male	Nobel Prize in Physiology or Medicine	1998-01-01T00:00:00Z	1916-06-04T00:00:00Z	Charleston	United States of America	2009-05-19T00:00:00Z
-Marshall Warren Nirenberg	male	Nobel Prize in Physiology or Medicine	1968-01-01T00:00:00Z	1927-04-10T00:00:00Z	Brooklyn	United States of America	2010-01-15T00:00:00Z
-Julius Axelrod	male	Nobel Prize in Physiology or Medicine	1970-01-01T00:00:00Z	1912-05-30T00:00:00Z	New York City	United States of America	2004-12-29T00:00:00Z
+Robert F. Furchgott	male	Nobel Prize in Physiology or Medicine	1998-01-01T00:00:00Z	1916-06-04T00:00:00Z	Charleston	the United States	2009-05-19T00:00:00Z
+Marshall Warren Nirenberg	male	Nobel Prize in Physiology or Medicine	1968-01-01T00:00:00Z	1927-04-10T00:00:00Z	Brooklyn	the United States	2010-01-15T00:00:00Z
+Julius Axelrod	male	Nobel Prize in Physiology or Medicine	1970-01-01T00:00:00Z	1912-05-30T00:00:00Z	New York City	the United States	2004-12-29T00:00:00Z
 Paul Hermann Müller	male	Nobel Prize in Physiology or Medicine	1948-01-01T00:00:00Z	1899-01-12T00:00:00Z	Olten	Switzerland	1965-10-12T00:00:00Z
 Emil Theodor Kocher	male	Nobel Prize in Physiology or Medicine	1909-01-01T00:00:00Z	1841-08-25T00:00:00Z	Bern	Switzerland	1917-07-27T00:00:00Z
 Tadeusz Reichstein	male	Nobel Prize in Physiology or Medicine	1950-01-01T00:00:00Z	1897-07-20T00:00:00Z	Włocławek	Poland	1996-08-01T00:00:00Z
-Francis Crick	male	Nobel Prize in Physiology or Medicine	1962-01-01T00:00:00Z	1916-06-08T00:00:00Z	Northampton	United Kingdom	2004-07-28T00:00:00Z
+Francis Crick	male	Nobel Prize in Physiology or Medicine	1962-01-01T00:00:00Z	1916-06-08T00:00:00Z	Northampton	the United Kingdom	2004-07-28T00:00:00Z
 Howard Florey	male	Nobel Prize in Physiology or Medicine	1945-01-01T00:00:00Z	1898-09-24T00:00:00Z	Adelaide	Australia	1968-02-21T00:00:00Z
 Camillo Golgi	male	Nobel Prize in Physiology or Medicine	1906-01-01T00:00:00Z	1843-07-07T00:00:00Z	Corteno Golgi	Italy	1926-01-21T00:00:00Z
 August Krogh	male	Nobel Prize in Physiology or Medicine	1920-01-01T00:00:00Z	1874-11-15T00:00:00Z	Grenå	Denmark	1949-09-13T00:00:00Z
 Jean Dausset	male	Nobel Prize in Physiology or Medicine	1980-01-01T00:00:00Z	1916-10-19T00:00:00Z	Toulouse	France	2009-06-06T00:00:00Z
 Niko Tinbergen	male	Nobel Prize in Physiology or Medicine	1973-01-01T00:00:00Z	1907-04-15T00:00:00Z	The Hague	Netherlands	1988-12-21T00:00:00Z
 Charles Brenton Huggins	male	Nobel Prize in Physiology or Medicine	1966-01-01T00:00:00Z	1901-09-22T00:00:00Z	Halifax	Canada	1997-01-12T00:00:00Z
-Archibald Hill	male	Nobel Prize in Physiology or Medicine	1922-01-01T00:00:00Z	1886-09-26T00:00:00Z	Bristol	United Kingdom	1977-06-03T00:00:00Z
+Archibald Hill	male	Nobel Prize in Physiology or Medicine	1922-01-01T00:00:00Z	1886-09-26T00:00:00Z	Bristol	the United Kingdom	1977-06-03T00:00:00Z
 Eric Kandel	male	Nobel Prize in Physiology or Medicine	2000-01-01T00:00:00Z	1929-11-07T00:00:00Z	Vienna	Austria	
 Corneille Heymans	male	Nobel Prize in Physiology or Medicine	1938-01-01T00:00:00Z	1892-03-28T00:00:00Z	Ghent	Belgium	1968-07-18T00:00:00Z
-Thomas Hunt Morgan	male	Nobel Prize in Physiology or Medicine	1933-01-01T00:00:00Z	1866-09-25T00:00:00Z	Lexington	United States of America	1945-12-04T00:00:00Z
+Thomas Hunt Morgan	male	Nobel Prize in Physiology or Medicine	1933-01-01T00:00:00Z	1866-09-25T00:00:00Z	Lexington	the United States	1945-12-04T00:00:00Z
 Niels Ryberg Finsen	male	Nobel Prize in Physiology or Medicine	1903-01-01T00:00:00Z	1860-12-15T00:00:00Z	Tórshavn	Faroe Islands	1904-09-24T00:00:00Z
 Rita Levi-Montalcini	female	Nobel Prize in Physiology or Medicine	1986-01-01T00:00:00Z	1909-04-22T00:00:00Z	Turin	Italy	2012-12-30T00:00:00Z
-Joseph Murray	male	Nobel Prize in Physiology or Medicine	1990-01-01T00:00:00Z	1919-04-01T00:00:00Z	Milford	United States of America	2012-11-26T00:00:00Z
+Joseph Murray	male	Nobel Prize in Physiology or Medicine	1990-01-01T00:00:00Z	1919-04-01T00:00:00Z	Milford	the United States	2012-11-26T00:00:00Z
 Frank Macfarlane Burnet	male	Nobel Prize in Physiology or Medicine	1960-01-01T00:00:00Z	1899-09-03T00:00:00Z	Traralgon	Australia	1985-08-31T00:00:00Z
-Barbara McClintock	female	Nobel Prize in Physiology or Medicine	1983-01-01T00:00:00Z	1902-06-16T00:00:00Z	Hartford	United States of America	1992-09-02T00:00:00Z
-Linda B. Buck	female	Nobel Prize in Physiology or Medicine	2004-01-01T00:00:00Z	1947-01-29T00:00:00Z	Seattle	United States of America	
-Andrew Fire	male	Nobel Prize in Physiology or Medicine	2006-01-01T00:00:00Z	1959-04-27T00:00:00Z	Palo Alto	United States of America	
+Barbara McClintock	female	Nobel Prize in Physiology or Medicine	1983-01-01T00:00:00Z	1902-06-16T00:00:00Z	Hartford	the United States	1992-09-02T00:00:00Z
+Linda B. Buck	female	Nobel Prize in Physiology or Medicine	2004-01-01T00:00:00Z	1947-01-29T00:00:00Z	Seattle	the United States	
+Andrew Fire	male	Nobel Prize in Physiology or Medicine	2006-01-01T00:00:00Z	1959-04-27T00:00:00Z	Palo Alto	the United States	
 Salvador Luria	male	Nobel Prize in Physiology or Medicine	1969-01-01T00:00:00Z	1912-08-13T00:00:00Z	Turin	Italy	1991-02-06T00:00:00Z
-Martin Evans	male	Nobel Prize in Physiology or Medicine	2007-01-01T00:00:00Z	1941-01-01T00:00:00Z	Stroud	United Kingdom	
+Martin Evans	male	Nobel Prize in Physiology or Medicine	2007-01-01T00:00:00Z	1941-01-01T00:00:00Z	Stroud	the United Kingdom	
 Robin Warren	male	Nobel Prize in Physiology or Medicine	2005-01-01T00:00:00Z	1937-06-11T00:00:00Z	Adelaide	Australia	
-Charles Scott Sherrington	male	Nobel Prize in Physiology or Medicine	1932-01-01T00:00:00Z	1857-11-27T00:00:00Z	London	United Kingdom	1952-03-04T00:00:00Z
+Charles Scott Sherrington	male	Nobel Prize in Physiology or Medicine	1932-01-01T00:00:00Z	1857-11-27T00:00:00Z	London	the United Kingdom	1952-03-04T00:00:00Z
 Peter Medawar	male	Nobel Prize in Physiology or Medicine	1960-01-01T00:00:00Z	1915-02-28T00:00:00Z	Rio de Janeiro	Brazil	1987-10-02T00:00:00Z
 Peter Medawar	male	Nobel Prize in Physiology or Medicine	1960-01-01T00:00:00Z	1915-02-28T00:00:00Z	Petrópolis	Brazil	1987-10-02T00:00:00Z
 Charles Richet	male	Nobel Prize in Physiology or Medicine	1913-01-01T00:00:00Z	1850-08-25T00:00:00Z	Paris	France	1935-12-03T00:00:00Z
@@ -649,75 +649,75 @@ Charles Richet	male	Nobel Prize in Physiology or Medicine	1913-01-01T00:00:00Z	1
 Charles Richet	male	Nobel Prize in Physiology or Medicine	1913-01-01T00:00:00Z	1850-08-25T00:00:00Z	Paris	France	1935-12-04T00:00:00Z
 Charles Richet	male	Nobel Prize in Physiology or Medicine	1913-01-01T00:00:00Z	1850-08-26T00:00:00Z	Paris	France	1935-12-04T00:00:00Z
 Mario Capecchi	male	Nobel Prize in Physiology or Medicine	2007-01-01T00:00:00Z	1937-10-06T00:00:00Z	Verona	Italy	
-Oliver Smithies	male	Nobel Prize in Physiology or Medicine	2007-01-01T00:00:00Z	1925-06-23T00:00:00Z	Halifax	United Kingdom	2017-01-10T00:00:00Z
+Oliver Smithies	male	Nobel Prize in Physiology or Medicine	2007-01-01T00:00:00Z	1925-06-23T00:00:00Z	Halifax	the United Kingdom	2017-01-10T00:00:00Z
 Ragnar Granit	male	Nobel Prize in Physiology or Medicine	1967-01-01T00:00:00Z	1900-10-30T00:00:00Z	Riihimäki	Finland	1991-03-12T00:00:00Z
 François Jacob	male	Nobel Prize in Physiology or Medicine	1965-01-01T00:00:00Z	1920-06-17T00:00:00Z	Nancy	France	2013-04-19T00:00:00Z
-Joshua Lederberg	male	Nobel Prize in Physiology or Medicine	1958-01-01T00:00:00Z	1925-05-23T00:00:00Z	Montclair	United States of America	2008-02-02T00:00:00Z
-Roger Sperry	male	Nobel Prize in Physiology or Medicine	1981-01-01T00:00:00Z	1913-08-20T00:00:00Z	Hartford	United States of America	1994-04-17T00:00:00Z
+Joshua Lederberg	male	Nobel Prize in Physiology or Medicine	1958-01-01T00:00:00Z	1925-05-23T00:00:00Z	Montclair	the United States	2008-02-02T00:00:00Z
+Roger Sperry	male	Nobel Prize in Physiology or Medicine	1981-01-01T00:00:00Z	1913-08-20T00:00:00Z	Hartford	the United States	1994-04-17T00:00:00Z
 Charles Nicolle	male	Nobel Prize in Physiology or Medicine	1928-01-01T00:00:00Z	1866-09-21T00:00:00Z	Rouen	France	1936-02-28T00:00:00Z
-Philip Showalter Hench	male	Nobel Prize in Physiology or Medicine	1950-01-01T00:00:00Z	1896-02-28T00:00:00Z	Pittsburgh	United States of America	1965-03-30T00:00:00Z
-Edward Tatum	male	Nobel Prize in Physiology or Medicine	1958-01-01T00:00:00Z	1909-12-14T00:00:00Z	Boulder	United States of America	1975-11-05T00:00:00Z
-Howard Temin	male	Nobel Prize in Physiology or Medicine	1975-01-01T00:00:00Z	1934-12-10T00:00:00Z	Philadelphia	United States of America	1994-02-09T00:00:00Z
-George Minot	male	Nobel Prize in Physiology or Medicine	1934-01-01T00:00:00Z	1885-12-02T00:00:00Z	Boston	United States of America	1950-02-25T00:00:00Z
-John Sulston	male	Nobel Prize in Physiology or Medicine	2002-01-01T00:00:00Z	1942-03-27T00:00:00Z	Cambridge	United Kingdom	2018-03-06T00:00:00Z
-John Sulston	male	Nobel Prize in Physiology or Medicine	2002-01-01T00:00:00Z	1942-03-27T00:00:00Z	Fulmer	United Kingdom	2018-03-06T00:00:00Z
-Gerald Edelman	male	Nobel Prize in Physiology or Medicine	1972-01-01T00:00:00Z	1929-07-01T00:00:00Z	Queens	United States of America	2014-05-17T00:00:00Z
-Herbert Spencer Gasser	male	Nobel Prize in Physiology or Medicine	1944-01-01T00:00:00Z	1888-07-05T00:00:00Z	Platteville	United States of America	1963-05-11T00:00:00Z
-Godfrey Hounsfield	male	Nobel Prize in Physiology or Medicine	1979-01-01T00:00:00Z	1919-08-28T00:00:00Z	Newark-on-Trent	United Kingdom	2004-08-12T00:00:00Z
-Godfrey Hounsfield	male	Nobel Prize in Physiology or Medicine	1979-01-01T00:00:00Z	1919-08-28T00:00:00Z	Sutton on Trent	United Kingdom	2004-08-12T00:00:00Z
+Philip Showalter Hench	male	Nobel Prize in Physiology or Medicine	1950-01-01T00:00:00Z	1896-02-28T00:00:00Z	Pittsburgh	the United States	1965-03-30T00:00:00Z
+Edward Tatum	male	Nobel Prize in Physiology or Medicine	1958-01-01T00:00:00Z	1909-12-14T00:00:00Z	Boulder	the United States	1975-11-05T00:00:00Z
+Howard Temin	male	Nobel Prize in Physiology or Medicine	1975-01-01T00:00:00Z	1934-12-10T00:00:00Z	Philadelphia	the United States	1994-02-09T00:00:00Z
+George Minot	male	Nobel Prize in Physiology or Medicine	1934-01-01T00:00:00Z	1885-12-02T00:00:00Z	Boston	the United States	1950-02-25T00:00:00Z
+John Sulston	male	Nobel Prize in Physiology or Medicine	2002-01-01T00:00:00Z	1942-03-27T00:00:00Z	Cambridge	the United Kingdom	2018-03-06T00:00:00Z
+John Sulston	male	Nobel Prize in Physiology or Medicine	2002-01-01T00:00:00Z	1942-03-27T00:00:00Z	Fulmer	the United Kingdom	2018-03-06T00:00:00Z
+Gerald Edelman	male	Nobel Prize in Physiology or Medicine	1972-01-01T00:00:00Z	1929-07-01T00:00:00Z	Queens	the United States	2014-05-17T00:00:00Z
+Herbert Spencer Gasser	male	Nobel Prize in Physiology or Medicine	1944-01-01T00:00:00Z	1888-07-05T00:00:00Z	Platteville	the United States	1963-05-11T00:00:00Z
+Godfrey Hounsfield	male	Nobel Prize in Physiology or Medicine	1979-01-01T00:00:00Z	1919-08-28T00:00:00Z	Newark-on-Trent	the United Kingdom	2004-08-12T00:00:00Z
+Godfrey Hounsfield	male	Nobel Prize in Physiology or Medicine	1979-01-01T00:00:00Z	1919-08-28T00:00:00Z	Sutton on Trent	the United Kingdom	2004-08-12T00:00:00Z
 David H. Hubel	male	Nobel Prize in Physiology or Medicine	1981-01-01T00:00:00Z	1926-02-27T00:00:00Z	Windsor	Canada	2013-09-22T00:00:00Z
-George Davis Snell	male	Nobel Prize in Physiology or Medicine	1980-01-01T00:00:00Z	1903-12-19T00:00:00Z	Bradford	United States of America	1996-06-06T00:00:00Z
-Arthur Kornberg	male	Nobel Prize in Physiology or Medicine	1959-01-01T00:00:00Z	1918-03-03T00:00:00Z	Brooklyn	United States of America	2007-10-26T00:00:00Z
-Michael Stuart Brown	male	Nobel Prize in Physiology or Medicine	1985-01-01T00:00:00Z	1941-04-13T00:00:00Z	Brooklyn	United States of America	
-Harold E. Varmus	male	Nobel Prize in Physiology or Medicine	1989-01-01T00:00:00Z	1939-12-18T00:00:00Z	Oceanside	United States of America	
+George Davis Snell	male	Nobel Prize in Physiology or Medicine	1980-01-01T00:00:00Z	1903-12-19T00:00:00Z	Bradford	the United States	1996-06-06T00:00:00Z
+Arthur Kornberg	male	Nobel Prize in Physiology or Medicine	1959-01-01T00:00:00Z	1918-03-03T00:00:00Z	Brooklyn	the United States	2007-10-26T00:00:00Z
+Michael Stuart Brown	male	Nobel Prize in Physiology or Medicine	1985-01-01T00:00:00Z	1941-04-13T00:00:00Z	Brooklyn	the United States	
+Harold E. Varmus	male	Nobel Prize in Physiology or Medicine	1989-01-01T00:00:00Z	1939-12-18T00:00:00Z	Oceanside	the United States	
 Sune Bergström	male	Nobel Prize in Physiology or Medicine	1982-01-01T00:00:00Z	1916-01-10T00:00:00Z	Kungsholms parish	Sweden	2004-08-15T00:00:00Z
-Rodney Robert Porter	male	Nobel Prize in Physiology or Medicine	1972-01-01T00:00:00Z	1917-10-08T00:00:00Z	Newton-le-Willows	United Kingdom	1985-09-06T00:00:00Z
-George Wald	male	Nobel Prize in Physiology or Medicine	1967-01-01T00:00:00Z	1906-11-18T00:00:00Z	New York City	United States of America	1997-04-12T00:00:00Z
+Rodney Robert Porter	male	Nobel Prize in Physiology or Medicine	1972-01-01T00:00:00Z	1917-10-08T00:00:00Z	Newton-le-Willows	the United Kingdom	1985-09-06T00:00:00Z
+George Wald	male	Nobel Prize in Physiology or Medicine	1967-01-01T00:00:00Z	1906-11-18T00:00:00Z	New York City	the United States	1997-04-12T00:00:00Z
 Bengt I. Samuelsson	male	Nobel Prize in Physiology or Medicine	1982-01-01T00:00:00Z	1934-05-21T00:00:00Z	Halmstad	Sweden	
-Ferid Murad	male	Nobel Prize in Physiology or Medicine	1998-01-01T00:00:00Z	1936-09-14T00:00:00Z	Whiting	United States of America	
-Francis Peyton Rous	male	Nobel Prize in Physiology or Medicine	1966-01-01T00:00:00Z	1879-10-05T00:00:00Z	Baltimore	United States of America	1970-02-16T00:00:00Z
-Eric F. Wieschaus	male	Nobel Prize in Physiology or Medicine	1995-01-01T00:00:00Z	1947-06-08T00:00:00Z	South Bend	United States of America	
-Haldan Keffer Hartline	male	Nobel Prize in Physiology or Medicine	1967-01-01T00:00:00Z	1903-12-22T00:00:00Z	Bloomsburg	United States of America	1983-03-17T00:00:00Z
-John Vane	male	Nobel Prize in Physiology or Medicine	1982-01-01T00:00:00Z	1927-03-29T00:00:00Z	Wythall	United Kingdom	2004-11-19T00:00:00Z
-John Vane	male	Nobel Prize in Physiology or Medicine	1982-01-01T00:00:00Z	1927-03-29T00:00:00Z	Tardebigge	United Kingdom	2004-11-19T00:00:00Z
-J. Michael Bishop	male	Nobel Prize in Physiology or Medicine	1989-01-01T00:00:00Z	1936-02-22T00:00:00Z	York	United States of America	
-John Franklin Enders	male	Nobel Prize in Physiology or Medicine	1954-01-01T00:00:00Z	1897-02-10T00:00:00Z	West Hartford	United States of America	1985-09-08T00:00:00Z
-Dickinson W. Richards	male	Nobel Prize in Physiology or Medicine	1956-01-01T00:00:00Z	1895-10-30T00:00:00Z	Orange	United States of America	1973-02-23T00:00:00Z
-Randy Schekman	male	Nobel Prize in Physiology or Medicine	2013-01-01T00:00:00Z	1948-12-30T00:00:00Z	Saint Paul	United States of America	
+Ferid Murad	male	Nobel Prize in Physiology or Medicine	1998-01-01T00:00:00Z	1936-09-14T00:00:00Z	Whiting	the United States	
+Francis Peyton Rous	male	Nobel Prize in Physiology or Medicine	1966-01-01T00:00:00Z	1879-10-05T00:00:00Z	Baltimore	the United States	1970-02-16T00:00:00Z
+Eric F. Wieschaus	male	Nobel Prize in Physiology or Medicine	1995-01-01T00:00:00Z	1947-06-08T00:00:00Z	South Bend	the United States	
+Haldan Keffer Hartline	male	Nobel Prize in Physiology or Medicine	1967-01-01T00:00:00Z	1903-12-22T00:00:00Z	Bloomsburg	the United States	1983-03-17T00:00:00Z
+John Vane	male	Nobel Prize in Physiology or Medicine	1982-01-01T00:00:00Z	1927-03-29T00:00:00Z	Wythall	the United Kingdom	2004-11-19T00:00:00Z
+John Vane	male	Nobel Prize in Physiology or Medicine	1982-01-01T00:00:00Z	1927-03-29T00:00:00Z	Tardebigge	the United Kingdom	2004-11-19T00:00:00Z
+J. Michael Bishop	male	Nobel Prize in Physiology or Medicine	1989-01-01T00:00:00Z	1936-02-22T00:00:00Z	York	the United States	
+John Franklin Enders	male	Nobel Prize in Physiology or Medicine	1954-01-01T00:00:00Z	1897-02-10T00:00:00Z	West Hartford	the United States	1985-09-08T00:00:00Z
+Dickinson W. Richards	male	Nobel Prize in Physiology or Medicine	1956-01-01T00:00:00Z	1895-10-30T00:00:00Z	Orange	the United States	1973-02-23T00:00:00Z
+Randy Schekman	male	Nobel Prize in Physiology or Medicine	2013-01-01T00:00:00Z	1948-12-30T00:00:00Z	Saint Paul	the United States	
 Friedrich Hayek	male	Prize in Economic Sciences in Memory of Alfred Nobel	1974-01-01T00:00:00Z	1899-05-08T00:00:00Z	Vienna	Austria	1992-03-23T00:00:00Z
-Alvin Eliot Roth	male	Prize in Economic Sciences in Memory of Alfred Nobel	2012-01-01T00:00:00Z	1951-12-18T00:00:00Z	New York City	United States of America	
-Alvin Eliot Roth	male	Prize in Economic Sciences in Memory of Alfred Nobel	2012-01-01T00:00:00Z	1951-12-19T00:00:00Z	New York City	United States of America	
+Alvin Eliot Roth	male	Prize in Economic Sciences in Memory of Alfred Nobel	2012-01-01T00:00:00Z	1951-12-18T00:00:00Z	New York City	the United States	
+Alvin Eliot Roth	male	Prize in Economic Sciences in Memory of Alfred Nobel	2012-01-01T00:00:00Z	1951-12-19T00:00:00Z	New York City	the United States	
 Konrad Emil Bloch	male	Nobel Prize in Physiology or Medicine	1964-01-01T00:00:00Z	1912-01-21T00:00:00Z	Nysa	Poland	2000-10-15T00:00:00Z
 Konrad Emil Bloch	male	Nobel Prize in Physiology or Medicine	1964-01-01T00:00:00Z	1912-01-21T00:00:00Z	Nysa	Bohemia	2000-10-15T00:00:00Z
 Konrad Emil Bloch	male	Nobel Prize in Physiology or Medicine	1964-01-01T00:00:00Z	1912-01-21T00:00:00Z	Nysa	Great Moravia	2000-10-15T00:00:00Z
 Hans Krebs	male	Nobel Prize in Physiology or Medicine	1953-01-01T00:00:00Z	1900-08-25T00:00:00Z	Hildesheim	Germany	1981-11-22T00:00:00Z
 Hans Spemann	male	Nobel Prize in Physiology or Medicine	1935-01-01T00:00:00Z	1869-06-27T00:00:00Z	Stuttgart	Germany	1941-09-12T00:00:00Z
 Karl von Frisch	male	Nobel Prize in Physiology or Medicine	1973-01-01T00:00:00Z	1886-11-20T00:00:00Z	Vienna	Austria	1982-06-12T00:00:00Z
-Earl Wilbur Sutherland, Jr.	male	Nobel Prize in Physiology or Medicine	1971-01-01T00:00:00Z	1915-11-19T00:00:00Z	Burlingame	United States of America	1974-03-09T00:00:00Z
+Earl Wilbur Sutherland, Jr.	male	Nobel Prize in Physiology or Medicine	1971-01-01T00:00:00Z	1915-11-19T00:00:00Z	Burlingame	the United States	1974-03-09T00:00:00Z
 Harald zur Hausen	male	Nobel Prize in Physiology or Medicine	2008-01-01T00:00:00Z	1936-03-11T00:00:00Z	Gelsenkirchen	Germany	
 Werner Forssmann	male	Nobel Prize in Physiology or Medicine	1956-01-01T00:00:00Z	1904-08-29T00:00:00Z	Berlin	Germany	1979-06-01T00:00:00Z
 Georges J. F. Köhler	male	Nobel Prize in Physiology or Medicine	1984-01-01T00:00:00Z	1946-04-17T00:00:00Z	Munich	Germany	1995-03-01T00:00:00Z
 Otto Loewi	male	Nobel Prize in Physiology or Medicine	1936-01-01T00:00:00Z	1873-06-03T00:00:00Z	Frankfurt am Main	Germany	1961-12-25T00:00:00Z
 Christiane Nüsslein-Volhard	female	Nobel Prize in Physiology or Medicine	1995-01-01T00:00:00Z	1942-10-20T00:00:00Z	Magdeburg	Germany	
-William P. Murphy	male	Nobel Prize in Physiology or Medicine	1934-01-01T00:00:00Z	1892-02-06T00:00:00Z	Dane County	United States of America	1987-10-09T00:00:00Z
-John Gurdon	male	Nobel Prize in Physiology or Medicine	2012-01-01T00:00:00Z	1933-10-02T00:00:00Z	Hart	United Kingdom	
-James D. Watson	male	Nobel Prize in Physiology or Medicine	1962-01-01T00:00:00Z	1928-04-06T00:00:00Z	Chicago	United States of America	
+William P. Murphy	male	Nobel Prize in Physiology or Medicine	1934-01-01T00:00:00Z	1892-02-06T00:00:00Z	Dane County	the United States	1987-10-09T00:00:00Z
+John Gurdon	male	Nobel Prize in Physiology or Medicine	2012-01-01T00:00:00Z	1933-10-02T00:00:00Z	Hart	the United Kingdom	
+James D. Watson	male	Nobel Prize in Physiology or Medicine	1962-01-01T00:00:00Z	1928-04-06T00:00:00Z	Chicago	the United States	
 Luc Montagnier	male	Nobel Prize in Physiology or Medicine	2008-01-01T00:00:00Z	1932-08-18T00:00:00Z	Chabris	France	
-Bruce Beutler	male	Nobel Prize in Physiology or Medicine	2011-01-01T00:00:00Z	1957-12-29T00:00:00Z	Chicago	United States of America	
-Robert Edwards	male	Nobel Prize in Physiology or Medicine	2010-01-01T00:00:00Z	1925-09-27T00:00:00Z	Batley	United Kingdom	2013-04-10T00:00:00Z
+Bruce Beutler	male	Nobel Prize in Physiology or Medicine	2011-01-01T00:00:00Z	1957-12-29T00:00:00Z	Chicago	the United States	
+Robert Edwards	male	Nobel Prize in Physiology or Medicine	2010-01-01T00:00:00Z	1925-09-27T00:00:00Z	Batley	the United Kingdom	2013-04-10T00:00:00Z
 Maurice Allais	male	Prize in Economic Sciences in Memory of Alfred Nobel	1988-01-01T00:00:00Z	1911-05-31T00:00:00Z	Paris	France	2010-10-09T00:00:00Z
-Robert W. Holley	male	Nobel Prize in Physiology or Medicine	1968-01-01T00:00:00Z	1922-01-28T00:00:00Z	Urbana	United States of America	1993-02-11T00:00:00Z
+Robert W. Holley	male	Nobel Prize in Physiology or Medicine	1968-01-01T00:00:00Z	1922-01-28T00:00:00Z	Urbana	the United States	1993-02-11T00:00:00Z
 Renato Dulbecco	male	Nobel Prize in Physiology or Medicine	1975-01-01T00:00:00Z	1914-02-22T00:00:00Z	Catanzaro	Italy	2012-02-19T00:00:00Z
-Edwin G. Krebs	male	Nobel Prize in Physiology or Medicine	1992-01-01T00:00:00Z	1918-06-06T00:00:00Z	Lansing	United States of America	2009-12-21T00:00:00Z
-Edward Calvin Kendall	male	Nobel Prize in Physiology or Medicine	1950-01-01T00:00:00Z	1886-03-08T00:00:00Z	South Norwalk	United States of America	1972-05-04T00:00:00Z
+Edwin G. Krebs	male	Nobel Prize in Physiology or Medicine	1992-01-01T00:00:00Z	1918-06-06T00:00:00Z	Lansing	the United States	2009-12-21T00:00:00Z
+Edward Calvin Kendall	male	Nobel Prize in Physiology or Medicine	1950-01-01T00:00:00Z	1886-03-08T00:00:00Z	South Norwalk	the United States	1972-05-04T00:00:00Z
 Tjalling Koopmans	male	Prize in Economic Sciences in Memory of Alfred Nobel	1975-01-01T00:00:00Z	1910-08-28T00:00:00Z	's-Graveland	Netherlands	1985-02-26T00:00:00Z
-James Black	male	Nobel Prize in Physiology or Medicine	1988-01-01T00:00:00Z	1924-06-14T00:00:00Z	Uddingston	United Kingdom	2010-03-21T00:00:00Z
+James Black	male	Nobel Prize in Physiology or Medicine	1988-01-01T00:00:00Z	1924-06-14T00:00:00Z	Uddingston	the United Kingdom	2010-03-21T00:00:00Z
 Daniel Bovet	male	Nobel Prize in Physiology or Medicine	1957-01-01T00:00:00Z	1907-03-23T00:00:00Z	Fleurier	Switzerland	1992-04-08T00:00:00Z
 Rolf M. Zinkernagel	male	Nobel Prize in Physiology or Medicine	1996-01-01T00:00:00Z	1944-01-06T00:00:00Z	Riehen	Switzerland	
-John Forbes Nash	male	Prize in Economic Sciences in Memory of Alfred Nobel	1994-01-01T00:00:00Z	1928-06-13T00:00:00Z	Bluefield	United States of America	2015-05-23T00:00:00Z
+John Forbes Nash	male	Prize in Economic Sciences in Memory of Alfred Nobel	1994-01-01T00:00:00Z	1928-06-13T00:00:00Z	Bluefield	the United States	2015-05-23T00:00:00Z
 Santiago Ramón y Cajal	male	Nobel Prize in Physiology or Medicine	1906-01-01T00:00:00Z	1852-05-01T00:00:00Z	Petilla de Aragón	Spain	1934-10-17T00:00:00Z
-Stanley B. Prusiner	male	Nobel Prize in Physiology or Medicine	1997-01-01T00:00:00Z	1942-05-28T00:00:00Z	Des Moines	United States of America	
-Merton Miller	male	Prize in Economic Sciences in Memory of Alfred Nobel	1990-01-01T00:00:00Z	1923-05-16T00:00:00Z	Boston	United States of America	2000-06-03T00:00:00Z
+Stanley B. Prusiner	male	Nobel Prize in Physiology or Medicine	1997-01-01T00:00:00Z	1942-05-28T00:00:00Z	Des Moines	the United States	
+Merton Miller	male	Prize in Economic Sciences in Memory of Alfred Nobel	1990-01-01T00:00:00Z	1923-05-16T00:00:00Z	Boston	the United States	2000-06-03T00:00:00Z
 Ilya Mechnikov	male	Nobel Prize in Physiology or Medicine	1908-01-01T00:00:00Z	1845-05-15T00:00:00Z	Kharkiv	Ukraine	1916-07-15T00:00:00Z
 Ilya Mechnikov	male	Nobel Prize in Physiology or Medicine	1908-01-01T00:00:00Z	1845-05-15T00:00:00Z	Ivanivka	Ukraine	1916-07-15T00:00:00Z
 Ilya Mechnikov	male	Nobel Prize in Physiology or Medicine	1908-01-01T00:00:00Z	1845-05-15T00:00:00Z	Kharkiv	Ukraine	1916-07-16T00:00:00Z
@@ -728,27 +728,27 @@ Frederick Banting	male	Nobel Prize in Physiology or Medicine	1923-01-01T00:00:00
 Albert Szent-Györgyi	male	Nobel Prize in Physiology or Medicine	1937-01-01T00:00:00Z	1893-09-16T00:00:00Z	Budapest	Hungary	1986-10-21T00:00:00Z
 Albert Szent-Györgyi	male	Nobel Prize in Physiology or Medicine	1937-01-01T00:00:00Z	1893-09-16T00:00:00Z	Budapest	Hungary	1986-10-22T00:00:00Z
 Maurice Wilkins	male	Nobel Prize in Physiology or Medicine	1962-01-01T00:00:00Z	1916-12-15T00:00:00Z	Pongaroa	New Zealand	2004-10-05T00:00:00Z
-John Richard Hicks	male	Prize in Economic Sciences in Memory of Alfred Nobel	1972-01-01T00:00:00Z	1904-04-08T00:00:00Z	Royal Leamington Spa	United Kingdom	1989-05-20T00:00:00Z
-John Richard Hicks	male	Prize in Economic Sciences in Memory of Alfred Nobel	1972-01-01T00:00:00Z	1904-04-08T00:00:00Z	Warwick	United Kingdom	1989-05-20T00:00:00Z
-Ronald Coase	male	Prize in Economic Sciences in Memory of Alfred Nobel	1991-01-01T00:00:00Z	1910-12-29T00:00:00Z	London	United Kingdom	2013-09-02T00:00:00Z
+John Richard Hicks	male	Prize in Economic Sciences in Memory of Alfred Nobel	1972-01-01T00:00:00Z	1904-04-08T00:00:00Z	Royal Leamington Spa	the United Kingdom	1989-05-20T00:00:00Z
+John Richard Hicks	male	Prize in Economic Sciences in Memory of Alfred Nobel	1972-01-01T00:00:00Z	1904-04-08T00:00:00Z	Warwick	the United Kingdom	1989-05-20T00:00:00Z
+Ronald Coase	male	Prize in Economic Sciences in Memory of Alfred Nobel	1991-01-01T00:00:00Z	1910-12-29T00:00:00Z	London	the United Kingdom	2013-09-02T00:00:00Z
 Charles Louis Alphonse Laveran	male	Nobel Prize in Physiology or Medicine	1907-01-01T00:00:00Z	1845-06-18T00:00:00Z	Paris	France	1922-05-18T00:00:00Z
 Willem Einthoven	male	Nobel Prize in Physiology or Medicine	1924-01-01T00:00:00Z	1860-05-21T00:00:00Z	Semarang	Indonesia	1927-09-29T00:00:00Z
 Willem Einthoven	male	Nobel Prize in Physiology or Medicine	1924-01-01T00:00:00Z	1860-05-21T00:00:00Z	Samarang	Indonesia	1927-09-29T00:00:00Z
-Gary Becker	male	Prize in Economic Sciences in Memory of Alfred Nobel	1992-01-01T00:00:00Z	1930-12-02T00:00:00Z	Pottsville	United States of America	2014-05-03T00:00:00Z
-Edmund Phelps	male	Prize in Economic Sciences in Memory of Alfred Nobel	2006-01-01T00:00:00Z	1933-07-26T00:00:00Z	Evanston	United States of America	
+Gary Becker	male	Prize in Economic Sciences in Memory of Alfred Nobel	1992-01-01T00:00:00Z	1930-12-02T00:00:00Z	Pottsville	the United States	2014-05-03T00:00:00Z
+Edmund Phelps	male	Prize in Economic Sciences in Memory of Alfred Nobel	2006-01-01T00:00:00Z	1933-07-26T00:00:00Z	Evanston	the United States	
 Simon Kuznets	male	Prize in Economic Sciences in Memory of Alfred Nobel	1971-01-01T00:00:00Z	1901-04-30T00:00:00Z	Pinsk	Belarus	1985-07-08T00:00:00Z
-Kenneth Arrow	male	Prize in Economic Sciences in Memory of Alfred Nobel	1972-01-01T00:00:00Z	1921-08-23T00:00:00Z	New York City	United States of America	2017-02-21T00:00:00Z
-Alan Lloyd Hodgkin	male	Nobel Prize in Physiology or Medicine	1963-01-01T00:00:00Z	1914-02-05T00:00:00Z	Banbury	United Kingdom	1998-12-20T00:00:00Z
+Kenneth Arrow	male	Prize in Economic Sciences in Memory of Alfred Nobel	1972-01-01T00:00:00Z	1921-08-23T00:00:00Z	New York City	the United States	2017-02-21T00:00:00Z
+Alan Lloyd Hodgkin	male	Nobel Prize in Physiology or Medicine	1963-01-01T00:00:00Z	1914-02-05T00:00:00Z	Banbury	the United Kingdom	1998-12-20T00:00:00Z
 Barry Marshall	male	Nobel Prize in Physiology or Medicine	2005-01-01T00:00:00Z	1951-09-30T00:00:00Z	Kalgoorlie	Australia	
-Angus Deaton	male	Prize in Economic Sciences in Memory of Alfred Nobel	2015-01-01T00:00:00Z	1945-10-19T00:00:00Z	Edinburgh	United Kingdom	
+Angus Deaton	male	Prize in Economic Sciences in Memory of Alfred Nobel	2015-01-01T00:00:00Z	1945-10-19T00:00:00Z	Edinburgh	the United Kingdom	
 Gerty Cori	female	Nobel Prize in Physiology or Medicine	1947-01-01T00:00:00Z	1896-08-15T00:00:00Z	Prague	Czech Republic	1957-10-26T00:00:00Z
-Craig Mello	male	Nobel Prize in Physiology or Medicine	2006-01-01T00:00:00Z	1960-10-18T00:00:00Z	New Haven	United States of America	
+Craig Mello	male	Nobel Prize in Physiology or Medicine	2006-01-01T00:00:00Z	1960-10-18T00:00:00Z	New Haven	the United States	
 Johannes Andreas Grib Fibiger	male	Nobel Prize in Physiology or Medicine	1926-01-01T00:00:00Z	1867-04-23T00:00:00Z	Silkeborg	Denmark	1928-01-30T00:00:00Z
-Paul Nurse	male	Nobel Prize in Physiology or Medicine	2001-01-01T00:00:00Z	1949-01-25T00:00:00Z	London	United Kingdom	
-Paul Nurse	male	Nobel Prize in Physiology or Medicine	2001-01-01T00:00:00Z	1949-01-25T00:00:00Z	Norwich	United Kingdom	
+Paul Nurse	male	Nobel Prize in Physiology or Medicine	2001-01-01T00:00:00Z	1949-01-25T00:00:00Z	London	the United Kingdom	
+Paul Nurse	male	Nobel Prize in Physiology or Medicine	2001-01-01T00:00:00Z	1949-01-25T00:00:00Z	Norwich	the United Kingdom	
 Allan McLeod Cormack	male	Nobel Prize in Physiology or Medicine	1979-01-01T00:00:00Z	1924-02-23T00:00:00Z	Johannesburg	South Africa	1998-05-07T00:00:00Z
-Edgar Adrian, 1st Baron Adrian	male	Nobel Prize in Physiology or Medicine	1932-01-01T00:00:00Z	1889-11-30T00:00:00Z	Hampstead	United Kingdom	1977-08-04T00:00:00Z
-John James Rickard Macleod	male	Nobel Prize in Physiology or Medicine	1923-01-01T00:00:00Z	1876-09-06T00:00:00Z	Clunie	United Kingdom	1935-03-16T00:00:00Z
+Edgar Adrian, 1st Baron Adrian	male	Nobel Prize in Physiology or Medicine	1932-01-01T00:00:00Z	1889-11-30T00:00:00Z	Hampstead	the United Kingdom	1977-08-04T00:00:00Z
+John James Rickard Macleod	male	Nobel Prize in Physiology or Medicine	1923-01-01T00:00:00Z	1876-09-06T00:00:00Z	Clunie	the United Kingdom	1935-03-16T00:00:00Z
 Selman Abraham Waksman	male	Nobel Prize in Physiology or Medicine	1952-01-01T00:00:00Z	1888-07-22T00:00:00Z	Nova Priluka	Ukraine	1973-08-16T00:00:00Z
 Albert Claude	male	Nobel Prize in Physiology or Medicine	1974-01-01T00:00:00Z	1898-08-23T00:00:00Z	Neufchâteau	Belgium	1983-05-22T00:00:00Z
 Albert Claude	male	Nobel Prize in Physiology or Medicine	1974-01-01T00:00:00Z	1898-08-24T00:00:00Z	Neufchâteau	Belgium	1983-05-22T00:00:00Z
@@ -756,41 +756,41 @@ Albert Claude	male	Nobel Prize in Physiology or Medicine	1974-01-01T00:00:00Z	18
 Albert Claude	male	Nobel Prize in Physiology or Medicine	1974-01-01T00:00:00Z	1899-08-24T00:00:00Z	Neufchâteau	Belgium	1983-05-22T00:00:00Z
 Daniel Kahneman	male	Prize in Economic Sciences in Memory of Alfred Nobel	2002-01-01T00:00:00Z	1934-03-05T00:00:00Z	Tel Aviv	Israel	
 Severo Ochoa	male	Nobel Prize in Physiology or Medicine	1959-01-01T00:00:00Z	1905-09-24T00:00:00Z	Ḷḷuarca	Spain	1993-11-01T00:00:00Z
-Frederick Hopkins	male	Nobel Prize in Physiology or Medicine	1929-01-01T00:00:00Z	1861-06-20T00:00:00Z	Eastbourne	United Kingdom	1947-05-16T00:00:00Z
-Christian de Duve	male	Nobel Prize in Physiology or Medicine	1974-01-01T00:00:00Z	1917-10-02T00:00:00Z	Thames Ditton	United Kingdom	2013-05-04T00:00:00Z
-David Baltimore	male	Nobel Prize in Physiology or Medicine	1975-01-01T00:00:00Z	1938-03-07T00:00:00Z	New York City	United States of America	
+Frederick Hopkins	male	Nobel Prize in Physiology or Medicine	1929-01-01T00:00:00Z	1861-06-20T00:00:00Z	Eastbourne	the United Kingdom	1947-05-16T00:00:00Z
+Christian de Duve	male	Nobel Prize in Physiology or Medicine	1974-01-01T00:00:00Z	1917-10-02T00:00:00Z	Thames Ditton	the United Kingdom	2013-05-04T00:00:00Z
+David Baltimore	male	Nobel Prize in Physiology or Medicine	1975-01-01T00:00:00Z	1938-03-07T00:00:00Z	New York City	the United States	
 Ulf von Euler	male	Nobel Prize in Physiology or Medicine	1970-01-01T00:00:00Z	1905-02-07T00:00:00Z	Stockholm	Sweden	1983-03-09T00:00:00Z
 Georg von Békésy	male	Nobel Prize in Physiology or Medicine	1961-01-01T00:00:00Z	1899-06-03T00:00:00Z	Budapest	Hungary	1972-06-13T00:00:00Z
-Peter Mansfield	male	Nobel Prize in Physiology or Medicine	2003-01-01T00:00:00Z	1933-10-09T00:00:00Z	Lambeth	United Kingdom	2017-02-08T00:00:00Z
-Joseph L. Goldstein	male	Nobel Prize in Physiology or Medicine	1985-01-01T00:00:00Z	1940-04-18T00:00:00Z	Kingstree	United States of America	
-Alfred Hershey	male	Nobel Prize in Physiology or Medicine	1969-01-01T00:00:00Z	1908-12-04T00:00:00Z	Owosso	United States of America	1997-05-22T00:00:00Z
+Peter Mansfield	male	Nobel Prize in Physiology or Medicine	2003-01-01T00:00:00Z	1933-10-09T00:00:00Z	Lambeth	the United Kingdom	2017-02-08T00:00:00Z
+Joseph L. Goldstein	male	Nobel Prize in Physiology or Medicine	1985-01-01T00:00:00Z	1940-04-18T00:00:00Z	Kingstree	the United States	
+Alfred Hershey	male	Nobel Prize in Physiology or Medicine	1969-01-01T00:00:00Z	1908-12-04T00:00:00Z	Owosso	the United States	1997-05-22T00:00:00Z
 John Harsanyi	male	Prize in Economic Sciences in Memory of Alfred Nobel	1994-01-01T00:00:00Z	1920-05-29T00:00:00Z	Budapest	Hungary	2000-08-09T00:00:00Z
 Arthur Lewis	male	Prize in Economic Sciences in Memory of Alfred Nobel	1979-01-01T00:00:00Z	1915-01-23T00:00:00Z	Castries	Saint Lucia	1991-06-15T00:00:00Z
 egau monaz	male	Nobel Prize in Physiology or Medicine	1949-01-01T00:00:00Z	1874-11-29T00:00:00Z	Avanca	Portugal	1955-12-13T00:00:00Z
 Myron Scholes	male	Prize in Economic Sciences in Memory of Alfred Nobel	1997-01-01T00:00:00Z	1941-07-01T00:00:00Z	Timmins	Canada	
 William Vickrey	male	Prize in Economic Sciences in Memory of Alfred Nobel	1996-01-01T00:00:00Z	1914-06-21T00:00:00Z	Victoria	Canada	1996-10-11T00:00:00Z
-Lee Hartwell	male	Nobel Prize in Physiology or Medicine	2001-01-01T00:00:00Z	1939-10-30T00:00:00Z	Los Angeles	United States of America	
-Alfred G. Gilman	male	Nobel Prize in Physiology or Medicine	1994-01-01T00:00:00Z	1941-07-01T00:00:00Z	New Haven	United States of America	2015-12-23T00:00:00Z
+Lee Hartwell	male	Nobel Prize in Physiology or Medicine	2001-01-01T00:00:00Z	1939-10-30T00:00:00Z	Los Angeles	the United States	
+Alfred G. Gilman	male	Nobel Prize in Physiology or Medicine	1994-01-01T00:00:00Z	1941-07-01T00:00:00Z	New Haven	the United States	2015-12-23T00:00:00Z
 Peter C. Doherty	male	Nobel Prize in Physiology or Medicine	1996-01-01T00:00:00Z	1940-10-15T00:00:00Z	Brisbane	Australia	
-Richard Roberts	male	Nobel Prize in Physiology or Medicine	1993-01-01T00:00:00Z	1943-09-06T00:00:00Z	Derby	United Kingdom	
-Louis Ignarro	male	Nobel Prize in Physiology or Medicine	1998-01-01T00:00:00Z	1941-05-31T00:00:00Z	Brooklyn	United States of America	
-Tim Hunt	male	Nobel Prize in Physiology or Medicine	2001-01-01T00:00:00Z	1943-02-19T00:00:00Z	Neston	United Kingdom	
-E. Donnall Thomas	male	Nobel Prize in Physiology or Medicine	1990-01-01T00:00:00Z	1920-03-15T00:00:00Z	Mart	United States of America	2012-10-20T00:00:00Z
-Clive Granger	male	Prize in Economic Sciences in Memory of Alfred Nobel	2003-01-01T00:00:00Z	1934-09-04T00:00:00Z	Swansea	United Kingdom	2009-05-27T00:00:00Z
+Richard Roberts	male	Nobel Prize in Physiology or Medicine	1993-01-01T00:00:00Z	1943-09-06T00:00:00Z	Derby	the United Kingdom	
+Louis Ignarro	male	Nobel Prize in Physiology or Medicine	1998-01-01T00:00:00Z	1941-05-31T00:00:00Z	Brooklyn	the United States	
+Tim Hunt	male	Nobel Prize in Physiology or Medicine	2001-01-01T00:00:00Z	1943-02-19T00:00:00Z	Neston	the United Kingdom	
+E. Donnall Thomas	male	Nobel Prize in Physiology or Medicine	1990-01-01T00:00:00Z	1920-03-15T00:00:00Z	Mart	the United States	2012-10-20T00:00:00Z
+Clive Granger	male	Prize in Economic Sciences in Memory of Alfred Nobel	2003-01-01T00:00:00Z	1934-09-04T00:00:00Z	Swansea	the United Kingdom	2009-05-27T00:00:00Z
 Abhijit Banerjee	male	Prize in Economic Sciences in Memory of Alfred Nobel	2019-01-01T00:00:00Z	1961-02-21T00:00:00Z	Mumbai	India	
 Bengt Holmström	male	Prize in Economic Sciences in Memory of Alfred Nobel	2016-01-01T00:00:00Z	1949-04-18T00:00:00Z	Helsinki	Finland	
-Richard Thaler	male	Prize in Economic Sciences in Memory of Alfred Nobel	2017-01-01T00:00:00Z	1945-09-12T00:00:00Z	East Orange	United States of America	
-Robert B. Wilson	male	Prize in Economic Sciences in Memory of Alfred Nobel	2020-01-01T00:00:00Z	1937-05-16T00:00:00Z	Geneva	United States of America	
-Oliver Hart	male	Prize in Economic Sciences in Memory of Alfred Nobel	2016-01-01T00:00:00Z	1948-10-09T00:00:00Z	London	United Kingdom	
-James Rothman	male	Nobel Prize in Physiology or Medicine	2013-01-01T00:00:00Z	1950-11-03T00:00:00Z	Haverhill	United States of America	
-Gregg L. Semenza	male	Nobel Prize in Physiology or Medicine	2019-01-01T00:00:00Z	1956-07-12T00:00:00Z	Flushing	United States of America	
+Richard Thaler	male	Prize in Economic Sciences in Memory of Alfred Nobel	2017-01-01T00:00:00Z	1945-09-12T00:00:00Z	East Orange	the United States	
+Robert B. Wilson	male	Prize in Economic Sciences in Memory of Alfred Nobel	2020-01-01T00:00:00Z	1937-05-16T00:00:00Z	Geneva	the United States	
+Oliver Hart	male	Prize in Economic Sciences in Memory of Alfred Nobel	2016-01-01T00:00:00Z	1948-10-09T00:00:00Z	London	the United Kingdom	
+James Rothman	male	Nobel Prize in Physiology or Medicine	2013-01-01T00:00:00Z	1950-11-03T00:00:00Z	Haverhill	the United States	
+Gregg L. Semenza	male	Nobel Prize in Physiology or Medicine	2019-01-01T00:00:00Z	1956-07-12T00:00:00Z	Flushing	the United States	
 Ada Yonath	female	Nobel Prize in Chemistry	2009-01-01T00:00:00Z	1939-06-22T00:00:00Z	Jerusalem	Israel	
 Irène Joliot-Curie	female	Nobel Prize in Chemistry	1935-01-01T00:00:00Z	1897-09-12T00:00:00Z	13th arrondissement of Paris	France	1956-03-17T00:00:00Z
 Reinhard Selten	male	Prize in Economic Sciences in Memory of Alfred Nobel	1994-01-01T00:00:00Z	1930-10-05T00:00:00Z	Wrocław	Poland	2016-08-23T00:00:00Z
 Mario Molina	male	Nobel Prize in Chemistry	1995-01-01T00:00:00Z	1943-03-19T00:00:00Z	Mexico City	Mexico	2020-10-07T00:00:00Z
 Ernst Otto Fischer	male	Nobel Prize in Chemistry	1973-01-01T00:00:00Z	1918-11-10T00:00:00Z	Solln	Germany	2007-07-23T00:00:00Z
 Hermann Staudinger	male	Nobel Prize in Chemistry	1953-01-01T00:00:00Z	1881-03-23T00:00:00Z	Worms	Germany	1965-09-08T00:00:00Z
-Glenn Seaborg	male	Nobel Prize in Chemistry	1951-01-01T00:00:00Z	1912-04-19T00:00:00Z	Ishpeming	United States of America	1999-02-25T00:00:00Z
+Glenn Seaborg	male	Nobel Prize in Chemistry	1951-01-01T00:00:00Z	1912-04-19T00:00:00Z	Ishpeming	the United States	1999-02-25T00:00:00Z
 Otto Wallach	male	Nobel Prize in Chemistry	1910-01-01T00:00:00Z	1847-03-27T00:00:00Z	Königsberg	Nazi Germany	1931-02-26T00:00:00Z
 Otto Wallach	male	Nobel Prize in Chemistry	1910-01-01T00:00:00Z	1847-03-27T00:00:00Z	Königsberg	Soviet Union	1931-02-26T00:00:00Z
 Otto Wallach	male	Nobel Prize in Chemistry	1910-01-01T00:00:00Z	1847-03-27T00:00:00Z	Königsberg	Russian Empire	1931-02-26T00:00:00Z
@@ -801,93 +801,93 @@ Kurt Alder	male	Nobel Prize in Chemistry	1950-01-01T00:00:00Z	1902-07-10T00:00:0
 Heinrich Otto Wieland	male	Nobel Prize in Chemistry	1927-01-01T00:00:00Z	1877-06-04T00:00:00Z	Pforzheim	Germany	1957-08-05T00:00:00Z
 Otto Diels	male	Nobel Prize in Chemistry	1950-01-01T00:00:00Z	1876-01-23T00:00:00Z	Hamburg	Germany	1954-03-07T00:00:00Z
 Robert Huber	male	Nobel Prize in Chemistry	1988-01-01T00:00:00Z	1937-02-20T00:00:00Z	Munich	Germany	
-Brian Kobilka	male	Nobel Prize in Chemistry	2012-01-01T00:00:00Z	1955-05-30T00:00:00Z	Little Falls	United States of America	
+Brian Kobilka	male	Nobel Prize in Chemistry	2012-01-01T00:00:00Z	1955-05-30T00:00:00Z	Little Falls	the United States	
 Svante August Arrhenius	male	Nobel Prize in Chemistry	1903-01-01T00:00:00Z	1859-02-19T00:00:00Z	Balingsta parish	Sweden	1927-10-02T00:00:00Z
 Stefan Hell	male	Nobel Prize in Chemistry	2014-01-01T00:00:00Z	1962-12-23T00:00:00Z	Arad	Romania	
-Peter Agre	male	Nobel Prize in Chemistry	2003-01-01T00:00:00Z	1949-01-30T00:00:00Z	Northfield	United States of America	
-Paul D. Boyer	male	Nobel Prize in Chemistry	1997-01-01T00:00:00Z	1918-07-31T00:00:00Z	Provo	United States of America	2018-06-02T00:00:00Z
-Wendell Meredith Stanley	male	Nobel Prize in Chemistry	1946-01-01T00:00:00Z	1904-08-16T00:00:00Z	Ridgeville	United States of America	1971-06-15T00:00:00Z
+Peter Agre	male	Nobel Prize in Chemistry	2003-01-01T00:00:00Z	1949-01-30T00:00:00Z	Northfield	the United States	
+Paul D. Boyer	male	Nobel Prize in Chemistry	1997-01-01T00:00:00Z	1918-07-31T00:00:00Z	Provo	the United States	2018-06-02T00:00:00Z
+Wendell Meredith Stanley	male	Nobel Prize in Chemistry	1946-01-01T00:00:00Z	1904-08-16T00:00:00Z	Ridgeville	the United States	1971-06-15T00:00:00Z
 Akira Suzuki	male	Nobel Prize in Chemistry	2010-01-01T00:00:00Z	1930-09-12T00:00:00Z	Mukawa	Japan	
-Jerome Karle	male	Nobel Prize in Chemistry	1985-01-01T00:00:00Z	1918-06-18T00:00:00Z	New York City	United States of America	2013-06-06T00:00:00Z
-John Fenn	male	Nobel Prize in Chemistry	2002-01-01T00:00:00Z	1917-06-15T00:00:00Z	New York City	United States of America	2010-12-10T00:00:00Z
-Richard Smalley	male	Nobel Prize in Chemistry	1996-01-01T00:00:00Z	1943-06-06T00:00:00Z	Akron	United States of America	2005-10-28T00:00:00Z
-Herbert A. Hauptman	male	Nobel Prize in Chemistry	1985-01-01T00:00:00Z	1917-02-14T00:00:00Z	New York City	United States of America	2011-10-23T00:00:00Z
-Robert Curl	male	Nobel Prize in Chemistry	1996-01-01T00:00:00Z	1933-08-23T00:00:00Z	Alice	United States of America	
+Jerome Karle	male	Nobel Prize in Chemistry	1985-01-01T00:00:00Z	1918-06-18T00:00:00Z	New York City	the United States	2013-06-06T00:00:00Z
+John Fenn	male	Nobel Prize in Chemistry	2002-01-01T00:00:00Z	1917-06-15T00:00:00Z	New York City	the United States	2010-12-10T00:00:00Z
+Richard Smalley	male	Nobel Prize in Chemistry	1996-01-01T00:00:00Z	1943-06-06T00:00:00Z	Akron	the United States	2005-10-28T00:00:00Z
+Herbert A. Hauptman	male	Nobel Prize in Chemistry	1985-01-01T00:00:00Z	1917-02-14T00:00:00Z	New York City	the United States	2011-10-23T00:00:00Z
+Robert Curl	male	Nobel Prize in Chemistry	1996-01-01T00:00:00Z	1933-08-23T00:00:00Z	Alice	the United States	
 Koichi Tanaka	male	Nobel Prize in Chemistry	2002-01-01T00:00:00Z	1959-08-03T00:00:00Z	Toyama	Japan	
 Richard R. Ernst	male	Nobel Prize in Chemistry	1991-01-01T00:00:00Z	1933-08-14T00:00:00Z	Winterthur	Switzerland	2021-06-04T00:00:00Z
 John Cornforth	male	Nobel Prize in Chemistry	1975-01-01T00:00:00Z	1917-09-07T00:00:00Z	Sydney	Australia	2013-12-08T00:00:00Z
-Elinor Ostrom	female	Prize in Economic Sciences in Memory of Alfred Nobel	2009-01-01T00:00:00Z	1933-08-07T00:00:00Z	Los Angeles	United States of America	2012-06-12T00:00:00Z
+Elinor Ostrom	female	Prize in Economic Sciences in Memory of Alfred Nobel	2009-01-01T00:00:00Z	1933-08-07T00:00:00Z	Los Angeles	the United States	2012-06-12T00:00:00Z
 Ryōji Noyori	male	Nobel Prize in Chemistry	2001-01-01T00:00:00Z	1938-09-03T00:00:00Z	Ashiya	Japan	
 Artturi Ilmari Virtanen	male	Nobel Prize in Chemistry	1945-01-01T00:00:00Z	1895-01-15T00:00:00Z	Helsinki	Finland	1973-11-11T00:00:00Z
-Robert Solow	male	Prize in Economic Sciences in Memory of Alfred Nobel	1987-01-01T00:00:00Z	1924-08-23T00:00:00Z	Brooklyn	United States of America	
+Robert Solow	male	Prize in Economic Sciences in Memory of Alfred Nobel	1987-01-01T00:00:00Z	1924-08-23T00:00:00Z	Brooklyn	the United States	
 Jaroslav Heyrovský	male	Nobel Prize in Chemistry	1959-01-01T00:00:00Z	1890-12-20T00:00:00Z	Prague	Czech Republic	1967-03-27T00:00:00Z
-Roger D. Kornberg	male	Nobel Prize in Chemistry	2006-01-01T00:00:00Z	1947-04-24T00:00:00Z	St. Louis	United States of America	
-Paul Flory	male	Nobel Prize in Chemistry	1974-01-01T00:00:00Z	1910-06-19T00:00:00Z	Sterling	United States of America	1985-09-08T00:00:00Z
+Roger D. Kornberg	male	Nobel Prize in Chemistry	2006-01-01T00:00:00Z	1947-04-24T00:00:00Z	St. Louis	the United States	
+Paul Flory	male	Nobel Prize in Chemistry	1974-01-01T00:00:00Z	1910-06-19T00:00:00Z	Sterling	the United States	1985-09-08T00:00:00Z
 Jan Tinbergen	male	Prize in Economic Sciences in Memory of Alfred Nobel	1969-01-01T00:00:00Z	1903-04-12T00:00:00Z	The Hague	Netherlands	1994-06-09T00:00:00Z
-Arthur Harden	male	Nobel Prize in Chemistry	1929-01-01T00:00:00Z	1865-10-12T00:00:00Z	Manchester	United Kingdom	1940-06-17T00:00:00Z
-Willard Libby	male	Nobel Prize in Chemistry	1960-01-01T00:00:00Z	1908-12-17T00:00:00Z	Grand Valley	United States of America	1980-09-08T00:00:00Z
+Arthur Harden	male	Nobel Prize in Chemistry	1929-01-01T00:00:00Z	1865-10-12T00:00:00Z	Manchester	the United Kingdom	1940-06-17T00:00:00Z
+Willard Libby	male	Nobel Prize in Chemistry	1960-01-01T00:00:00Z	1908-12-17T00:00:00Z	Grand Valley	the United States	1980-09-08T00:00:00Z
 George Andrew Olah	male	Nobel Prize in Chemistry	1994-01-01T00:00:00Z	1927-05-22T00:00:00Z	Budapest	Hungary	2017-03-08T00:00:00Z
 Yves Chauvin	male	Nobel Prize in Chemistry	2005-01-01T00:00:00Z	1930-10-10T00:00:00Z	Menen	Belgium	2015-01-27T00:00:00Z
-James M. Buchanan	male	Prize in Economic Sciences in Memory of Alfred Nobel	1986-01-01T00:00:00Z	1919-10-03T00:00:00Z	Murfreesboro	United States of America	2013-01-09T00:00:00Z
-Peter D. Mitchell	male	Nobel Prize in Chemistry	1978-01-01T00:00:00Z	1920-09-29T00:00:00Z	Surrey	United Kingdom	1992-04-10T00:00:00Z
+James M. Buchanan	male	Prize in Economic Sciences in Memory of Alfred Nobel	1986-01-01T00:00:00Z	1919-10-03T00:00:00Z	Murfreesboro	the United States	2013-01-09T00:00:00Z
+Peter D. Mitchell	male	Nobel Prize in Chemistry	1978-01-01T00:00:00Z	1920-09-29T00:00:00Z	Surrey	the United Kingdom	1992-04-10T00:00:00Z
 Trygve Haavelmo	male	Prize in Economic Sciences in Memory of Alfred Nobel	1989-01-01T00:00:00Z	1911-12-13T00:00:00Z	Skedsmo	Norway	1999-07-28T00:00:00Z
-James Tobin	male	Prize in Economic Sciences in Memory of Alfred Nobel	1981-01-01T00:00:00Z	1918-03-05T00:00:00Z	Champaign	United States of America	2002-03-11T00:00:00Z
-Walter Gilbert	male	Nobel Prize in Chemistry	1980-01-01T00:00:00Z	1932-03-21T00:00:00Z	Boston	United States of America	
+James Tobin	male	Prize in Economic Sciences in Memory of Alfred Nobel	1981-01-01T00:00:00Z	1918-03-05T00:00:00Z	Champaign	the United States	2002-03-11T00:00:00Z
+Walter Gilbert	male	Nobel Prize in Chemistry	1980-01-01T00:00:00Z	1932-03-21T00:00:00Z	Boston	the United States	
 Kenichi Fukui	male	Nobel Prize in Chemistry	1981-01-01T00:00:00Z	1918-10-04T00:00:00Z	Heijō	Japan	1998-01-09T00:00:00Z
-Richard Stone	male	Prize in Economic Sciences in Memory of Alfred Nobel	1984-01-01T00:00:00Z	1913-08-30T00:00:00Z	London	United Kingdom	1991-12-06T00:00:00Z
-George Akerlof	male	Prize in Economic Sciences in Memory of Alfred Nobel	2001-01-01T00:00:00Z	1940-06-17T00:00:00Z	New Haven	United States of America	
-Robert Bruce Merrifield	male	Nobel Prize in Chemistry	1984-01-01T00:00:00Z	1921-07-15T00:00:00Z	Fort Worth	United States of America	2006-05-14T00:00:00Z
-Irwin Rose	male	Nobel Prize in Chemistry	2004-01-01T00:00:00Z	1926-07-16T00:00:00Z	Brooklyn	United States of America	2015-06-02T00:00:00Z
-Michael Smith	male	Nobel Prize in Chemistry	1993-01-01T00:00:00Z	1932-04-26T00:00:00Z	Blackpool	United Kingdom	2000-10-04T00:00:00Z
+Richard Stone	male	Prize in Economic Sciences in Memory of Alfred Nobel	1984-01-01T00:00:00Z	1913-08-30T00:00:00Z	London	the United Kingdom	1991-12-06T00:00:00Z
+George Akerlof	male	Prize in Economic Sciences in Memory of Alfred Nobel	2001-01-01T00:00:00Z	1940-06-17T00:00:00Z	New Haven	the United States	
+Robert Bruce Merrifield	male	Nobel Prize in Chemistry	1984-01-01T00:00:00Z	1921-07-15T00:00:00Z	Fort Worth	the United States	2006-05-14T00:00:00Z
+Irwin Rose	male	Nobel Prize in Chemistry	2004-01-01T00:00:00Z	1926-07-16T00:00:00Z	Brooklyn	the United States	2015-06-02T00:00:00Z
+Michael Smith	male	Nobel Prize in Chemistry	1993-01-01T00:00:00Z	1932-04-26T00:00:00Z	Blackpool	the United Kingdom	2000-10-04T00:00:00Z
 Aaron Ciechanover	male	Nobel Prize in Chemistry	2004-01-01T00:00:00Z	1947-10-01T00:00:00Z	Haifa	Israel	
-Robert S. Mulliken	male	Nobel Prize in Chemistry	1966-01-01T00:00:00Z	1896-06-07T00:00:00Z	Newburyport	United States of America	1986-10-31T00:00:00Z
+Robert S. Mulliken	male	Nobel Prize in Chemistry	1966-01-01T00:00:00Z	1896-06-07T00:00:00Z	Newburyport	the United States	1986-10-31T00:00:00Z
 Giulio Natta	male	Nobel Prize in Chemistry	1963-01-01T00:00:00Z	1903-02-26T00:00:00Z	Imperia	Italy	1979-05-02T00:00:00Z
-Ronald George Wreyford Norrish	male	Nobel Prize in Chemistry	1967-01-01T00:00:00Z	1897-11-09T00:00:00Z	Cambridge	United Kingdom	1978-06-07T00:00:00Z
+Ronald George Wreyford Norrish	male	Nobel Prize in Chemistry	1967-01-01T00:00:00Z	1897-11-09T00:00:00Z	Cambridge	the United Kingdom	1978-06-07T00:00:00Z
 John Polanyi	male	Nobel Prize in Chemistry	1986-01-01T00:00:00Z	1929-01-23T00:00:00Z	Berlin	Germany	
 Rudolph A. Marcus	male	Nobel Prize in Chemistry	1992-01-01T00:00:00Z	1923-07-21T00:00:00Z	Montreal	Canada	
-George Stigler	male	Prize in Economic Sciences in Memory of Alfred Nobel	1982-01-01T00:00:00Z	1911-01-17T00:00:00Z	Seattle	United States of America	1991-12-01T00:00:00Z
-George Stigler	male	Prize in Economic Sciences in Memory of Alfred Nobel	1982-01-01T00:00:00Z	1911-01-17T00:00:00Z	Renton	United States of America	1991-12-01T00:00:00Z
-William F. Sharpe	male	Prize in Economic Sciences in Memory of Alfred Nobel	1990-01-01T00:00:00Z	1934-06-16T00:00:00Z	Boston	United States of America	
-William F. Sharpe	male	Prize in Economic Sciences in Memory of Alfred Nobel	1990-01-01T00:00:00Z	1934-06-16T00:00:00Z	Cambridge	United States of America	
-Geoffrey Wilkinson	male	Nobel Prize in Chemistry	1973-01-01T00:00:00Z	1921-07-14T00:00:00Z	Todmorden	United Kingdom	1996-09-26T00:00:00Z
-M. Stanley Whittingham	male	Nobel Prize in Chemistry	2019-01-01T00:00:00Z	1941-12-22T00:00:00Z	Nottingham	United Kingdom	
-Robert C. Merton	male	Prize in Economic Sciences in Memory of Alfred Nobel	1997-01-01T00:00:00Z	1944-07-31T00:00:00Z	New York City	United States of America	
-Robert J. Shiller	male	Prize in Economic Sciences in Memory of Alfred Nobel	2013-01-01T00:00:00Z	1946-03-29T00:00:00Z	Detroit	United States of America	
-William Nordhaus	male	Prize in Economic Sciences in Memory of Alfred Nobel	2018-01-01T00:00:00Z	1941-05-31T00:00:00Z	Albuquerque	United States of America	
+George Stigler	male	Prize in Economic Sciences in Memory of Alfred Nobel	1982-01-01T00:00:00Z	1911-01-17T00:00:00Z	Seattle	the United States	1991-12-01T00:00:00Z
+George Stigler	male	Prize in Economic Sciences in Memory of Alfred Nobel	1982-01-01T00:00:00Z	1911-01-17T00:00:00Z	Renton	the United States	1991-12-01T00:00:00Z
+William F. Sharpe	male	Prize in Economic Sciences in Memory of Alfred Nobel	1990-01-01T00:00:00Z	1934-06-16T00:00:00Z	Boston	the United States	
+William F. Sharpe	male	Prize in Economic Sciences in Memory of Alfred Nobel	1990-01-01T00:00:00Z	1934-06-16T00:00:00Z	Cambridge	the United States	
+Geoffrey Wilkinson	male	Nobel Prize in Chemistry	1973-01-01T00:00:00Z	1921-07-14T00:00:00Z	Todmorden	the United Kingdom	1996-09-26T00:00:00Z
+M. Stanley Whittingham	male	Nobel Prize in Chemistry	2019-01-01T00:00:00Z	1941-12-22T00:00:00Z	Nottingham	the United Kingdom	
+Robert C. Merton	male	Prize in Economic Sciences in Memory of Alfred Nobel	1997-01-01T00:00:00Z	1944-07-31T00:00:00Z	New York City	the United States	
+Robert J. Shiller	male	Prize in Economic Sciences in Memory of Alfred Nobel	2013-01-01T00:00:00Z	1946-03-29T00:00:00Z	Detroit	the United States	
+William Nordhaus	male	Prize in Economic Sciences in Memory of Alfred Nobel	2018-01-01T00:00:00Z	1941-05-31T00:00:00Z	Albuquerque	the United States	
 John B. Goodenough	male	Nobel Prize in Chemistry	2019-01-01T00:00:00Z	1922-07-25T00:00:00Z	Jena	Germany	
-William Ramsay	male	Nobel Prize in Chemistry	1904-01-01T00:00:00Z	1852-10-02T00:00:00Z	Glasgow	United Kingdom	1916-07-23T00:00:00Z
-Paul Milgrom	male	Prize in Economic Sciences in Memory of Alfred Nobel	2020-01-01T00:00:00Z	1948-04-20T00:00:00Z	Detroit	United States of America	
-Greg Winter	male	Nobel Prize in Chemistry	2018-01-01T00:00:00Z	1951-04-14T00:00:00Z	Leicester	United Kingdom	
-Michael Kremer	male	Prize in Economic Sciences in Memory of Alfred Nobel	2019-01-01T00:00:00Z	1964-11-12T00:00:00Z	New York City	United States of America	
-Barry C. Barish	male	Nobel Prize in Physics	2017-01-01T00:00:00Z	1936-01-27T00:00:00Z	Omaha	United States of America	
+William Ramsay	male	Nobel Prize in Chemistry	1904-01-01T00:00:00Z	1852-10-02T00:00:00Z	Glasgow	the United Kingdom	1916-07-23T00:00:00Z
+Paul Milgrom	male	Prize in Economic Sciences in Memory of Alfred Nobel	2020-01-01T00:00:00Z	1948-04-20T00:00:00Z	Detroit	the United States	
+Greg Winter	male	Nobel Prize in Chemistry	2018-01-01T00:00:00Z	1951-04-14T00:00:00Z	Leicester	the United Kingdom	
+Michael Kremer	male	Prize in Economic Sciences in Memory of Alfred Nobel	2019-01-01T00:00:00Z	1964-11-12T00:00:00Z	New York City	the United States	
+Barry C. Barish	male	Nobel Prize in Physics	2017-01-01T00:00:00Z	1936-01-27T00:00:00Z	Omaha	the United States	
 Kazuo Ishiguro	male	Nobel Prize in Literature	2017-01-01T00:00:00Z	1954-11-08T00:00:00Z	Nagasaki	Japan	
 Arthur B. McDonald	male	Nobel Prize in Physics	2015-01-01T00:00:00Z	1943-08-29T00:00:00Z	Sydney	Canada	
 Joachim Frank	male	Nobel Prize in Chemistry	2017-01-01T00:00:00Z	1940-09-12T00:00:00Z	Weidenau	Germany	
-George P. Smith	male	Nobel Prize in Chemistry	2018-01-01T00:00:00Z	1941-03-10T00:00:00Z	Norwalk	United States of America	
+George P. Smith	male	Nobel Prize in Chemistry	2018-01-01T00:00:00Z	1941-03-10T00:00:00Z	Norwalk	the United States	
 Donna Strickland	female	Nobel Prize in Physics	2018-01-01T00:00:00Z	1959-05-27T00:00:00Z	Guelph	Canada	
 Abiy Ahmed Ali	male	Nobel Peace Prize	2019-01-01T00:00:00Z	1976-08-15T00:00:00Z	Beshasha	Ethiopia	
 Michael Levitt	male	Nobel Prize in Chemistry	2013-01-01T00:00:00Z	1947-05-09T00:00:00Z	Pretoria	South Africa	
 Ben Feringa	male	Nobel Prize in Chemistry	2016-01-01T00:00:00Z	1951-05-18T00:00:00Z	Barger-Compascuum	Netherlands	
-Paul L. Modrich	male	Nobel Prize in Chemistry	2015-01-01T00:00:00Z	1946-06-13T00:00:00Z	Raton	United States of America	
+Paul L. Modrich	male	Nobel Prize in Chemistry	2015-01-01T00:00:00Z	1946-06-13T00:00:00Z	Raton	the United States	
 Emmanuelle Charpentier	female	Nobel Prize in Chemistry	2020-01-01T00:00:00Z	1968-12-11T00:00:00Z	Juvisy-sur-Orge	France	
-John O'Keefe	male	Nobel Prize in Physiology or Medicine	2014-01-01T00:00:00Z	1939-11-18T00:00:00Z	New York City	United States of America	
-Peter J. Ratcliffe	male	Nobel Prize in Physiology or Medicine	2019-01-01T00:00:00Z	1954-05-14T00:00:00Z	Morecambe	United Kingdom	
+John O'Keefe	male	Nobel Prize in Physiology or Medicine	2014-01-01T00:00:00Z	1939-11-18T00:00:00Z	New York City	the United States	
+Peter J. Ratcliffe	male	Nobel Prize in Physiology or Medicine	2019-01-01T00:00:00Z	1954-05-14T00:00:00Z	Morecambe	the United Kingdom	
 Jean-Pierre Sauvage	male	Nobel Prize in Chemistry	2016-01-01T00:00:00Z	1944-10-21T00:00:00Z	Paris	France	
-Harvey J. Alter	male	Nobel Prize in Physiology or Medicine	2020-01-01T00:00:00Z	1935-09-12T00:00:00Z	New York City	United States of America	
-James P. Allison	male	Nobel Prize in Physiology or Medicine	2018-01-01T00:00:00Z	1948-08-07T00:00:00Z	Alice	United States of America	
+Harvey J. Alter	male	Nobel Prize in Physiology or Medicine	2020-01-01T00:00:00Z	1935-09-12T00:00:00Z	New York City	the United States	
+James P. Allison	male	Nobel Prize in Physiology or Medicine	2018-01-01T00:00:00Z	1948-08-07T00:00:00Z	Alice	the United States	
 Ōsumi Yoshinori	male	Nobel Prize in Physiology or Medicine	2016-01-01T00:00:00Z	1945-02-09T00:00:00Z	Fukuoka	Japan	
 Satoshi Ōmura	male	Nobel Prize in Physiology or Medicine	2015-01-01T00:00:00Z	1935-07-12T00:00:00Z	Kamiyama	Japan	
-Charles M. Rice	male	Nobel Prize in Physiology or Medicine	2020-01-01T00:00:00Z	1952-08-25T00:00:00Z	Sacramento	United States of America	
-Michael Houghton	male	Nobel Prize in Physiology or Medicine	2020-01-01T00:00:00Z	1949-01-01T00:00:00Z	London	United Kingdom	
+Charles M. Rice	male	Nobel Prize in Physiology or Medicine	2020-01-01T00:00:00Z	1952-08-25T00:00:00Z	Sacramento	the United States	
+Michael Houghton	male	Nobel Prize in Physiology or Medicine	2020-01-01T00:00:00Z	1949-01-01T00:00:00Z	London	the United Kingdom	
 Tasuku Honjo	male	Nobel Prize in Physiology or Medicine	2018-01-01T00:00:00Z	1942-01-27T00:00:00Z	Kyoto	Japan	
 Edvard Moser	male	Nobel Prize in Physiology or Medicine	2014-01-01T00:00:00Z	1962-04-27T00:00:00Z	Ålesund	Norway	
 Tu Youyou	female	Nobel Prize in Physiology or Medicine	2015-01-01T00:00:00Z	1930-12-30T00:00:00Z	Yin County	People's Republic of China	
-Paul M. Romer	male	Prize in Economic Sciences in Memory of Alfred Nobel	2018-01-01T00:00:00Z	1955-11-06T00:00:00Z	Denver	United States of America	
-Lars Peter Hansen	male	Prize in Economic Sciences in Memory of Alfred Nobel	2013-01-01T00:00:00Z	1952-10-26T00:00:00Z	Urbana	United States of America	
-William G. Kaelin	male	Nobel Prize in Physiology or Medicine	2019-01-01T00:00:00Z	1957-11-23T00:00:00Z	New York City	United States of America	
+Paul M. Romer	male	Prize in Economic Sciences in Memory of Alfred Nobel	2018-01-01T00:00:00Z	1955-11-06T00:00:00Z	Denver	the United States	
+Lars Peter Hansen	male	Prize in Economic Sciences in Memory of Alfred Nobel	2013-01-01T00:00:00Z	1952-10-26T00:00:00Z	Urbana	the United States	
+William G. Kaelin	male	Nobel Prize in Physiology or Medicine	2019-01-01T00:00:00Z	1957-11-23T00:00:00Z	New York City	the United States	
 Harry Martinson	male	Nobel Prize in Literature	1974-01-01T00:00:00Z	1904-05-06T00:00:00Z	Q10541678	Sweden	1978-02-11T00:00:00Z
-Kenneth G. Wilson	male	Nobel Prize in Physics	1982-01-01T00:00:00Z	1936-06-08T00:00:00Z	Waltham	United States of America	2013-06-15T00:00:00Z
-John L. Hall	male	Nobel Prize in Physics	2005-01-01T00:00:00Z	1934-08-21T00:00:00Z	Denver	United States of America	
+Kenneth G. Wilson	male	Nobel Prize in Physics	1982-01-01T00:00:00Z	1936-06-08T00:00:00Z	Waltham	the United States	2013-06-15T00:00:00Z
+John L. Hall	male	Nobel Prize in Physics	2005-01-01T00:00:00Z	1934-08-21T00:00:00Z	Denver	the United States	
 Patrick Modiano	male	Nobel Prize in Literature	2014-01-01T00:00:00Z	1945-07-30T00:00:00Z	Boulogne-Billancourt	France	
 Carl Spitteler	male	Nobel Prize in Literature	1919-01-01T00:00:00Z	1845-04-24T00:00:00Z	Liestal	Switzerland	1924-12-29T00:00:00Z
 Alice Munro	female	Nobel Prize in Literature	2013-01-01T00:00:00Z	1931-07-10T00:00:00Z	Wingham	Canada	
@@ -899,7 +899,7 @@ Kailash Satyarthi	male	Nobel Peace Prize	2014-01-01T00:00:00Z	1954-01-11T00:00:0
 Kailash Satyarthi	male	Nobel Peace Prize	2014-01-01T00:00:00Z	1954-01-11T00:00:00Z	Vidisha	India	
 Nadia Murad Basee	female	Nobel Peace Prize	2018-01-01T00:00:00Z	1993-01-01T00:00:00Z	Kocho	Iraq	
 Tomas Lindahl	male	Nobel Prize in Chemistry	2015-01-01T00:00:00Z	1938-01-28T00:00:00Z	Stockholm	Sweden	
-Frances Arnold	female	Nobel Prize in Chemistry	2018-01-01T00:00:00Z	1956-07-25T00:00:00Z	Pittsburgh	United States of America	
+Frances Arnold	female	Nobel Prize in Chemistry	2018-01-01T00:00:00Z	1956-07-25T00:00:00Z	Pittsburgh	the United States	
 Akira Yoshino	male	Nobel Prize in Chemistry	2019-01-01T00:00:00Z	1948-01-30T00:00:00Z	Suita	Japan	
 Arieh Warshel	male	Nobel Prize in Chemistry	2013-01-01T00:00:00Z	1940-11-20T00:00:00Z	Sde Nahum	Israel	
 Gunnar Myrdal	male	Prize in Economic Sciences in Memory of Alfred Nobel	1974-01-01T00:00:00Z	1898-12-06T00:00:00Z	Skattunge Parish	Sweden	1987-05-17T00:00:00Z
@@ -907,29 +907,29 @@ Hugo Theorell	male	Nobel Prize in Physiology or Medicine	1955-01-01T00:00:00Z	19
 Isamu Akasaki	male	Nobel Prize in Physics	2014-01-01T00:00:00Z	1929-01-30T00:00:00Z	Chiran	Japan	2021-04-01T00:00:00Z
 Rainer Weiss	male	Nobel Prize in Physics	2017-01-01T00:00:00Z	1932-09-29T00:00:00Z	Berlin	Germany	
 Takaaki Kajita	male	Nobel Prize in Physics	2015-01-01T00:00:00Z	1959-03-09T00:00:00Z	Higashimatsuyama	Japan	
-Alexander Fleming	male	Nobel Prize in Physiology or Medicine	1945-01-01T00:00:00Z	1881-08-06T00:00:00Z	Lochfield	United Kingdom	1955-03-11T00:00:00Z
+Alexander Fleming	male	Nobel Prize in Physiology or Medicine	1945-01-01T00:00:00Z	1881-08-06T00:00:00Z	Lochfield	the United Kingdom	1955-03-11T00:00:00Z
 Robert Koch	male	Nobel Prize in Physiology or Medicine	1905-01-01T00:00:00Z	1843-12-11T00:00:00Z	Clausthal	Germany	1910-05-27T00:00:00Z
 Robert Koch	male	Nobel Prize in Physiology or Medicine	1905-01-01T00:00:00Z	1843-12-11T00:00:00Z	Clausthal	Nazi Germany	1910-05-27T00:00:00Z
 Robert Koch	male	Nobel Prize in Physiology or Medicine	1905-01-01T00:00:00Z	1843-12-11T00:00:00Z	Clausthal	Weimar Republic	1910-05-27T00:00:00Z
 Christiaan Eijkman	male	Nobel Prize in Physiology or Medicine	1929-01-01T00:00:00Z	1858-08-11T00:00:00Z	Nijkerk	Netherlands	1930-11-05T00:00:00Z
 Ragnar Frisch	male	Prize in Economic Sciences in Memory of Alfred Nobel	1969-01-01T00:00:00Z	1895-03-03T00:00:00Z	Christiania	Norway	1973-01-31T00:00:00Z
-Michael Rosbash	male	Nobel Prize in Physiology or Medicine	2017-01-01T00:00:00Z	1944-03-07T00:00:00Z	Kansas City	United States of America	
-Jeffrey C. Hall	male	Nobel Prize in Physiology or Medicine	2017-01-01T00:00:00Z	1945-05-03T00:00:00Z	Brooklyn	United States of America	
-Michael W. Young	male	Nobel Prize in Physiology or Medicine	2017-01-01T00:00:00Z	1949-03-28T00:00:00Z	Miami	United States of America	
+Michael Rosbash	male	Nobel Prize in Physiology or Medicine	2017-01-01T00:00:00Z	1944-03-07T00:00:00Z	Kansas City	the United States	
+Jeffrey C. Hall	male	Nobel Prize in Physiology or Medicine	2017-01-01T00:00:00Z	1945-05-03T00:00:00Z	Brooklyn	the United States	
+Michael W. Young	male	Nobel Prize in Physiology or Medicine	2017-01-01T00:00:00Z	1949-03-28T00:00:00Z	Miami	the United States	
 May-Britt Moser	female	Nobel Prize in Physiology or Medicine	2014-01-01T00:00:00Z	1963-01-04T00:00:00Z	Fosnavåg	Norway	
 William C. Campbell	male	Nobel Prize in Physiology or Medicine	2015-01-01T00:00:00Z	1930-06-28T00:00:00Z	Ramelton	Ireland	
-Thomas Huckle Weller	male	Nobel Prize in Physiology or Medicine	1954-01-01T00:00:00Z	1915-06-15T00:00:00Z	Ann Arbor	United States of America	2008-08-23T00:00:00Z
-George H. Hitchings	male	Nobel Prize in Physiology or Medicine	1988-01-01T00:00:00Z	1905-04-18T00:00:00Z	Hoquiam	United States of America	1998-02-27T00:00:00Z
-Daniel McFadden	male	Prize in Economic Sciences in Memory of Alfred Nobel	2000-01-01T00:00:00Z	1937-07-29T00:00:00Z	Raleigh	United States of America	
-James Heckman	male	Prize in Economic Sciences in Memory of Alfred Nobel	2000-01-01T00:00:00Z	1944-04-19T00:00:00Z	Chicago	United States of America	
-Edward C. Prescott	male	Prize in Economic Sciences in Memory of Alfred Nobel	2004-01-01T00:00:00Z	1940-12-26T00:00:00Z	Glens Falls	United States of America	
-Phillip Sharp	male	Nobel Prize in Physiology or Medicine	1993-01-01T00:00:00Z	1944-06-06T00:00:00Z	Falmouth	United States of America	
-Eugene Fama	male	Prize in Economic Sciences in Memory of Alfred Nobel	2013-01-01T00:00:00Z	1939-02-14T00:00:00Z	Boston	United States of America	
+Thomas Huckle Weller	male	Nobel Prize in Physiology or Medicine	1954-01-01T00:00:00Z	1915-06-15T00:00:00Z	Ann Arbor	the United States	2008-08-23T00:00:00Z
+George H. Hitchings	male	Nobel Prize in Physiology or Medicine	1988-01-01T00:00:00Z	1905-04-18T00:00:00Z	Hoquiam	the United States	1998-02-27T00:00:00Z
+Daniel McFadden	male	Prize in Economic Sciences in Memory of Alfred Nobel	2000-01-01T00:00:00Z	1937-07-29T00:00:00Z	Raleigh	the United States	
+James Heckman	male	Prize in Economic Sciences in Memory of Alfred Nobel	2000-01-01T00:00:00Z	1944-04-19T00:00:00Z	Chicago	the United States	
+Edward C. Prescott	male	Prize in Economic Sciences in Memory of Alfred Nobel	2004-01-01T00:00:00Z	1940-12-26T00:00:00Z	Glens Falls	the United States	
+Phillip Sharp	male	Nobel Prize in Physiology or Medicine	1993-01-01T00:00:00Z	1944-06-06T00:00:00Z	Falmouth	the United States	
+Eugene Fama	male	Prize in Economic Sciences in Memory of Alfred Nobel	2013-01-01T00:00:00Z	1939-02-14T00:00:00Z	Boston	the United States	
 Esther Duflo	female	Prize in Economic Sciences in Memory of Alfred Nobel	2019-01-01T00:00:00Z	1972-10-25T00:00:00Z	Paris	France	
 Bernard Katz	male	Nobel Prize in Physiology or Medicine	1970-01-01T00:00:00Z	1911-03-26T00:00:00Z	Leipzig	Germany	2003-04-20T00:00:00Z
-Joseph E. Stiglitz	male	Prize in Economic Sciences in Memory of Alfred Nobel	2001-01-01T00:00:00Z	1943-02-09T00:00:00Z	Gary	United States of America	
+Joseph E. Stiglitz	male	Prize in Economic Sciences in Memory of Alfred Nobel	2001-01-01T00:00:00Z	1943-02-09T00:00:00Z	Gary	the United States	
 Elizabeth Blackburn	female	Nobel Prize in Physiology or Medicine	2009-01-01T00:00:00Z	1948-11-26T00:00:00Z	Hobart	Australia	
-Carol Greider	female	Nobel Prize in Physiology or Medicine	2009-01-01T00:00:00Z	1961-04-15T00:00:00Z	San Diego	United States of America	
+Carol Greider	female	Nobel Prize in Physiology or Medicine	2009-01-01T00:00:00Z	1961-04-15T00:00:00Z	San Diego	the United States	
 Robert Koch	male	Nobel Prize in Physiology or Medicine	1905-01-01T00:00:00Z	1843-12-11T00:00:00Z	Clausthal-Zellerfeld	Germany	1910-05-27T00:00:00Z
 Ivan Pavlov	male	Nobel Prize in Physiology or Medicine	1904-01-01T00:00:00Z	1849-01-01T00:00:00Z	Ryazan	Russia	1936-01-01T00:00:00Z
 Ivan Pavlov	male	Nobel Prize in Physiology or Medicine	1904-01-01T00:00:00Z	1849-09-14T00:00:00Z	Ryazan	Russia	1936-01-01T00:00:00Z
@@ -940,7 +940,7 @@ Ivan Pavlov	male	Nobel Prize in Physiology or Medicine	1904-01-01T00:00:00Z	1849
 Wassily Leontief	male	Prize in Economic Sciences in Memory of Alfred Nobel	1973-01-01T00:00:00Z	1906-08-05T00:00:00Z	Saint Petersburg	Russia	1999-02-05T00:00:00Z
 Wassily Leontief	male	Prize in Economic Sciences in Memory of Alfred Nobel	1973-01-01T00:00:00Z	1906-08-05T00:00:00Z	Munich	Germany	1999-02-05T00:00:00Z
 Feodor Felix Konrad Lynen	male	Nobel Prize in Physiology or Medicine	1964-01-01T00:00:00Z	1911-04-06T00:00:00Z	Munich	Germany	1979-08-06T00:00:00Z
-Milton Friedman	male	Prize in Economic Sciences in Memory of Alfred Nobel	1976-01-01T00:00:00Z	1912-07-31T00:00:00Z	Brooklyn	United States of America	2006-11-16T00:00:00Z
+Milton Friedman	male	Prize in Economic Sciences in Memory of Alfred Nobel	1976-01-01T00:00:00Z	1912-07-31T00:00:00Z	Brooklyn	the United States	2006-11-16T00:00:00Z
 Ernst Chain	male	Nobel Prize in Physiology or Medicine	1945-01-01T00:00:00Z	1906-06-19T00:00:00Z	Berlin	Germany	1979-08-12T00:00:00Z
 Emil Adolf von Behring	male	Nobel Prize in Physiology or Medicine	1901-01-01T00:00:00Z	1854-03-15T00:00:00Z	Ławice	Poland	1917-03-31T00:00:00Z
 Bert Sakmann	male	Nobel Prize in Physiology or Medicine	1991-01-01T00:00:00Z	1942-06-12T00:00:00Z	Stuttgart	Germany	
@@ -956,73 +956,73 @@ Julius Wagner-Jauregg	male	Nobel Prize in Physiology or Medicine	1927-01-01T00:0
 Julius Wagner-Jauregg	male	Nobel Prize in Physiology or Medicine	1927-01-01T00:00:00Z	1857-03-07T00:00:00Z	Wels	Austria	1940-09-27T00:00:00Z
 Carl Ferdinand Cori	male	Nobel Prize in Physiology or Medicine	1947-01-01T00:00:00Z	1896-12-05T00:00:00Z	Prague	Czech Republic	1984-10-20T00:00:00Z
 Carl Ferdinand Cori	male	Nobel Prize in Physiology or Medicine	1947-01-01T00:00:00Z	1896-12-05T00:00:00Z	Prague	Czech Republic	1986-10-20T00:00:00Z
-Paul Samuelson	male	Prize in Economic Sciences in Memory of Alfred Nobel	1970-01-01T00:00:00Z	1915-05-15T00:00:00Z	Gary	United States of America	2009-12-13T00:00:00Z
+Paul Samuelson	male	Prize in Economic Sciences in Memory of Alfred Nobel	1970-01-01T00:00:00Z	1915-05-15T00:00:00Z	Gary	the United States	2009-12-13T00:00:00Z
 Françoise Barré-Sinoussi	female	Nobel Prize in Physiology or Medicine	2008-01-01T00:00:00Z	1947-07-30T00:00:00Z	Paris	France	
-Jack Szostak	male	Nobel Prize in Physiology or Medicine	2009-01-01T00:00:00Z	1952-11-09T00:00:00Z	London	United Kingdom	
-Robert Lucas	male	Prize in Economic Sciences in Memory of Alfred Nobel	1995-01-01T00:00:00Z	1937-09-15T00:00:00Z	Yakima	United States of America	
+Jack Szostak	male	Nobel Prize in Physiology or Medicine	2009-01-01T00:00:00Z	1952-11-09T00:00:00Z	London	the United Kingdom	
+Robert Lucas	male	Prize in Economic Sciences in Memory of Alfred Nobel	1995-01-01T00:00:00Z	1937-09-15T00:00:00Z	Yakima	the United States	
 Leonid Kantorovich	male	Prize in Economic Sciences in Memory of Alfred Nobel	1975-01-01T00:00:00Z	1912-01-19T00:00:00Z	Saint Petersburg	Russia	1986-04-07T00:00:00Z
-Thomas J. Sargent	male	Prize in Economic Sciences in Memory of Alfred Nobel	2011-01-01T00:00:00Z	1943-07-19T00:00:00Z	Pasadena	United States of America	
-Hamilton Smith	male	Nobel Prize in Physiology or Medicine	1978-01-01T00:00:00Z	1931-08-23T00:00:00Z	New York City	United States of America	
-Peter Diamond	male	Prize in Economic Sciences in Memory of Alfred Nobel	2010-01-01T00:00:00Z	1940-04-29T00:00:00Z	New York City	United States of America	
+Thomas J. Sargent	male	Prize in Economic Sciences in Memory of Alfred Nobel	2011-01-01T00:00:00Z	1943-07-19T00:00:00Z	Pasadena	the United States	
+Hamilton Smith	male	Nobel Prize in Physiology or Medicine	1978-01-01T00:00:00Z	1931-08-23T00:00:00Z	New York City	the United States	
+Peter Diamond	male	Prize in Economic Sciences in Memory of Alfred Nobel	2010-01-01T00:00:00Z	1940-04-29T00:00:00Z	New York City	the United States	
 Christophoros A. Pissarides	male	Prize in Economic Sciences in Memory of Alfred Nobel	2010-01-01T00:00:00Z	1948-02-20T00:00:00Z	Nicosia	Cyprus	
-Dale T. Mortensen	male	Prize in Economic Sciences in Memory of Alfred Nobel	2010-01-01T00:00:00Z	1939-02-02T00:00:00Z	Enterprise	United States of America	2014-01-09T00:00:00Z
+Dale T. Mortensen	male	Prize in Economic Sciences in Memory of Alfred Nobel	2010-01-01T00:00:00Z	1939-02-02T00:00:00Z	Enterprise	the United States	2014-01-09T00:00:00Z
 Edmond H. Fischer	male	Nobel Prize in Physiology or Medicine	1992-01-01T00:00:00Z	1920-04-06T00:00:00Z	Shanghai	People's Republic of China	
-Christopher A. Sims	male	Prize in Economic Sciences in Memory of Alfred Nobel	2011-01-01T00:00:00Z	1942-10-21T00:00:00Z	Washington, D.C.	United States of America	
+Christopher A. Sims	male	Prize in Economic Sciences in Memory of Alfred Nobel	2011-01-01T00:00:00Z	1942-10-21T00:00:00Z	Washington, D.C.	the United States	
 Walter Rudolf Hess	male	Nobel Prize in Physiology or Medicine	1949-01-01T00:00:00Z	1881-03-17T00:00:00Z	Frauenfeld	Switzerland	1973-08-12T00:00:00Z
 Walter Rudolf Hess	male	Nobel Prize in Physiology or Medicine	1949-01-01T00:00:00Z	1881-03-17T00:00:00Z	Frauenfeld	Switzerland	1973-09-12T00:00:00Z
 Werner Arber	male	Nobel Prize in Physiology or Medicine	1978-01-01T00:00:00Z	1929-06-03T00:00:00Z	Gränichen	Switzerland	
-Paul Krugman	male	Prize in Economic Sciences in Memory of Alfred Nobel	2008-01-01T00:00:00Z	1953-02-28T00:00:00Z	Albany	United States of America	
+Paul Krugman	male	Prize in Economic Sciences in Memory of Alfred Nobel	2008-01-01T00:00:00Z	1953-02-28T00:00:00Z	Albany	the United States	
 Amartya Sen	male	Prize in Economic Sciences in Memory of Alfred Nobel	1998-01-01T00:00:00Z	1933-11-03T00:00:00Z	Santiniketan	India	
 Andrew Schally	male	Nobel Prize in Physiology or Medicine	1977-01-01T00:00:00Z	1926-11-30T00:00:00Z	Vilnius	Lithuania	
 César Milstein	male	Nobel Prize in Physiology or Medicine	1984-01-01T00:00:00Z	1927-10-08T00:00:00Z	Bahía Blanca	Argentina	2002-03-24T00:00:00Z
 Robert Aumann	male	Prize in Economic Sciences in Memory of Alfred Nobel	2005-01-01T00:00:00Z	1930-06-08T00:00:00Z	Frankfurt am Main	Germany	
-Michael Spence	male	Prize in Economic Sciences in Memory of Alfred Nobel	2001-01-01T00:00:00Z	1943-11-07T00:00:00Z	Montclair	United States of America	
+Michael Spence	male	Prize in Economic Sciences in Memory of Alfred Nobel	2001-01-01T00:00:00Z	1943-11-07T00:00:00Z	Montclair	the United States	
 Leonid Hurwicz	male	Prize in Economic Sciences in Memory of Alfred Nobel	2007-01-01T00:00:00Z	1917-08-21T00:00:00Z	Moscow	Russia	2008-06-24T00:00:00Z
-James Mirrlees	male	Prize in Economic Sciences in Memory of Alfred Nobel	1996-01-01T00:00:00Z	1936-07-05T00:00:00Z	Minnigaff	United Kingdom	2018-08-29T00:00:00Z
-Herbert Alexander Simon	male	Prize in Economic Sciences in Memory of Alfred Nobel	1978-01-01T00:00:00Z	1916-06-15T00:00:00Z	Milwaukee	United States of America	2001-02-09T00:00:00Z
+James Mirrlees	male	Prize in Economic Sciences in Memory of Alfred Nobel	1996-01-01T00:00:00Z	1936-07-05T00:00:00Z	Minnigaff	the United Kingdom	2018-08-29T00:00:00Z
+Herbert Alexander Simon	male	Prize in Economic Sciences in Memory of Alfred Nobel	1978-01-01T00:00:00Z	1916-06-15T00:00:00Z	Milwaukee	the United States	2001-02-09T00:00:00Z
 Alexis Carrel	male	Nobel Prize in Physiology or Medicine	1912-01-01T00:00:00Z	1873-06-28T00:00:00Z	Sainte-Foy-lès-Lyon	France	1944-08-21T00:00:00Z
 Alexis Carrel	male	Nobel Prize in Physiology or Medicine	1912-01-01T00:00:00Z	1873-06-28T00:00:00Z	Sainte-Foy-lès-Lyon	France	1944-11-05T00:00:00Z
 Henrik Dam	male	Nobel Prize in Physiology or Medicine	1943-01-01T00:00:00Z	1895-02-21T00:00:00Z	Copenhagen	Danish Realm	1976-04-17T00:00:00Z
 Allvar Gullstrand	male	Nobel Prize in Physiology or Medicine	1911-01-01T00:00:00Z	1862-06-05T00:00:00Z	Landskrona Parish	Sweden	1930-07-28T00:00:00Z
 Franco Modigliani	male	Prize in Economic Sciences in Memory of Alfred Nobel	1985-01-01T00:00:00Z	1918-06-18T00:00:00Z	Rome	Italy	2003-09-25T00:00:00Z
-Thomas Schelling	male	Prize in Economic Sciences in Memory of Alfred Nobel	2005-01-01T00:00:00Z	1921-04-14T00:00:00Z	Oakland	United States of America	2016-12-13T00:00:00Z
+Thomas Schelling	male	Prize in Economic Sciences in Memory of Alfred Nobel	2005-01-01T00:00:00Z	1921-04-14T00:00:00Z	Oakland	the United States	2016-12-13T00:00:00Z
 Gérard Debreu	male	Prize in Economic Sciences in Memory of Alfred Nobel	1983-01-01T00:00:00Z	1921-07-04T00:00:00Z	Calais	France	2004-12-31T00:00:00Z
 Finn E. Kydland	male	Prize in Economic Sciences in Memory of Alfred Nobel	2004-01-01T00:00:00Z	1943-12-01T00:00:00Z	Ålgård	Norway	
 Jules Bordet	male	Nobel Prize in Physiology or Medicine	1919-01-01T00:00:00Z	1870-06-13T00:00:00Z	Soignies	Belgium	1961-04-06T00:00:00Z
-Richard Axel	male	Nobel Prize in Physiology or Medicine	2004-01-01T00:00:00Z	1946-07-02T00:00:00Z	Brooklyn	United States of America	
+Richard Axel	male	Nobel Prize in Physiology or Medicine	2004-01-01T00:00:00Z	1946-07-02T00:00:00Z	Brooklyn	the United States	
 George Emil Palade	male	Nobel Prize in Physiology or Medicine	1974-01-01T00:00:00Z	1912-11-19T00:00:00Z	Iași	Romania	2008-10-07T00:00:00Z
 Robert Mundell	male	Prize in Economic Sciences in Memory of Alfred Nobel	1999-01-01T00:00:00Z	1932-10-24T00:00:00Z	Kingston	Canada	2021-04-04T00:00:00Z
 André Lwoff	male	Nobel Prize in Physiology or Medicine	1965-01-01T00:00:00Z	1902-05-08T00:00:00Z	Ainay-le-Château	France	1994-09-30T00:00:00Z
-Edward Adelbert Doisy	male	Nobel Prize in Physiology or Medicine	1943-01-01T00:00:00Z	1893-11-13T00:00:00Z	Hume	United States of America	1986-10-23T00:00:00Z
+Edward Adelbert Doisy	male	Nobel Prize in Physiology or Medicine	1943-01-01T00:00:00Z	1893-11-13T00:00:00Z	Hume	the United States	1986-10-23T00:00:00Z
 Jacques Monod	male	Nobel Prize in Physiology or Medicine	1965-01-01T00:00:00Z	1910-02-09T00:00:00Z	Paris	France	1976-05-31T00:00:00Z
-Oliver E. Williamson	male	Prize in Economic Sciences in Memory of Alfred Nobel	2009-01-01T00:00:00Z	1932-09-27T00:00:00Z	Superior	United States of America	2020-05-21T00:00:00Z
-Stanley Cohen	male	Nobel Prize in Physiology or Medicine	1986-01-01T00:00:00Z	1922-11-17T00:00:00Z	Brooklyn	United States of America	2020-02-05T00:00:00Z
-Roger Myerson	male	Prize in Economic Sciences in Memory of Alfred Nobel	2007-01-01T00:00:00Z	1951-03-29T00:00:00Z	Boston	United States of America	
-Eric Maskin	male	Prize in Economic Sciences in Memory of Alfred Nobel	2007-01-01T00:00:00Z	1950-12-12T00:00:00Z	New York City	United States of America	
-Theodore Schultz	male	Prize in Economic Sciences in Memory of Alfred Nobel	1979-01-01T00:00:00Z	1902-04-30T00:00:00Z	Arlington	United States of America	1998-02-26T00:00:00Z
+Oliver E. Williamson	male	Prize in Economic Sciences in Memory of Alfred Nobel	2009-01-01T00:00:00Z	1932-09-27T00:00:00Z	Superior	the United States	2020-05-21T00:00:00Z
+Stanley Cohen	male	Nobel Prize in Physiology or Medicine	1986-01-01T00:00:00Z	1922-11-17T00:00:00Z	Brooklyn	the United States	2020-02-05T00:00:00Z
+Roger Myerson	male	Prize in Economic Sciences in Memory of Alfred Nobel	2007-01-01T00:00:00Z	1951-03-29T00:00:00Z	Boston	the United States	
+Eric Maskin	male	Prize in Economic Sciences in Memory of Alfred Nobel	2007-01-01T00:00:00Z	1950-12-12T00:00:00Z	New York City	the United States	
+Theodore Schultz	male	Prize in Economic Sciences in Memory of Alfred Nobel	1979-01-01T00:00:00Z	1902-04-30T00:00:00Z	Arlington	the United States	1998-02-26T00:00:00Z
 Sydney Brenner	male	Nobel Prize in Physiology or Medicine	2002-01-01T00:00:00Z	1927-01-13T00:00:00Z	Germiston	South Africa	2019-04-05T00:00:00Z
 Baruj Benacerraf	male	Nobel Prize in Physiology or Medicine	1980-01-01T00:00:00Z	1920-10-29T00:00:00Z	Caracas	Venezuela	2011-08-02T00:00:00Z
-James Meade	male	Prize in Economic Sciences in Memory of Alfred Nobel	1977-01-01T00:00:00Z	1907-06-23T00:00:00Z	Swanage	United Kingdom	1995-12-22T00:00:00Z
+James Meade	male	Prize in Economic Sciences in Memory of Alfred Nobel	1977-01-01T00:00:00Z	1907-06-23T00:00:00Z	Swanage	the United Kingdom	1995-12-22T00:00:00Z
 Bernardo Houssay	male	Nobel Prize in Physiology or Medicine	1947-01-01T00:00:00Z	1887-04-10T00:00:00Z	Buenos Aires	Argentina	1971-09-21T00:00:00Z
-Robert Fogel	male	Prize in Economic Sciences in Memory of Alfred Nobel	1993-01-01T00:00:00Z	1926-07-01T00:00:00Z	New York City	United States of America	2013-06-11T00:00:00Z
-George Beadle	male	Nobel Prize in Physiology or Medicine	1958-01-01T00:00:00Z	1903-10-22T00:00:00Z	Wahoo	United States of America	1989-06-09T00:00:00Z
+Robert Fogel	male	Prize in Economic Sciences in Memory of Alfred Nobel	1993-01-01T00:00:00Z	1926-07-01T00:00:00Z	New York City	the United States	2013-06-11T00:00:00Z
+George Beadle	male	Nobel Prize in Physiology or Medicine	1958-01-01T00:00:00Z	1903-10-22T00:00:00Z	Wahoo	the United States	1989-06-09T00:00:00Z
 Roger Guillemin	male	Nobel Prize in Physiology or Medicine	1977-01-01T00:00:00Z	1924-01-11T00:00:00Z	Dijon	France	
-Douglass North	male	Prize in Economic Sciences in Memory of Alfred Nobel	1993-01-01T00:00:00Z	1920-11-05T00:00:00Z	Cambridge	United States of America	2015-11-23T00:00:00Z
-Joseph Erlanger	male	Nobel Prize in Physiology or Medicine	1944-01-01T00:00:00Z	1874-01-05T00:00:00Z	San Francisco	United States of America	1965-12-05T00:00:00Z
-Lloyd Shapley	male	Prize in Economic Sciences in Memory of Alfred Nobel	2012-01-01T00:00:00Z	1923-06-02T00:00:00Z	Cambridge	United States of America	2016-03-12T00:00:00Z
+Douglass North	male	Prize in Economic Sciences in Memory of Alfred Nobel	1993-01-01T00:00:00Z	1920-11-05T00:00:00Z	Cambridge	the United States	2015-11-23T00:00:00Z
+Joseph Erlanger	male	Nobel Prize in Physiology or Medicine	1944-01-01T00:00:00Z	1874-01-05T00:00:00Z	San Francisco	the United States	1965-12-05T00:00:00Z
+Lloyd Shapley	male	Prize in Economic Sciences in Memory of Alfred Nobel	2012-01-01T00:00:00Z	1923-06-02T00:00:00Z	Cambridge	the United States	2016-03-12T00:00:00Z
 Torsten Nils Wiesel	male	Nobel Prize in Physiology or Medicine	1981-01-01T00:00:00Z	1924-06-03T00:00:00Z	Uppsala	Sweden	
 André Frédéric Cournand	male	Nobel Prize in Physiology or Medicine	1956-01-01T00:00:00Z	1895-09-24T00:00:00Z	Paris	France	1988-02-19T00:00:00Z
-Harry Markowitz	male	Prize in Economic Sciences in Memory of Alfred Nobel	1990-01-01T00:00:00Z	1927-08-24T00:00:00Z	Chicago	United States of America	
+Harry Markowitz	male	Prize in Economic Sciences in Memory of Alfred Nobel	1990-01-01T00:00:00Z	1927-08-24T00:00:00Z	Chicago	the United States	
 John Eccles	male	Nobel Prize in Physiology or Medicine	1963-01-01T00:00:00Z	1903-01-27T00:00:00Z	Melbourne	Australia	1997-05-02T00:00:00Z
-George Whipple	male	Nobel Prize in Physiology or Medicine	1934-01-01T00:00:00Z	1878-08-28T00:00:00Z	Ashland	United States of America	1976-02-01T00:00:00Z
-Edward B. Lewis	male	Nobel Prize in Physiology or Medicine	1995-01-01T00:00:00Z	1918-05-20T00:00:00Z	Wilkes-Barre	United States of America	2004-07-21T00:00:00Z
-Robert F. Engle	male	Prize in Economic Sciences in Memory of Alfred Nobel	2003-01-01T00:00:00Z	1941-01-01T00:00:00Z	Syracuse	United States of America	
-Robert F. Engle	male	Prize in Economic Sciences in Memory of Alfred Nobel	2003-01-01T00:00:00Z	1942-11-10T00:00:00Z	Syracuse	United States of America	
-H. Robert Horvitz	male	Nobel Prize in Physiology or Medicine	2002-01-01T00:00:00Z	1947-05-08T00:00:00Z	Chicago	United States of America	
-Daniel Nathans	male	Nobel Prize in Physiology or Medicine	1978-01-01T00:00:00Z	1928-10-30T00:00:00Z	Wilmington	United States of America	1999-11-16T00:00:00Z
-Vernon L. Smith	male	Prize in Economic Sciences in Memory of Alfred Nobel	2002-01-01T00:00:00Z	1927-01-01T00:00:00Z	Wichita	United States of America	
-Lawrence Klein	male	Prize in Economic Sciences in Memory of Alfred Nobel	1980-01-01T00:00:00Z	1920-09-14T00:00:00Z	Omaha	United States of America	2013-10-20T00:00:00Z
+George Whipple	male	Nobel Prize in Physiology or Medicine	1934-01-01T00:00:00Z	1878-08-28T00:00:00Z	Ashland	the United States	1976-02-01T00:00:00Z
+Edward B. Lewis	male	Nobel Prize in Physiology or Medicine	1995-01-01T00:00:00Z	1918-05-20T00:00:00Z	Wilkes-Barre	the United States	2004-07-21T00:00:00Z
+Robert F. Engle	male	Prize in Economic Sciences in Memory of Alfred Nobel	2003-01-01T00:00:00Z	1941-01-01T00:00:00Z	Syracuse	the United States	
+Robert F. Engle	male	Prize in Economic Sciences in Memory of Alfred Nobel	2003-01-01T00:00:00Z	1942-11-10T00:00:00Z	Syracuse	the United States	
+H. Robert Horvitz	male	Nobel Prize in Physiology or Medicine	2002-01-01T00:00:00Z	1947-05-08T00:00:00Z	Chicago	the United States	
+Daniel Nathans	male	Nobel Prize in Physiology or Medicine	1978-01-01T00:00:00Z	1928-10-30T00:00:00Z	Wilmington	the United States	1999-11-16T00:00:00Z
+Vernon L. Smith	male	Prize in Economic Sciences in Memory of Alfred Nobel	2002-01-01T00:00:00Z	1927-01-01T00:00:00Z	Wichita	the United States	
+Lawrence Klein	male	Prize in Economic Sciences in Memory of Alfred Nobel	1980-01-01T00:00:00Z	1920-09-14T00:00:00Z	Omaha	the United States	2013-10-20T00:00:00Z
 Arvid Carlsson	male	Nobel Prize in Physiology or Medicine	2000-01-01T00:00:00Z	1923-01-25T00:00:00Z	Uppsala	Sweden	2018-06-29T00:00:00Z
-Niels Kaj Jerne	male	Nobel Prize in Physiology or Medicine	1984-01-01T00:00:00Z	1911-12-23T00:00:00Z	London	United Kingdom	1994-10-07T00:00:00Z
-Frederick Chapman Robbins	male	Nobel Prize in Physiology or Medicine	1954-01-01T00:00:00Z	1916-08-25T00:00:00Z	Auburn	United States of America	2003-08-04T00:00:00Z
-Paul Greengard	male	Nobel Prize in Physiology or Medicine	2000-01-01T00:00:00Z	1925-12-11T00:00:00Z	New York City	United States of America	2019-04-13T00:00:00Z
+Niels Kaj Jerne	male	Nobel Prize in Physiology or Medicine	1984-01-01T00:00:00Z	1911-12-23T00:00:00Z	London	the United Kingdom	1994-10-07T00:00:00Z
+Frederick Chapman Robbins	male	Nobel Prize in Physiology or Medicine	1954-01-01T00:00:00Z	1916-08-25T00:00:00Z	Auburn	the United States	2003-08-04T00:00:00Z
+Paul Greengard	male	Nobel Prize in Physiology or Medicine	2000-01-01T00:00:00Z	1925-12-11T00:00:00Z	New York City	the United States	2019-04-13T00:00:00Z

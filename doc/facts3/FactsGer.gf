@@ -1,4 +1,7 @@
-concrete FactsGer of Facts = FactsFunctor - [npPron] with
+concrete FactsGer of Facts = FactsFunctor - [
+    npPron,
+    PunctualPastFactSentence, PunctualPastActModifier
+  ] with
   (Syntax = SyntaxGer),
   (Symbolic = SymbolicGer),
   (Grammar = GrammarGer)
@@ -9,6 +12,9 @@ concrete FactsGer of Facts = FactsFunctor - [npPron] with
 oper
   npPron : NP -> Pron = \np -> case ifPluralNP np of {True => they_Pron ; False => it_Pron} ;
 
+lin
+  PunctualPastFactSentence fact = mkS presentTense anteriorAnt fact ;
+  PunctualPastActModifier act = mkModifier (mkRS presentTense anteriorAnt (mkRCl which_RP act)) ;
 
 -- functor parameters
 oper

@@ -12,7 +12,14 @@ fun
 
   bornAct     : Date -> CName -> CName -> Act ;  -- born in Helsinki in Finland in 1863
   dieAct      : Date -> Act ;                    -- died in 1938
-  winPrizeAct : Prize -> Date -> Act ;      -- won the Nobel Prize in Physics in 1912
+  winPrizeDateAct : Prize -> Date -> Act ;      -- won the Nobel Prize in Physics in 1912
+  winPrizeAct : Prize -> Act ; -- won the Nobel Prize in Physics
+
+  YoungestInKindFact : Object -> Kind -> Fact ;   -- O is the youngest K
+
+  winnerOfPrizeKind : Prize -> Kind ;
+
+  woman_Kind : Kind ;
 
   peacePrize : Prize ; 
   chemistryPrize : Prize ;
