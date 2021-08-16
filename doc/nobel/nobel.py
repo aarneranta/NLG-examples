@@ -88,10 +88,14 @@ def nobel_texts(factsys,data):
                     G.ModifierKind(G.woman_Kind, G.PunctualPastActModifier(G.winPrizeAct(priz)))
                     )))
         if win.winner == youngest(win.prize):
+            if win.sex == 'female':
+                winnerOf = G.femaleWinnerOfPrizeKind
+            else:
+                winnerOf = G.maleWinnerOfPrizeKind
             doc = G.AddSentenceDoc(doc,G.ContinuousPastFactSentence(
                 G.YoungestInKindFact(
                     G.PronObject(name),
-                    G.winnerOfPrizeKind(priz)
+                    winnerOf(priz)
                     )))
             
         docs.append(doc)

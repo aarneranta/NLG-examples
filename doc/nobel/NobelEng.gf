@@ -28,7 +28,9 @@ lin
   YoungestInKindFact object kind = mkCl object.np (mkNP (mkDet the_Quant (S.mkOrd (mkA "young" "younger" "youngest" "youngly"))) kind) ;
 
   woman_Kind = mkCN (mkN "woman" "women") ;
-  winnerOfPrizeKind prize = mkCN (mkN "winner") (S.mkAdv possess_Prep (mkNP the_Det prize)) ;
+  
+  maleWinnerOfPrizeKind prize = mkCN (mkN "winner") (S.mkAdv possess_Prep (mkNP the_Det prize)) ;
+  femaleWinnerOfPrizeKind prize = mkCN (mkN "winner") (S.mkAdv possess_Prep (mkNP the_Det prize)) ;
 
   peacePrize = mkCN (mkN "Nobel Peace Prize") ;
   chemistryPrize = mkCN (mkN "Nobel Prize") (S.mkAdv in_Prep (mkNP (mkN "Chemistry"))) ;

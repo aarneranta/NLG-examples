@@ -17,7 +17,8 @@ fun
 
   YoungestInKindFact : Object -> Kind -> Fact ;   -- O is the youngest K
 
-  winnerOfPrizeKind : Prize -> Kind ;
+  maleWinnerOfPrizeKind : Prize -> Kind ;
+  femaleWinnerOfPrizeKind : Prize -> Kind ;
 
   woman_Kind : Kind ;
 

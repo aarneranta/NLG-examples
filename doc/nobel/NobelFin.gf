@@ -29,7 +29,9 @@ lin
   YoungestInKindFact object kind = mkCl object.np (mkNP (S.mkDet the_Quant (S.mkOrd (mkA (mkN "nuori" "nuoria")))) kind) ;
 
   woman_Kind = mkCN (mkN "nainen") ;
-  winnerOfPrizeKind prize = G.PossNP (mkCN (mkN "saaja" "saajia")) (mkNP the_Det prize) ;
+  
+  maleWinnerOfPrizeKind prize = G.PossNP (mkCN (mkN "saaja" "saajia")) (mkNP the_Det prize) ;
+  femaleWinnerOfPrizeKind prize = G.PossNP (mkCN (mkN "saaja" "saajia")) (mkNP the_Det prize) ;
 
   peacePrize = mkCN (invarA "Nobelin") (mkN "rauhan" (mkN "palkinto")) ;
   chemistryPrize = mkCN (invarA "Nobelin") (mkN "kemian" (mkN "palkinto")) ;
