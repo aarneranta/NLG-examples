@@ -17,15 +17,12 @@ class FactSystem:
             data.append(fields)
         return data
 
+    # can raise ParseError
     def str2exp(self,cat,s):
         eng = self.grammar.languages[self.language1]
-        try:
-            pp = eng.parse(s,cat=pgf.readType(cat))
-            _,e = pp.__next__()
-            return e
-        except:
-            print("WARNING:","no", cat, "from", s,"with",self.language1)
-            return pgf.Expr(s,[])
+        pp = eng.parse(s,cat=pgf.readType(cat))
+        _,e = pp.__next__()
+        return e
 
     def exp2str(self,exp):
         eng = self.grammar.languages[self.language1]
@@ -42,7 +39,7 @@ class FactSystem:
             text = []
             for tree in fact_generator(self,data):
                 lin = lang.linearize(tree)
-                text.append(lin[0].upper() + lin[1:])
+                if lin: text.append(lin[0].upper() + lin[1:])
             print('\n'.join(text))
 
 

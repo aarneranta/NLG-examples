@@ -7,6 +7,9 @@ fun
   cdName : CDName -> Name ;
   cdProperty : CDName -> Property ;
 
+-- back-up country and city name
+  stringCName : String -> CName ;
+
 -- basic properties
   capital_Attribute : Attribute ;
   area_Attribute : Attribute ;

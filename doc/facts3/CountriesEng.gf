@@ -7,6 +7,8 @@ lin
   cdName name = {np = name.np ; pron = npPron name.np} ;
   cdProperty name = name.ap ;
 
+  stringCName s = symb (mkSymb s.s) ;
+
   capital_Attribute = mkAttribute "capital" ;
   area_Attribute = mkAttribute "area" ;
   population_Attribute = mkAttribute "population" ;

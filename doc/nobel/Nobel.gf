@@ -10,7 +10,7 @@ fun
   
   pnameName : PName -> Name ;
 
-  bornAct     : Date -> CName -> CName -> Act ;  -- born in Helsinki, Finland in 1863
+  bornAct     : Date -> CName -> CName -> Act ;  -- born in Helsinki in Finland in 1863
   dieAct      : Date -> Act ;                    -- died in 1938
   winPrizeAct : Prize -> Date -> Act ;      -- won the Nobel Prize in Physics in 1912
 
