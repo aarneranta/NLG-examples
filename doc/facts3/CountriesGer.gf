@@ -3,8 +3,8 @@ concrete CountriesGer of Countries = FactsGer, CountryNamesGer **
 open SyntaxGer, ParadigmsGer, SymbolicGer in {
 
 lin
-  cName name = name ;
-  cdName name = name.np ;
+  cName name = {np = name ; pron = npPron name} ;
+  cdName name = {np = name.np ; pron = npPron name.np} ;
   cdProperty name = name.ap ;
 
   capital_Attribute = mkAttribute (mkN "Hauptstadt" "Hauptstädte" feminine) ;

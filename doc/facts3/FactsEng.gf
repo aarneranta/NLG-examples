@@ -30,4 +30,6 @@ lin
   OverNumeric num = mkCard (ParadigmsEng.mkAdN "over") num ;
   UnderNumeric num = mkCard (ParadigmsEng.mkAdN "under") num ;
 
+  inYearDate i = ParadigmsEng.mkAdv ("in" ++ i.s) ;
+
 }

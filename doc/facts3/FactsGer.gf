@@ -35,4 +35,6 @@ lin
   OverNumeric num = mkCard (lin AdN {s = "über"}) num ;
   UnderNumeric num = mkCard (lin AdN {s = "unter"}) num ;
 
+  inYearDate i = ParadigmsGer.mkAdv (i.s) ;
+
 }

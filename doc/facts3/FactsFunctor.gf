@@ -14,10 +14,12 @@ lincat
   Property = AP ;
   Attribute = CN ;
   Modifier = {adv : Adv ; rs : RS ; isAdv : Bool} ;
+  Act = VP ;
   Kind = CN ;
   Value = NP ;
-  Name = NP ;
+  Name = {np : NP ; pron : Pron} ;
   Numeric = Card ;
+  Date = Adv ;
 
 lin
   OneSentenceDoc sent = mkText sent ;
@@ -25,6 +27,7 @@ lin
 
   ConjSentence a b = mkS and_Conj a b ;
   FactSentence fact = mkS presentTense positivePol fact ;
+  PastFactSentence fact = mkS pastTense positivePol fact ;
 
   KindFact obj kind = mkCl obj.np (mkNP a_Det kind) ; --- sind ein Land
   PropertyFact obj prop = mkCl obj.np prop ;
@@ -32,6 +35,7 @@ lin
     True => mkCl (mkNP (mkDet obj.pron) attr) val ;
     _ => mkCl (mkNP the_Det (mkCN attr (mkAdv possess_Prep obj.np))) val
     } ;
+  ActFact obj act = mkCl obj.np act ;
 
   PropertyKind prop kind = mkCN prop kind ;
   ModifierKind kind mod = case mod.isAdv of {
@@ -39,14 +43,16 @@ lin
     True => mkCN kind mod.adv
     } ;
 
+  ActModifier act = mkModifier (mkRS (mkRCl which_RP act)) ;
+  PastActModifier act = mkModifier (mkRS pastTense (mkRCl which_RP act)) ;
+
   NumericKindModifier num kind = mkModifier (mkAdv with_Prep (mkNP num kind)) ;
 
-  NameObject name = {np = name ; pron = npPron name ; isPron = False} ;
-  PronObject name =
-    let pron = npPron name in {np = mkNP pron ; pron = pron ; isPron = True} ;
+  NameObject name = name ** {isPron = False} ;
+  PronObject name = {np = mkNP name.pron ; pron = name.pron ; isPron = True} ;
 
   NumericKindValue num kind = mkNP num kind ;
-  NameValue name = name ;
+  NameValue name = name.np ;
   NumericValue num = mkNP (mkDet num) ;
 
   IntNumeric int = <symb int : Card> ;
@@ -72,6 +78,7 @@ lin
   SumAttributeFact attr obj int = AttributeFact (mkCN total_AP attr) obj (NumericValue int) ;
 
   UniqueInKindFact obj kind = mkCl obj.np (mkNP (mkDet the_Quant (npNum obj.np)) (mkCN only_AP kind)) ;
+  FirstInKindFact obj kind = mkCl obj.np (mkNP (mkDet the_Quant (npNum obj.np)) (mkCN first_AP kind)) ;
 
   
 -------------------
@@ -83,6 +90,8 @@ oper
     mkModifier : RS -> Modifier = \rs -> lin Modifier {adv = somewhere_Adv ; rs = rs ; isAdv = False} --- adv not used
     } ;
 
+  first_AP = mkAP (mkOrd (mkNumeral "1")) ;
+  
 ----------------------
 -- functor parameters
 

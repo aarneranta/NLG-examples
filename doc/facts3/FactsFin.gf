@@ -35,5 +35,6 @@ lin
   OverNumeric num = mkCard (ParadigmsFin.mkAdN "yli") num ;
   UnderNumeric num = mkCard (ParadigmsFin.mkAdN "alle") num ;
 
+  inYearDate i = ParadigmsFin.mkAdv ("vuonna" ++ i.s) ;
 
 }

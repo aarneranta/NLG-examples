@@ -5,8 +5,9 @@ open SyntaxFin, ParadigmsFin, SymbolicFin, Prelude
 in {
 
 lin
-  cName name = name.np ;
-  cdName name = name.np ;
+  cName name = {np = name.np ; pron = npPron name.np} ;
+  cdName name = {np = name.np ; pron = npPron name.np} ;
+
   cdProperty name = name.ap ;
 
   capital_Attribute = mkAttribute "pääkaupunki" ;

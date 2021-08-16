@@ -3,8 +3,8 @@ concrete CountriesEng of Countries = FactsEng, CountryNamesEng **
 open SyntaxEng, ParadigmsEng, SymbolicEng in {
 
 lin
-  cName name = name ;
-  cdName name = name.np ;
+  cName name = {np = name ; pron = npPron name} ;
+  cdName name = {np = name.np ; pron = npPron name.np} ;
   cdProperty name = name.ap ;
 
   capital_Attribute = mkAttribute "capital" ;

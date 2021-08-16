@@ -10,10 +10,12 @@ cat
   Property ;  -- modifying adjectival phrase, e.g. "European"
   Attribute ; -- single property of an object, e.g. "population"
   Modifier ;  -- post-modifier, e.g. adverbial phrase or relative clause
+  Act ;       -- verb phrase
   Kind ;      -- type of objects, e.g. "European country"
   Value ;     -- value of an attribute, such as entity name or numeric
   Name ;      -- name of an entity, e.g. "Honduras", "South America"
-  Numeric ;   -- cardinal number, e.g. "23", "100 million", "over a billion" 
+  Numeric ;   -- cardinal number, e.g. "23", "100 million", "over a billion"
+  Date ;      -- date adverbial, e.g. "in 1917", "on 24 May 1975"
 
 fun
   OneSentenceDoc : Sentence -> Doc ;           -- S.
@@ -21,13 +23,18 @@ fun
 
   ConjSentence : Sentence -> Sentence -> Sentence ; -- S and S
   FactSentence : Fact -> Sentence ;                 -- F
+  PastFactSentence : Fact -> Sentence ;             -- F
 
   KindFact : Object -> Kind -> Fact ;               -- O is a K
   PropertyFact : Object -> Property -> Fact ;       -- O is P
   AttributeFact : Attribute -> Object -> Value -> Fact ; -- the A of O is V
+  ActFact : Object -> Act -> Fact ;                 -- O A
 
   PropertyKind : Property -> Kind -> Kind ;  -- P K
   ModifierKind : Kind -> Modifier -> Kind ;  -- K M
+
+  ActModifier : Act -> Modifier ; -- that A
+  PastActModifier : Act -> Modifier ; -- that A
 
   NumericKindModifier : Numeric -> Kind -> Modifier ; -- with N K
 
@@ -47,6 +54,8 @@ fun
   OverNumeric : Numeric -> Numeric ;     -- over N
   UnderNumeric : Numeric -> Numeric ;    -- over N
 
+  inYearDate : Int -> Date ; -- in 1912
+
 --------------------
 -- data aggregation
 
@@ -63,5 +72,6 @@ fun
   SumAttributeFact : Attribute -> Object -> Numeric -> Fact ;     -- the total A of O is N
 
   UniqueInKindFact : Object -> Kind -> Fact ;  -- O is the only K
+  FirstInKindFact : Object -> Kind -> Fact ;   -- O is the first K
 
 }
