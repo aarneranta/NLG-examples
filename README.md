@@ -11,6 +11,8 @@ trying to do it in a more scalable and modifieable way.
 
 ## Facts about countries: `countries/`
 
+*Note: this code is being replaced by doc/facts3*
+
 This is an example of GF-based natural language generation.
 It generates descriptive texts from a table that contains basic facts about countries.
 See `NLG-example-2021.pdf` for illustrations.
