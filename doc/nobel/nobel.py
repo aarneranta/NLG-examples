@@ -39,7 +39,7 @@ def winner_text(factsys,data,win):
             G.ActFact(G.NameObject(name),
             G.winPrizeDateAct(priz,string_year(win.year))
             )))
-    doc = G.AddSentenceDoc(doc,G.PunctualPastFactSentence(
+    doc = G.AddSentenceDoc(doc,G.ContinuousPastFactSentence(
             G.ActFact(G.PronObject(name),
             G.bornAct(string_year(win.born),cit,countr)
             )))

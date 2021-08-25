@@ -32,11 +32,13 @@ Examples:
 
 *Marie Curie sai Nobelin fysiikanpalkinnon vuonna 1903. hän syntyi Varsovassa Puolassa vuonna 1867. Curie kuoli vuonna 1934. Marie Curie oli ensimmäinen nainen, joka sai Nobelin fysiikanpalkinnon.*
 
-*Frédéric Joliot-Curie erhielt den Nobelpreis für Chemie 1935. er ist in Paris in Frankreich 1900 geboren. Joliot-Curie ist 1958 gestorben. er war der jüngste Preisträger des Nobelpreises für Chemie.*
+*Frédéric Joliot-Curie erhielt den Nobelpreis für Chemie 1935. er
+ wurde 1900 in Paris in Frankreich geboren. Joliot-Curie ist 1958 gestorben. er war der jüngste Preisträger des Nobelpreises für Chemie.*
 
-*Irène Joliot-Curie erhielt den Nobelpreis für Chemie 1935. sie ist in 13th arrondissement of Paris in Frankreich 1897 geboren. Joliot-Curie ist 1956 gestorben.*
+*Irène Joliot-Curie erhielt den Nobelpreis für Chemie 1935. sie wurde
+ 1897 in 13th arrondissement of Paris in Frankreich geboren. Joliot-Curie ist 1956 gestorben.*
 
-*Marie Curie erhielt den Nobelpreis für Chemie 1911. sie ist in Warschau in Polen 1867 geboren. Curie ist 1934 gestorben. Marie Curie war die erste Frau, die den Nobelpreis für Chemie erhalten hat.*
+*Marie Curie erhielt den Nobelpreis für Chemie 1911. sie wurde 1867 in Warschau in Polen geboren. Curie ist 1934 gestorben. Marie Curie war die erste Frau, die den Nobelpreis für Chemie erhalten hat.*
 
 Obviously, many more aggregations would be interesting.
 We should also aggregate the two Nobel prizes of Marie Curie, which now appear as separate texts.

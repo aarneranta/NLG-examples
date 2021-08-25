@@ -20,7 +20,8 @@ lin
   pnameName pn = pn ** {isPron = False} ;
 
   bornAct date city country =
-    mkVP (mkVP (mkVP (mkVP (seinV I.gebären_V)) (S.mkAdv in_Prep city)) (S.mkAdv in_Prep country)) date ;
+    mkVP (mkVP (mkVP (mkVP (mkVP I.werden_V) date) (S.mkAdv in_Prep city)) (S.mkAdv in_Prep country)) (P.mkAdv "geboren") ; ---
+----    mkVP (mkVP (mkVP (passiveVP (mkV2 I.gebären_V)) (S.mkAdv in_Prep city)) (S.mkAdv in_Prep country)) date ;
   dieAct date = mkVP (mkVP (seinV I.sterben_V)) date ;
   winPrizeAct prize = mkVP (mkV2 (fixprefixV "er" I.halten_V)) (mkNP the_Det prize) ;
   winPrizeDateAct prize date = mkVP (mkVP (mkV2 (fixprefixV "er" I.halten_V)) (mkNP the_Det prize)) date ;
