@@ -4,13 +4,16 @@ import json
 pgf_file = 'Countries.pgf'
 country_file = '../data/idcountries.json'
 
+def abbreviate(s):
+    return s.replace('http://www.wikidata.org/entity/', 'wd_')
+
 
 def name_expr(name):
-    return pgf.Expr(name + '_Name', [])
+    return pgf.Expr(abbreviate(name) + '_Name', [])
 
 
-def string_expr(s):
-    return pgf.readExpr(str('"' + s + '"'))
+def string_value(s):
+    return pgf.Expr('StringValue', [pgf.readExpr(str('"' + s + '"'))])
 
 def name_value(s):
     return pgf.Expr('NameValue', [name_expr(s)])
@@ -22,8 +25,8 @@ def country_facts(c):
     pgf.Expr('AttributeFact', [pgf.Expr(attr,[]), object, val])
       for (attr, val) in [
         ('capital_Attribute', name_value(c['capital'])),   
-        ('area_Attribute', string_expr(c['area'])),
-        ('population_Attribute', string_expr(c['population'])),
+        ('area_Attribute', string_value(c['area'])),
+        ('population_Attribute', string_value(c['population'])),
         ('continent_Attribute', name_value(c['continent'])),
         ('currency_Attribute', name_value(c['currency']))
         ]

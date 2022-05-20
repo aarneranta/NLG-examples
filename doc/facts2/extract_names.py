@@ -4,7 +4,7 @@ name_cat = 'CName'
 included_fields = [0,1,4,5]
 
 source_field = 1  # English
-target_field = 3  # German
+target_field = 4  # German
 
 def get_names(filename):
     names = set()
