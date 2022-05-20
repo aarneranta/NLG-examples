@@ -1,11 +1,9 @@
 import pgf
 import json
+from extract_names import abbreviate
 
 pgf_file = 'Countries.pgf'
 country_file = '../data/idcountries.json'
-
-def abbreviate(s):
-    return s.replace('http://www.wikidata.org/entity/', 'wd_')
 
 
 def name_expr(name):

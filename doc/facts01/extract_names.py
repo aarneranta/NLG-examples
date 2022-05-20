@@ -3,9 +3,14 @@ import csv
 labels_file = '../data/alllabels.tsv'
 target_field = 4  # ID, Eng, Fin, Swe, Ger, Fre, Ita
 
+name_cat = 'Name'
+
+def abbreviate(s):
+    return s.replace('http://www.wikidata.org/entity/', 'wd_')
+
 
 def name_rules(id, lin):
-    fun = "'" + id + "_Name'"
+    fun = abbreviate(id) + "_" + name_cat
     return (
       ' '.join(["fun", fun, ':', 'Name', ';']),
       ' '.join(["lin", fun, '=', '"'+lin+'"', ';'])
