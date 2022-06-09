@@ -61,12 +61,13 @@ def int2numeral_tree(tree):
     return apps(["num",whole,major,minor],unit)
 
     
-def int2numeral_in_tree(f_int, f_numeral, tree):
-    fun,args = tree.unpack()
-    if fun == f_int and len(args) == 1:
+def int2numeral_in_tree(int_numeral_dict, tree):
+    fun, args = tree.unpack()
+    if fun in int_numeral_dict and len(args) == 1:
+        f_numeral = int_numeral_dict[fun]
         return pgf.Expr(f_numeral, [int2numeral_tree(args[0])])
     else:
-        return pgf.Expr(fun, [int2numeral_in_tree(f_int, f_numeral, t) for t in args])
+        return pgf.Expr(fun, [int2numeral_in_tree(int_numeral_dict, t) for t in args])
 
 
 ############ auxiliaries #####################
