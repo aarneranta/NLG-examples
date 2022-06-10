@@ -10,5 +10,8 @@ main = do
   let eng:_ = languages pgf 
   interact (unlines . map (linearize pgf eng) . map transfer . parse pgf eng (startCat pgf))
 
-transfer = int2numeralInTree (mkCId "IntNumber") (mkCId "NumeralNumber")
+transfer = int2numeralInTree [
+  (mkCId "IntNumber", mkCId "NumeralNumber"),
+  (mkCId "IntRank", mkCId "NumeralRank")
+  ]
 

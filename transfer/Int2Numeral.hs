@@ -12,10 +12,11 @@ import PGF
 -- to use in your own program: see Int2NumeralExample.hs
 
 
-int2numeralInTree :: CId -> CId -> Tree -> Tree
-int2numeralInTree f_int f_numeral t = case unApp t of
-  Just (c,[t]) | c==f_int -> mkApp f_numeral [int2numeralTree t]  
-  Just (c,ts) -> mkApp c (map (int2numeralInTree f_int f_numeral) ts)
+int2numeralInTree :: [(CId, CId)] -> Tree -> Tree
+int2numeralInTree idmap t = case unApp t of
+  Just (c,ts) -> case lookup c idmap of
+    Just f | length ts == 1 -> mkApp f [int2numeralTree (head ts)]  
+    _ -> mkApp c (map (int2numeralInTree idmap) ts)
   _ -> t
 
 int2numeralTree :: Tree -> Tree
