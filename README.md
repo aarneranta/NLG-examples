@@ -1,5 +1,8 @@
 # NLG-examples with GF in Haskell and Python
 
+## Abstract Wikipedia experiment: `abstract-wikipedia`
+
+
 ## Tutorial on NLG in GF: `doc/`
 
 This tutorial is meant for programmers unfamiliar with GF but with
