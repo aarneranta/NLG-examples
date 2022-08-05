@@ -1,7 +1,8 @@
-This directory contains a tutorial text on NLG in GF.
+This directory contains an experiment for Abstract Wikipedia.
+A tutorial text on NLG can be found in the sister directory doc/.
 For convenience, it is made available in pdf, gf-nlg.pdf.
 
-The example code is collected in subdirectories.
+The example code from the tutorial is collected in subdirectories.
 For a simple test run of the code in each of them, do as follows:
 ```
 cd facts1
@@ -23,9 +24,5 @@ or simply
 ```
 source quick_test.sh
 ```
-
-TODO
-- more text in the document
-- more code in subdirectories
 
 
