@@ -43,7 +43,7 @@ p.Person = {
 	dates = {
 		{
 			validity = {"birth", "death"},
-			template = '{subj:Pronoun()} {root:Lexeme(L1883,Q442485)} {birth} and {death}'
+			template = '{subj:Pronoun()} {root:Lexeme(L1883,Q442485)} {birth} ja {death}'
 		},
 		{
 			validity = {"birth"},
