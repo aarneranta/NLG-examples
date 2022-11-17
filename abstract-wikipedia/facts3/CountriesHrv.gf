@@ -9,7 +9,7 @@ lin
 
   stringCName s = symb (mkSymb s.s) ;
 
-  capital_Attribute = mkAttribute "glavni grad" ;
+  capital_Attribute = mkAttribute (mkCN (mkA "glavni") (mkN "grad")) ;
   area_Attribute = mkAttribute "površina" ;
   population_Attribute = mkAttribute "stanovništvo" ;
   continent_Attribute = mkAttribute "kontinent" ;
@@ -29,6 +29,9 @@ lin
   inCDNameModifier cname = mkModifier (SyntaxHrv.mkAdv in_Prep cname.np) ;
 
 oper
-  mkAttribute : Str -> CN = \s -> mkCN (mkN s) ;
+  mkAttribute = overload {
+    mkAttribute : Str -> CN = \s -> mkCN (mkN s) ;
+    mkAttribute : CN -> CN = \cn -> cn ;
+    } ;
 
 }

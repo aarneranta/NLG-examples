@@ -6,8 +6,9 @@ CName = NP ;
 CDName = {np : NP ; ap : AP} ;
 
 oper mkCName = overload {
-mkCName : Str -> NP = \s -> mkNP (mkPN s) ;
-mkCName : NP -> NP = \np -> np ;
+  mkCName : Str -> NP = \s -> mkNP (mkPN s) ;
+  mkCName : NP -> NP = \np -> np ;
+  mkCName : CN -> NP = \cn -> mkNP cn ;
 } ;
 
 mkCDName = overload {
@@ -15,6 +16,8 @@ mkCDName = overload {
     = \np,ap -> lin CDName {np = mkCName np ; ap = mkAP (mkA ap)} ;
   mkCDName : NP -> AP -> CDName
     = \np,ap -> lin CDName {np = np ; ap = ap} ;
+  mkCDName : CN -> AP -> CDName
+    = \cn,ap -> lin CDName {np = mkNP cn ; ap = ap} ;
   mkCDName : Str -> CDName
     = \np -> lin CDName {np = mkCName np ; ap = mkAP (invarA np)} ; ---- TODO: demonym
 } ;
@@ -25,7 +28,7 @@ lin wd_Q1006_CName = mkCName  "Gvineja" ;
 lin wd_Q1007_CName = mkCName  "Gvineja Bisau" ;
 lin wd_Q1008_CName = mkCName  "Obala Bjelokosti" ;
 lin wd_Q1009_CName = mkCName  "Kamerun" ;
-lin wd_Q1011_CName = mkCName  "Zelenortska Republika" ;
+lin wd_Q1011_CName = mkCName  (mkCN (mkA "Zelenortsk") (mkN "Republika")) ;
 lin wd_Q1013_CName = mkCName  "Lesoto" ;
 lin wd_Q1014_CName = mkCName  "Liberija" ;
 lin wd_Q1016_CName = mkCName  "Libija" ;
@@ -284,7 +287,7 @@ lin wd_Q3001_CName = mkCName  "Paramaribo" ;
 lin wd_Q3037_CName = mkCName  "Katmandu" ;
 lin wd_Q3043_CName = mkCName  "Belmopan" ;
 lin wd_Q3070_CName = mkCName  "San José, Kostarika" ;
-lin wd_Q30_CName = mkCName  "Sjedinjene Američke Države" ;
+lin wd_Q30_CName = mkCName  (mkNP thePl_Det (mkCN (mkA "Sjedinjen") (mkCN (mkA "Američki") (mkN "Država")))) ;
 lin wd_Q31026_CName = mkCName  "Yaren" ;
 lin wd_Q3110_CName = mkCName  "San Salvador" ;
 lin wd_Q3114_CName = mkCName  "Canberra" ;
