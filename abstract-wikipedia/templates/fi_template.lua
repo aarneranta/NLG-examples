@@ -35,23 +35,31 @@ p.Person = {
 			validity = { "person", "occupation", "origin" },
 			template = '{tsubj:Person(person)} {root:L1883} {det<acomp:L2767} {amod<acomp:Demonym(origin)} {acomp:occupation}'
 		},
+			template2 = '[mkS(tense(person), mkCl(person, mkVP(mkCN(demonym(origin), occupation))))].'
+
 		{
 			validity = { "person", "occupation" },
-			template = '{tsubj:Person(person)} {root:L1883} {det<acomp:L2767} {acomp:occupation}'
+			template = '{tsubj:Person(person)} {root:L1883} {det<acomp:L2767} {acomp:occupation}',
+			template2 = '[mkS(tense(person), mkCl(person, mkVP(occupation)))].'
 		}
 	},
 	dates = {
 		{
 			validity = {"birth", "death"},
-			template = '{subj:Pronoun()} {root:Lexeme(L1883,Q442485)} {birth} ja {death}'
+			template = '{subj:Pronoun()} {root:Lexeme(L1883,Q442485)} {birth} ja {death}',
+			template2 = '[mkS(pronoun(person), mkVPS(and_Conj, birth, death))]'
 		},
 		{
 			validity = {"birth"},
-			template = '{subj:Pronoun()} {root:Lexeme(L1883,Q442485)} {birth}'
+			template = '{subj:Pronoun()} {root:Lexeme(L1883,Q442485)} {birth}',
+			template2 = '[mkS(pronoun(person), birth)]'
+
 		},
 		{
 			validity = {"death"},
-			template = '{subj:Pronoun()} {death}'
+			template = '{subj:Pronoun()} {death}',
+			template2 = '[mkS(pronoun(person), death)]'
+
 		},
 	}
 }
@@ -60,11 +68,13 @@ p.Birth = {
 	main = { 
 		{
 		validity = {"date", "place"},
-		template = 'syntyi {Date(date)} {place}SSA'
+		template = 'syntyi {Date(date)} {place}SSA',
+		template2 = '[mkVPS(pastTense, mkVP(mkVP(born_VP, date), mkLoc(place)))]'
 		}, 
 		{
 		validity = {"place"},
-		template = 'syntyi {place}+INESS'
+		template = 'syntyi {place}+INESS',
+		template2 = '[mkVPS(pastTense, mkVP(born_VP, mkLoc(place)))]'
 		}, 
 	}
 }
@@ -73,11 +83,13 @@ p.Death = {
 	main = { 
 		{
 		validity = {"date", "place"},
-		template = 'kuoli {Date(date)} {place}SSA'
+		template = 'kuoli {Date(date)} {place}SSA',
+		template2 = '[mkVPS(pastTense, mkVP(mkVP(mkVP(die_V), date), mkLoc(place)))]'
 		}, 
 		{
 		validity = {"place"},
-		template = 'kuoli {place}SSA'
+		template = 'kuoli {place}SSA',
+		template2 = '[mkVPS(pastTense, mkVP(mkVP(die_V), mkLoc place))]'
 		}, 
 	}
 }
@@ -87,11 +99,14 @@ p.Pioneer = {
 		{
 			validity = {"in_what"},
 			roles = {"pobj", "obj"},
-			template = '{root:"pioneering"} {obj:in_what}'
+			template = '{root:L1883} {obj:in_what}SSA',
+			template2 = '[mkVP(mkCN(pioneer_N, mkAdv(in_Prep, in_what)))]'
 		},
 		{
 			validity = {"person", "in_what"},
-			template = "{tsubj:Person(person)} {root:L1883} edelläkävijä {pobj:in_what}SSA."
+			template = "{tsubj:Person(person)} {root:L1883} edelläkävijä {pobj:in_what}SSA.",
+			template2 = '[mkS(tense(person), mkCl(person, mkVP(mkCN(pioneer_N, mkAdv(in_Prep, in_what)))))].'
+
 		}
 	}
 		
@@ -103,14 +118,19 @@ p.Research = {
 			validity = {"research_field"},
 			roles = {"subj", "pobj", "obj"},  -- nominal positions
 			template = "{research_field}N tutkimus",
+			template2 = '[mkNP(the_Det, possCN(research_N, research_field))]'
 		},
 		{
 			validity = {"person", "pronominalize", "research_field"},
-			template = "{tsubj:Pronoun(person)} {root:L115} {obj:research_field}."
+			template = "{tsubj:Pronoun(person)} {root:L115} {obj:research_field}.",
+			template2 = '[mkS(tense(person), mkCl(pronoun(person), research_V2, research_field))].'
+
 		},
 		{
 			validity = {"person", "research_field"},
-			template = "{tsubj:Person(person)} {root:L115} {obj:research_field}."
+			template = "{tsubj:Person(person)} {root:L115} {obj:research_field}.",
+			template2 = '[mkS(tense(person), mkCl(person, research_V2, research_field))]'
+
 		},
 		
 	}
@@ -120,7 +140,8 @@ p.List = {
 	main = {
 		{
 			validity = {"first", "second"},
-			template = "{first} ja {second}"
+			template = "{first} ja {second}",
+			template2 = '[mkNP(and_Conj, first, second)]'
 		}
 	}
 }
