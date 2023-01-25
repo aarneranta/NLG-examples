@@ -4,7 +4,7 @@ import json
 # produce a json dump about Wikidata properties: id, datatype, labels, description, aliases
 
 # the languages in which we collect labels and aliases
-LANG_CODES = {'en', 'fi', 'sv', 'bg', 'de', 'fr', 'hr', 'it'}
+LANG_CODES = {'en', 'fi', 'sv', 'bg', 'de', 'fr', 'hr', 'it', 'ar'}
 
 # data for a list of properties:
 # https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=P6%7CP27%7CP28%7CP29&formatversion=2
