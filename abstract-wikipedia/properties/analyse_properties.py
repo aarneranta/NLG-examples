@@ -1,13 +1,19 @@
 import sys
 import json
+from func_timeout import func_timeout, FunctionTimedOut
 import pgf
 
 """
-assuming: 
+To filter just some datatypes from the properties file, do
+
+  python3 analyse_properties.py FILTER time wikibase-item quantity
+
+(these are the three most relevant types).
+Then assuming: 
 
    gf-wordnet$ gf -make ParseEng.gf ParseSwe.gf
 
-run first 
+and Parse.pgf on your path, run first 
 
    python3 analyse_properties PARSE >parsed_properties.json
 
@@ -46,13 +52,15 @@ def parse_labels(filename=PROPERTY_FILE, langs=LANGUAGE_CODES):
                 data[code] = {}
                 data[code]['label'] = s
                 try:
-                    pr = cnc.parse(s, startcat)
+                    pr = func_timeout(2, cnc.parse, args=(s, startcat))
                     _, tree = pr.__next__()
                     f, xs = tree.unpack()
                     data[code]['cat'] = 'VP' if f[3:] == 'VPShort' else f[3:]
                     data[code]['tree'] = str(xs[0])
-                except pgf.ParseError as e:
-                    pass
+                except FunctionTimedOut:
+                    print('# PARSER TIMEOUT:', s)
+                except pgf.ParseError:
+                    print('# NOT PARSED:', s)
         j = json.dumps(data, ensure_ascii=False)
         print(j)
       
