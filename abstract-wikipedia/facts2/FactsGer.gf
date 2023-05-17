@@ -1,4 +1,4 @@
-concrete FactsGer of Facts = open SyntaxGer, SymbolicGer in {
+concrete FactsGer of Facts = open SyntaxGer, SymbolicGer, (P=ParadigmsGer) in {
 
 lincat
   Fact = Cl ;
@@ -8,7 +8,7 @@ lincat
   Name = NP ;
 
 lin
-  AttributeFact attr obj val = mkCl (mkNP the_Det (mkCN attr (mkAdv possess_Prep obj))) val ;
+  AttributeFact attr obj val = mkCl (mkNP the_Det (mkCN attr (mkAdv (P.mkPrep "" P.genitive) obj))) val ;
   NameObject name = name ;
   NameValue name = name ;
   IntValue int = symb int ;

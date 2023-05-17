@@ -40,6 +40,7 @@ class FactSystem:
             for tree in fact_generator(self,data):
                 lin = lang.linearize(tree)
                 if lin: text.append(lin[0].upper() + lin[1:])
+#                text.append(str(tree))
             print('\n'.join(text))
 
 

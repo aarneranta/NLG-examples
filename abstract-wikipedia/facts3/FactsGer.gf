@@ -1,5 +1,6 @@
 concrete FactsGer of Facts = FactsFunctor - [
     npPron,
+    AttributeFact,
     PunctualPastFactSentence, PunctualPastActModifier
   ] with
   (Syntax = SyntaxGer),
@@ -13,6 +14,10 @@ oper
   npPron : NP -> Pron = \np -> case ifPluralNP np of {True => they_Pron ; False => it_Pron} ;
 
 lin
+  AttributeFact attr obj val = case obj.isPron of {
+    True => mkCl (mkNP (mkDet obj.pron) attr) val ;
+    _ => mkCl (mkNP the_Det (mkCN attr (SyntaxGer.mkAdv (mkPrep "" genitive) obj.np))) val
+    } ;
   PunctualPastFactSentence fact = mkS presentTense anteriorAnt fact ;
   PunctualPastActModifier act = mkModifier (mkRS presentTense anteriorAnt (mkRCl which_RP act)) ;
 
